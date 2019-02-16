@@ -1,0 +1,157 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/saved_model/simple_save.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save'>simple_save</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;SavedModel simple save functionality.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', title='saved_model'>saved_model</a> import <a href='builder.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder', title='builder'>builder</a>
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', title='saved_model'>saved_model</a> import <a href='signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', title='signature_constants'>signature_constants</a>
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', title='saved_model'>saved_model</a> import <a href='signature_def_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_def_utils', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_def_utils', title='signature_def_utils'>signature_def_utils</a>
+<span class='lineno'>  25</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', title='saved_model'>saved_model</a> import <a href='tag_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants', title='tag_constants'>tag_constants</a>
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> @tf_export(&#39;saved_model.simple_save&#39;)
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save', title='(?, ?, ?, ?, None) -> None'>simple_save</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.session', title='?'>session</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.export_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.export_dir', title='?'>export_dir</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.inputs', title='?'>inputs</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.outputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.outputs', title='?'>outputs</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.legacy_init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.legacy_init_op', title='None'>legacy_init_op</a>=None):
+<span class='lineno'>  31</span>   &quot;&quot;&quot;Convenience function to build a SavedModel suitable for serving.
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>   In many common cases, saving models for serving will be as simple as:
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>       simple_save(session,
+<span class='lineno'>  36</span>                   export_dir,
+<span class='lineno'>  37</span>                   inputs={&quot;x&quot;: x, &quot;y&quot;: y},
+<span class='lineno'>  38</span>                   outputs={&quot;z&quot;: z})
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   Although in many cases it&#39;s not necessary to understand all of the many ways
+<span class='lineno'>  41</span>       to configure a SavedModel, this method has a few practical implications:
+<span class='lineno'>  42</span>     - It will be treated as a graph for inference / serving (i.e. uses the tag
+<span class='lineno'>  43</span>       `tag_constants.SERVING`)
+<span class='lineno'>  44</span>     - The SavedModel will load in TensorFlow Serving and supports the
+<span class='lineno'>  45</span>       [Predict
+<span class='lineno'>  46</span>       API](https://github.com/tensorflow/serving/blob/master/tensorflow_serving/apis/predict.proto).
+<span class='lineno'>  47</span>       To use the Classify, Regress, or MultiInference APIs, please
+<span class='lineno'>  48</span>       use either
+<span class='lineno'>  49</span>       [tf.Estimator](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator)
+<span class='lineno'>  50</span>       or the lower level
+<span class='lineno'>  51</span>       [SavedModel
+<span class='lineno'>  52</span>       APIs](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md).
+<span class='lineno'>  53</span>     - Some TensorFlow ops depend on information on disk or other information
+<span class='lineno'>  54</span>       called &quot;assets&quot;. These are generally handled automatically by adding the
+<span class='lineno'>  55</span>       assets to the `GraphKeys.ASSET_FILEPATHS` collection. Only assets in that
+<span class='lineno'>  56</span>       collection are exported; if you need more custom behavior, you&#39;ll need to
+<span class='lineno'>  57</span>       use the
+<span class='lineno'>  58</span>       [SavedModelBuilder](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/builder.py).
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span>   More information about SavedModel and signatures can be found here:
+<span class='lineno'>  61</span>   https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md.
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span>   Args:
+<span class='lineno'>  64</span>     session: The TensorFlow session from which to save the meta graph and
+<span class='lineno'>  65</span>         variables.
+<span class='lineno'>  66</span>     export_dir: The path to which the SavedModel will be stored.
+<span class='lineno'>  67</span>     inputs: dict mapping string input names to tensors. These are added
+<span class='lineno'>  68</span>         to the SignatureDef as the inputs.
+<span class='lineno'>  69</span>     outputs:  dict mapping string output names to tensors. These are added
+<span class='lineno'>  70</span>         to the SignatureDef as the outputs.
+<span class='lineno'>  71</span>     legacy_init_op: Legacy support for op or group of ops to execute after the
+<span class='lineno'>  72</span>         restore op upon a load.
+<span class='lineno'>  73</span>   &quot;&quot;&quot;
+<span class='lineno'>  74</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.signature_def_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.signature_def_map', title='dict'>signature_def_map</a> = {
+<span class='lineno'>  75</span>       <a href='signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', title='signature_constants'>signature_constants</a>.<a href='signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY', title='str'>DEFAULT_SERVING_SIGNATURE_DEF_KEY</a>:
+<span class='lineno'>  76</span>           <a href='signature_def_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_def_utils', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_def_utils', title='signature_def_utils'>signature_def_utils</a>.predict_signature_def(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.inputs', title='?'>inputs</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.outputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.outputs', title='?'>outputs</a>)
+<span class='lineno'>  77</span>   }
+<span class='lineno'>  78</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', title='SavedModelBuilder'>b</a> = <a href='builder.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder', title='builder'>builder</a>.<a href='builder_impl.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder', title='<SavedModelBuilder>'>SavedModelBuilder</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.export_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.export_dir', title='?'>export_dir</a>)
+<span class='lineno'>  79</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', title='SavedModelBuilder'>b</a>.<a href='builder_impl.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder.add_meta_graph_and_variables', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder.add_meta_graph_and_variables', title='(SavedModelBuilder, ?, [str], None, None, None, bool, None, bool, None) -> None / (SavedModelBuilder, Session, [str], None, None, None, bool, None, bool, None) -> None / (SavedModelBuilder, Session, ?, None, None, None, bool, None, bool, None) -> None / (SavedModelBuilder, ?, ?, None, None, None, bool, None, bool, None) -> None'>add_meta_graph_and_variables</a>(
+<span class='lineno'>  80</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.session', title='?'>session</a>,
+<span class='lineno'>  81</span>       tags=[<a href='tag_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants', title='tag_constants'>tag_constants</a>.<a href='tag_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants.SERVING', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.tag_constants.SERVING', title='str'>SERVING</a>],
+<span class='lineno'>  82</span>       signature_def_map=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.signature_def_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.signature_def_map', title='dict'>signature_def_map</a>,
+<span class='lineno'>  83</span>       assets_collection=<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', title='(str, Template -> str) -> None / (?, str) -> None / (str, {VariableScope -> str | variable_scope}) -> None / (str, ?) -> None / (str, None) -> None / (?, None) -> None / (str, str) -> None / (str, VariableScope -> str) -> None'>get_collection</a>(<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', title='<GraphKeys>'>GraphKeys</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.ASSET_FILEPATHS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.ASSET_FILEPATHS', title='str'>ASSET_FILEPATHS</a>),
+<span class='lineno'>  84</span>       legacy_init_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.legacy_init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.legacy_init_op', title='None'>legacy_init_op</a>,
+<span class='lineno'>  85</span>       clear_devices=True)
+<span class='lineno'>  86</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.simple_save.simple_save.b', title='SavedModelBuilder'>b</a>.<a href='builder_impl.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder.save', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.builder_impl.SavedModelBuilder.save', title='(SavedModelBuilder, None) -> str / (SavedModelBuilder, bool) -> str'>save</a>()
+</pre></td></tr></table></body></html>

@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/debug/cli/offline_analyzer.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main'>main</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser'>parser</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS'>FLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed'>unparsed</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Offline dump analyzer of TensorFlow Debugger (tfdbg).&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import argparse
+<span class='lineno'>  21</span> import sys
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> # Google-internal import(s).
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', title='debug'>debug</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli', title='cli'>cli</a> import <a href='analyzer_cli.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli', title='analyzer_cli'>analyzer_cli</a>
+<span class='lineno'>  26</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', title='debug'>debug</a>.<a href='../lib/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib', title='lib'>lib</a> import <a href='../lib/debug_data.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', title='debug_data'>debug_data</a>
+<span class='lineno'>  27</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='../../platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main', title='? -> None'>main</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main._', title='?'>_</a>):
+<span class='lineno'>  31</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.log_usage:
+<span class='lineno'>  32</span>     pass  # No logging for open-source.
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span>   if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.dump_dir:
+<span class='lineno'>  35</span>     print(&quot;ERROR: dump_dir flag is empty.&quot;, file=sys.stderr)
+<span class='lineno'>  36</span>     sys.exit(1)
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   print(&quot;tfdbg offline: FLAGS.dump_dir = %s&quot; % <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.dump_dir)
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.debug_dump', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.debug_dump', title='DebugDumpDir'>debug_dump</a> = <a href='../lib/debug_data.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', title='debug_data'>debug_data</a>.<a href='../lib/debug_data.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data.DebugDumpDir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data.DebugDumpDir', title='<DebugDumpDir>'>DebugDumpDir</a>(
+<span class='lineno'>  41</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.dump_dir, validate=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.validate_graph)
+<span class='lineno'>  42</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.cli', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.cli', title='{CursesUI | ReadlineUI}'>cli</a> = <a href='analyzer_cli.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli', title='analyzer_cli'>analyzer_cli</a>.<a href='analyzer_cli.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli.create_analyzer_ui', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.analyzer_cli.create_analyzer_ui', title='(?, dict, str, None, None) -> {CursesUI | ReadlineUI} / (?, None, str, None, None) -> {CursesUI | ReadlineUI} / (DebugDumpDir, dict, str, None, None) -> {CursesUI | ReadlineUI} / (DebugDumpDir, None, str, None, None) -> {CursesUI | ReadlineUI}'>create_analyzer_ui</a>(
+<span class='lineno'>  43</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.debug_dump', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.debug_dump', title='DebugDumpDir'>debug_dump</a>,
+<span class='lineno'>  44</span>       tensor_filters={&quot;has_inf_or_nan&quot;: <a href='../lib/debug_data.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data', title='debug_data'>debug_data</a>.<a href='../lib/debug_data.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data.has_inf_or_nan', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.debug_data.has_inf_or_nan', title='(?, ?) -> bool'>has_inf_or_nan</a>},
+<span class='lineno'>  45</span>       ui_type=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.ui_type)
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.title', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.title', title='str'>title</a> = &quot;tfdbg offline @ %s&quot; % <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>.dump_dir
+<span class='lineno'>  48</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.cli', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.cli', title='{CursesUI | ReadlineUI}'>cli</a>.run_ui(title=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.title', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main.title', title='str'>title</a>, title_color=&quot;black_on_white&quot;, init_command=&quot;lt&quot;)
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span> if __name__ == &quot;__main__&quot;:
+<span class='lineno'>  52</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a> = argparse.ArgumentParser()
+<span class='lineno'>  53</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.register(&quot;type&quot;, &quot;bool&quot;, lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.lambda%795.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.lambda%795.v', title='?'>v</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.lambda%795.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.lambda%795.v', title='?'>v</a>.lower() == &quot;true&quot;)
+<span class='lineno'>  54</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  55</span>       &quot;--dump_dir&quot;, type=str, default=&quot;&quot;, help=&quot;tfdbg dump directory to load&quot;)
+<span class='lineno'>  56</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  57</span>       &quot;--log_usage&quot;,
+<span class='lineno'>  58</span>       type=&quot;bool&quot;,
+<span class='lineno'>  59</span>       nargs=&quot;?&quot;,
+<span class='lineno'>  60</span>       const=True,
+<span class='lineno'>  61</span>       default=True,
+<span class='lineno'>  62</span>       help=&quot;Whether the usage of this tool is to be logged&quot;)
+<span class='lineno'>  63</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  64</span>       &quot;--ui_type&quot;,
+<span class='lineno'>  65</span>       type=str,
+<span class='lineno'>  66</span>       default=&quot;curses&quot;,
+<span class='lineno'>  67</span>       help=&quot;Command-line user interface type (curses | readline)&quot;)
+<span class='lineno'>  68</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  69</span>       &quot;--validate_graph&quot;,
+<span class='lineno'>  70</span>       nargs=&quot;?&quot;,
+<span class='lineno'>  71</span>       const=True,
+<span class='lineno'>  72</span>       type=&quot;bool&quot;,
+<span class='lineno'>  73</span>       default=True,
+<span class='lineno'>  74</span>       help=&quot;&quot;&quot;\
+<span class='lineno'>  75</span>       Whether the dumped tensors will be validated against the GraphDefs\
+<span class='lineno'>  76</span>       &quot;&quot;&quot;)
+<span class='lineno'>  77</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.FLAGS', title='?'>FLAGS</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed', title='?'>unparsed</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.parser', title='?'>parser</a>.parse_known_args()
+<span class='lineno'>  78</span>   <a href='../../platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>.<a href='../../platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', title='(? -> None, None) -> None / (None, None) -> None'>run</a>(main=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.main', title='? -> None'>main</a>, argv=[sys.argv[0]] + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.cli.offline_analyzer.unparsed', title='?'>unparsed</a>)
+</pre></td></tr></table></body></html>

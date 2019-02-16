@@ -1,0 +1,164 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/timeseries/python/timeseries/feature_keys.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State'>State</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_TUPLE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_TUPLE'>STATE_TUPLE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_PREFIX', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_PREFIX'>STATE_PREFIX</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times'>Times</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times.TIMES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times.TIMES'>TIMES</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values'>Values</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values.VALUES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values.VALUES'>VALUES</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.TrainEvalFeatures', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.TrainEvalFeatures'>TrainEvalFeatures</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionFeatures', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionFeatures'>PredictionFeatures</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringFeatures', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringFeatures'>FilteringFeatures</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionResults', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionResults'>PredictionResults</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringResults', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringResults'>FilteringResults</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels'>SavedModelLabels</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.PREDICT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.PREDICT'>PREDICT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.FILTER', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.FILTER'>FILTER</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.COLD_START_FILTER', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.COLD_START_FILTER'>COLD_START_FILTER</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Commonly used special feature names for time series models.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/saved_model/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model', title='saved_model'>saved_model</a> import <a href='../../../../python/saved_model/signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', title='signature_constants'>signature_constants</a>
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', title='<State>'>State</a>(object):
+<span class='lineno'>  25</span>   &quot;&quot;&quot;Key formats for accepting/returning state.&quot;&quot;&quot;
+<span class='lineno'>  26</span>   # The model-dependent state to start from, as a single tuple.
+<span class='lineno'>  27</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_TUPLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_TUPLE', title='str'>STATE_TUPLE</a> = &quot;start_tuple&quot;
+<span class='lineno'>  28</span>   # Same meaning as STATE_TUPLE, but prefixes keys representing flattened model
+<span class='lineno'>  29</span>   # state rather than mapping to a nested tuple containing model state,
+<span class='lineno'>  30</span>   # primarily for use with export_savedmodel.
+<span class='lineno'>  31</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_PREFIX', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State.STATE_PREFIX', title='str'>STATE_PREFIX</a> = &quot;model_state&quot;
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>(object):
+<span class='lineno'>  35</span>   &quot;&quot;&quot;Key formats for accepting/returning times.&quot;&quot;&quot;
+<span class='lineno'>  36</span>   # An increasing vector of integers.
+<span class='lineno'>  37</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times.TIMES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times.TIMES', title='str'>TIMES</a> = &quot;times&quot;
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', title='<Values>'>Values</a>(object):
+<span class='lineno'>  41</span>   &quot;&quot;&quot;Key formats for accepting/returning values.&quot;&quot;&quot;
+<span class='lineno'>  42</span>   # Floating point, with one or more values corresponding to each time in TIMES.
+<span class='lineno'>  43</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values.VALUES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values.VALUES', title='str'>VALUES</a> = &quot;values&quot;
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.TrainEvalFeatures', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.TrainEvalFeatures', title='<TrainEvalFeatures>'>TrainEvalFeatures</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', title='<Values>'>Values</a>):
+<span class='lineno'>  47</span>   &quot;&quot;&quot;Feature names used during training and evaluation.&quot;&quot;&quot;
+<span class='lineno'>  48</span>   pass
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionFeatures', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionFeatures', title='<PredictionFeatures>'>PredictionFeatures</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', title='<State>'>State</a>):
+<span class='lineno'>  52</span>   &quot;&quot;&quot;Feature names used during prediction.&quot;&quot;&quot;
+<span class='lineno'>  53</span>   pass
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringFeatures', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringFeatures', title='<FilteringFeatures>'>FilteringFeatures</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Values', title='<Values>'>Values</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', title='<State>'>State</a>):
+<span class='lineno'>  57</span>   &quot;&quot;&quot;Special feature names for filtering.&quot;&quot;&quot;
+<span class='lineno'>  58</span>   pass
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionResults', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.PredictionResults', title='<PredictionResults>'>PredictionResults</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>):
+<span class='lineno'>  62</span>   &quot;&quot;&quot;Keys returned when predicting (not comprehensive).&quot;&quot;&quot;
+<span class='lineno'>  63</span>   pass
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringResults', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.FilteringResults', title='<FilteringResults>'>FilteringResults</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.Times', title='<Times>'>Times</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.State', title='<State>'>State</a>):
+<span class='lineno'>  67</span>   &quot;&quot;&quot;Keys returned from evaluation/filtering.&quot;&quot;&quot;
+<span class='lineno'>  68</span>   pass
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels', title='<SavedModelLabels>'>SavedModelLabels</a>(object):
+<span class='lineno'>  72</span>   &quot;&quot;&quot;Names of signatures exported with export_savedmodel.&quot;&quot;&quot;
+<span class='lineno'>  73</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.PREDICT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.PREDICT', title='str'>PREDICT</a> = <a href='../../../../python/saved_model/signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants', title='signature_constants'>signature_constants</a>.<a href='../../../../python/saved_model/signature_constants.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY', title='str'>DEFAULT_SERVING_SIGNATURE_DEF_KEY</a>
+<span class='lineno'>  74</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.FILTER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.FILTER', title='str'>FILTER</a> = &quot;filter&quot;
+<span class='lineno'>  75</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.COLD_START_FILTER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.timeseries.python.timeseries.feature_keys.SavedModelLabels.COLD_START_FILTER', title='str'>COLD_START_FILTER</a> = &quot;cold_start_filter&quot;
+</pre></td></tr></table></body></html>

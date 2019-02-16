@@ -1,0 +1,185 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/data/python/ops/iterator_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator'>make_saveable_from_iterator</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook'>CheckpointInputPipelineHook</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__'>__init__</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Iterator ops.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/data/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../../../python/data/experimental/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', title='experimental'>experimental</a>.<a href='../../../../python/data/experimental/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', title='ops'>ops</a> import <a href='../../../../python/data/experimental/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', title='iterator_ops'>iterator_ops</a>
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a>
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> @deprecation.deprecated(
+<span class='lineno'>  25</span>     None, &quot;Use `tf.data.experimental.make_saveable_from_iterator(...)`.&quot;)
+<span class='lineno'>  26</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator', title='? -> _Saveable'>make_saveable_from_iterator</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator.iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator.iterator', title='?'>iterator</a>):
+<span class='lineno'>  27</span>   &quot;&quot;&quot;Returns a SaveableObject for saving/restore iterator state using Saver.
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span>   Args:
+<span class='lineno'>  30</span>     iterator: Iterator.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   For example:
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span>   ```python
+<span class='lineno'>  35</span>   with tf.Graph().as_default():
+<span class='lineno'>  36</span>     ds = tf.data.Dataset.range(10)
+<span class='lineno'>  37</span>     iterator = ds.make_initializable_iterator()
+<span class='lineno'>  38</span>     # Build the iterator SaveableObject.
+<span class='lineno'>  39</span>     saveable_obj = tf.contrib.data.make_saveable_from_iterator(iterator)
+<span class='lineno'>  40</span>     # Add the SaveableObject to the SAVEABLE_OBJECTS collection so
+<span class='lineno'>  41</span>     # it can be automatically saved using Saver.
+<span class='lineno'>  42</span>     tf.add_to_collection(tf.GraphKeys.SAVEABLE_OBJECTS, saveable_obj)
+<span class='lineno'>  43</span>     saver = tf.train.Saver()
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>     while continue_training:
+<span class='lineno'>  46</span>       ... Perform training ...
+<span class='lineno'>  47</span>       if should_save_checkpoint:
+<span class='lineno'>  48</span>         saver.save()
+<span class='lineno'>  49</span>   ```
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   Note: When restoring the iterator, the existing iterator state is completely
+<span class='lineno'>  52</span>   discarded. This means that any changes you may have made to the Dataset
+<span class='lineno'>  53</span>   graph will be discarded as well! This includes the new Dataset graph
+<span class='lineno'>  54</span>   that you may have built during validation. So, while running validation,
+<span class='lineno'>  55</span>   make sure to run the initializer for the validation input pipeline after
+<span class='lineno'>  56</span>   restoring the checkpoint.
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   Note: Not all iterators support checkpointing yet. Attempting to save the
+<span class='lineno'>  59</span>   state of an unsupported iterator will throw an error.
+<span class='lineno'>  60</span>   &quot;&quot;&quot;
+<span class='lineno'>  61</span>   return <a href='../../../../python/data/experimental/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', title='iterator_ops'>iterator_ops</a>.<a href='../../../../python/data/experimental/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops.make_saveable_from_iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops.make_saveable_from_iterator', title='Iterator -> _Saveable / ? -> _Saveable'>make_saveable_from_iterator</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator.iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.make_saveable_from_iterator.iterator', title='?'>iterator</a>)
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook', title='<CheckpointInputPipelineHook>'>CheckpointInputPipelineHook</a>(<a href='../../../../python/data/experimental/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops', title='iterator_ops'>iterator_ops</a>.<a href='../../../../python/data/experimental/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops.CheckpointInputPipelineHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.iterator_ops.CheckpointInputPipelineHook', title='<CheckpointInputPipelineHook>'>CheckpointInputPipelineHook</a>):
+<span class='lineno'>  65</span>   &quot;&quot;&quot;Checkpoints input pipeline state every N steps or seconds.
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   This hook saves the state of the iterators in the `Graph` so that when
+<span class='lineno'>  68</span>   training is resumed the input pipeline continues from where it left off.
+<span class='lineno'>  69</span>   This could potentially avoid overfitting in certain pipelines where the
+<span class='lineno'>  70</span>   number of training steps per eval are small compared to the dataset
+<span class='lineno'>  71</span>   size or if the training pipeline is pre-empted.
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>   Differences from `CheckpointSaverHook`:
+<span class='lineno'>  74</span>   1. Saves only the input pipelines in the &quot;iterators&quot; collection and not the
+<span class='lineno'>  75</span>      global variables or other saveable objects.
+<span class='lineno'>  76</span>   2. Does not write the `GraphDef` and `MetaGraphDef` to the summary.
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span>   Example of checkpointing the training pipeline:
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>   ```python
+<span class='lineno'>  81</span>   est = tf.estimator.Estimator(model_fn)
+<span class='lineno'>  82</span>   while True:
+<span class='lineno'>  83</span>     est.train(
+<span class='lineno'>  84</span>         train_input_fn,
+<span class='lineno'>  85</span>         hooks=[tf.contrib.data.CheckpointInputPipelineHook(est)],
+<span class='lineno'>  86</span>         steps=train_steps_per_eval)
+<span class='lineno'>  87</span>     # Note: We do not pass the hook here.
+<span class='lineno'>  88</span>     metrics = est.evaluate(eval_input_fn)
+<span class='lineno'>  89</span>     if should_stop_the_training(metrics):
+<span class='lineno'>  90</span>       break
+<span class='lineno'>  91</span>   ```
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>   This hook should be used if the input pipeline state needs to be saved
+<span class='lineno'>  94</span>   separate from the model checkpoint. Doing so may be useful for a few reasons:
+<span class='lineno'>  95</span>   1. The input pipeline checkpoint may be large, if there are large shuffle
+<span class='lineno'>  96</span>      or prefetch buffers for instance, and may bloat the checkpoint size.
+<span class='lineno'>  97</span>   2. If the input pipeline is shared between training and validation, restoring
+<span class='lineno'>  98</span>      the checkpoint during validation may override the validation input
+<span class='lineno'>  99</span>      pipeline.
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   For saving the input pipeline checkpoint alongside the model weights use
+<span class='lineno'> 102</span>   `tf.contrib.data.make_saveable_from_iterator` directly to create a
+<span class='lineno'> 103</span>   `SaveableObject` and add to the `SAVEABLE_OBJECTS` collection. Note, however,
+<span class='lineno'> 104</span>   that you will need to be careful not to restore the training iterator during
+<span class='lineno'> 105</span>   eval. You can do that by not adding the iterator to the SAVEABLE_OBJECTS
+<span class='lineno'> 106</span>   collector when building the eval graph.
+<span class='lineno'> 107</span>   &quot;&quot;&quot;
+<span class='lineno'> 108</span> 
+<span class='lineno'> 109</span>   @deprecation.deprecated(
+<span class='lineno'> 110</span>       None, &quot;Use `tf.data.experimental.CheckpointInputPipelineHook(...)`.&quot;)
+<span class='lineno'> 111</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.self', title='CheckpointInputPipelineHook'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.estimator', title='?'>estimator</a>):
+<span class='lineno'> 112</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook', title='<CheckpointInputPipelineHook>'>CheckpointInputPipelineHook</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.self', title='CheckpointInputPipelineHook'>self</a>).__init__(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.iterator_ops.CheckpointInputPipelineHook.__init__.estimator', title='?'>estimator</a>)
+</pre></td></tr></table></body></html>

@@ -1,0 +1,533 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/tensor_forest/proto/fertile_stats_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS'>_FERTILESTATS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS'>_GINISTATS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT'>_LEAFSTAT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT'>_FERTILESLOT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE'>_SPLITCANDIDATE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH'>_TREEPATH</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats'>FertileStats</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats'>GiniStats</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat'>LeafStat</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot'>FertileSlot</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate'>SplitCandidate</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath'>TreePath</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/contrib/tensor_forest/proto/fertile_stats.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%871.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%871.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%871.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%871.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%872.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%872.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%872.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.lambda%872.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../decision_trees/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees', title='decision_trees'>decision_trees</a>.<a href='../../decision_trees/proto/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto', title='proto'>proto</a> import generic_tree_model_pb2 as <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/contrib/tensor_forest/proto/fertile_stats.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;tensorflow.tensorforest&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  22</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', title='str -> str'>_b</a>(&#39;\370\001\001&#39;),
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', title='str -> str'>_b</a>(&#39;\n:tensorflow/contrib/tensor_forest/proto/fertile_stats.proto\x12\x17tensorflow.tensorforest\x1a@tensorflow/contrib/decision_trees/proto/generic_tree_model.proto\&quot;J\n\x0c\x46\x65rtileStats\x12:\n\x0cnode_to_slot\x18\x01 \x03(\x0b\x32$.tensorflow.tensorforest.FertileSlot\&quot;\x1b\n\tGiniStats\x12\x0e\n\x06square\x18\x02 \x01(\x02\&quot;\xd2\x04\n\x08LeafStat\x12\x12\n\nweight_sum\x18\x03 \x01(\x02\x12[\n\x0e\x63lassification\x18\x01 \x01(\x0b\x32\x41.tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStatsH\x00\x12S\n\nregression\x18\x02 \x01(\x0b\x32=.tensorflow.tensorforest.LeafStat.LeastSquaresRegressionStatsH\x00\x1a\xda\x01\n\x1fGiniImpurityClassificationStats\x12\x39\n\x0c\x64\x65nse_counts\x18\x01 \x01(\x0b\x32!.tensorflow.decision_trees.VectorH\x00\x12@\n\rsparse_counts\x18\x02 \x01(\x0b\x32\&#39;.tensorflow.decision_trees.SparseVectorH\x00\x12\x30\n\x04gini\x18\x03 \x01(\x0b\x32\&quot;.tensorflow.tensorforest.GiniStatsB\x08\n\x06\x63ounts\x1a\x95\x01\n\x1bLeastSquaresRegressionStats\x12\x36\n\x0bmean_output\x18\x01 \x01(\x0b\x32!.tensorflow.decision_trees.Vector\x12&gt;\n\x13mean_output_squares\x18\x02 \x01(\x0b\x32!.tensorflow.decision_trees.VectorB\x0b\n\tleaf_stat\&quot;\xe2\x01\n\x0b\x46\x65rtileSlot\x12\x35\n\nleaf_stats\x18\x04 \x01(\x0b\x32!.tensorflow.tensorforest.LeafStat\x12;\n\ncandidates\x18\x01 \x03(\x0b\x32\&#39;.tensorflow.tensorforest.SplitCandidate\x12?\n\x14post_init_leaf_stats\x18\x06 \x01(\x0b\x32!.tensorflow.tensorforest.LeafStat\x12\x0f\n\x07node_id\x18\x05 \x01(\x05\x12\r\n\x05\x64\x65pth\x18\x07 \x01(\x05\&quot;\xc8\x01\n\x0eSplitCandidate\x12\x34\n\x05split\x18\x01 \x01(\x0b\x32%.tensorflow.decision_trees.BinaryNode\x12\x35\n\nleft_stats\x18\x04 \x01(\x0b\x32!.tensorflow.tensorforest.LeafStat\x12\x36\n\x0bright_stats\x18\x05 \x01(\x0b\x32!.tensorflow.tensorforest.LeafStat\x12\x11\n\tunique_id\x18\x06 \x01(\t\&quot;F\n\x08TreePath\x12:\n\rnodes_visited\x18\x01 \x03(\x0b\x32#.tensorflow.decision_trees.TreeNodeB\x03\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  24</span>   ,
+<span class='lineno'>  25</span>   dependencies=[<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', title='?'>_FERTILESTATS</a> = _descriptor.Descriptor(
+<span class='lineno'>  31</span>   name=&#39;FertileStats&#39;,
+<span class='lineno'>  32</span>   full_name=&#39;tensorflow.tensorforest.FertileStats&#39;,
+<span class='lineno'>  33</span>   filename=None,
+<span class='lineno'>  34</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  35</span>   containing_type=None,
+<span class='lineno'>  36</span>   fields=[
+<span class='lineno'>  37</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  38</span>       name=&#39;node_to_slot&#39;, full_name=&#39;tensorflow.tensorforest.FertileStats.node_to_slot&#39;, index=0,
+<span class='lineno'>  39</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'>  40</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  41</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  42</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  43</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  44</span>   ],
+<span class='lineno'>  45</span>   extensions=[
+<span class='lineno'>  46</span>   ],
+<span class='lineno'>  47</span>   nested_types=[],
+<span class='lineno'>  48</span>   enum_types=[
+<span class='lineno'>  49</span>   ],
+<span class='lineno'>  50</span>   serialized_options=None,
+<span class='lineno'>  51</span>   is_extendable=False,
+<span class='lineno'>  52</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  53</span>   extension_ranges=[],
+<span class='lineno'>  54</span>   oneofs=[
+<span class='lineno'>  55</span>   ],
+<span class='lineno'>  56</span>   serialized_start=153,
+<span class='lineno'>  57</span>   serialized_end=227,
+<span class='lineno'>  58</span> )
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', title='?'>_GINISTATS</a> = _descriptor.Descriptor(
+<span class='lineno'>  62</span>   name=&#39;GiniStats&#39;,
+<span class='lineno'>  63</span>   full_name=&#39;tensorflow.tensorforest.GiniStats&#39;,
+<span class='lineno'>  64</span>   filename=None,
+<span class='lineno'>  65</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  66</span>   containing_type=None,
+<span class='lineno'>  67</span>   fields=[
+<span class='lineno'>  68</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  69</span>       name=&#39;square&#39;, full_name=&#39;tensorflow.tensorforest.GiniStats.square&#39;, index=0,
+<span class='lineno'>  70</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'>  71</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'>  72</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  73</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  74</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  75</span>   ],
+<span class='lineno'>  76</span>   extensions=[
+<span class='lineno'>  77</span>   ],
+<span class='lineno'>  78</span>   nested_types=[],
+<span class='lineno'>  79</span>   enum_types=[
+<span class='lineno'>  80</span>   ],
+<span class='lineno'>  81</span>   serialized_options=None,
+<span class='lineno'>  82</span>   is_extendable=False,
+<span class='lineno'>  83</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  84</span>   extension_ranges=[],
+<span class='lineno'>  85</span>   oneofs=[
+<span class='lineno'>  86</span>   ],
+<span class='lineno'>  87</span>   serialized_start=229,
+<span class='lineno'>  88</span>   serialized_end=256,
+<span class='lineno'>  89</span> )
+<span class='lineno'>  90</span> 
+<span class='lineno'>  91</span> 
+<span class='lineno'>  92</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a> = _descriptor.Descriptor(
+<span class='lineno'>  93</span>   name=&#39;GiniImpurityClassificationStats&#39;,
+<span class='lineno'>  94</span>   full_name=&#39;tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats&#39;,
+<span class='lineno'>  95</span>   filename=None,
+<span class='lineno'>  96</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  97</span>   containing_type=None,
+<span class='lineno'>  98</span>   fields=[
+<span class='lineno'>  99</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 100</span>       name=&#39;dense_counts&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats.dense_counts&#39;, index=0,
+<span class='lineno'> 101</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 102</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 103</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 104</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 105</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 106</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 107</span>       name=&#39;sparse_counts&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats.sparse_counts&#39;, index=1,
+<span class='lineno'> 108</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 109</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 110</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 111</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 112</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 113</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 114</span>       name=&#39;gini&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats.gini&#39;, index=2,
+<span class='lineno'> 115</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 116</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 117</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 118</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 119</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 120</span>   ],
+<span class='lineno'> 121</span>   extensions=[
+<span class='lineno'> 122</span>   ],
+<span class='lineno'> 123</span>   nested_types=[],
+<span class='lineno'> 124</span>   enum_types=[
+<span class='lineno'> 125</span>   ],
+<span class='lineno'> 126</span>   serialized_options=None,
+<span class='lineno'> 127</span>   is_extendable=False,
+<span class='lineno'> 128</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 129</span>   extension_ranges=[],
+<span class='lineno'> 130</span>   oneofs=[
+<span class='lineno'> 131</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 132</span>       name=&#39;counts&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats.counts&#39;,
+<span class='lineno'> 133</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 134</span>   ],
+<span class='lineno'> 135</span>   serialized_start=470,
+<span class='lineno'> 136</span>   serialized_end=688,
+<span class='lineno'> 137</span> )
+<span class='lineno'> 138</span> 
+<span class='lineno'> 139</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a> = _descriptor.Descriptor(
+<span class='lineno'> 140</span>   name=&#39;LeastSquaresRegressionStats&#39;,
+<span class='lineno'> 141</span>   full_name=&#39;tensorflow.tensorforest.LeafStat.LeastSquaresRegressionStats&#39;,
+<span class='lineno'> 142</span>   filename=None,
+<span class='lineno'> 143</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 144</span>   containing_type=None,
+<span class='lineno'> 145</span>   fields=[
+<span class='lineno'> 146</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 147</span>       name=&#39;mean_output&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.LeastSquaresRegressionStats.mean_output&#39;, index=0,
+<span class='lineno'> 148</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 149</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 150</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 151</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 152</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 153</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 154</span>       name=&#39;mean_output_squares&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.LeastSquaresRegressionStats.mean_output_squares&#39;, index=1,
+<span class='lineno'> 155</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 156</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 157</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 158</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 159</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 160</span>   ],
+<span class='lineno'> 161</span>   extensions=[
+<span class='lineno'> 162</span>   ],
+<span class='lineno'> 163</span>   nested_types=[],
+<span class='lineno'> 164</span>   enum_types=[
+<span class='lineno'> 165</span>   ],
+<span class='lineno'> 166</span>   serialized_options=None,
+<span class='lineno'> 167</span>   is_extendable=False,
+<span class='lineno'> 168</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 169</span>   extension_ranges=[],
+<span class='lineno'> 170</span>   oneofs=[
+<span class='lineno'> 171</span>   ],
+<span class='lineno'> 172</span>   serialized_start=691,
+<span class='lineno'> 173</span>   serialized_end=840,
+<span class='lineno'> 174</span> )
+<span class='lineno'> 175</span> 
+<span class='lineno'> 176</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a> = _descriptor.Descriptor(
+<span class='lineno'> 177</span>   name=&#39;LeafStat&#39;,
+<span class='lineno'> 178</span>   full_name=&#39;tensorflow.tensorforest.LeafStat&#39;,
+<span class='lineno'> 179</span>   filename=None,
+<span class='lineno'> 180</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 181</span>   containing_type=None,
+<span class='lineno'> 182</span>   fields=[
+<span class='lineno'> 183</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 184</span>       name=&#39;weight_sum&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.weight_sum&#39;, index=0,
+<span class='lineno'> 185</span>       number=3, type=2, cpp_type=6, label=1,
+<span class='lineno'> 186</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 187</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 188</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 189</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 190</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 191</span>       name=&#39;classification&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.classification&#39;, index=1,
+<span class='lineno'> 192</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 193</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 194</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 195</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 196</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 197</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 198</span>       name=&#39;regression&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.regression&#39;, index=2,
+<span class='lineno'> 199</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 200</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 201</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 202</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 203</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 204</span>   ],
+<span class='lineno'> 205</span>   extensions=[
+<span class='lineno'> 206</span>   ],
+<span class='lineno'> 207</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>, ],
+<span class='lineno'> 208</span>   enum_types=[
+<span class='lineno'> 209</span>   ],
+<span class='lineno'> 210</span>   serialized_options=None,
+<span class='lineno'> 211</span>   is_extendable=False,
+<span class='lineno'> 212</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 213</span>   extension_ranges=[],
+<span class='lineno'> 214</span>   oneofs=[
+<span class='lineno'> 215</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 216</span>       name=&#39;leaf_stat&#39;, full_name=&#39;tensorflow.tensorforest.LeafStat.leaf_stat&#39;,
+<span class='lineno'> 217</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 218</span>   ],
+<span class='lineno'> 219</span>   serialized_start=259,
+<span class='lineno'> 220</span>   serialized_end=853,
+<span class='lineno'> 221</span> )
+<span class='lineno'> 222</span> 
+<span class='lineno'> 223</span> 
+<span class='lineno'> 224</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a> = _descriptor.Descriptor(
+<span class='lineno'> 225</span>   name=&#39;FertileSlot&#39;,
+<span class='lineno'> 226</span>   full_name=&#39;tensorflow.tensorforest.FertileSlot&#39;,
+<span class='lineno'> 227</span>   filename=None,
+<span class='lineno'> 228</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 229</span>   containing_type=None,
+<span class='lineno'> 230</span>   fields=[
+<span class='lineno'> 231</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 232</span>       name=&#39;leaf_stats&#39;, full_name=&#39;tensorflow.tensorforest.FertileSlot.leaf_stats&#39;, index=0,
+<span class='lineno'> 233</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 234</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 235</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 236</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 237</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 238</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 239</span>       name=&#39;candidates&#39;, full_name=&#39;tensorflow.tensorforest.FertileSlot.candidates&#39;, index=1,
+<span class='lineno'> 240</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 241</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 242</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 243</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 244</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 245</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 246</span>       name=&#39;post_init_leaf_stats&#39;, full_name=&#39;tensorflow.tensorforest.FertileSlot.post_init_leaf_stats&#39;, index=2,
+<span class='lineno'> 247</span>       number=6, type=11, cpp_type=10, label=1,
+<span class='lineno'> 248</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 249</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 250</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 251</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 252</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 253</span>       name=&#39;node_id&#39;, full_name=&#39;tensorflow.tensorforest.FertileSlot.node_id&#39;, index=3,
+<span class='lineno'> 254</span>       number=5, type=5, cpp_type=1, label=1,
+<span class='lineno'> 255</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 256</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 257</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 258</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 259</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 260</span>       name=&#39;depth&#39;, full_name=&#39;tensorflow.tensorforest.FertileSlot.depth&#39;, index=4,
+<span class='lineno'> 261</span>       number=7, type=5, cpp_type=1, label=1,
+<span class='lineno'> 262</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 263</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 264</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 265</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 266</span>   ],
+<span class='lineno'> 267</span>   extensions=[
+<span class='lineno'> 268</span>   ],
+<span class='lineno'> 269</span>   nested_types=[],
+<span class='lineno'> 270</span>   enum_types=[
+<span class='lineno'> 271</span>   ],
+<span class='lineno'> 272</span>   serialized_options=None,
+<span class='lineno'> 273</span>   is_extendable=False,
+<span class='lineno'> 274</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 275</span>   extension_ranges=[],
+<span class='lineno'> 276</span>   oneofs=[
+<span class='lineno'> 277</span>   ],
+<span class='lineno'> 278</span>   serialized_start=856,
+<span class='lineno'> 279</span>   serialized_end=1082,
+<span class='lineno'> 280</span> )
+<span class='lineno'> 281</span> 
+<span class='lineno'> 282</span> 
+<span class='lineno'> 283</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a> = _descriptor.Descriptor(
+<span class='lineno'> 284</span>   name=&#39;SplitCandidate&#39;,
+<span class='lineno'> 285</span>   full_name=&#39;tensorflow.tensorforest.SplitCandidate&#39;,
+<span class='lineno'> 286</span>   filename=None,
+<span class='lineno'> 287</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 288</span>   containing_type=None,
+<span class='lineno'> 289</span>   fields=[
+<span class='lineno'> 290</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 291</span>       name=&#39;split&#39;, full_name=&#39;tensorflow.tensorforest.SplitCandidate.split&#39;, index=0,
+<span class='lineno'> 292</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 293</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 294</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 295</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 296</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 297</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 298</span>       name=&#39;left_stats&#39;, full_name=&#39;tensorflow.tensorforest.SplitCandidate.left_stats&#39;, index=1,
+<span class='lineno'> 299</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 300</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 301</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 302</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 303</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 304</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 305</span>       name=&#39;right_stats&#39;, full_name=&#39;tensorflow.tensorforest.SplitCandidate.right_stats&#39;, index=2,
+<span class='lineno'> 306</span>       number=5, type=11, cpp_type=10, label=1,
+<span class='lineno'> 307</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 308</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 309</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 310</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 311</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 312</span>       name=&#39;unique_id&#39;, full_name=&#39;tensorflow.tensorforest.SplitCandidate.unique_id&#39;, index=3,
+<span class='lineno'> 313</span>       number=6, type=9, cpp_type=9, label=1,
+<span class='lineno'> 314</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 315</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 316</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 317</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 318</span>   ],
+<span class='lineno'> 319</span>   extensions=[
+<span class='lineno'> 320</span>   ],
+<span class='lineno'> 321</span>   nested_types=[],
+<span class='lineno'> 322</span>   enum_types=[
+<span class='lineno'> 323</span>   ],
+<span class='lineno'> 324</span>   serialized_options=None,
+<span class='lineno'> 325</span>   is_extendable=False,
+<span class='lineno'> 326</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 327</span>   extension_ranges=[],
+<span class='lineno'> 328</span>   oneofs=[
+<span class='lineno'> 329</span>   ],
+<span class='lineno'> 330</span>   serialized_start=1085,
+<span class='lineno'> 331</span>   serialized_end=1285,
+<span class='lineno'> 332</span> )
+<span class='lineno'> 333</span> 
+<span class='lineno'> 334</span> 
+<span class='lineno'> 335</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', title='?'>_TREEPATH</a> = _descriptor.Descriptor(
+<span class='lineno'> 336</span>   name=&#39;TreePath&#39;,
+<span class='lineno'> 337</span>   full_name=&#39;tensorflow.tensorforest.TreePath&#39;,
+<span class='lineno'> 338</span>   filename=None,
+<span class='lineno'> 339</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 340</span>   containing_type=None,
+<span class='lineno'> 341</span>   fields=[
+<span class='lineno'> 342</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 343</span>       name=&#39;nodes_visited&#39;, full_name=&#39;tensorflow.tensorforest.TreePath.nodes_visited&#39;, index=0,
+<span class='lineno'> 344</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 345</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 346</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 347</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 348</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 349</span>   ],
+<span class='lineno'> 350</span>   extensions=[
+<span class='lineno'> 351</span>   ],
+<span class='lineno'> 352</span>   nested_types=[],
+<span class='lineno'> 353</span>   enum_types=[
+<span class='lineno'> 354</span>   ],
+<span class='lineno'> 355</span>   serialized_options=None,
+<span class='lineno'> 356</span>   is_extendable=False,
+<span class='lineno'> 357</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 358</span>   extension_ranges=[],
+<span class='lineno'> 359</span>   oneofs=[
+<span class='lineno'> 360</span>   ],
+<span class='lineno'> 361</span>   serialized_start=1287,
+<span class='lineno'> 362</span>   serialized_end=1357,
+<span class='lineno'> 363</span> )
+<span class='lineno'> 364</span> 
+<span class='lineno'> 365</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', title='?'>_FERTILESTATS</a>.fields_by_name[&#39;node_to_slot&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>
+<span class='lineno'> 366</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;dense_counts&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', title='?'>_VECTOR</a>
+<span class='lineno'> 367</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;sparse_counts&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._SPARSEVECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._SPARSEVECTOR', title='?'>_SPARSEVECTOR</a>
+<span class='lineno'> 368</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;gini&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', title='?'>_GINISTATS</a>
+<span class='lineno'> 369</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 370</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.oneofs_by_name[&#39;counts&#39;].fields.append(
+<span class='lineno'> 371</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;dense_counts&#39;])
+<span class='lineno'> 372</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;dense_counts&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.oneofs_by_name[&#39;counts&#39;]
+<span class='lineno'> 373</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.oneofs_by_name[&#39;counts&#39;].fields.append(
+<span class='lineno'> 374</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;sparse_counts&#39;])
+<span class='lineno'> 375</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.fields_by_name[&#39;sparse_counts&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>.oneofs_by_name[&#39;counts&#39;]
+<span class='lineno'> 376</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>.fields_by_name[&#39;mean_output&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', title='?'>_VECTOR</a>
+<span class='lineno'> 377</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>.fields_by_name[&#39;mean_output_squares&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._VECTOR', title='?'>_VECTOR</a>
+<span class='lineno'> 378</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 379</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;classification&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>
+<span class='lineno'> 380</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;regression&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>
+<span class='lineno'> 381</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.oneofs_by_name[&#39;leaf_stat&#39;].fields.append(
+<span class='lineno'> 382</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;classification&#39;])
+<span class='lineno'> 383</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;classification&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.oneofs_by_name[&#39;leaf_stat&#39;]
+<span class='lineno'> 384</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.oneofs_by_name[&#39;leaf_stat&#39;].fields.append(
+<span class='lineno'> 385</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;regression&#39;])
+<span class='lineno'> 386</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.fields_by_name[&#39;regression&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>.oneofs_by_name[&#39;leaf_stat&#39;]
+<span class='lineno'> 387</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>.fields_by_name[&#39;leaf_stats&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 388</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>.fields_by_name[&#39;candidates&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>
+<span class='lineno'> 389</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>.fields_by_name[&#39;post_init_leaf_stats&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 390</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>.fields_by_name[&#39;split&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._BINARYNODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._BINARYNODE', title='?'>_BINARYNODE</a>
+<span class='lineno'> 391</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>.fields_by_name[&#39;left_stats&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 392</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>.fields_by_name[&#39;right_stats&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 393</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', title='?'>_TREEPATH</a>.fields_by_name[&#39;nodes_visited&#39;].message_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._TREENODE', title='?'>_TREENODE</a>
+<span class='lineno'> 394</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;FertileStats&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', title='?'>_FERTILESTATS</a>
+<span class='lineno'> 395</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;GiniStats&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', title='?'>_GINISTATS</a>
+<span class='lineno'> 396</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;LeafStat&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>
+<span class='lineno'> 397</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;FertileSlot&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>
+<span class='lineno'> 398</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SplitCandidate&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>
+<span class='lineno'> 399</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TreePath&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', title='?'>_TREEPATH</a>
+<span class='lineno'> 400</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 401</span> 
+<span class='lineno'> 402</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats', title='?'>FertileStats</a> = _reflection.GeneratedProtocolMessageType(&#39;FertileStats&#39;, (_message.Message,), dict(
+<span class='lineno'> 403</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESTATS', title='?'>_FERTILESTATS</a>,
+<span class='lineno'> 404</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 405</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.FertileStats)
+<span class='lineno'> 406</span>   ))
+<span class='lineno'> 407</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileStats', title='?'>FertileStats</a>)
+<span class='lineno'> 408</span> 
+<span class='lineno'> 409</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats', title='?'>GiniStats</a> = _reflection.GeneratedProtocolMessageType(&#39;GiniStats&#39;, (_message.Message,), dict(
+<span class='lineno'> 410</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._GINISTATS', title='?'>_GINISTATS</a>,
+<span class='lineno'> 411</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 412</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.GiniStats)
+<span class='lineno'> 413</span>   ))
+<span class='lineno'> 414</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.GiniStats', title='?'>GiniStats</a>)
+<span class='lineno'> 415</span> 
+<span class='lineno'> 416</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', title='?'>LeafStat</a> = _reflection.GeneratedProtocolMessageType(&#39;LeafStat&#39;, (_message.Message,), dict(
+<span class='lineno'> 417</span> 
+<span class='lineno'> 418</span>   GiniImpurityClassificationStats = _reflection.GeneratedProtocolMessageType(&#39;GiniImpurityClassificationStats&#39;, (_message.Message,), dict(
+<span class='lineno'> 419</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS', title='?'>_LEAFSTAT_GINIIMPURITYCLASSIFICATIONSTATS</a>,
+<span class='lineno'> 420</span>     __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 421</span>     # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.LeafStat.GiniImpurityClassificationStats)
+<span class='lineno'> 422</span>     ))
+<span class='lineno'> 423</span>   ,
+<span class='lineno'> 424</span> 
+<span class='lineno'> 425</span>   LeastSquaresRegressionStats = _reflection.GeneratedProtocolMessageType(&#39;LeastSquaresRegressionStats&#39;, (_message.Message,), dict(
+<span class='lineno'> 426</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT_LEASTSQUARESREGRESSIONSTATS', title='?'>_LEAFSTAT_LEASTSQUARESREGRESSIONSTATS</a>,
+<span class='lineno'> 427</span>     __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 428</span>     # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.LeafStat.LeastSquaresRegressionStats)
+<span class='lineno'> 429</span>     ))
+<span class='lineno'> 430</span>   ,
+<span class='lineno'> 431</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._LEAFSTAT', title='?'>_LEAFSTAT</a>,
+<span class='lineno'> 432</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 433</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.LeafStat)
+<span class='lineno'> 434</span>   ))
+<span class='lineno'> 435</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', title='?'>LeafStat</a>)
+<span class='lineno'> 436</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', title='?'>LeafStat</a>.GiniImpurityClassificationStats)
+<span class='lineno'> 437</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.LeafStat', title='?'>LeafStat</a>.LeastSquaresRegressionStats)
+<span class='lineno'> 438</span> 
+<span class='lineno'> 439</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot', title='?'>FertileSlot</a> = _reflection.GeneratedProtocolMessageType(&#39;FertileSlot&#39;, (_message.Message,), dict(
+<span class='lineno'> 440</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._FERTILESLOT', title='?'>_FERTILESLOT</a>,
+<span class='lineno'> 441</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 442</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.FertileSlot)
+<span class='lineno'> 443</span>   ))
+<span class='lineno'> 444</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.FertileSlot', title='?'>FertileSlot</a>)
+<span class='lineno'> 445</span> 
+<span class='lineno'> 446</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate', title='?'>SplitCandidate</a> = _reflection.GeneratedProtocolMessageType(&#39;SplitCandidate&#39;, (_message.Message,), dict(
+<span class='lineno'> 447</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._SPLITCANDIDATE', title='?'>_SPLITCANDIDATE</a>,
+<span class='lineno'> 448</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 449</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.SplitCandidate)
+<span class='lineno'> 450</span>   ))
+<span class='lineno'> 451</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.SplitCandidate', title='?'>SplitCandidate</a>)
+<span class='lineno'> 452</span> 
+<span class='lineno'> 453</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath', title='?'>TreePath</a> = _reflection.GeneratedProtocolMessageType(&#39;TreePath&#39;, (_message.Message,), dict(
+<span class='lineno'> 454</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._TREEPATH', title='?'>_TREEPATH</a>,
+<span class='lineno'> 455</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2&#39;
+<span class='lineno'> 456</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.TreePath)
+<span class='lineno'> 457</span>   ))
+<span class='lineno'> 458</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.TreePath', title='?'>TreePath</a>)
+<span class='lineno'> 459</span> 
+<span class='lineno'> 460</span> 
+<span class='lineno'> 461</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.fertile_stats_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 462</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

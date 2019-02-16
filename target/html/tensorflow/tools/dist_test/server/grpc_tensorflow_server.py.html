@@ -1,0 +1,230 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/tools/dist_test/server/grpc_tensorflow_server.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec'>parse_cluster_spec</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main'>main</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser'>parser</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS'>FLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed'>unparsed</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> #!/usr/bin/python
+<span class='lineno'>   2</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   3</span> #
+<span class='lineno'>   4</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   5</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   6</span> # You may obtain a copy of the License at
+<span class='lineno'>   7</span> #
+<span class='lineno'>   8</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   9</span> #
+<span class='lineno'>  10</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  11</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  12</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  13</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  14</span> # limitations under the License.
+<span class='lineno'>  15</span> # ==============================================================================
+<span class='lineno'>  16</span> &quot;&quot;&quot;Python-based TensorFlow GRPC server.
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> Takes input arguments cluster_spec, job_name and task_id, and start a blocking
+<span class='lineno'>  19</span> TensorFlow GRPC server.
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> Usage:
+<span class='lineno'>  22</span>     grpc_tensorflow_server.py --cluster_spec=SPEC --job_name=NAME --task_id=ID
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> Where:
+<span class='lineno'>  25</span>     SPEC is &lt;JOB&gt;(,&lt;JOB&gt;)*
+<span class='lineno'>  26</span>     JOB  is &lt;NAME&gt;|&lt;HOST:PORT&gt;(;&lt;HOST:PORT&gt;)*
+<span class='lineno'>  27</span>     NAME is a valid job name ([a-z][0-9a-z]*)
+<span class='lineno'>  28</span>     HOST is a hostname or IP address
+<span class='lineno'>  29</span>     PORT is a port number
+<span class='lineno'>  30</span> &quot;&quot;&quot;
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> from __future__ import absolute_import
+<span class='lineno'>  33</span> from __future__ import division
+<span class='lineno'>  34</span> from __future__ import print_function
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> import argparse
+<span class='lineno'>  37</span> import sys
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../core/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../../../core/protobuf/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf', title='protobuf'>protobuf</a> import <a href='../../../core/protobuf/config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', title='config_pb2'>config_pb2</a>
+<span class='lineno'>  40</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../core/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../../../core/protobuf/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf', title='protobuf'>protobuf</a> import <a href='../../../core/protobuf/tensorflow_server_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2', title='tensorflow_server_pb2'>tensorflow_server_pb2</a>
+<span class='lineno'>  41</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>
+<span class='lineno'>  42</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a> import <a href='../../../python/training/server_lib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib', title='server_lib'>server_lib</a>
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec', title='(?, ?, bool) -> None / (?, ?, ?) -> None'>parse_cluster_spec</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', title='?'>cluster_spec</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster', title='?'>cluster</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', title='bool'>verbose</a>=False):
+<span class='lineno'>  46</span>   &quot;&quot;&quot;Parse content of cluster_spec string and inject info into cluster protobuf.
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span>   Args:
+<span class='lineno'>  49</span>     cluster_spec: cluster specification string, e.g.,
+<span class='lineno'>  50</span>           &quot;local|localhost:2222;localhost:2223&quot;
+<span class='lineno'>  51</span>     cluster: cluster protobuf.
+<span class='lineno'>  52</span>     verbose: If verbose logging is requested.
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   Raises:
+<span class='lineno'>  55</span>     ValueError: if the cluster_spec string is invalid.
+<span class='lineno'>  56</span>   &quot;&quot;&quot;
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_strings', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_strings', title='?'>job_strings</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', title='?'>cluster_spec</a>.split(&quot;,&quot;)
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span>   if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster_spec', title='?'>cluster_spec</a>:
+<span class='lineno'>  61</span>     raise ValueError(&quot;Empty cluster_spec string&quot;)
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', title='?'>job_string</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_strings', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_strings', title='?'>job_strings</a>:
+<span class='lineno'>  64</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', title='?'>job_def</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.cluster', title='?'>cluster</a>.job.add()
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', title='?'>job_string</a>.count(&quot;|&quot;) != 1:
+<span class='lineno'>  67</span>       raise ValueError(&quot;Not exactly one instance of &#39;|&#39; in cluster_spec&quot;)
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', title='?'>job_name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', title='?'>job_string</a>.split(&quot;|&quot;)[0]
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span>     if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', title='?'>job_name</a>:
+<span class='lineno'>  72</span>       raise ValueError(&quot;Empty job_name in cluster_spec&quot;)
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', title='?'>job_def</a>.name = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', title='?'>job_name</a>
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', title='bool'>verbose</a>:
+<span class='lineno'>  77</span>       print(&quot;Added job named \&quot;%s\&quot;&quot; % <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', title='?'>job_name</a>)
+<span class='lineno'>  78</span> 
+<span class='lineno'>  79</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', title='?'>job_tasks</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_string', title='?'>job_string</a>.split(&quot;|&quot;)[1].split(&quot;;&quot;)
+<span class='lineno'>  80</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', title='int'>i</a> in range(len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', title='?'>job_tasks</a>)):
+<span class='lineno'>  81</span>       if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', title='?'>job_tasks</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', title='int'>i</a>]:
+<span class='lineno'>  82</span>         raise ValueError(&quot;Empty task string at position %d&quot; % i)
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_def', title='?'>job_def</a>.tasks[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', title='int'>i</a>] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', title='?'>job_tasks</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', title='int'>i</a>]
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.verbose', title='bool'>verbose</a>:
+<span class='lineno'>  87</span>         print(&quot;  Added task \&quot;%s\&quot; to job \&quot;%s\&quot;&quot; % (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_tasks', title='?'>job_tasks</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.i', title='int'>i</a>], <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec.job_name', title='?'>job_name</a>))
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span> 
+<span class='lineno'>  90</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main', title='? -> None'>main</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.unused_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.unused_args', title='?'>unused_args</a>):
+<span class='lineno'>  91</span>   # Create Protobuf ServerDef
+<span class='lineno'>  92</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', title='?'>server_def</a> = <a href='../../../core/protobuf/tensorflow_server_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2', title='tensorflow_server_pb2'>tensorflow_server_pb2</a>.<a href='../../../core/protobuf/tensorflow_server_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2.ServerDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.tensorflow_server_pb2.ServerDef', title='?'>ServerDef</a>(protocol=&quot;grpc&quot;)
+<span class='lineno'>  93</span> 
+<span class='lineno'>  94</span>   # Cluster info
+<span class='lineno'>  95</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parse_cluster_spec', title='(?, ?, bool) -> None / (?, ?, ?) -> None'>parse_cluster_spec</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.cluster_spec, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', title='?'>server_def</a>.cluster, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.verbose)
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>   # Job name
+<span class='lineno'>  98</span>   if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.job_name:
+<span class='lineno'>  99</span>     raise ValueError(&quot;Empty job_name&quot;)
+<span class='lineno'> 100</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', title='?'>server_def</a>.job_name = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.job_name
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span>   # Task index
+<span class='lineno'> 103</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.task_id &lt; 0:
+<span class='lineno'> 104</span>     raise ValueError(&quot;Invalid task_id: %d&quot; % FLAGS.task_id)
+<span class='lineno'> 105</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', title='?'>server_def</a>.task_index = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.task_id
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.config', title='?'>config</a> = <a href='../../../core/protobuf/config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', title='config_pb2'>config_pb2</a>.<a href='../../../core/protobuf/config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2.ConfigProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2.ConfigProto', title='?'>ConfigProto</a>(gpu_options=<a href='../../../core/protobuf/config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2', title='config_pb2'>config_pb2</a>.<a href='../../../core/protobuf/config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2.GPUOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.config_pb2.GPUOptions', title='?'>GPUOptions</a>(
+<span class='lineno'> 108</span>       per_process_gpu_memory_fraction=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>.gpu_memory_fraction))
+<span class='lineno'> 109</span> 
+<span class='lineno'> 110</span>   # Create GRPC Server instance
+<span class='lineno'> 111</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server', title='Server'>server</a> = <a href='../../../python/training/server_lib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib', title='server_lib'>server_lib</a>.<a href='../../../python/training/server_lib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib.Server', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib.Server', title='<Server>'>Server</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server_def', title='?'>server_def</a>, config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.config', title='?'>config</a>)
+<span class='lineno'> 112</span> 
+<span class='lineno'> 113</span>   # join() is blocking, unlike start()
+<span class='lineno'> 114</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main.server', title='Server'>server</a>.<a href='../../../python/training/server_lib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib.Server.join', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.server_lib.Server.join', title='Server -> None'>join</a>()
+<span class='lineno'> 115</span> 
+<span class='lineno'> 116</span> 
+<span class='lineno'> 117</span> if __name__ == &quot;__main__&quot;:
+<span class='lineno'> 118</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a> = argparse.ArgumentParser()
+<span class='lineno'> 119</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.register(&quot;type&quot;, &quot;bool&quot;, lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.lambda%428.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.lambda%428.v', title='?'>v</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.lambda%428.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.lambda%428.v', title='?'>v</a>.lower() == &quot;true&quot;)
+<span class='lineno'> 120</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'> 121</span>       &quot;--cluster_spec&quot;,
+<span class='lineno'> 122</span>       type=str,
+<span class='lineno'> 123</span>       default=&quot;&quot;,
+<span class='lineno'> 124</span>       help=&quot;&quot;&quot;\
+<span class='lineno'> 125</span>       Cluster spec: SPEC.     SPEC is &lt;JOB&gt;(,&lt;JOB&gt;)*,&quot;     JOB  is
+<span class='lineno'> 126</span>       &lt;NAME&gt;|&lt;HOST:PORT&gt;(;&lt;HOST:PORT&gt;)*,&quot;     NAME is a valid job name
+<span class='lineno'> 127</span>       ([a-z][0-9a-z]*),&quot;     HOST is a hostname or IP address,&quot;     PORT is a
+<span class='lineno'> 128</span>       port number.&quot; E.g., local|localhost:2222;localhost:2223,
+<span class='lineno'> 129</span>       ps|ps0:2222;ps1:2222\
+<span class='lineno'> 130</span>       &quot;&quot;&quot;
+<span class='lineno'> 131</span>   )
+<span class='lineno'> 132</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'> 133</span>       &quot;--job_name&quot;,
+<span class='lineno'> 134</span>       type=str,
+<span class='lineno'> 135</span>       default=&quot;&quot;,
+<span class='lineno'> 136</span>       help=&quot;Job name: e.g., local&quot;
+<span class='lineno'> 137</span>   )
+<span class='lineno'> 138</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'> 139</span>       &quot;--task_id&quot;,
+<span class='lineno'> 140</span>       type=int,
+<span class='lineno'> 141</span>       default=0,
+<span class='lineno'> 142</span>       help=&quot;Task index, e.g., 0&quot;
+<span class='lineno'> 143</span>   )
+<span class='lineno'> 144</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'> 145</span>       &quot;--gpu_memory_fraction&quot;,
+<span class='lineno'> 146</span>       type=float,
+<span class='lineno'> 147</span>       default=1.0,
+<span class='lineno'> 148</span>       help=&quot;Fraction of GPU memory allocated&quot;,)
+<span class='lineno'> 149</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'> 150</span>       &quot;--verbose&quot;,
+<span class='lineno'> 151</span>       type=&quot;bool&quot;,
+<span class='lineno'> 152</span>       nargs=&quot;?&quot;,
+<span class='lineno'> 153</span>       const=True,
+<span class='lineno'> 154</span>       default=False,
+<span class='lineno'> 155</span>       help=&quot;Verbose mode&quot;
+<span class='lineno'> 156</span>   )
+<span class='lineno'> 157</span> 
+<span class='lineno'> 158</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.FLAGS', title='?'>FLAGS</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed', title='?'>unparsed</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.parser', title='?'>parser</a>.parse_known_args()
+<span class='lineno'> 159</span>   <a href='../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>.<a href='../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', title='(? -> None, None) -> None / (None, None) -> None'>run</a>(main=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.main', title='? -> None'>main</a>, argv=[sys.argv[0]] + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.tools.dist_test.server.grpc_tensorflow_server.unparsed', title='?'>unparsed</a>)
+</pre></td></tr></table></body></html>

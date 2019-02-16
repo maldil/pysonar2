@@ -1,0 +1,291 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/utils/gc.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path'>Path</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions'>largest_export_versions</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions'>one_of_every_n_export_versions</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version'>mod_export_version</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union'>union</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation'>negation</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths'>get_paths</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> r&quot;&quot;&quot;System for specifying garbage collection (GC) of path based data (deprecated).
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  19</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  20</span> for migration instructions.
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> This framework allows for GC of data specified by path names, for example files
+<span class='lineno'>  23</span> on disk.  gc.Path objects each represent a single item stored at a path and may
+<span class='lineno'>  24</span> be a base directory,
+<span class='lineno'>  25</span>   /tmp/exports/0/...
+<span class='lineno'>  26</span>   /tmp/exports/1/...
+<span class='lineno'>  27</span>   ...
+<span class='lineno'>  28</span> or a fully qualified file,
+<span class='lineno'>  29</span>   /tmp/train-1.ckpt
+<span class='lineno'>  30</span>   /tmp/train-2.ckpt
+<span class='lineno'>  31</span>   ...
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> A gc filter function takes and returns a list of gc.Path items.  Filter
+<span class='lineno'>  34</span> functions are responsible for selecting Path items for preservation or deletion.
+<span class='lineno'>  35</span> Note that functions should always return a sorted list.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> For example,
+<span class='lineno'>  38</span>   base_dir = &quot;/tmp&quot;
+<span class='lineno'>  39</span>   # Create the directories.
+<span class='lineno'>  40</span>   for e in xrange(10):
+<span class='lineno'>  41</span>     os.mkdir(&quot;%s/%d&quot; % (base_dir, e), 0o755)
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   # Create a simple parser that pulls the export_version from the directory.
+<span class='lineno'>  44</span>   path_regex = &quot;^&quot; + re.escape(base_dir) + &quot;/(\\d+)$&quot;
+<span class='lineno'>  45</span>   def parser(path):
+<span class='lineno'>  46</span>     match = re.match(path_regex, path.path)
+<span class='lineno'>  47</span>     if not match:
+<span class='lineno'>  48</span>       return None
+<span class='lineno'>  49</span>     return path._replace(export_version=int(match.group(1)))
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   path_list = gc.get_paths(&quot;/tmp&quot;, parser)  # contains all ten Paths
+<span class='lineno'>  52</span> 
+<span class='lineno'>  53</span>   every_fifth = gc.mod_export_version(5)
+<span class='lineno'>  54</span>   print(every_fifth(path_list))  # shows [&quot;/tmp/0&quot;, &quot;/tmp/5&quot;]
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span>   largest_three = gc.largest_export_versions(3)
+<span class='lineno'>  57</span>   print(largest_three(all_paths))  # shows [&quot;/tmp/7&quot;, &quot;/tmp/8&quot;, &quot;/tmp/9&quot;]
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   both = gc.union(every_fifth, largest_three)
+<span class='lineno'>  60</span>   print(both(all_paths))  # shows [&quot;/tmp/0&quot;, &quot;/tmp/5&quot;,
+<span class='lineno'>  61</span>                           #        &quot;/tmp/7&quot;, &quot;/tmp/8&quot;, &quot;/tmp/9&quot;]
+<span class='lineno'>  62</span>   # Delete everything not in &#39;both&#39;.
+<span class='lineno'>  63</span>   to_delete = gc.negation(both)
+<span class='lineno'>  64</span>   for p in to_delete(all_paths):
+<span class='lineno'>  65</span>     gfile.DeleteRecursively(p.path)  # deletes:  &quot;/tmp/1&quot;, &quot;/tmp/2&quot;,
+<span class='lineno'>  66</span>                                      # &quot;/tmp/3&quot;, &quot;/tmp/4&quot;, &quot;/tmp/6&quot;,
+<span class='lineno'>  67</span> &quot;&quot;&quot;
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span> from __future__ import absolute_import
+<span class='lineno'>  70</span> from __future__ import division
+<span class='lineno'>  71</span> from __future__ import print_function
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span> import collections
+<span class='lineno'>  74</span> import heapq
+<span class='lineno'>  75</span> import math
+<span class='lineno'>  76</span> import os
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='../../../../../python/platform/gfile.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.gfile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.gfile', title='gfile'>gfile</a>
+<span class='lineno'>  79</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../../python/util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', title='compat'>compat</a>
+<span class='lineno'>  80</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a> import <a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', title='(str, str, bool) -> ? -> ? / (None, str, bool) -> (SparseTensor, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, ?, DType, None) -> ? -> ? -> ? / (None, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (None, int, DType, None) -> ? / (Categorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (OneHotCategorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (?, ?, DType, None) -> ? -> () -> None'>deprecated</a>
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path', title='<(namedtuple)>'>Path</a> = collections.namedtuple(&#39;Path&#39;, &#39;path export_version&#39;)
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> @deprecated(None, &#39;Please implement your own file management or use Saver.&#39;)
+<span class='lineno'>  86</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions', title='int -> None -> None / ? -> None -> None'>largest_export_versions</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.n', title='int'>n</a>):
+<span class='lineno'>  87</span>   &quot;&quot;&quot;Creates a filter that keeps the largest n export versions.
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span>   Args:
+<span class='lineno'>  90</span>     n: number of versions to keep.
+<span class='lineno'>  91</span> 
+<span class='lineno'>  92</span>   Returns:
+<span class='lineno'>  93</span>     A filter function that keeps the n largest paths.
+<span class='lineno'>  94</span>   &quot;&quot;&quot;
+<span class='lineno'>  95</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep', title='None -> None'>keep</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', title='None'>paths</a>):
+<span class='lineno'>  96</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', title='[?]'>heap</a> = []
+<span class='lineno'>  97</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.idx', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.idx', title='?'>idx</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', title='?'>path</a> in enumerate(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', title='None'>paths</a>):
+<span class='lineno'>  98</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', title='?'>path</a>.export_version is not None:
+<span class='lineno'>  99</span>         heapq.heappush(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', title='[?]'>heap</a>, (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.path', title='?'>path</a>.export_version, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.idx', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.idx', title='?'>idx</a>))
+<span class='lineno'> 100</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.keepers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.keepers', title='[?]'>keepers</a> = [<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.paths', title='None'>paths</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', title='?'>i</a>] for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep._', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep._', title='?'>_</a></a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.i', title='?'>i</a></a> in heapq.nlargest(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.n', title='int'>n</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.heap', title='[?]'>heap</a>)]
+<span class='lineno'> 101</span>     return sorted(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.keepers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep.keepers', title='[?]'>keepers</a>)
+<span class='lineno'> 102</span> 
+<span class='lineno'> 103</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.largest_export_versions.keep', title='None -> None'>keep</a>
+<span class='lineno'> 104</span> 
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span> @deprecated(None, &#39;Please implement your own file management or use Saver.&#39;)
+<span class='lineno'> 107</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions', title='? -> ? -> None'>one_of_every_n_export_versions</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.n', title='?'>n</a>):
+<span class='lineno'> 108</span>   &quot;&quot;&quot;Creates a filter that keeps one of every n export versions.
+<span class='lineno'> 109</span> 
+<span class='lineno'> 110</span>   Args:
+<span class='lineno'> 111</span>     n: interval size.
+<span class='lineno'> 112</span> 
+<span class='lineno'> 113</span>   Returns:
+<span class='lineno'> 114</span>     A filter function that keeps exactly one path from each interval
+<span class='lineno'> 115</span>     [0, n], (n, 2n], (2n, 3n], etc...  If more than one path exists in an
+<span class='lineno'> 116</span>     interval the largest is kept.
+<span class='lineno'> 117</span>   &quot;&quot;&quot;
+<span class='lineno'> 118</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep', title='? -> None'>keep</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.paths', title='?'>paths</a>):
+<span class='lineno'> 119</span>     &quot;&quot;&quot;A filter function that keeps exactly one out of every n paths.&quot;&quot;&quot;
+<span class='lineno'> 120</span> 
+<span class='lineno'> 121</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', title='dict'>keeper_map</a> = {}  # map from interval to largest path seen in that interval
+<span class='lineno'> 122</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.paths', title='?'>paths</a>:
+<span class='lineno'> 123</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a>.export_version is None:
+<span class='lineno'> 124</span>         # Skip missing export_versions.
+<span class='lineno'> 125</span>         continue
+<span class='lineno'> 126</span>       # Find the interval (with a special case to map export_version = 0 to
+<span class='lineno'> 127</span>       # interval 0.
+<span class='lineno'> 128</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', title='int'>interval</a> = math.floor(
+<span class='lineno'> 129</span>           (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a>.export_version - 1) / <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.n', title='?'>n</a>) if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a>.export_version else 0
+<span class='lineno'> 130</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', title='?'>existing</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', title='dict'>keeper_map</a>.get(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', title='int'>interval</a>, None)
+<span class='lineno'> 131</span>       if (not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', title='?'>existing</a>) or (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.existing', title='?'>existing</a>.export_version &lt; <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a>.export_version):
+<span class='lineno'> 132</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', title='dict'>keeper_map</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.interval', title='int'>interval</a>] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.p', title='?'>p</a>
+<span class='lineno'> 133</span>     return sorted(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep.keeper_map', title='dict'>keeper_map</a>.values())
+<span class='lineno'> 134</span> 
+<span class='lineno'> 135</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.one_of_every_n_export_versions.keep', title='? -> None'>keep</a>
+<span class='lineno'> 136</span> 
+<span class='lineno'> 137</span> 
+<span class='lineno'> 138</span> @deprecated(None, &#39;Please implement your own file management or use Saver.&#39;)
+<span class='lineno'> 139</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version', title='? -> ? -> None'>mod_export_version</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.n', title='?'>n</a>):
+<span class='lineno'> 140</span>   &quot;&quot;&quot;Creates a filter that keeps every export that is a multiple of n.
+<span class='lineno'> 141</span> 
+<span class='lineno'> 142</span>   Args:
+<span class='lineno'> 143</span>     n: step size.
+<span class='lineno'> 144</span> 
+<span class='lineno'> 145</span>   Returns:
+<span class='lineno'> 146</span>     A filter function that keeps paths where export_version % n == 0.
+<span class='lineno'> 147</span>   &quot;&quot;&quot;
+<span class='lineno'> 148</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep', title='? -> None'>keep</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.paths', title='?'>paths</a>):
+<span class='lineno'> 149</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', title='[?]'>keepers</a> = []
+<span class='lineno'> 150</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', title='?'>p</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.paths', title='?'>paths</a>:
+<span class='lineno'> 151</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', title='?'>p</a>.export_version % <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.n', title='?'>n</a> == 0:
+<span class='lineno'> 152</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', title='[?]'>keepers</a>.append(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.p', title='?'>p</a>)
+<span class='lineno'> 153</span>     return sorted(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep.keepers', title='[?]'>keepers</a>)
+<span class='lineno'> 154</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.mod_export_version.keep', title='? -> None'>keep</a>
+<span class='lineno'> 155</span> 
+<span class='lineno'> 156</span> 
+<span class='lineno'> 157</span> @deprecated(None, &#39;Please implement your own file management or use Saver.&#39;)
+<span class='lineno'> 158</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union', title='(?, ?) -> ? -> None'>union</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.lf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.lf', title='?'>lf</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.rf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.rf', title='?'>rf</a>):
+<span class='lineno'> 159</span>   &quot;&quot;&quot;Creates a filter that keeps the union of two filters.
+<span class='lineno'> 160</span> 
+<span class='lineno'> 161</span>   Args:
+<span class='lineno'> 162</span>     lf: first filter
+<span class='lineno'> 163</span>     rf: second filter
+<span class='lineno'> 164</span> 
+<span class='lineno'> 165</span>   Returns:
+<span class='lineno'> 166</span>     A filter function that keeps the n largest paths.
+<span class='lineno'> 167</span>   &quot;&quot;&quot;
+<span class='lineno'> 168</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep', title='? -> None'>keep</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', title='?'>paths</a>):
+<span class='lineno'> 169</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.l', title='?'>l</a> = set(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.lf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.lf', title='?'>lf</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', title='?'>paths</a>))
+<span class='lineno'> 170</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.r', title='?'>r</a> = set(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.rf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.rf', title='?'>rf</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.paths', title='?'>paths</a>))
+<span class='lineno'> 171</span>     return sorted(list(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.l', title='?'>l</a>|<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep.r', title='?'>r</a>))
+<span class='lineno'> 172</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.union.keep', title='? -> None'>keep</a>
+<span class='lineno'> 173</span> 
+<span class='lineno'> 174</span> 
+<span class='lineno'> 175</span> @deprecated(None, &#39;Please implement your own file management or use Saver.&#39;)
+<span class='lineno'> 176</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation', title='None -> None -> None -> None / ? -> ? -> ?'>negation</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.f', title='None -> None'>f</a>):
+<span class='lineno'> 177</span>   &quot;&quot;&quot;Negate a filter.
+<span class='lineno'> 178</span> 
+<span class='lineno'> 179</span>   Args:
+<span class='lineno'> 180</span>     f: filter function to invert
+<span class='lineno'> 181</span> 
+<span class='lineno'> 182</span>   Returns:
+<span class='lineno'> 183</span>     A filter function that returns the negation of f.
+<span class='lineno'> 184</span>   &quot;&quot;&quot;
+<span class='lineno'> 185</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep', title='? -> ?'>keep</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', title='None'>paths</a>):
+<span class='lineno'> 186</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.l', title='?'>l</a> = set(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', title='None'>paths</a>)
+<span class='lineno'> 187</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.r', title='?'>r</a> = set(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.f', title='None -> None'>f</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.paths', title='None'>paths</a>))
+<span class='lineno'> 188</span>     return sorted(list(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.l', title='?'>l</a>-<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep.r', title='?'>r</a>))
+<span class='lineno'> 189</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.negation.keep', title='? -> ?'>keep</a>
+<span class='lineno'> 190</span> 
+<span class='lineno'> 191</span> 
+<span class='lineno'> 192</span> @deprecated(None, &#39;Please implement your own file name management.&#39;)
+<span class='lineno'> 193</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths', title='(?, ?) -> None / (?, (namedtuple) -> None / ? -> None) -> None'>get_paths</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', title='?'>base_dir</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.parser', title='(namedtuple) -> None / ? -> None'>parser</a>):
+<span class='lineno'> 194</span>   &quot;&quot;&quot;Gets a list of Paths in a given directory.
+<span class='lineno'> 195</span> 
+<span class='lineno'> 196</span>   Args:
+<span class='lineno'> 197</span>     base_dir: directory.
+<span class='lineno'> 198</span>     parser: a function which gets the raw Path and can augment it with
+<span class='lineno'> 199</span>       information such as the export_version, or ignore the path by returning
+<span class='lineno'> 200</span>       None.  An example parser may extract the export version from a path
+<span class='lineno'> 201</span>       such as &quot;/tmp/exports/100&quot; an another may extract from a full file
+<span class='lineno'> 202</span>       name such as &quot;/tmp/checkpoint-99.out&quot;.
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span>   Returns:
+<span class='lineno'> 205</span>     A list of Paths contained in the base directory with the parsing function
+<span class='lineno'> 206</span>     applied.
+<span class='lineno'> 207</span>     By default the following fields are populated,
+<span class='lineno'> 208</span>       - Path.path
+<span class='lineno'> 209</span>     The parsing function is responsible for populating,
+<span class='lineno'> 210</span>       - Path.export_version
+<span class='lineno'> 211</span>   &quot;&quot;&quot;
+<span class='lineno'> 212</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.raw_paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.raw_paths', title='[str]'>raw_paths</a> = <a href='../../../../../python/platform/gfile.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.gfile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.gfile', title='gfile'>gfile</a>.<a href='../../../../../python/lib/io/file_io.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io.list_directory', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io.list_directory', title='? -> [str] / str -> [str]'>ListDirectory</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', title='?'>base_dir</a>)
+<span class='lineno'> 213</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', title='{[?] | [None]}'>paths</a> = []
+<span class='lineno'> 214</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.r', title='str'>r</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.raw_paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.raw_paths', title='[str]'>raw_paths</a>:
+<span class='lineno'> 215</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', title='None'>p</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.parser', title='(namedtuple) -> None / ? -> None'>parser</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.Path', title='<(namedtuple)>'>Path</a>(os.path.join(<a href='../../../../../python/util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', title='compat'>compat</a>.<a href='../../../../../python/util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', title='? -> tuple -> str / ? -> str / str -> str'>as_str_any</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.base_dir', title='?'>base_dir</a>),
+<span class='lineno'> 216</span>                                  <a href='../../../../../python/util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', title='compat'>compat</a>.<a href='../../../../../python/util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', title='? -> tuple -> str / ? -> str / str -> str'>as_str_any</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.r', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.r', title='str'>r</a>)),
+<span class='lineno'> 217</span>                     None))
+<span class='lineno'> 218</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', title='None'>p</a>:
+<span class='lineno'> 219</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', title='{[?] | [None]}'>paths</a>.append(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.p', title='None'>p</a>)
+<span class='lineno'> 220</span>   return sorted(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.gc.get_paths.paths', title='{[?] | [None]}'>paths</a>)
+</pre></td></tr></table></body></html>

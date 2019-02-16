@@ -1,0 +1,296 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/distributions/python/ops/mvn_tril.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.__all__'>__all__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL'>MultivariateNormalTriL</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__'>__init__</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Multivariate Normal distribution classes.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions', title='distributions'>distributions</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops', title='ops'>ops</a> import mvn_linear_operator as <a href='mvn_linear_operator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator', title='mvn_linear_operator'>mvn_linop</a>
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  23</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../../../python/ops/distributions/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions', title='distributions'>distributions</a> import util as <a href='../../../../python/ops/distributions/util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util', title='util'>distribution_util</a>
+<span class='lineno'>  24</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../../../python/ops/linalg/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg', title='{linalg | linalg}'>linalg</a> import linalg
+<span class='lineno'>  25</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a>
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.__all__', title='[str]'>__all__</a> = [
+<span class='lineno'>  29</span>     &quot;MultivariateNormalTriL&quot;,
+<span class='lineno'>  30</span> ]
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL', title='<MultivariateNormalTriL>'>MultivariateNormalTriL</a>(
+<span class='lineno'>  34</span>     <a href='mvn_linear_operator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator', title='mvn_linear_operator'>mvn_linop</a>.<a href='mvn_linear_operator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator.MultivariateNormalLinearOperator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_linear_operator.MultivariateNormalLinearOperator', title='<MultivariateNormalLinearOperator>'>MultivariateNormalLinearOperator</a>):
+<span class='lineno'>  35</span>   &quot;&quot;&quot;The multivariate normal distribution on `R^k`.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   The Multivariate Normal distribution is defined over `R^k` and parameterized
+<span class='lineno'>  38</span>   by a (batch of) length-`k` `loc` vector (aka &quot;mu&quot;) and a (batch of) `k x k`
+<span class='lineno'>  39</span>   `scale` matrix; `covariance = scale @ scale.T` where `@` denotes
+<span class='lineno'>  40</span>   matrix-multiplication.
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   #### Mathematical Details
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   The probability density function (pdf) is,
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   ```none
+<span class='lineno'>  47</span>   pdf(x; loc, scale) = exp(-0.5 ||y||**2) / Z,
+<span class='lineno'>  48</span>   y = inv(scale) @ (x - loc),
+<span class='lineno'>  49</span>   Z = (2 pi)**(0.5 k) |det(scale)|,
+<span class='lineno'>  50</span>   ```
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   where:
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   * `loc` is a vector in `R^k`,
+<span class='lineno'>  55</span>   * `scale` is a matrix in `R^{k x k}`, `covariance = scale @ scale.T`,
+<span class='lineno'>  56</span>   * `Z` denotes the normalization constant, and,
+<span class='lineno'>  57</span>   * `||y||**2` denotes the squared Euclidean norm of `y`.
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   A (non-batch) `scale` matrix is:
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   ```none
+<span class='lineno'>  62</span>   scale = scale_tril
+<span class='lineno'>  63</span>   ```
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span>   where `scale_tril` is lower-triangular `k x k` matrix with non-zero diagonal,
+<span class='lineno'>  66</span>   i.e., `tf.diag_part(scale_tril) != 0`.
+<span class='lineno'>  67</span> 
+<span class='lineno'>  68</span>   Additional leading dimensions (if any) will index batches.
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   The MultivariateNormal distribution is a member of the [location-scale
+<span class='lineno'>  71</span>   family](https://en.wikipedia.org/wiki/Location-scale_family), i.e., it can be
+<span class='lineno'>  72</span>   constructed as,
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   ```none
+<span class='lineno'>  75</span>   X ~ MultivariateNormal(loc=0, scale=1)   # Identity scale, zero shift.
+<span class='lineno'>  76</span>   Y = scale @ X + loc
+<span class='lineno'>  77</span>   ```
+<span class='lineno'>  78</span> 
+<span class='lineno'>  79</span>   Trainable (batch) lower-triangular matrices can be created with
+<span class='lineno'>  80</span>   `tfp.distributions.matrix_diag_transform()` and/or
+<span class='lineno'>  81</span>   `tfp.distributions.fill_triangular()`
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   #### Examples
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>   ```python
+<span class='lineno'>  86</span>   import tensorflow_probability as tfp
+<span class='lineno'>  87</span>   tfd = tfp.distributions
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span>   # Initialize a single 3-variate Gaussian.
+<span class='lineno'>  90</span>   mu = [1., 2, 3]
+<span class='lineno'>  91</span>   cov = [[ 0.36,  0.12,  0.06],
+<span class='lineno'>  92</span>          [ 0.12,  0.29, -0.13],
+<span class='lineno'>  93</span>          [ 0.06, -0.13,  0.26]]
+<span class='lineno'>  94</span>   scale = tf.cholesky(cov)
+<span class='lineno'>  95</span>   # ==&gt; [[ 0.6,  0. ,  0. ],
+<span class='lineno'>  96</span>   #      [ 0.2,  0.5,  0. ],
+<span class='lineno'>  97</span>   #      [ 0.1, -0.3,  0.4]])
+<span class='lineno'>  98</span>   mvn = tfd.MultivariateNormalTriL(
+<span class='lineno'>  99</span>       loc=mu,
+<span class='lineno'> 100</span>       scale_tril=scale)
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span>   mvn.mean().eval()
+<span class='lineno'> 103</span>   # ==&gt; [1., 2, 3]
+<span class='lineno'> 104</span> 
+<span class='lineno'> 105</span>   # Covariance agrees with cholesky(cov) parameterization.
+<span class='lineno'> 106</span>   mvn.covariance().eval()
+<span class='lineno'> 107</span>   # ==&gt; [[ 0.36,  0.12,  0.06],
+<span class='lineno'> 108</span>   #      [ 0.12,  0.29, -0.13],
+<span class='lineno'> 109</span>   #      [ 0.06, -0.13,  0.26]]
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   # Compute the pdf of an observation in `R^3` ; return a scalar.
+<span class='lineno'> 112</span>   mvn.prob([-1., 0, 1]).eval()  # shape: []
+<span class='lineno'> 113</span> 
+<span class='lineno'> 114</span>   # Initialize a 2-batch of 3-variate Gaussians.
+<span class='lineno'> 115</span>   mu = [[1., 2, 3],
+<span class='lineno'> 116</span>         [11, 22, 33]]              # shape: [2, 3]
+<span class='lineno'> 117</span>   tril = ...  # shape: [2, 3, 3], lower triangular, non-zero diagonal.
+<span class='lineno'> 118</span>   mvn = tfd.MultivariateNormalTriL(
+<span class='lineno'> 119</span>       loc=mu,
+<span class='lineno'> 120</span>       scale_tril=tril)
+<span class='lineno'> 121</span> 
+<span class='lineno'> 122</span>   # Compute the pdf of two `R^3` observations; return a length-2 vector.
+<span class='lineno'> 123</span>   x = [[-0.9, 0, 0.1],
+<span class='lineno'> 124</span>        [-10, 0, 9]]     # shape: [2, 3]
+<span class='lineno'> 125</span>   mvn.prob(x).eval()    # shape: [2]
+<span class='lineno'> 126</span> 
+<span class='lineno'> 127</span>   # Instantiate a &quot;learnable&quot; MVN.
+<span class='lineno'> 128</span>   dims = 4
+<span class='lineno'> 129</span>   with tf.variable_scope(&quot;model&quot;):
+<span class='lineno'> 130</span>     mvn = tfd.MultivariateNormalTriL(
+<span class='lineno'> 131</span>         loc=tf.get_variable(shape=[dims], dtype=tf.float32, name=&quot;mu&quot;),
+<span class='lineno'> 132</span>         scale_tril=tfd.fill_triangular(
+<span class='lineno'> 133</span>             tf.get_variable(shape=[dims * (dims + 1) / 2],
+<span class='lineno'> 134</span>                             dtype=tf.float32, name=&quot;chol_Sigma&quot;)))
+<span class='lineno'> 135</span>   ```
+<span class='lineno'> 136</span> 
+<span class='lineno'> 137</span>   &quot;&quot;&quot;
+<span class='lineno'> 138</span> 
+<span class='lineno'> 139</span>   @deprecation.deprecated(
+<span class='lineno'> 140</span>       &quot;2018-10-01&quot;,
+<span class='lineno'> 141</span>       &quot;The TensorFlow Distributions library has moved to &quot;
+<span class='lineno'> 142</span>       &quot;TensorFlow Probability &quot;
+<span class='lineno'> 143</span>       &quot;(https://github.com/tensorflow/probability). You &quot;
+<span class='lineno'> 144</span>       &quot;should update all references to use `tfp.distributions` &quot;
+<span class='lineno'> 145</span>       &quot;instead of `tf.contrib.distributions`.&quot;,
+<span class='lineno'> 146</span>       warn_once=True)
+<span class='lineno'> 147</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', title='MultivariateNormalTriL'>self</a>,
+<span class='lineno'> 148</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>=None,
+<span class='lineno'> 149</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a>=None,
+<span class='lineno'> 150</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', title='bool'>validate_args</a>=False,
+<span class='lineno'> 151</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.allow_nan_stats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.allow_nan_stats', title='bool'>allow_nan_stats</a>=True,
+<span class='lineno'> 152</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', title='str'>name</a>=&quot;MultivariateNormalTriL&quot;):
+<span class='lineno'> 153</span>     &quot;&quot;&quot;Construct Multivariate Normal distribution on `R^k`.
+<span class='lineno'> 154</span> 
+<span class='lineno'> 155</span>     The `batch_shape` is the broadcast shape between `loc` and `scale`
+<span class='lineno'> 156</span>     arguments.
+<span class='lineno'> 157</span> 
+<span class='lineno'> 158</span>     The `event_shape` is given by last dimension of the matrix implied by
+<span class='lineno'> 159</span>     `scale`. The last dimension of `loc` (if provided) must broadcast with this.
+<span class='lineno'> 160</span> 
+<span class='lineno'> 161</span>     Recall that `covariance = scale @ scale.T`. A (non-batch) `scale` matrix is:
+<span class='lineno'> 162</span> 
+<span class='lineno'> 163</span>     ```none
+<span class='lineno'> 164</span>     scale = scale_tril
+<span class='lineno'> 165</span>     ```
+<span class='lineno'> 166</span> 
+<span class='lineno'> 167</span>     where `scale_tril` is lower-triangular `k x k` matrix with non-zero
+<span class='lineno'> 168</span>     diagonal, i.e., `tf.diag_part(scale_tril) != 0`.
+<span class='lineno'> 169</span> 
+<span class='lineno'> 170</span>     Additional leading dimensions (if any) will index batches.
+<span class='lineno'> 171</span> 
+<span class='lineno'> 172</span>     Args:
+<span class='lineno'> 173</span>       loc: Floating-point `Tensor`. If this is set to `None`, `loc` is
+<span class='lineno'> 174</span>         implicitly `0`. When specified, may have shape `[B1, ..., Bb, k]` where
+<span class='lineno'> 175</span>         `b &gt;= 0` and `k` is the event size.
+<span class='lineno'> 176</span>       scale_tril: Floating-point, lower-triangular `Tensor` with non-zero
+<span class='lineno'> 177</span>         diagonal elements. `scale_tril` has shape `[B1, ..., Bb, k, k]` where
+<span class='lineno'> 178</span>         `b &gt;= 0` and `k` is the event size.
+<span class='lineno'> 179</span>       validate_args: Python `bool`, default `False`. When `True` distribution
+<span class='lineno'> 180</span>         parameters are checked for validity despite possibly degrading runtime
+<span class='lineno'> 181</span>         performance. When `False` invalid inputs may silently render incorrect
+<span class='lineno'> 182</span>         outputs.
+<span class='lineno'> 183</span>       allow_nan_stats: Python `bool`, default `True`. When `True`,
+<span class='lineno'> 184</span>         statistics (e.g., mean, mode, variance) use the value &quot;`NaN`&quot; to
+<span class='lineno'> 185</span>         indicate the result is undefined. When `False`, an exception is raised
+<span class='lineno'> 186</span>         if one or more of the statistic&#39;s batch members are undefined.
+<span class='lineno'> 187</span>       name: Python `str` name prefixed to Ops created by this class.
+<span class='lineno'> 188</span> 
+<span class='lineno'> 189</span>     Raises:
+<span class='lineno'> 190</span>       ValueError: if neither `loc` nor `scale_tril` are specified.
+<span class='lineno'> 191</span>     &quot;&quot;&quot;
+<span class='lineno'> 192</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.parameters', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.parameters', title='dict'>parameters</a> = dict(locals())
+<span class='lineno'> 193</span>     def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', title='(None, str) -> None'>_convert_to_tensor</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', title='None'>x</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.name', title='str'>name</a>):
+<span class='lineno'> 194</span>       return None if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', title='None'>x</a> is None else <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.convert_to_tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.convert_to_tensor', title='(SparseTensor -> None, None, None, None) -> ? / (SparseTensor -> None, None, None, None) -> None / ({None | int}, None, None, None) -> None / (int, None, None, None) -> None / (?, None, None, None) -> None / (None, DType, None, None) -> None / (?, DType, None, None) -> None / (None, None, None, None) -> None / ({IndexedSlices | SparseTensor}, None, None, None) -> None / ({IndexedSlices | SparseTensor}, DType, None, None) -> None'>convert_to_tensor</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.x', title='None'>x</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor.name', title='str'>name</a>)
+<span class='lineno'> 195</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a> is None and <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a> is None:
+<span class='lineno'> 196</span>       raise ValueError(&quot;Must specify one or both of `loc`, `scale_tril`.&quot;)
+<span class='lineno'> 197</span>     with <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', title='{(None, str, list) -> ? / (None, str, (?, ?, float)) -> {name_scope | variable_scope} / (None, str, [bool]) -> {name_scope | variable_scope} / (None, str, (?, ?, None)) -> {name_scope | variable_scope} / (None, str, [None]) -> {name_scope | variable_scope} / (None, str, [?]) -> {name_scope | variable_scope} / (str, None, None) -> {name_scope | variable_scope} / (None, str, ?) -> {name_scope | variable_scope} / (None, str, [{IndexedSlices | None | SparseTensor}]) -> {name_scope | variable_scope} | <name_scope>}'>name_scope</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', title='str'>name</a>) as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', title='{name_scope | variable_scope}'>name</a>:
+<span class='lineno'> 198</span>       with <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', title='{(None, str, list) -> ? / (None, str, (?, ?, float)) -> {name_scope | variable_scope} / (None, str, [bool]) -> {name_scope | variable_scope} / (None, str, (?, ?, None)) -> {name_scope | variable_scope} / (None, str, [None]) -> {name_scope | variable_scope} / (None, str, [?]) -> {name_scope | variable_scope} / (str, None, None) -> {name_scope | variable_scope} / (None, str, ?) -> {name_scope | variable_scope} / (None, str, [{IndexedSlices | None | SparseTensor}]) -> {name_scope | variable_scope} | <name_scope>}'>name_scope</a>(&quot;init&quot;, values=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a>]):
+<span class='lineno'> 199</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', title='(None, str) -> None'>_convert_to_tensor</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>, name=&quot;loc&quot;)
+<span class='lineno'> 200</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__._convert_to_tensor', title='(None, str) -> None'>_convert_to_tensor</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a>, name=&quot;scale_tril&quot;)
+<span class='lineno'> 201</span>         if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a> is None:
+<span class='lineno'> 202</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', title='LinearOperatorIdentity'>scale</a> = <a href='../../../../python/ops/linalg/linalg.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linalg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linalg', title='linalg'>linalg</a>.<a href='../../../../python/ops/linalg/linear_operator_identity.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linear_operator_identity.LinearOperatorIdentity', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linear_operator_identity.LinearOperatorIdentity', title='<LinearOperatorIdentity>'>LinearOperatorIdentity</a>(
+<span class='lineno'> 203</span>               num_rows=<a href='../../../../python/ops/distributions/util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util', title='util'>distribution_util</a>.<a href='../../../../python/ops/distributions/util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util.dimension_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.distributions.util.dimension_size', title='(None, int) -> None / (?, ?) -> None / (?, int) -> None'>dimension_size</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>, -1),
+<span class='lineno'> 204</span>               dtype=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>.dtype,
+<span class='lineno'> 205</span>               is_self_adjoint=True,
+<span class='lineno'> 206</span>               is_positive_definite=True,
+<span class='lineno'> 207</span>               assert_proper_shapes=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', title='bool'>validate_args</a>)
+<span class='lineno'> 208</span>         else:
+<span class='lineno'> 209</span>           # No need to validate that scale_tril is non-singular.
+<span class='lineno'> 210</span>           # LinearOperatorLowerTriangular has an assert_non_singular
+<span class='lineno'> 211</span>           # method that is called by the Bijector.
+<span class='lineno'> 212</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', title='LinearOperatorLowerTriangular'>scale</a> = <a href='../../../../python/ops/linalg/linalg.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linalg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linalg', title='linalg'>linalg</a>.<a href='../../../../python/ops/linalg/linear_operator_lower_triangular.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linear_operator_lower_triangular.LinearOperatorLowerTriangular', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.linalg.linear_operator_lower_triangular.LinearOperatorLowerTriangular', title='<LinearOperatorLowerTriangular>'>LinearOperatorLowerTriangular</a>(
+<span class='lineno'> 213</span>               <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale_tril', title='None'>scale_tril</a>,
+<span class='lineno'> 214</span>               is_non_singular=True,
+<span class='lineno'> 215</span>               is_self_adjoint=False,
+<span class='lineno'> 216</span>               is_positive_definite=False)
+<span class='lineno'> 217</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL', title='<MultivariateNormalTriL>'>MultivariateNormalTriL</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', title='MultivariateNormalTriL'>self</a>).__init__(
+<span class='lineno'> 218</span>         loc=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.loc', title='None'>loc</a>,
+<span class='lineno'> 219</span>         scale=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.scale', title='{LinearOperatorIdentity | LinearOperatorLowerTriangular}'>scale</a>,
+<span class='lineno'> 220</span>         validate_args=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.validate_args', title='bool'>validate_args</a>,
+<span class='lineno'> 221</span>         allow_nan_stats=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.allow_nan_stats', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.allow_nan_stats', title='bool'>allow_nan_stats</a>,
+<span class='lineno'> 222</span>         name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.name', title='{name_scope | variable_scope}'>name</a>)
+<span class='lineno'> 223</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.self', title='MultivariateNormalTriL'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL._parameters', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL._parameters', title='dict'>_parameters</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.parameters', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.mvn_tril.MultivariateNormalTriL.__init__.parameters', title='dict'>parameters</a>
+</pre></td></tr></table></body></html>

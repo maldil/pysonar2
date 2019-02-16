@@ -1,0 +1,192 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/util/all_util.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#sys', xid='sys'>sys</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern'>_reference_pattern</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all'>make_all</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES'>_HIDDEN_ATTRIBUTES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented'>reveal_undocumented</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented'>remove_undocumented</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.__all__'>__all__</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Generate __all__ from a module docstring.&quot;&quot;&quot;
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import re as _re
+<span class='lineno'>  22</span> import sys as <a name='sys', xid ='sys', title='sys'>_sys</a>
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import tf_inspect as <a href='tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>_tf_inspect</a>
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern', title='?'>_reference_pattern</a> = _re.compile(r&#39;^@@(\w+)$&#39;, flags=_re.MULTILINE)
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all', title='(str, None) -> list / (?, None) -> list'>make_all</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', title='str'>module_name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', title='None'>doc_string_modules</a>=None):
+<span class='lineno'>  31</span>   &quot;&quot;&quot;Generates `__all__` from the docstring of one or more modules.
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>   Usage: `make_all(__name__)` or
+<span class='lineno'>  34</span>   `make_all(__name__, [sys.modules(__name__), other_module])`. The doc string
+<span class='lineno'>  35</span>   modules must each a docstring, and `__all__` will contain all symbols with
+<span class='lineno'>  36</span>   `@@` references, where that symbol currently exists in the module named
+<span class='lineno'>  37</span>   `module_name`.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   Args:
+<span class='lineno'>  40</span>     module_name: The name of the module (usually `__name__`).
+<span class='lineno'>  41</span>     doc_string_modules: a list of modules from which to take docstring.
+<span class='lineno'>  42</span>     If None, then a list containing only the module named `module_name` is used.
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   Returns:
+<span class='lineno'>  45</span>     A list suitable for use as `__all__`.
+<span class='lineno'>  46</span>   &quot;&quot;&quot;
+<span class='lineno'>  47</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', title='None'>doc_string_modules</a> is None:
+<span class='lineno'>  48</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', title='[?]'>doc_string_modules</a> = [_sys.modules[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', title='str'>module_name</a>]]
+<span class='lineno'>  49</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.cur_members', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.cur_members', title='?'>cur_members</a> = set([<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', title='?'>name</a> for <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.name', title='?'>name</a></a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all._', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all._', title='?'>_</a></a>
+<span class='lineno'>  50</span>                      in <a href='tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>_tf_inspect</a>.<a href='tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getmembers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getmembers', title='(<list>, None) -> None / (?, None) -> None / (None, None) -> None'>getmembers</a>(_sys.modules[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.module_name', title='str'>module_name</a>])])
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', title='?'>results</a> = set()
+<span class='lineno'>  53</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_module', title='?'>doc_module</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_string_modules', title='[?]'>doc_string_modules</a>:
+<span class='lineno'>  54</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', title='?'>results</a>.update([<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', title='?'>m</a>.group(1)
+<span class='lineno'>  55</span>                     for <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', title='?'>m</a></a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._reference_pattern', title='?'>_reference_pattern</a>.finditer(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.doc_module', title='?'>doc_module</a>.__doc__)
+<span class='lineno'>  56</span>                     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.m', title='?'>m</a>.group(1) in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.cur_members', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.cur_members', title='?'>cur_members</a>])
+<span class='lineno'>  57</span>   return list(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all.results', title='?'>results</a>)
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> # Hidden attributes are attributes that have been hidden by
+<span class='lineno'>  60</span> # `remove_undocumented`. They can be re-instated by `reveal_undocumented`.
+<span class='lineno'>  61</span> # This maps symbol names to a tuple, containing:
+<span class='lineno'>  62</span> #   (module object, attribute value)
+<span class='lineno'>  63</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', title='dict'>_HIDDEN_ATTRIBUTES</a> = {}
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented', title='(?, None) -> None'>reveal_undocumented</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', title='?'>symbol_name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', title='None'>target_module</a>=None):
+<span class='lineno'>  67</span>   &quot;&quot;&quot;Reveals a symbol that was previously removed by `remove_undocumented`.
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   This should be used by tensorflow internal tests only. It explicitly
+<span class='lineno'>  70</span>   defeats the encapsulation afforded by `remove_undocumented`.
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>   It throws an exception when the symbol was not hidden in the first place.
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   Args:
+<span class='lineno'>  75</span>     symbol_name: a string representing the full absolute path of the symbol.
+<span class='lineno'>  76</span>     target_module: if specified, the module in which to restore the symbol.
+<span class='lineno'>  77</span>   &quot;&quot;&quot;
+<span class='lineno'>  78</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', title='?'>symbol_name</a> not in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', title='dict'>_HIDDEN_ATTRIBUTES</a>:
+<span class='lineno'>  79</span>     raise LookupError(&#39;Symbol %s is not a hidden symbol&#39; % symbol_name)
+<span class='lineno'>  80</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_basename', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_basename', title='?'>symbol_basename</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', title='?'>symbol_name</a>.split(&#39;.&#39;)[-1]
+<span class='lineno'>  81</span>   (<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.original_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.original_module', title='?'>original_module</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.attr_value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.attr_value', title='?'>attr_value</a>) = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', title='dict'>_HIDDEN_ATTRIBUTES</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_name', title='?'>symbol_name</a>]
+<span class='lineno'>  82</span>   if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', title='None'>target_module</a>: <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', title='?'>target_module</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.original_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.original_module', title='?'>original_module</a>
+<span class='lineno'>  83</span>   setattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.target_module', title='None'>target_module</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_basename', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.symbol_basename', title='?'>symbol_basename</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.attr_value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.reveal_undocumented.attr_value', title='?'>attr_value</a>)
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', title='(?, [?], None) -> None / (?, [str], None) -> None / (?, None, None) -> None / (str, None, None) -> None'>remove_undocumented</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', title='str'>module_name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.allowed_exception_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.allowed_exception_list', title='{[?] | [str]}'>allowed_exception_list</a>=None,
+<span class='lineno'>  87</span>                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.doc_string_modules', title='None'>doc_string_modules</a>=None):
+<span class='lineno'>  88</span>   &quot;&quot;&quot;Removes symbols in a module that are not referenced by a docstring.
+<span class='lineno'>  89</span> 
+<span class='lineno'>  90</span>   Args:
+<span class='lineno'>  91</span>     module_name: the name of the module (usually `__name__`).
+<span class='lineno'>  92</span>     allowed_exception_list: a list of names that should not be removed.
+<span class='lineno'>  93</span>     doc_string_modules: a list of modules from which to take the docstrings.
+<span class='lineno'>  94</span>     If None, then a list containing only the module named `module_name` is used.
+<span class='lineno'>  95</span> 
+<span class='lineno'>  96</span>     Furthermore, if a symbol previously added with `add_to_global_whitelist`,
+<span class='lineno'>  97</span>     then it will always be allowed. This is useful for internal tests.
+<span class='lineno'>  98</span> 
+<span class='lineno'>  99</span>   Returns:
+<span class='lineno'> 100</span>     None
+<span class='lineno'> 101</span>   &quot;&quot;&quot;
+<span class='lineno'> 102</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.current_symbols', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.current_symbols', title='?'>current_symbols</a> = set(dir(_sys.modules[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', title='str'>module_name</a>]))
+<span class='lineno'> 103</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', title='list'>should_have</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.make_all', title='(str, None) -> list / (?, None) -> list'>make_all</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', title='str'>module_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.doc_string_modules', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.doc_string_modules', title='None'>doc_string_modules</a>)
+<span class='lineno'> 104</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', title='list'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', title='list'>should_have</a></a> += <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.allowed_exception_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.allowed_exception_list', title='{[?] | [str]}'>allowed_exception_list</a> or []
+<span class='lineno'> 105</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbols', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbols', title='?'>extra_symbols</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.current_symbols', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.current_symbols', title='?'>current_symbols</a> - set(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.should_have', title='list'>should_have</a>)
+<span class='lineno'> 106</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', title='?'>target_module</a> = _sys.modules[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', title='str'>module_name</a>]
+<span class='lineno'> 107</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', title='?'>extra_symbol</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbols', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbols', title='?'>extra_symbols</a>:
+<span class='lineno'> 108</span>     # Skip over __file__, etc. Also preserves internal symbols.
+<span class='lineno'> 109</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', title='?'>extra_symbol</a>.startswith(&#39;_&#39;): continue
+<span class='lineno'> 110</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.fully_qualified_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.fully_qualified_name', title='str'>fully_qualified_name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.module_name', title='str'>module_name</a> + &#39;.&#39; + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', title='?'>extra_symbol</a>
+<span class='lineno'> 111</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util._HIDDEN_ATTRIBUTES', title='dict'>_HIDDEN_ATTRIBUTES</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.fully_qualified_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.fully_qualified_name', title='str'>fully_qualified_name</a>] = (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', title='?'>target_module</a>,
+<span class='lineno'> 112</span>                                                 getattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', title='?'>target_module</a>,
+<span class='lineno'> 113</span>                                                         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', title='?'>extra_symbol</a>))
+<span class='lineno'> 114</span>     delattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.target_module', title='?'>target_module</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented.extra_symbol', title='?'>extra_symbol</a>)
+<span class='lineno'> 115</span> 
+<span class='lineno'> 116</span> 
+<span class='lineno'> 117</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.__all__', title='[str]'>__all__</a> = [
+<span class='lineno'> 118</span>     &#39;make_all&#39;,
+<span class='lineno'> 119</span>     &#39;remove_undocumented&#39;,
+<span class='lineno'> 120</span>     &#39;reveal_undocumented&#39;,
+<span class='lineno'> 121</span> ]
+</pre></td></tr></table></body></html>

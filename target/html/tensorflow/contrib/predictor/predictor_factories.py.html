@@ -1,0 +1,224 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/predictor/predictor_factories.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator'>from_contrib_estimator</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator'>from_estimator</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model'>from_saved_model</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Factory functions for `Predictor`s.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', title='predictor'>predictor</a> import <a href='contrib_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor', title='contrib_estimator_predictor'>contrib_estimator_predictor</a>
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', title='predictor'>predictor</a> import <a href='core_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor', title='core_estimator_predictor'>core_estimator_predictor</a>
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor', title='predictor'>predictor</a> import <a href='saved_model_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor', title='saved_model_predictor'>saved_model_predictor</a>
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../learn/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', title='learn'>learn</a>.<a href='../learn/python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', title='python'>python</a>.<a href='../learn/python/learn/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', title='learn'>learn</a>.<a href='../learn/python/learn/estimators/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators', title='estimators'>estimators</a> import estimator as <a href='../learn/python/learn/estimators/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator', title='estimator'>contrib_estimator</a>
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/estimator/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator', title='estimator'>estimator</a> import estimator as <a href='../../python/estimator/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator', title='estimator'>core_estimator</a>
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator', title='(?, ?, None, None, None, None) -> ContribEstimatorPredictor'>from_contrib_estimator</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', title='?'>estimator</a>,
+<span class='lineno'>  30</span>                            <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.prediction_input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.prediction_input_fn', title='?'>prediction_input_fn</a>,
+<span class='lineno'>  31</span>                            <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.input_alternative_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.input_alternative_key', title='None'>input_alternative_key</a>=None,
+<span class='lineno'>  32</span>                            <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.output_alternative_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.output_alternative_key', title='None'>output_alternative_key</a>=None,
+<span class='lineno'>  33</span>                            <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.graph', title='None'>graph</a>=None,
+<span class='lineno'>  34</span>                            <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.config', title='None'>config</a>=None):
+<span class='lineno'>  35</span>   &quot;&quot;&quot;Constructs a `Predictor` from a `tf.contrib.learn.Estimator`.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   Args:
+<span class='lineno'>  38</span>     estimator: an instance of `tf.contrib.learn.Estimator`.
+<span class='lineno'>  39</span>     prediction_input_fn: a function that takes no arguments and returns an
+<span class='lineno'>  40</span>       instance of `InputFnOps`.
+<span class='lineno'>  41</span>     input_alternative_key: Optional. Specify the input alternative used for
+<span class='lineno'>  42</span>       prediction.
+<span class='lineno'>  43</span>     output_alternative_key: Specify the output alternative used for
+<span class='lineno'>  44</span>       prediction. Not needed for single-headed models but required for
+<span class='lineno'>  45</span>       multi-headed models.
+<span class='lineno'>  46</span>     graph: Optional. The Tensorflow `graph` in which prediction should be
+<span class='lineno'>  47</span>       done.
+<span class='lineno'>  48</span>     config: `ConfigProto` proto used to configure the session.
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span>   Returns:
+<span class='lineno'>  51</span>     An initialized `Predictor`.
+<span class='lineno'>  52</span> 
+<span class='lineno'>  53</span>   Raises:
+<span class='lineno'>  54</span>     TypeError: if `estimator` is a core `Estimator` instead of a contrib
+<span class='lineno'>  55</span>       `Estimator`.
+<span class='lineno'>  56</span>   &quot;&quot;&quot;
+<span class='lineno'>  57</span>   if isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', title='Estimator'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', title='?'>estimator</a></a>, <a href='../../python/estimator/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator', title='estimator'>core_estimator</a>.<a href='../../python/estimator/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator.Estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.estimator.Estimator', title='<Estimator>'>Estimator</a>):
+<span class='lineno'>  58</span>     raise TypeError(&#39;Expected estimator to be of type &#39;
+<span class='lineno'>  59</span>                     &#39;tf.contrib.learn.Estimator, but got type &#39;
+<span class='lineno'>  60</span>                     &#39;tf.python.estimator.Estimator. You likely want to call &#39;
+<span class='lineno'>  61</span>                     &#39;from_estimator.&#39;)
+<span class='lineno'>  62</span>   return <a href='contrib_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor', title='contrib_estimator_predictor'>contrib_estimator_predictor</a>.<a href='contrib_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor.ContribEstimatorPredictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.contrib_estimator_predictor.ContribEstimatorPredictor', title='<ContribEstimatorPredictor>'>ContribEstimatorPredictor</a>(
+<span class='lineno'>  63</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.estimator', title='Estimator'>estimator</a>,
+<span class='lineno'>  64</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.prediction_input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.prediction_input_fn', title='?'>prediction_input_fn</a>,
+<span class='lineno'>  65</span>       input_alternative_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.input_alternative_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.input_alternative_key', title='None'>input_alternative_key</a>,
+<span class='lineno'>  66</span>       output_alternative_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.output_alternative_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.output_alternative_key', title='None'>output_alternative_key</a>,
+<span class='lineno'>  67</span>       graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.graph', title='None'>graph</a>,
+<span class='lineno'>  68</span>       config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_contrib_estimator.config', title='None'>config</a>)
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator', title='(?, ?, None, None, None) -> CoreEstimatorPredictor'>from_estimator</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', title='?'>estimator</a>,
+<span class='lineno'>  72</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.serving_input_receiver_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.serving_input_receiver_fn', title='?'>serving_input_receiver_fn</a>,
+<span class='lineno'>  73</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.output_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.output_key', title='None'>output_key</a>=None,
+<span class='lineno'>  74</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.graph', title='None'>graph</a>=None,
+<span class='lineno'>  75</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.config', title='None'>config</a>=None):
+<span class='lineno'>  76</span>   &quot;&quot;&quot;Constructs a `Predictor` from a `tf.python.estimator.Estimator`.
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span>   Args:
+<span class='lineno'>  79</span>     estimator: an instance of `learn.python.estimator.Estimator`.
+<span class='lineno'>  80</span>     serving_input_receiver_fn: a function that takes no arguments and returns
+<span class='lineno'>  81</span>       an instance of `ServingInputReceiver` compatible with `estimator`.
+<span class='lineno'>  82</span>     output_key: Optional string specifying the export output to use. If
+<span class='lineno'>  83</span>       `None`, then `DEFAULT_SERVING_SIGNATURE_DEF_KEY` is used.
+<span class='lineno'>  84</span>     graph: Optional. The Tensorflow `graph` in which prediction should be
+<span class='lineno'>  85</span>       done.
+<span class='lineno'>  86</span>     config: `ConfigProto` proto used to configure the session.
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span>   Returns:
+<span class='lineno'>  89</span>     An initialized `Predictor`.
+<span class='lineno'>  90</span> 
+<span class='lineno'>  91</span>   Raises:
+<span class='lineno'>  92</span>     TypeError: if `estimator` is a contrib `Estimator` instead of a core
+<span class='lineno'>  93</span>       `Estimator`.
+<span class='lineno'>  94</span>   &quot;&quot;&quot;
+<span class='lineno'>  95</span>   if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', title='Estimator'>estimator</a></a>, <a href='../learn/python/learn/estimators/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator', title='estimator'>contrib_estimator</a>.<a href='../learn/python/learn/estimators/estimator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator.Estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.estimator.Estimator', title='<Estimator>'>Estimator</a>):
+<span class='lineno'>  96</span>     raise TypeError(&#39;Expected estimator to be of type &#39;
+<span class='lineno'>  97</span>                     &#39;tf.python.estimator.Estimator, but got type &#39;
+<span class='lineno'>  98</span>                     &#39;tf.contrib.learn.Estimator. You likely want to call &#39;
+<span class='lineno'>  99</span>                     &#39;from_contrib_estimator.&#39;)
+<span class='lineno'> 100</span>   return <a href='core_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor', title='core_estimator_predictor'>core_estimator_predictor</a>.<a href='core_estimator_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor.CoreEstimatorPredictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.core_estimator_predictor.CoreEstimatorPredictor', title='<CoreEstimatorPredictor>'>CoreEstimatorPredictor</a>(
+<span class='lineno'> 101</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.estimator', title='Estimator'>estimator</a>,
+<span class='lineno'> 102</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.serving_input_receiver_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.serving_input_receiver_fn', title='?'>serving_input_receiver_fn</a>,
+<span class='lineno'> 103</span>       output_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.output_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.output_key', title='None'>output_key</a>,
+<span class='lineno'> 104</span>       graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.graph', title='None'>graph</a>,
+<span class='lineno'> 105</span>       config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_estimator.config', title='None'>config</a>)
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span> 
+<span class='lineno'> 108</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model', title='(?, None, None, None, None, None, None, None) -> SavedModelPredictor'>from_saved_model</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.export_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.export_dir', title='?'>export_dir</a>,
+<span class='lineno'> 109</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def_key', title='None'>signature_def_key</a>=None,
+<span class='lineno'> 110</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def', title='None'>signature_def</a>=None,
+<span class='lineno'> 111</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.input_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.input_names', title='None'>input_names</a>=None,
+<span class='lineno'> 112</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.output_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.output_names', title='None'>output_names</a>=None,
+<span class='lineno'> 113</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.tags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.tags', title='None'>tags</a>=None,
+<span class='lineno'> 114</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.graph', title='None'>graph</a>=None,
+<span class='lineno'> 115</span>                      <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.config', title='None'>config</a>=None):
+<span class='lineno'> 116</span>   &quot;&quot;&quot;Constructs a `Predictor` from a `SavedModel` on disk.
+<span class='lineno'> 117</span> 
+<span class='lineno'> 118</span>   Args:
+<span class='lineno'> 119</span>     export_dir: a path to a directory containing a `SavedModel`.
+<span class='lineno'> 120</span>     signature_def_key: Optional string specifying the signature to use. If
+<span class='lineno'> 121</span>       `None`, then `DEFAULT_SERVING_SIGNATURE_DEF_KEY` is used. Only one of
+<span class='lineno'> 122</span>     `signature_def_key` and `signature_def`
+<span class='lineno'> 123</span>     signature_def: A `SignatureDef` proto specifying the inputs and outputs
+<span class='lineno'> 124</span>       for prediction. Only one of `signature_def_key` and `signature_def`
+<span class='lineno'> 125</span>       should be specified.
+<span class='lineno'> 126</span>       input_names: A dictionary mapping strings to `Tensor`s in the `SavedModel`
+<span class='lineno'> 127</span>         that represent the input. The keys can be any string of the user&#39;s
+<span class='lineno'> 128</span>         choosing.
+<span class='lineno'> 129</span>       output_names: A dictionary mapping strings to `Tensor`s in the
+<span class='lineno'> 130</span>         `SavedModel` that represent the output. The keys can be any string of
+<span class='lineno'> 131</span>         the user&#39;s choosing.
+<span class='lineno'> 132</span>     tags: Optional. Tags that will be used to retrieve the correct
+<span class='lineno'> 133</span>       `SignatureDef`. Defaults to `DEFAULT_TAGS`.
+<span class='lineno'> 134</span>     graph: Optional. The Tensorflow `graph` in which prediction should be
+<span class='lineno'> 135</span>       done.
+<span class='lineno'> 136</span>     config: `ConfigProto` proto used to configure the session.
+<span class='lineno'> 137</span> 
+<span class='lineno'> 138</span>   Returns:
+<span class='lineno'> 139</span>     An initialized `Predictor`.
+<span class='lineno'> 140</span> 
+<span class='lineno'> 141</span>   Raises:
+<span class='lineno'> 142</span>     ValueError: More than one of `signature_def_key` and `signature_def` is
+<span class='lineno'> 143</span>       specified.
+<span class='lineno'> 144</span>   &quot;&quot;&quot;
+<span class='lineno'> 145</span>   return <a href='saved_model_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor', title='saved_model_predictor'>saved_model_predictor</a>.<a href='saved_model_predictor.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor.SavedModelPredictor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.saved_model_predictor.SavedModelPredictor', title='<SavedModelPredictor>'>SavedModelPredictor</a>(
+<span class='lineno'> 146</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.export_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.export_dir', title='?'>export_dir</a>,
+<span class='lineno'> 147</span>       signature_def_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def_key', title='None'>signature_def_key</a>,
+<span class='lineno'> 148</span>       signature_def=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.signature_def', title='None'>signature_def</a>,
+<span class='lineno'> 149</span>       input_names=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.input_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.input_names', title='None'>input_names</a>,
+<span class='lineno'> 150</span>       output_names=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.output_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.output_names', title='None'>output_names</a>,
+<span class='lineno'> 151</span>       tags=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.tags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.tags', title='None'>tags</a>,
+<span class='lineno'> 152</span>       graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.graph', title='None'>graph</a>,
+<span class='lineno'> 153</span>       config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.predictor.predictor_factories.from_saved_model.config', title='None'>config</a>)
+</pre></td></tr></table></body></html>

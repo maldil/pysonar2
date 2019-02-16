@@ -1,0 +1,262 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/model_pruning/python/learning.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT'>_USE_DEFAULT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step'>train_step</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train'>train</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Wrapper around tf-slim&#39;s training code contrib/slim/python/slim/learning.py
+<span class='lineno'>  16</span> to support training of pruned models
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> *******************************************************************
+<span class='lineno'>  19</span> * A simple working training script with support for model pruning *
+<span class='lineno'>  20</span> *******************************************************************
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span>   # Load data and create the model:
+<span class='lineno'>  23</span>   images, labels = LoadData(...)
+<span class='lineno'>  24</span>   predictions = MyModel(images)
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span>   # Define the loss:
+<span class='lineno'>  27</span>   slim.losses.log_loss(predictions, labels)
+<span class='lineno'>  28</span>   total_loss = slim.losses.get_total_loss()
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   # Define the optimizer:
+<span class='lineno'>  31</span>   optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate, FLAGS.momentum)
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>   # Create the train_op
+<span class='lineno'>  34</span>   train_op = slim.learning.create_train_op(total_loss, optimizer)
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   # Parse pruning hyperparameters
+<span class='lineno'>  37</span>   pruning_hparams = pruning.get_pruning_hparams().parse(FLAGS.pruning_hparams)
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   # Create a pruning object using the pruning_hparams
+<span class='lineno'>  40</span>   p = pruning.Pruning(pruning_hparams)
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   # Add mask update ops to the graph
+<span class='lineno'>  43</span>   mask_update_op = p.conditional_mask_update_op()
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   # Run training.
+<span class='lineno'>  46</span>   learning.train(train_op,
+<span class='lineno'>  47</span>                  my_log_dir,
+<span class='lineno'>  48</span>                  mask_update_op)
+<span class='lineno'>  49</span>   see contrib/slim/python/slim/learning.py for additional examples
+<span class='lineno'>  50</span> &quot;&quot;&quot;
+<span class='lineno'>  51</span> from __future__ import absolute_import
+<span class='lineno'>  52</span> from __future__ import division
+<span class='lineno'>  53</span> from __future__ import print_function
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a> import slim as <a href='../../slim/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', title='slim'>_slim</a>
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a> = 0
+<span class='lineno'>  58</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step', title='(?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool)'>train_step</a> = <a href='../../slim/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', title='slim'>_slim</a>.<a href='../../slim/python/slim/learning.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning', title='learning'>learning</a>.<a href='../../slim/python/slim/learning.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning.train_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning.train_step', title='(?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool)'>train_step</a>
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train', title='(?, ?, ?, (?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool), int, int, None, str, bool, None, None, int, None, int, None, int, int, int, int, int, None, int, None, None, None) -> None'>train</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_op', title='?'>train_op</a>,
+<span class='lineno'>  62</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.logdir', title='?'>logdir</a>,
+<span class='lineno'>  63</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.mask_update_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.mask_update_op', title='?'>mask_update_op</a>,
+<span class='lineno'>  64</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_fn', title='(?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool)'>train_step_fn</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train_step', title='(?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool)'>train_step</a>,
+<span class='lineno'>  65</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_kwargs', title='int'>train_step_kwargs</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  66</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.log_every_n_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.log_every_n_steps', title='int'>log_every_n_steps</a>=1,
+<span class='lineno'>  67</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.graph', title='None'>graph</a>=None,
+<span class='lineno'>  68</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.master', title='str'>master</a>=&#39;&#39;,
+<span class='lineno'>  69</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.is_chief', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.is_chief', title='bool'>is_chief</a>=True,
+<span class='lineno'>  70</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.global_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.global_step', title='None'>global_step</a>=None,
+<span class='lineno'>  71</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.number_of_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.number_of_steps', title='None'>number_of_steps</a>=None,
+<span class='lineno'>  72</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_op', title='int'>init_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  73</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_feed_dict', title='None'>init_feed_dict</a>=None,
+<span class='lineno'>  74</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.local_init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.local_init_op', title='int'>local_init_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  75</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_fn', title='None'>init_fn</a>=None,
+<span class='lineno'>  76</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.ready_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.ready_op', title='int'>ready_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  77</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_op', title='int'>summary_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  78</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_summaries_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_summaries_secs', title='int'>save_summaries_secs</a>=600,
+<span class='lineno'>  79</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_writer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_writer', title='int'>summary_writer</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'>  80</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.startup_delay_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.startup_delay_steps', title='int'>startup_delay_steps</a>=0,
+<span class='lineno'>  81</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.saver', title='None'>saver</a>=None,
+<span class='lineno'>  82</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_interval_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_interval_secs', title='int'>save_interval_secs</a>=600,
+<span class='lineno'>  83</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.sync_optimizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.sync_optimizer', title='None'>sync_optimizer</a>=None,
+<span class='lineno'>  84</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.session_config', title='None'>session_config</a>=None,
+<span class='lineno'>  85</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.trace_every_n_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.trace_every_n_steps', title='None'>trace_every_n_steps</a>=None):
+<span class='lineno'>  86</span>   &quot;&quot;&quot;Wrapper around tf-slim&#39;s train function.
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span>   Runs a training loop using a TensorFlow supervisor.
+<span class='lineno'>  89</span>   When the sync_optimizer is supplied, gradient updates are applied
+<span class='lineno'>  90</span>   synchronously. Otherwise, gradient updates are applied asynchronous.
+<span class='lineno'>  91</span> 
+<span class='lineno'>  92</span>   Args:
+<span class='lineno'>  93</span>     train_op: A `Tensor` that, when executed, will apply the gradients and
+<span class='lineno'>  94</span>       return the loss value.
+<span class='lineno'>  95</span>     logdir: The directory where training logs are written to. If None, model
+<span class='lineno'>  96</span>       checkpoints and summaries will not be written.
+<span class='lineno'>  97</span>     mask_update_op: Operation that upon execution updates the weight masks and
+<span class='lineno'>  98</span>       thresholds.
+<span class='lineno'>  99</span>     train_step_fn: The function to call in order to execute a single gradient
+<span class='lineno'> 100</span>       step. The function must have take exactly four arguments: the current
+<span class='lineno'> 101</span>       session, the `train_op` `Tensor`, a global step `Tensor` and a dictionary.
+<span class='lineno'> 102</span>     train_step_kwargs: A dictionary which is passed to the `train_step_fn`. By
+<span class='lineno'> 103</span>       default, two `Boolean`, scalar ops called &quot;should_stop&quot; and &quot;should_log&quot;
+<span class='lineno'> 104</span>       are provided.
+<span class='lineno'> 105</span>     log_every_n_steps: The frequency, in terms of global steps, that the loss
+<span class='lineno'> 106</span>       and global step and logged.
+<span class='lineno'> 107</span>     graph: The graph to pass to the supervisor. If no graph is supplied the
+<span class='lineno'> 108</span>       default graph is used.
+<span class='lineno'> 109</span>     master: The address of the tensorflow master.
+<span class='lineno'> 110</span>     is_chief: Specifies whether or not the training is being run by the primary
+<span class='lineno'> 111</span>       replica during replica training.
+<span class='lineno'> 112</span>     global_step: The `Tensor` representing the global step. If left as `None`,
+<span class='lineno'> 113</span>       then slim.variables.get_or_create_global_step() is used.
+<span class='lineno'> 114</span>     number_of_steps: The max number of gradient steps to take during training,
+<span class='lineno'> 115</span>       as measured by &#39;global_step&#39;: training will stop if global_step is
+<span class='lineno'> 116</span>       greater than &#39;number_of_steps&#39;. If the value is left as None, training
+<span class='lineno'> 117</span>       proceeds indefinitely.
+<span class='lineno'> 118</span>     init_op: The initialization operation. If left to its default value, then
+<span class='lineno'> 119</span>       the session is initialized by calling `tf.global_variables_initializer()`.
+<span class='lineno'> 120</span>     init_feed_dict: A feed dictionary to use when executing the `init_op`.
+<span class='lineno'> 121</span>     local_init_op: The local initialization operation. If left to its default
+<span class='lineno'> 122</span>       value, then the session is initialized by calling
+<span class='lineno'> 123</span>       `tf.local_variables_initializer()` and `tf.tables_initializer()`.
+<span class='lineno'> 124</span>     init_fn: An optional callable to be executed after `init_op` is called. The
+<span class='lineno'> 125</span>       callable must accept one argument, the session being initialized.
+<span class='lineno'> 126</span>     ready_op: Operation to check if the model is ready to use. If left to its
+<span class='lineno'> 127</span>       default value, then the session checks for readiness by calling
+<span class='lineno'> 128</span>       `tf.report_uninitialized_variables()`.
+<span class='lineno'> 129</span>     summary_op: The summary operation.
+<span class='lineno'> 130</span>     save_summaries_secs: How often, in seconds, to save summaries.
+<span class='lineno'> 131</span>     summary_writer: `SummaryWriter` to use.  Can be `None`
+<span class='lineno'> 132</span>       to indicate that no summaries should be written. If unset, we
+<span class='lineno'> 133</span>       create a SummaryWriter.
+<span class='lineno'> 134</span>     startup_delay_steps: The number of steps to wait for before beginning. Note
+<span class='lineno'> 135</span>       that this must be 0 if a sync_optimizer is supplied.
+<span class='lineno'> 136</span>     saver: Saver to save checkpoints. If None, a default one will be created
+<span class='lineno'> 137</span>       and used.
+<span class='lineno'> 138</span>     save_interval_secs: How often, in seconds, to save the model to `logdir`.
+<span class='lineno'> 139</span>     sync_optimizer: an instance of tf.train.SyncReplicasOptimizer, or a list of
+<span class='lineno'> 140</span>       them. If the argument is supplied, gradient updates will be synchronous.
+<span class='lineno'> 141</span>       If left as `None`, gradient updates will be asynchronous.
+<span class='lineno'> 142</span>     session_config: An instance of `tf.ConfigProto` that will be used to
+<span class='lineno'> 143</span>       configure the `Session`. If left as `None`, the default will be used.
+<span class='lineno'> 144</span>     trace_every_n_steps: produce and save a `Timeline` in Chrome trace format
+<span class='lineno'> 145</span>       and add it to the summaries every `trace_every_n_steps`. If None, no trace
+<span class='lineno'> 146</span>       information will be produced or saved.
+<span class='lineno'> 147</span> 
+<span class='lineno'> 148</span>   Returns:
+<span class='lineno'> 149</span>     the value of the loss function after training.
+<span class='lineno'> 150</span> 
+<span class='lineno'> 151</span>   Raises:
+<span class='lineno'> 152</span>     ValueError: if `train_op` is empty or if `startup_delay_steps` is
+<span class='lineno'> 153</span>       non-zero when `sync_optimizer` is supplied, if `number_of_steps` is
+<span class='lineno'> 154</span>       negative, or if `trace_every_n_steps` is not `None` and no `logdir` is
+<span class='lineno'> 155</span>       provided.
+<span class='lineno'> 156</span>   &quot;&quot;&quot;
+<span class='lineno'> 157</span> 
+<span class='lineno'> 158</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn', title='(?, ?, ?, ?) -> (?, bool)'>train_step_with_pruning_fn</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', title='?'>sess</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_op', title='?'>train_op</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.global_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.global_step', title='?'>global_step</a>,
+<span class='lineno'> 159</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_step_kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_step_kwargs', title='?'>train_step_kwargs</a>):
+<span class='lineno'> 160</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.total_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.total_loss', title='?'>total_loss</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.should_stop', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.should_stop', title='bool'>should_stop</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_fn', title='(?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool)'>train_step_fn</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', title='?'>sess</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_op', title='?'>train_op</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.global_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.global_step', title='?'>global_step</a>,
+<span class='lineno'> 161</span>                                             <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_step_kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.train_step_kwargs', title='?'>train_step_kwargs</a>)
+<span class='lineno'> 162</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.sess', title='?'>sess</a>.run(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.mask_update_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.mask_update_op', title='?'>mask_update_op</a>)
+<span class='lineno'> 163</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.total_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.total_loss', title='?'>total_loss</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.should_stop', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn.should_stop', title='bool'>should_stop</a>
+<span class='lineno'> 164</span> 
+<span class='lineno'> 165</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.total_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.total_loss', title='?'>total_loss</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train._', title='?'>_</a> = <a href='../../slim/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim', title='slim'>_slim</a>.<a href='../../slim/python/slim/learning.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning', title='learning'>learning</a>.<a href='../../slim/python/slim/learning.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning.train', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.learning.train', title='(?, ?, (?, ?, ?, ?) -> (?, bool) / (?, ?, {PartitionedVariable | VariableV1}, {dict | int}) -> (?, bool), int, int, None, str, bool, None, None, int, None, int, None, int, int, int, int, int, None, int, None, None, None, None, bool) -> ?'>train</a>(
+<span class='lineno'> 166</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_op', title='?'>train_op</a>,
+<span class='lineno'> 167</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.logdir', title='?'>logdir</a>,
+<span class='lineno'> 168</span>       train_step_fn=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_with_pruning_fn', title='(?, ?, ?, ?) -> (?, bool)'>train_step_with_pruning_fn</a>,
+<span class='lineno'> 169</span>       train_step_kwargs=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.train_step_kwargs', title='int'>train_step_kwargs</a>,
+<span class='lineno'> 170</span>       log_every_n_steps=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.log_every_n_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.log_every_n_steps', title='int'>log_every_n_steps</a>,
+<span class='lineno'> 171</span>       graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.graph', title='None'>graph</a>,
+<span class='lineno'> 172</span>       master=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.master', title='str'>master</a>,
+<span class='lineno'> 173</span>       is_chief=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.is_chief', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.is_chief', title='bool'>is_chief</a>,
+<span class='lineno'> 174</span>       global_step=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.global_step', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.global_step', title='None'>global_step</a>,
+<span class='lineno'> 175</span>       number_of_steps=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.number_of_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.number_of_steps', title='None'>number_of_steps</a>,
+<span class='lineno'> 176</span>       init_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_op', title='int'>init_op</a>,
+<span class='lineno'> 177</span>       init_feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_feed_dict', title='None'>init_feed_dict</a>,
+<span class='lineno'> 178</span>       local_init_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.local_init_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.local_init_op', title='int'>local_init_op</a>,
+<span class='lineno'> 179</span>       init_fn=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.init_fn', title='None'>init_fn</a>,
+<span class='lineno'> 180</span>       ready_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.ready_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.ready_op', title='int'>ready_op</a>,
+<span class='lineno'> 181</span>       summary_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_op', title='int'>summary_op</a>,
+<span class='lineno'> 182</span>       save_summaries_secs=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_summaries_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_summaries_secs', title='int'>save_summaries_secs</a>,
+<span class='lineno'> 183</span>       summary_writer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_writer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.summary_writer', title='int'>summary_writer</a>,
+<span class='lineno'> 184</span>       startup_delay_steps=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.startup_delay_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.startup_delay_steps', title='int'>startup_delay_steps</a>,
+<span class='lineno'> 185</span>       saver=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.saver', title='None'>saver</a>,
+<span class='lineno'> 186</span>       save_interval_secs=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_interval_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.save_interval_secs', title='int'>save_interval_secs</a>,
+<span class='lineno'> 187</span>       sync_optimizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.sync_optimizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.sync_optimizer', title='None'>sync_optimizer</a>,
+<span class='lineno'> 188</span>       session_config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.session_config', title='None'>session_config</a>,
+<span class='lineno'> 189</span>       trace_every_n_steps=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.trace_every_n_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.trace_every_n_steps', title='None'>trace_every_n_steps</a>)
+<span class='lineno'> 190</span> 
+<span class='lineno'> 191</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.total_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.model_pruning.python.learning.train.total_loss', title='?'>total_loss</a>
+</pre></td></tr></table></body></html>

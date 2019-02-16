@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/eager/python/datasets.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator'>Iterator</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal'>_next_internal</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Iteration over tf.data.Datasets when eager execution is enabled.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/data/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../../python/data/experimental/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', title='experimental'>experimental</a>.<a href='../../../python/data/experimental/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', title='ops'>ops</a> import <a href='../../../python/data/experimental/ops/prefetching_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', title='prefetching_ops'>prefetching_ops</a>
+<span class='lineno'>  22</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/data/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../../python/data/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops', title='ops'>ops</a> import <a href='../../../python/data/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops', title='iterator_ops'>iterator_ops</a>
+<span class='lineno'>  23</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/eager/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', title='eager'>eager</a> import <a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>
+<span class='lineno'>  24</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', title='<Iterator>'>Iterator</a>(<a href='../../../python/data/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops', title='iterator_ops'>iterator_ops</a>.<a href='../../../python/data/ops/iterator_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops.EagerIterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.iterator_ops.EagerIterator', title='<EagerIterator>'>EagerIterator</a>):
+<span class='lineno'>  28</span>   &quot;&quot;&quot;An iterator producing tf.Tensor objects from a tf.data.Dataset.
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   NOTE: Unlike the iterator created by the
+<span class='lineno'>  31</span>   `tf.data.Dataset.make_one_shot_iterator` method, this class enables
+<span class='lineno'>  32</span>   additional experimental functionality, such as prefetching to the GPU.
+<span class='lineno'>  33</span>   &quot;&quot;&quot;
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.self', title='Iterator'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='None'>dataset</a>):
+<span class='lineno'>  36</span>     &quot;&quot;&quot;Creates a new iterator over the given dataset.
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>     For example:
+<span class='lineno'>  39</span>     ```python
+<span class='lineno'>  40</span>     dataset = tf.data.Dataset.range(4)
+<span class='lineno'>  41</span>     for x in Iterator(dataset):
+<span class='lineno'>  42</span>       print(x)
+<span class='lineno'>  43</span>     ```
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>     Tensors produced will be placed on the device on which this iterator object
+<span class='lineno'>  46</span>     was created.
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span>     Args:
+<span class='lineno'>  49</span>       dataset: A `tf.data.Dataset` object.
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>     Raises:
+<span class='lineno'>  52</span>       TypeError: If `dataset` is an unsupported type.
+<span class='lineno'>  53</span>       RuntimeError: When invoked without eager execution enabled.
+<span class='lineno'>  54</span>     &quot;&quot;&quot;
+<span class='lineno'>  55</span>     if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='None'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='_PrefetchToDeviceDataset'>dataset</a></a>, <a href='../../../python/data/experimental/ops/prefetching_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', title='prefetching_ops'>prefetching_ops</a>.<a href='../../../python/data/experimental/ops/prefetching_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops._PrefetchToDeviceDataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops._PrefetchToDeviceDataset', title='<_PrefetchToDeviceDataset>'>_PrefetchToDeviceDataset</a>):  # pylint: disable=protected-access
+<span class='lineno'>  56</span>       raise TypeError(
+<span class='lineno'>  57</span>           &quot;`tf.data.experimental.prefetch_to_device()` is not compatible with &quot;
+<span class='lineno'>  58</span>           &quot;`tf.contrib.eager.Iterator`. Use `for ... in dataset:` to iterate &quot;
+<span class='lineno'>  59</span>           &quot;over the dataset instead.&quot;)
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>     if not <a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', title='{() -> Context | () -> Context}'>context</a>().<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_spec', title='Context -> DeviceSpec'>device_spec</a>.device_type:
+<span class='lineno'>  62</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', title='bool'>is_remote_device</a> = False
+<span class='lineno'>  63</span>     else:
+<span class='lineno'>  64</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', title='bool'>is_remote_device</a> = <a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', title='{() -> Context | () -> Context}'>context</a>().<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_spec', title='Context -> DeviceSpec'>device_spec</a>.device_type != &quot;CPU&quot;
+<span class='lineno'>  65</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.is_remote_device', title='bool'>is_remote_device</a>:
+<span class='lineno'>  66</span>       with <a href='../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.device', title='(_ReplicaDeviceChooser, ?) -> str -> ? / ? -> ? -> None / Variable -> None -> None / VariableDeviceChooser -> None / None -> None / str -> None / ? -> None / Operation -> None -> None / Context -> str -> None / IndexedSlices -> None -> None'>device</a>(None):
+<span class='lineno'>  67</span>         # Let the placer figure out where to place the various functions etc.
+<span class='lineno'>  68</span>         # created by the CopyToDeviceDataset.
+<span class='lineno'>  69</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='_CopyToDeviceDataset'>dataset</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='{None | _PrefetchToDeviceDataset}'>dataset</a>.<a href='../../../python/data/ops/dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset.apply', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset.apply', title='(Dataset, ?) -> None / (TFRecordDataset, TFRecordDataset -> _PrefetchToDeviceDataset) -> _PrefetchToDeviceDataset / (_PrefetchToDeviceDataset, _PrefetchToDeviceDataset -> _CopyToDeviceDataset) -> _CopyToDeviceDataset / (MapDataset, TFRecordDataset -> _ShuffleAndRepeatDataset / MapDataset -> _ShuffleAndRepeatDataset) -> _ShuffleAndRepeatDataset / (ShuffleDataset, ShuffleDataset -> ParallelInterleaveDataset) -> ParallelInterleaveDataset / (TFRecordDataset, TFRecordDataset -> _ShuffleAndRepeatDataset / MapDataset -> _ShuffleAndRepeatDataset) -> _ShuffleAndRepeatDataset / (RepeatDataset, RepeatDataset -> _ScanDataset) -> _ScanDataset'>apply</a>(<a href='../../../python/data/experimental/ops/prefetching_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops', title='prefetching_ops'>prefetching_ops</a>.<a href='../../../python/data/experimental/ops/prefetching_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops.copy_to_device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.prefetching_ops.copy_to_device', title='(?, str) -> ? -> ? / (Context -> str, str) -> _PrefetchToDeviceDataset -> _CopyToDeviceDataset'>copy_to_device</a>(
+<span class='lineno'>  70</span>             <a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.context', title='{() -> Context | () -> Context}'>context</a>().<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.Context.device_name', title='Context -> str'>device_name</a>))
+<span class='lineno'>  71</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='PrefetchDataset'>dataset</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='_CopyToDeviceDataset'>dataset</a>.<a href='../../../python/data/ops/dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset.prefetch', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset.prefetch', title='(Dataset, ?) -> PrefetchDataset / (_PerDeviceGenerator, int) -> PrefetchDataset / (_CopyToDeviceDataset, int) -> PrefetchDataset / (MapDataset, int) -> PrefetchDataset'>prefetch</a>(1)
+<span class='lineno'>  72</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', title='<Iterator>'>Iterator</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.self', title='Iterator'>self</a>).__init__(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator.__init__.dataset', title='{None | PrefetchDataset | _PrefetchToDeviceDataset}'>dataset</a>)
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal', title='Iterator -> None'>_next_internal</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal.self', title='Iterator'>self</a>):
+<span class='lineno'>  75</span>     &quot;&quot;&quot;Returns a nested structure of `tf.Tensor`s containing the next element.
+<span class='lineno'>  76</span>     &quot;&quot;&quot;
+<span class='lineno'>  77</span>     # This runs in sync mode as iterators use an error status to communicate
+<span class='lineno'>  78</span>     # that there is no more data to iterate over.
+<span class='lineno'>  79</span>     # TODO(b/77291417): Fix
+<span class='lineno'>  80</span>     with <a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.execution_mode', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.execution_mode', title='? -> None / int -> None'>execution_mode</a>(<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../../python/eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.SYNC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.SYNC', title='int'>SYNC</a>):
+<span class='lineno'>  81</span>       return super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator', title='<Iterator>'>Iterator</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.eager.python.datasets.Iterator._next_internal.self', title='Iterator'>self</a>)._next_internal()
+</pre></td></tr></table></body></html>

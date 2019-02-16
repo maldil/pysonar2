@@ -553,12 +553,10 @@ public class Analyzer {
                 && binding.refs.isEmpty());
     }
 
-    public void close()
-    {
+    public void close() {
         astCache.close();
         $.sleep(10);
-        if (!$.deleteDirectory($.getTempDir()))
-        {
+        if (!$.deleteDirectory($.getTempDir())) {
             $.msg("Failed to delete temp dir: " + $.getTempDir());
         }
     }

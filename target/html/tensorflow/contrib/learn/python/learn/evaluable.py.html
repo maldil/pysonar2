@@ -1,0 +1,190 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/evaluable.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable'>Evaluable</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.__metaclass__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.__metaclass__'>__metaclass__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir'>model_dir</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate'>evaluate</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;`Evaluable` interface (deprecated).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import abc
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable', title='<Evaluable>'>Evaluable</a>(object):
+<span class='lineno'>  30</span>   &quot;&quot;&quot;Interface for objects that are evaluatable by, e.g., `Experiment`.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   THIS CLASS IS DEPRECATED. See
+<span class='lineno'>  33</span>   [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  34</span>   for general migration instructions.
+<span class='lineno'>  35</span>   &quot;&quot;&quot;
+<span class='lineno'>  36</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.__metaclass__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.__metaclass__', title='?'>__metaclass__</a> = abc.ABCMeta
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   @abc.abstractproperty
+<span class='lineno'>  39</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir', title='Evaluable -> None'>model_dir</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.model_dir.self', title='Evaluable'>self</a>):
+<span class='lineno'>  40</span>     &quot;&quot;&quot;Returns a path in which the eval process will look for checkpoints.&quot;&quot;&quot;
+<span class='lineno'>  41</span>     raise NotImplementedError
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   @abc.abstractmethod
+<span class='lineno'>  44</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate', title='(Evaluable, None, None, None, None, None, None, None, None, None, None) -> None'>evaluate</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.self', title='Evaluable'>self</a>,
+<span class='lineno'>  45</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.x', title='None'>x</a>=None,
+<span class='lineno'>  46</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.y', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.y', title='None'>y</a>=None,
+<span class='lineno'>  47</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.input_fn', title='None'>input_fn</a>=None,
+<span class='lineno'>  48</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.feed_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.feed_fn', title='None'>feed_fn</a>=None,
+<span class='lineno'>  49</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.batch_size', title='None'>batch_size</a>=None,
+<span class='lineno'>  50</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.steps', title='None'>steps</a>=None,
+<span class='lineno'>  51</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.metrics', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.metrics', title='None'>metrics</a>=None,
+<span class='lineno'>  52</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.name', title='None'>name</a>=None,
+<span class='lineno'>  53</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.checkpoint_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.checkpoint_path', title='None'>checkpoint_path</a>=None,
+<span class='lineno'>  54</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.evaluable.Evaluable.evaluate.hooks', title='None'>hooks</a>=None):
+<span class='lineno'>  55</span>     &quot;&quot;&quot;Evaluates given model with provided evaluation data.
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>     Stop conditions - we evaluate on the given input data until one of the
+<span class='lineno'>  58</span>     following:
+<span class='lineno'>  59</span>     - If `steps` is provided, and `steps` batches of size `batch_size` are
+<span class='lineno'>  60</span>     processed.
+<span class='lineno'>  61</span>     - If `input_fn` is provided, and it raises an end-of-input
+<span class='lineno'>  62</span>     exception (`OutOfRangeError` or `StopIteration`).
+<span class='lineno'>  63</span>     - If `x` is provided, and all items in `x` have been processed.
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span>     The return value is a dict containing the metrics specified in `metrics`, as
+<span class='lineno'>  66</span>     well as an entry `global_step` which contains the value of the global step
+<span class='lineno'>  67</span>     for which this evaluation was performed.
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>     Args:
+<span class='lineno'>  70</span>       x: Matrix of shape [n_samples, n_features...] or dictionary of many
+<span class='lineno'>  71</span>         matrices
+<span class='lineno'>  72</span>         containing the input samples for fitting the model. Can be iterator that
+<span class='lineno'>  73</span>           returns
+<span class='lineno'>  74</span>         arrays of features or dictionary of array of features. If set,
+<span class='lineno'>  75</span>           `input_fn` must
+<span class='lineno'>  76</span>         be `None`.
+<span class='lineno'>  77</span>       y: Vector or matrix [n_samples] or [n_samples, n_outputs] containing the
+<span class='lineno'>  78</span>         label values (class labels in classification, real numbers in
+<span class='lineno'>  79</span>         regression) or dictionary of multiple vectors/matrices. Can be iterator
+<span class='lineno'>  80</span>         that returns array of targets or dictionary of array of targets. If set,
+<span class='lineno'>  81</span>         `input_fn` must be `None`. Note: For classification, label values must
+<span class='lineno'>  82</span>         be integers representing the class index (i.e. values from 0 to
+<span class='lineno'>  83</span>         n_classes-1).
+<span class='lineno'>  84</span>       input_fn: Input function returning a tuple of:
+<span class='lineno'>  85</span>         features - Dictionary of string feature name to `Tensor` or `Tensor`.
+<span class='lineno'>  86</span>         labels - `Tensor` or dictionary of `Tensor` with labels.
+<span class='lineno'>  87</span>         If input_fn is set, `x`, `y`, and `batch_size` must be `None`. If
+<span class='lineno'>  88</span>         `steps` is not provided, this should raise `OutOfRangeError` or
+<span class='lineno'>  89</span>         `StopIteration` after the desired amount of data (e.g., one epoch) has
+<span class='lineno'>  90</span>         been provided. See &quot;Stop conditions&quot; above for specifics.
+<span class='lineno'>  91</span>       feed_fn: Function creating a feed dict every time it is called. Called
+<span class='lineno'>  92</span>         once per iteration. Must be `None` if `input_fn` is provided.
+<span class='lineno'>  93</span>       batch_size: minibatch size to use on the input, defaults to first
+<span class='lineno'>  94</span>         dimension of `x`, if specified. Must be `None` if `input_fn` is
+<span class='lineno'>  95</span>         provided.
+<span class='lineno'>  96</span>       steps: Number of steps for which to evaluate model. If `None`, evaluate
+<span class='lineno'>  97</span>         until `x` is consumed or `input_fn` raises an end-of-input exception.
+<span class='lineno'>  98</span>         See &quot;Stop conditions&quot; above for specifics.
+<span class='lineno'>  99</span>       metrics: Dict of metrics to run. If None, the default metric functions
+<span class='lineno'> 100</span>         are used; if {}, no metrics are used. Otherwise, `metrics` should map
+<span class='lineno'> 101</span>         friendly names for the metric to a `MetricSpec` object defining which
+<span class='lineno'> 102</span>         model outputs to evaluate against which labels with which metric
+<span class='lineno'> 103</span>         function.
+<span class='lineno'> 104</span>         Metric ops should support streaming, e.g., returning `update_op` and
+<span class='lineno'> 105</span>         `value` tensors. For example, see the options defined in
+<span class='lineno'> 106</span>         `../../../metrics/python/ops/metrics_ops.py`.
+<span class='lineno'> 107</span>       name: Name of the evaluation if user needs to run multiple evaluations on
+<span class='lineno'> 108</span>         different data sets, such as on training data vs test data.
+<span class='lineno'> 109</span>       checkpoint_path: Path of a specific checkpoint to evaluate. If `None`, the
+<span class='lineno'> 110</span>         latest checkpoint in `model_dir` is used.
+<span class='lineno'> 111</span>       hooks: List of `SessionRunHook` subclass instances. Used for callbacks
+<span class='lineno'> 112</span>         inside the evaluation call.
+<span class='lineno'> 113</span> 
+<span class='lineno'> 114</span>     Returns:
+<span class='lineno'> 115</span>       Returns `dict` with evaluation results.
+<span class='lineno'> 116</span>     &quot;&quot;&quot;
+<span class='lineno'> 117</span>     raise NotImplementedError
+</pre></td></tr></table></body></html>

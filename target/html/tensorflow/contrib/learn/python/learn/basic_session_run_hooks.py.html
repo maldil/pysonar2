@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/basic_session_run_hooks.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.LoggingTensorHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.LoggingTensorHook'>LoggingTensorHook</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StopAtStepHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StopAtStepHook'>StopAtStepHook</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.CheckpointSaverHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.CheckpointSaverHook'>CheckpointSaverHook</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StepCounterHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StepCounterHook'>StepCounterHook</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanLossDuringTrainingError', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanLossDuringTrainingError'>NanLossDuringTrainingError</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanTensorHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanTensorHook'>NanTensorHook</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.SummarySaverHook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.SummarySaverHook'>SummarySaverHook</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Some common SessionRunHook classes (deprected).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a> import <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>
+<span class='lineno'>  27</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a> import <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> # pylint: disable=invalid-name
+<span class='lineno'>  30</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.LoggingTensorHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.LoggingTensorHook', title='{() -> LoggingTensorHook | <_NewClass>}'>LoggingTensorHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  31</span>     &#39;tf.contrib.learn.basic_session_run_hooks.LoggingTensorHook&#39;,
+<span class='lineno'>  32</span>     &#39;tf.train.LoggingTensorHook&#39;,
+<span class='lineno'>  33</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.LoggingTensorHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.LoggingTensorHook', title='<LoggingTensorHook>'>LoggingTensorHook</a>)
+<span class='lineno'>  34</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StopAtStepHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StopAtStepHook', title='{<_NewClass> | ? -> ?}'>StopAtStepHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  35</span>     &#39;tf.contrib.learn.basic_session_run_hooks.StopAtStepHook&#39;,
+<span class='lineno'>  36</span>     &#39;tf.train.StopAtStepHook&#39;,
+<span class='lineno'>  37</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.StopAtStepHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.StopAtStepHook', title='<StopAtStepHook>'>StopAtStepHook</a>)
+<span class='lineno'>  38</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.CheckpointSaverHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.CheckpointSaverHook', title='{<_NewClass> | ? -> ?}'>CheckpointSaverHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  39</span>     &#39;tf.contrib.learn.basic_session_run_hooks.CheckpointSaverHook&#39;,
+<span class='lineno'>  40</span>     &#39;tf.train.CheckpointSaverHook&#39;,
+<span class='lineno'>  41</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.CheckpointSaverHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.CheckpointSaverHook', title='<CheckpointSaverHook>'>CheckpointSaverHook</a>)
+<span class='lineno'>  42</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StepCounterHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.StepCounterHook', title='{<_NewClass> | ? -> ?}'>StepCounterHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  43</span>     &#39;tf.contrib.learn.basic_session_run_hooks.StepCounterHook&#39;,
+<span class='lineno'>  44</span>     &#39;tf.train.StepCounterHook&#39;,
+<span class='lineno'>  45</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.StepCounterHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.StepCounterHook', title='<StepCounterHook>'>StepCounterHook</a>)
+<span class='lineno'>  46</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanLossDuringTrainingError', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanLossDuringTrainingError', title='{<_NewClass> | ? -> ?}'>NanLossDuringTrainingError</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  47</span>     &#39;tf.contrib.learn.basic_session_run_hooks.NanLossDuringTrainingError&#39;,
+<span class='lineno'>  48</span>     &#39;tf.train.NanLossDuringTrainingError&#39;,
+<span class='lineno'>  49</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.NanLossDuringTrainingError', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.NanLossDuringTrainingError', title='<NanLossDuringTrainingError>'>NanLossDuringTrainingError</a>)
+<span class='lineno'>  50</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanTensorHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.NanTensorHook', title='{<_NewClass> | ? -> ?}'>NanTensorHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  51</span>     &#39;tf.contrib.learn.basic_session_run_hooks.NanTensorHook&#39;,
+<span class='lineno'>  52</span>     &#39;tf.train.NanTensorHook&#39;,
+<span class='lineno'>  53</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.NanTensorHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.NanTensorHook', title='<NanTensorHook>'>NanTensorHook</a>)
+<span class='lineno'>  54</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.SummarySaverHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.basic_session_run_hooks.SummarySaverHook', title='{<_NewClass> | ? -> ?}'>SummarySaverHook</a> = <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated_alias', title='(str, str, <SummarySaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <CheckpointSaverHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <LoggingTensorHook>, bool) -> {() -> LoggingTensorHook | <_NewClass>} / (str, str, <StopAtStepHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <StepCounterHook>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanLossDuringTrainingError>, bool) -> {<_NewClass> | ? -> ?} / (str, str, <NanTensorHook>, bool) -> {<_NewClass> | ? -> ?}'>deprecated_alias</a>(
+<span class='lineno'>  55</span>     &#39;tf.contrib.learn.basic_session_run_hooks.SummarySaverHook&#39;,
+<span class='lineno'>  56</span>     &#39;tf.train.SummarySaverHook&#39;,
+<span class='lineno'>  57</span>     <a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks', title='basic_session_run_hooks'>basic_session_run_hooks</a>.<a href='../../../../python/training/basic_session_run_hooks.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.SummarySaverHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.basic_session_run_hooks.SummarySaverHook', title='<SummarySaverHook>'>SummarySaverHook</a>)
+<span class='lineno'>  58</span> # pylint: enable=invalid-name
+</pre></td></tr></table></body></html>

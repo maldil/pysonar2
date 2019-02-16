@@ -1,0 +1,219 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/autograph/pyct/compiler.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source'>ast_to_source</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object'>ast_to_object</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Converting AST to code.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> Adapted from Tangent.
+<span class='lineno'>  18</span> &quot;&quot;&quot;
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from __future__ import absolute_import
+<span class='lineno'>  21</span> from __future__ import division
+<span class='lineno'>  22</span> from __future__ import print_function
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> # TODO(mdan): Use six for compatibility here.
+<span class='lineno'>  25</span> import atexit
+<span class='lineno'>  26</span> import imp
+<span class='lineno'>  27</span> import os
+<span class='lineno'>  28</span> import tempfile
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> import astor
+<span class='lineno'>  31</span> import gast
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph', title='autograph'>autograph</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct', title='pyct'>pyct</a> import <a href='origin_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info', title='origin_info'>origin_info</a>
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source', title='(?, str) -> str / (None, str) -> str / ({[?] | [?]}, str) -> str'>ast_to_source</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', title='{? | None | [?] | [?]}'>node</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.indentation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.indentation', title='str'>indentation</a>=&#39;  &#39;):
+<span class='lineno'>  37</span>   &quot;&quot;&quot;Return the source code of given AST.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   Args:
+<span class='lineno'>  40</span>     node: The code to compile, as an AST object.
+<span class='lineno'>  41</span>     indentation: The string to use for indentation.
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   Returns:
+<span class='lineno'>  44</span>     code: The source code generated from the AST object
+<span class='lineno'>  45</span>     source_mapping: A mapping between the user and AutoGraph generated code.
+<span class='lineno'>  46</span>   &quot;&quot;&quot;
+<span class='lineno'>  47</span>   if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', title='{? | None | [?] | [?]}'>node</a>, (list, tuple)):
+<span class='lineno'>  48</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', title='{? | None | [?] | [?]}'>node</a> = (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', title='{? | None | [?] | [?]}'>node</a>,)
+<span class='lineno'>  49</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', title='?'>generator</a> = astor.codegen.SourceGenerator(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.indentation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.indentation', title='str'>indentation</a>, False,
+<span class='lineno'>  50</span>                                             astor.string_repr.pretty_string)
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'>n</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.node', title='{? | ? | None | None | [?] | [?] | {[?] | [?]}}'>node</a>:
+<span class='lineno'>  53</span>     if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'>n</a></a>, gast.AST):
+<span class='lineno'>  54</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'>n</a> = gast.gast_to_ast(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'>n</a>)
+<span class='lineno'>  55</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', title='?'>generator</a>.visit(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.n', title='?'>n</a>)
+<span class='lineno'>  56</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', title='?'>generator</a>.result.append(&#39;\n&#39;)
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   # In some versions of Python, literals may appear as actual values. This
+<span class='lineno'>  59</span>   # ensures everything is string.
+<span class='lineno'>  60</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', title='str'>code</a> = &#39;&#39;.join(map(str, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.generator', title='?'>generator</a>.result))
+<span class='lineno'>  61</span> 
+<span class='lineno'>  62</span>   # Strip leading blank lines.
+<span class='lineno'>  63</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code_lines', title='[str]'>code_lines</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', title='str'>code</a>.split(&#39;\n&#39;)
+<span class='lineno'>  64</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', title='[str]'>trimmed_code_lines</a> = []
+<span class='lineno'>  65</span>   for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', title='str'>l</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code_lines', title='[str]'>code_lines</a>:
+<span class='lineno'>  66</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', title='str'>l</a>.rstrip() or <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', title='[str]'>trimmed_code_lines</a>:
+<span class='lineno'>  67</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', title='[str]'>trimmed_code_lines</a>.append(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.l', title='str'>l</a>)
+<span class='lineno'>  68</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', title='str'>code</a> = &#39;\n&#39;.join(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.trimmed_code_lines', title='[str]'>trimmed_code_lines</a>)
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source.code', title='str'>code</a>
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object', title='(?, str, bool, None, bool) -> (<?>, str) / ([?], str, bool, None, bool) -> (<?>, str)'>ast_to_object</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='[?]'>nodes</a>,
+<span class='lineno'>  74</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indentation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indentation', title='str'>indentation</a>=&#39;  &#39;,
+<span class='lineno'>  75</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', title='bool'>include_source_map</a>=False,
+<span class='lineno'>  76</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', title='None'>source_prefix</a>=None,
+<span class='lineno'>  77</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.delete_on_exit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.delete_on_exit', title='bool'>delete_on_exit</a>=True):
+<span class='lineno'>  78</span>   &quot;&quot;&quot;Return the Python objects represented by given AST.
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>   Compiling the AST code this way ensures that the source code is readable by
+<span class='lineno'>  81</span>   e.g. `pdb` or `inspect`.
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   Args:
+<span class='lineno'>  84</span>     nodes: Union[ast.AST, Iterable[ast.AST]], the code to compile, as an AST
+<span class='lineno'>  85</span>         object.
+<span class='lineno'>  86</span>     indentation: Text, the string to use for indentation.
+<span class='lineno'>  87</span>     include_source_map: bool, whether to attach a source map to the compiled
+<span class='lineno'>  88</span>         object. Also see origin_info.py.
+<span class='lineno'>  89</span>     source_prefix: Optional[Text], string to print as-is into the source file.
+<span class='lineno'>  90</span>     delete_on_exit: bool, whether to delete the temporary file used for
+<span class='lineno'>  91</span>         compilation on exit.
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>   Returns:
+<span class='lineno'>  94</span>     compiled_nodes: A module object containing the compiled source code.
+<span class='lineno'>  95</span>     source: The source code of the compiled object
+<span class='lineno'>  96</span>   Raises:
+<span class='lineno'>  97</span>     ValueError: If ag_source_map__ is already in the namespace of the compiled
+<span class='lineno'>  98</span>     nodes.
+<span class='lineno'>  99</span>   &quot;&quot;&quot;
+<span class='lineno'> 100</span>   if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='[?]'>nodes</a>, (list, tuple)):
+<span class='lineno'> 101</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='[?]'>nodes</a> = (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='[?]'>nodes</a>,)
+<span class='lineno'> 102</span> 
+<span class='lineno'> 103</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_source', title='(?, str) -> str / (None, str) -> str / ({[?] | [?]}, str) -> str'>ast_to_source</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='{? | [?] | [?]}'>nodes</a>, indentation=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indentation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indentation', title='str'>indentation</a>)
+<span class='lineno'> 104</span> 
+<span class='lineno'> 105</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', title='None'>source_prefix</a>:
+<span class='lineno'> 106</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_prefix', title='None'>source_prefix</a> + &#39;\n&#39; + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a>
+<span class='lineno'> 107</span> 
+<span class='lineno'> 108</span>   with tempfile.NamedTemporaryFile(mode=&#39;w&#39;, suffix=&#39;.py&#39;, delete=False) as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>:
+<span class='lineno'> 109</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.module_name', title='str'>module_name</a> = os.path.basename(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>.name[:-3])
+<span class='lineno'> 110</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>.write(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a>)
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span>     if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='{? | [?] | [?]}'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='(? -> list, ? -> tuple)'>nodes</a></a>, (list, tuple)):
+<span class='lineno'> 113</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', title='[int]'>indices</a> = range(-len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='(? -> list, ? -> tuple)'>nodes</a>), 0)
+<span class='lineno'> 114</span>     else:
+<span class='lineno'> 115</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', title='int'>indices</a> = (-1,)
+<span class='lineno'> 116</span> 
+<span class='lineno'> 117</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', title='bool'>include_source_map</a>:
+<span class='lineno'> 118</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map', title='dict'>source_map</a> = <a href='origin_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info', title='origin_info'>origin_info</a>.<a href='origin_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info.create_source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.origin_info.create_source_map', title='(?, ?, ?, ?) -> dict / ({(? -> list, ? -> tuple) | [?] | [?]}, str, ?, {[int] | int}) -> dict / ({(? -> list, ? -> tuple) | ?}, str, ?, {[int] | int}) -> dict'>create_source_map</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.nodes', title='{(? -> list, ? -> tuple) | ? | [?] | [?]}'>nodes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>.name, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.indices', title='{[int] | int}'>indices</a>)
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span>   # TODO(mdan): Try flush() and delete=False instead.
+<span class='lineno'> 121</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.delete_on_exit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.delete_on_exit', title='bool'>delete_on_exit</a>:
+<span class='lineno'> 122</span>     atexit.register(lambda: os.remove(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>.name))
+<span class='lineno'> 123</span>   <a name='<?>', xid ='<?>', title='<?>'>compiled_nodes</a> = imp.load_source(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.module_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.module_name', title='str'>module_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.f', title='?'>f</a>.name)
+<span class='lineno'> 124</span> 
+<span class='lineno'> 125</span>   # TODO(znado): Clean this up so we don&#39;t need to attach it to the namespace.
+<span class='lineno'> 126</span>   # TODO(znado): This does not work for classes because their methods share a
+<span class='lineno'> 127</span>   # namespace.
+<span class='lineno'> 128</span>   # This attaches the source map which is needed for error handling.  Note that
+<span class='lineno'> 129</span>   # api.to_graph copies this source map into an attribute of the function.
+<span class='lineno'> 130</span>   #
+<span class='lineno'> 131</span>   # We need this so the ag_source_map__ variable is available to the call to
+<span class='lineno'> 132</span>   # rewrite_graph_construction_error in the except block inside each function
+<span class='lineno'> 133</span>   # that handles graph construction errors.
+<span class='lineno'> 134</span>   #
+<span class='lineno'> 135</span>   # We cannot get the rewritten function name until it is too late so templating
+<span class='lineno'> 136</span>   # is hard, and this cleanly fixes the
+<span class='lineno'> 137</span>   # issues encountered with nested functions because this is attached to the
+<span class='lineno'> 138</span>   # outermost one.
+<span class='lineno'> 139</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.include_source_map', title='bool'>include_source_map</a>:
+<span class='lineno'> 140</span>     # TODO(mdan): This name should be decided by the caller.
+<span class='lineno'> 141</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', title='str'>source_map_name</a> = &#39;ag_source_map__&#39;
+<span class='lineno'> 142</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', title='str'>source_map_name</a> in compiled_nodes.__dict__:
+<span class='lineno'> 143</span>       raise ValueError(&#39;cannot convert %s because is has namespace attribute &#39;
+<span class='lineno'> 144</span>                        &#39;&quot;%s&quot;, which is reserved for AutoGraph.&#39; %
+<span class='lineno'> 145</span>                        (compiled_nodes, source_map_name))
+<span class='lineno'> 146</span>     compiled_nodes.__dict__[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map_name', title='str'>source_map_name</a>] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source_map', title='dict'>source_map</a>
+<span class='lineno'> 147</span> 
+<span class='lineno'> 148</span>   return compiled_nodes, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.compiler.ast_to_object.source', title='str'>source</a>
+</pre></td></tr></table></body></html>

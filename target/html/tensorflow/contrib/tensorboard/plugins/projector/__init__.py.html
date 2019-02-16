@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/tensorboard/plugins/projector/__init__.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings'>visualize_embeddings</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Public API for the Embedding Projector.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> @@ProjectorPluginAsset
+<span class='lineno'>  18</span> @@ProjectorConfig
+<span class='lineno'>  19</span> @@EmbeddingInfo
+<span class='lineno'>  20</span> @@EmbeddingMetadata
+<span class='lineno'>  21</span> @@SpriteMetadata
+<span class='lineno'>  22</span> &quot;&quot;&quot;
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> from __future__ import absolute_import
+<span class='lineno'>  25</span> from __future__ import division
+<span class='lineno'>  26</span> from __future__ import print_function
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> import os
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> from google.protobuf import text_format
+<span class='lineno'>  31</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard', title='tensorboard'>tensorboard</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins', title='plugins'>plugins</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector', title='projector'>projector</a> import <a href='projector_config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.projector_config_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.projector_config_pb2', title='projector_config_pb2'>projector_config_pb2</a>
+<span class='lineno'>  32</span> # pylint: disable=wildcard-import
+<span class='lineno'>  33</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard', title='tensorboard'>tensorboard</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins', title='plugins'>plugins</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector', title='projector'>projector</a>.<a href='projector_config_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.projector_config_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.projector_config_pb2', title='projector_config_pb2'>projector_config_pb2</a> import *
+<span class='lineno'>  34</span> # pylint: enable=wildcard-import
+<span class='lineno'>  35</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/lib/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib', title='lib'>lib</a>.<a href='../../../../python/lib/io/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io', title='io'>io</a> import <a href='../../../../python/lib/io/file_io.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io', title='file_io'>file_io</a>
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings', title='(?, ?) -> None'>visualize_embeddings</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.summary_writer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.summary_writer', title='?'>summary_writer</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config', title='?'>config</a>):
+<span class='lineno'>  39</span>   &quot;&quot;&quot;Stores a config file used by the embedding projector.
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span>   Args:
+<span class='lineno'>  42</span>     summary_writer: The summary writer used for writing events.
+<span class='lineno'>  43</span>     config: `tf.contrib.tensorboard.plugins.projector.ProjectorConfig`
+<span class='lineno'>  44</span>       proto that holds the configuration for the projector such as paths to
+<span class='lineno'>  45</span>       checkpoint files and metadata files for the embeddings. If
+<span class='lineno'>  46</span>       `config.model_checkpoint_path` is none, it defaults to the
+<span class='lineno'>  47</span>       `logdir` used by the summary_writer.
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   Raises:
+<span class='lineno'>  50</span>     ValueError: If the summary writer does not have a `logdir`.
+<span class='lineno'>  51</span>   &quot;&quot;&quot;
+<span class='lineno'>  52</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', title='?'>logdir</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.summary_writer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.summary_writer', title='?'>summary_writer</a>.get_logdir()
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   # Sanity checks.
+<span class='lineno'>  55</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', title='?'>logdir</a> is None:
+<span class='lineno'>  56</span>     raise ValueError(&#39;Summary writer must have a logdir&#39;)
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   # Saving the config file in the logdir.
+<span class='lineno'>  59</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config_pbtxt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config_pbtxt', title='?'>config_pbtxt</a> = text_format.MessageToString(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config', title='?'>config</a>)
+<span class='lineno'>  60</span>   # FYI - the &#39;projector_config.pbtxt&#39; string is hardcoded in the projector
+<span class='lineno'>  61</span>   # plugin.
+<span class='lineno'>  62</span>   # TODO(dandelion): Restore this to a reference to the projector plugin
+<span class='lineno'>  63</span>   <a href='../../../../python/lib/io/file_io.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io', title='file_io'>file_io</a>.<a href='../../../../python/lib/io/file_io.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io.write_string_to_file', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.lib.io.file_io.write_string_to_file', title='(str, None) -> None / (str, ?) -> None / (?, ?) -> None / (str, str) -> None'>write_string_to_file</a>(
+<span class='lineno'>  64</span>       os.path.join(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.logdir', title='?'>logdir</a>, &#39;projector_config.pbtxt&#39;), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config_pbtxt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensorboard.plugins.projector.visualize_embeddings.config_pbtxt', title='?'>config_pbtxt</a>)
+</pre></td></tr></table></body></html>

@@ -1,0 +1,179 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/signal/python/ops/mfcc_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms'>mfccs_from_log_mel_spectrograms</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Mel-Frequency Cepstral Coefficients (MFCCs) ops.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  23</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>
+<span class='lineno'>  24</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>
+<span class='lineno'>  25</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../python/ops/spectral_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops', title='spectral_ops'>spectral_ops</a>
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms', title='(?, None) -> float'>mfccs_from_log_mel_spectrograms</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='?'>log_mel_spectrograms</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.name', title='None'>name</a>=None):
+<span class='lineno'>  29</span>   &quot;&quot;&quot;Computes [MFCCs][mfcc] of `log_mel_spectrograms`.
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span>   Implemented with GPU-compatible ops and supports gradients.
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>   [Mel-Frequency Cepstral Coefficient (MFCC)][mfcc] calculation consists of
+<span class='lineno'>  34</span>   taking the DCT-II of a log-magnitude mel-scale spectrogram. [HTK][htk]&#39;s MFCCs
+<span class='lineno'>  35</span>   use a particular scaling of the DCT-II which is almost orthogonal
+<span class='lineno'>  36</span>   normalization. We follow this convention.
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   All `num_mel_bins` MFCCs are returned and it is up to the caller to select
+<span class='lineno'>  39</span>   a subset of the MFCCs based on their application. For example, it is typical
+<span class='lineno'>  40</span>   to only use the first few for speech recognition, as this results in
+<span class='lineno'>  41</span>   an approximately pitch-invariant representation of the signal.
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   For example:
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   ```python
+<span class='lineno'>  46</span>   sample_rate = 16000.0
+<span class='lineno'>  47</span>   # A Tensor of [batch_size, num_samples] mono PCM samples in the range [-1, 1].
+<span class='lineno'>  48</span>   pcm = tf.placeholder(tf.float32, [None, None])
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span>   # A 1024-point STFT with frames of 64 ms and 75% overlap.
+<span class='lineno'>  51</span>   stfts = tf.contrib.signal.stft(pcm, frame_length=1024, frame_step=256,
+<span class='lineno'>  52</span>                                  fft_length=1024)
+<span class='lineno'>  53</span>   spectrograms = tf.abs(stfts)
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span>   # Warp the linear scale spectrograms into the mel-scale.
+<span class='lineno'>  56</span>   num_spectrogram_bins = stfts.shape[-1].value
+<span class='lineno'>  57</span>   lower_edge_hertz, upper_edge_hertz, num_mel_bins = 80.0, 7600.0, 80
+<span class='lineno'>  58</span>   linear_to_mel_weight_matrix = tf.contrib.signal.linear_to_mel_weight_matrix(
+<span class='lineno'>  59</span>     num_mel_bins, num_spectrogram_bins, sample_rate, lower_edge_hertz,
+<span class='lineno'>  60</span>     upper_edge_hertz)
+<span class='lineno'>  61</span>   mel_spectrograms = tf.tensordot(
+<span class='lineno'>  62</span>     spectrograms, linear_to_mel_weight_matrix, 1)
+<span class='lineno'>  63</span>   mel_spectrograms.set_shape(spectrograms.shape[:-1].concatenate(
+<span class='lineno'>  64</span>     linear_to_mel_weight_matrix.shape[-1:]))
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span>   # Compute a stabilized log to get log-magnitude mel-scale spectrograms.
+<span class='lineno'>  67</span>   log_mel_spectrograms = tf.log(mel_spectrograms + 1e-6)
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   # Compute MFCCs from log_mel_spectrograms and take the first 13.
+<span class='lineno'>  70</span>   mfccs = tf.contrib.signal.mfccs_from_log_mel_spectrograms(
+<span class='lineno'>  71</span>     log_mel_spectrograms)[..., :13]
+<span class='lineno'>  72</span>   ```
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   Args:
+<span class='lineno'>  75</span>     log_mel_spectrograms: A `[..., num_mel_bins]` `float32` `Tensor` of
+<span class='lineno'>  76</span>       log-magnitude mel-scale spectrograms.
+<span class='lineno'>  77</span>     name: An optional name for the operation.
+<span class='lineno'>  78</span>   Returns:
+<span class='lineno'>  79</span>     A `[..., num_mel_bins]` `float32` `Tensor` of the MFCCs of
+<span class='lineno'>  80</span>     `log_mel_spectrograms`.
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>   Raises:
+<span class='lineno'>  83</span>     ValueError: If `num_mel_bins` is not positive.
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>   [mfcc]: https://en.wikipedia.org/wiki/Mel-frequency_cepstrum
+<span class='lineno'>  86</span>   [htk]: https://en.wikipedia.org/wiki/HTK_(software)
+<span class='lineno'>  87</span>   &quot;&quot;&quot;
+<span class='lineno'>  88</span>   with <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.name_scope', title='{(None, str, list) -> ? / (None, str, (?, ?, float)) -> {name_scope | variable_scope} / (None, str, [bool]) -> {name_scope | variable_scope} / (None, str, (?, ?, None)) -> {name_scope | variable_scope} / (None, str, [None]) -> {name_scope | variable_scope} / (None, str, [?]) -> {name_scope | variable_scope} / (str, None, None) -> {name_scope | variable_scope} / (None, str, ?) -> {name_scope | variable_scope} / (None, str, [{IndexedSlices | None | SparseTensor}]) -> {name_scope | variable_scope} | <name_scope>}'>name_scope</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.name', title='None'>name</a>, &#39;mfccs_from_log_mel_spectrograms&#39;,
+<span class='lineno'>  89</span>                       [<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='?'>log_mel_spectrograms</a>]):
+<span class='lineno'>  90</span>     # Compute the DCT-II of the resulting log-magnitude mel-scale spectrogram.
+<span class='lineno'>  91</span>     # The DCT used in HTK scales every basis vector by sqrt(2/N), which is the
+<span class='lineno'>  92</span>     # scaling required for an &quot;orthogonal&quot; DCT-II *except* in the 0th bin, where
+<span class='lineno'>  93</span>     # the true orthogonal DCT (as implemented by scipy) scales by sqrt(1/N). For
+<span class='lineno'>  94</span>     # this reason, we don&#39;t apply orthogonal normalization and scale the DCT by
+<span class='lineno'>  95</span>     # `0.5 * sqrt(2/N)` manually.
+<span class='lineno'>  96</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a> = <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.convert_to_tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.convert_to_tensor', title='(SparseTensor -> None, None, None, None) -> ? / (SparseTensor -> None, None, None, None) -> None / ({None | int}, None, None, None) -> None / (int, None, None, None) -> None / (?, None, None, None) -> None / (None, DType, None, None) -> None / (?, DType, None, None) -> None / (None, None, None, None) -> None / ({IndexedSlices | SparseTensor}, None, None, None) -> None / ({IndexedSlices | SparseTensor}, DType, None, None) -> None'>convert_to_tensor</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='?'>log_mel_spectrograms</a>,
+<span class='lineno'>  97</span>                                                  dtype=<a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>)
+<span class='lineno'>  98</span>     if (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a>.shape.ndims and
+<span class='lineno'>  99</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a>.shape[-1].value is not None):
+<span class='lineno'> 100</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', title='?'>num_mel_bins</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a>.shape[-1].value
+<span class='lineno'> 101</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', title='?'>num_mel_bins</a> == 0:
+<span class='lineno'> 102</span>         raise ValueError(&#39;num_mel_bins must be positive. Got: %s&#39; %
+<span class='lineno'> 103</span>                          log_mel_spectrograms)
+<span class='lineno'> 104</span>     else:
+<span class='lineno'> 105</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', title='?'>num_mel_bins</a> = <a href='../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>.<a href='../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.shape', title='({None | [None] | [{[None] | list}] | list}, None, DType) -> ? / (LinearOperatorLowRankUpdate -> None, None, DType) -> None / ({IndexedSlices | SparseTensor}, None, DType) -> None / ({DeferredTensor | [DeferredTensor] | [None]}, None, DType) -> None / (_TensorLike, None, DType) -> None / ({_TensorLike | list}, None, DType) -> None / (?, None, DType) -> None / (SparseTensor, None, DType) -> None / (None, None, DType) -> None'>shape</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a>)[-1]
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.dct2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.dct2', title='float'>dct2</a> = <a href='../../../../python/ops/spectral_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops', title='spectral_ops'>spectral_ops</a>.<a href='../../../../python/ops/spectral_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops.dct', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.spectral_ops.dct', title='(None, int, None, int, None, None) -> float / (?, int, None, int, None, None) -> float'>dct</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.log_mel_spectrograms', title='None'>log_mel_spectrograms</a>)
+<span class='lineno'> 108</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.dct2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.dct2', title='float'>dct2</a> * <a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>.<a href='../../../../python/ops/gen_math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_math_ops.rsqrt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_math_ops.rsqrt', title='(float, None) -> ? / (?, None) -> ? / (None, None) -> ? / ({IndexedSlices | SparseTensor}, None) -> ?'>rsqrt</a>(<a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>.<a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.to_float', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.to_float', title='({None | TensorArray | tuple}, str) -> ? / ({None | float}, str) -> None / (int, str) -> {IndexedSlices | SparseTensor | int} / ({IndexedSlices | SparseTensor}, str) -> None / (None, str) -> {IndexedSlices | SparseTensor} / (?, str) -> None / (float, str) -> None / ([None], str) -> None / (SparseTensor, str) -> None / (None, str) -> None'>to_float</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.signal.python.ops.mfcc_ops.mfccs_from_log_mel_spectrograms.num_mel_bins', title='?'>num_mel_bins</a>) * 2.0)
+</pre></td></tr></table></body></html>

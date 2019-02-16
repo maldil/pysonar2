@@ -1,0 +1,583 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/protobuf/rewriter_config_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE'>_REWRITERCONFIG_TOGGLE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE'>_REWRITERCONFIG_NUMITERATIONSTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE'>_REWRITERCONFIG_MEMOPTTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS'>_AUTOPARALLELOPTIONS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS'>_SCOPEDALLOCATOROPTIONS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG'>_REWRITERCONFIG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions'>AutoParallelOptions</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions'>ScopedAllocatorOptions</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig'>RewriterConfig</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/protobuf/rewriter_config.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%106.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%106.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%106.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%106.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%107.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%107.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%107.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.lambda%107.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import attr_value_pb2 as <a href='../framework/attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/core/protobuf/rewriter_config.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  22</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&#39;\n\030org.tensorflow.frameworkB\024RewriterConfigProtosP\001Z&lt;github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf\370\001\001&#39;),
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&#39;\n.tensorflow/core/protobuf/rewriter_config.proto\x12\ntensorflow\x1a*tensorflow/core/framework/attr_value.proto\&quot;;\n\x13\x41utoParallelOptions\x12\x0e\n\x06\x65nable\x18\x01 \x01(\x08\x12\x14\n\x0cnum_replicas\x18\x02 \x01(\x05\&quot;+\n\x16ScopedAllocatorOptions\x12\x11\n\tenable_op\x18\x01 \x03(\t\&quot;\xb0\r\n\x0eRewriterConfig\x12;\n\x10layout_optimizer\x18\x01 \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12;\n\x10\x63onstant_folding\x18\x03 \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12=\n\x12shape_optimization\x18\r \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x34\n\tremapping\x18\x0e \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x42\n\x17\x61rithmetic_optimization\x18\x07 \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x42\n\x17\x64\x65pendency_optimization\x18\x08 \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12&lt;\n\x11loop_optimization\x18\t \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12@\n\x15\x66unction_optimization\x18\n \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x39\n\x0e\x64\x65\x62ug_stripper\x18\x0b \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x1d\n\x15\x64isable_model_pruning\x18\x02 \x01(\x08\x12H\n\x1dscoped_allocator_optimization\x18\x0f \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x43\n\x18pin_to_host_optimization\x18\x12 \x01(\x0e\x32!.tensorflow.RewriterConfig.Toggle\x12\x1e\n\x16\x64isable_meta_optimizer\x18\x13 \x01(\x08\x12O\n\x19meta_optimizer_iterations\x18\x0c \x01(\x0e\x32,.tensorflow.RewriterConfig.NumIterationsType\x12\x17\n\x0fmin_graph_nodes\x18\x11 \x01(\x05\x12\x42\n\x13memory_optimization\x18\x04 \x01(\x0e\x32%.tensorflow.RewriterConfig.MemOptType\x12/\n\&#39;memory_optimizer_target_node_name_scope\x18\x06 \x01(\t\x12\x36\n\rauto_parallel\x18\x05 \x01(\x0b\x32\x1f.tensorflow.AutoParallelOptions\x12\x41\n\x15scoped_allocator_opts\x18\x10 \x01(\x0b\x32\&quot;.tensorflow.ScopedAllocatorOptions\x12\x12\n\noptimizers\x18\x64 \x03(\t\x12K\n\x11\x63ustom_optimizers\x18\xc8\x01 \x03(\x0b\x32/.tensorflow.RewriterConfig.CustomGraphOptimizer\x1a\xca\x01\n\x14\x43ustomGraphOptimizer\x12\x0c\n\x04name\x18\x01 \x01(\t\x12X\n\rparameter_map\x18\x02 \x03(\x0b\x32\x41.tensorflow.RewriterConfig.CustomGraphOptimizer.ParameterMapEntry\x1aJ\n\x11ParameterMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.tensorflow.AttrValue:\x02\x38\x01\&quot;6\n\x06Toggle\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\x06\n\x02ON\x10\x01\x12\x07\n\x03OFF\x10\x02\x12\x0e\n\nAGGRESSIVE\x10\x03\&quot;&lt;\n\x11NumIterationsType\x12\x15\n\x11\x44\x45\x46\x41ULT_NUM_ITERS\x10\x00\x12\x07\n\x03ONE\x10\x01\x12\x07\n\x03TWO\x10\x02\&quot;\x9f\x01\n\nMemOptType\x12\x13\n\x0f\x44\x45\x46\x41ULT_MEM_OPT\x10\x00\x12\x0e\n\nNO_MEM_OPT\x10\x01\x12\n\n\x06MANUAL\x10\x02\x12\x17\n\x13SWAPPING_HEURISTICS\x10\x04\x12\x1c\n\x18RECOMPUTATION_HEURISTICS\x10\x05\x12\x19\n\x15SCHEDULING_HEURISTICS\x10\x06\x12\x0e\n\nHEURISTICS\x10\x03\x42s\n\x18org.tensorflow.frameworkB\x14RewriterConfigProtosP\x01Z&lt;github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  24</span>   ,
+<span class='lineno'>  25</span>   dependencies=[<a href='../framework/attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>.<a href='../framework/attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  30</span>   name=&#39;Toggle&#39;,
+<span class='lineno'>  31</span>   full_name=&#39;tensorflow.RewriterConfig.Toggle&#39;,
+<span class='lineno'>  32</span>   filename=None,
+<span class='lineno'>  33</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  34</span>   values=[
+<span class='lineno'>  35</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  36</span>       name=&#39;DEFAULT&#39;, index=0, number=0,
+<span class='lineno'>  37</span>       serialized_options=None,
+<span class='lineno'>  38</span>       type=None),
+<span class='lineno'>  39</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  40</span>       name=&#39;ON&#39;, index=1, number=1,
+<span class='lineno'>  41</span>       serialized_options=None,
+<span class='lineno'>  42</span>       type=None),
+<span class='lineno'>  43</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  44</span>       name=&#39;OFF&#39;, index=2, number=2,
+<span class='lineno'>  45</span>       serialized_options=None,
+<span class='lineno'>  46</span>       type=None),
+<span class='lineno'>  47</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  48</span>       name=&#39;AGGRESSIVE&#39;, index=3, number=3,
+<span class='lineno'>  49</span>       serialized_options=None,
+<span class='lineno'>  50</span>       type=None),
+<span class='lineno'>  51</span>   ],
+<span class='lineno'>  52</span>   containing_type=None,
+<span class='lineno'>  53</span>   serialized_options=None,
+<span class='lineno'>  54</span>   serialized_start=1647,
+<span class='lineno'>  55</span>   serialized_end=1701,
+<span class='lineno'>  56</span> )
+<span class='lineno'>  57</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>)
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', title='?'>_REWRITERCONFIG_NUMITERATIONSTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  60</span>   name=&#39;NumIterationsType&#39;,
+<span class='lineno'>  61</span>   full_name=&#39;tensorflow.RewriterConfig.NumIterationsType&#39;,
+<span class='lineno'>  62</span>   filename=None,
+<span class='lineno'>  63</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  64</span>   values=[
+<span class='lineno'>  65</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  66</span>       name=&#39;DEFAULT_NUM_ITERS&#39;, index=0, number=0,
+<span class='lineno'>  67</span>       serialized_options=None,
+<span class='lineno'>  68</span>       type=None),
+<span class='lineno'>  69</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  70</span>       name=&#39;ONE&#39;, index=1, number=1,
+<span class='lineno'>  71</span>       serialized_options=None,
+<span class='lineno'>  72</span>       type=None),
+<span class='lineno'>  73</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  74</span>       name=&#39;TWO&#39;, index=2, number=2,
+<span class='lineno'>  75</span>       serialized_options=None,
+<span class='lineno'>  76</span>       type=None),
+<span class='lineno'>  77</span>   ],
+<span class='lineno'>  78</span>   containing_type=None,
+<span class='lineno'>  79</span>   serialized_options=None,
+<span class='lineno'>  80</span>   serialized_start=1703,
+<span class='lineno'>  81</span>   serialized_end=1763,
+<span class='lineno'>  82</span> )
+<span class='lineno'>  83</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', title='?'>_REWRITERCONFIG_NUMITERATIONSTYPE</a>)
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', title='?'>_REWRITERCONFIG_MEMOPTTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  86</span>   name=&#39;MemOptType&#39;,
+<span class='lineno'>  87</span>   full_name=&#39;tensorflow.RewriterConfig.MemOptType&#39;,
+<span class='lineno'>  88</span>   filename=None,
+<span class='lineno'>  89</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  90</span>   values=[
+<span class='lineno'>  91</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  92</span>       name=&#39;DEFAULT_MEM_OPT&#39;, index=0, number=0,
+<span class='lineno'>  93</span>       serialized_options=None,
+<span class='lineno'>  94</span>       type=None),
+<span class='lineno'>  95</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  96</span>       name=&#39;NO_MEM_OPT&#39;, index=1, number=1,
+<span class='lineno'>  97</span>       serialized_options=None,
+<span class='lineno'>  98</span>       type=None),
+<span class='lineno'>  99</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 100</span>       name=&#39;MANUAL&#39;, index=2, number=2,
+<span class='lineno'> 101</span>       serialized_options=None,
+<span class='lineno'> 102</span>       type=None),
+<span class='lineno'> 103</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 104</span>       name=&#39;SWAPPING_HEURISTICS&#39;, index=3, number=4,
+<span class='lineno'> 105</span>       serialized_options=None,
+<span class='lineno'> 106</span>       type=None),
+<span class='lineno'> 107</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 108</span>       name=&#39;RECOMPUTATION_HEURISTICS&#39;, index=4, number=5,
+<span class='lineno'> 109</span>       serialized_options=None,
+<span class='lineno'> 110</span>       type=None),
+<span class='lineno'> 111</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 112</span>       name=&#39;SCHEDULING_HEURISTICS&#39;, index=5, number=6,
+<span class='lineno'> 113</span>       serialized_options=None,
+<span class='lineno'> 114</span>       type=None),
+<span class='lineno'> 115</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 116</span>       name=&#39;HEURISTICS&#39;, index=6, number=3,
+<span class='lineno'> 117</span>       serialized_options=None,
+<span class='lineno'> 118</span>       type=None),
+<span class='lineno'> 119</span>   ],
+<span class='lineno'> 120</span>   containing_type=None,
+<span class='lineno'> 121</span>   serialized_options=None,
+<span class='lineno'> 122</span>   serialized_start=1766,
+<span class='lineno'> 123</span>   serialized_end=1925,
+<span class='lineno'> 124</span> )
+<span class='lineno'> 125</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', title='?'>_REWRITERCONFIG_MEMOPTTYPE</a>)
+<span class='lineno'> 126</span> 
+<span class='lineno'> 127</span> 
+<span class='lineno'> 128</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', title='?'>_AUTOPARALLELOPTIONS</a> = _descriptor.Descriptor(
+<span class='lineno'> 129</span>   name=&#39;AutoParallelOptions&#39;,
+<span class='lineno'> 130</span>   full_name=&#39;tensorflow.AutoParallelOptions&#39;,
+<span class='lineno'> 131</span>   filename=None,
+<span class='lineno'> 132</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 133</span>   containing_type=None,
+<span class='lineno'> 134</span>   fields=[
+<span class='lineno'> 135</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 136</span>       name=&#39;enable&#39;, full_name=&#39;tensorflow.AutoParallelOptions.enable&#39;, index=0,
+<span class='lineno'> 137</span>       number=1, type=8, cpp_type=7, label=1,
+<span class='lineno'> 138</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 139</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 140</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 141</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 142</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 143</span>       name=&#39;num_replicas&#39;, full_name=&#39;tensorflow.AutoParallelOptions.num_replicas&#39;, index=1,
+<span class='lineno'> 144</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'> 145</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 146</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 147</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 148</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 149</span>   ],
+<span class='lineno'> 150</span>   extensions=[
+<span class='lineno'> 151</span>   ],
+<span class='lineno'> 152</span>   nested_types=[],
+<span class='lineno'> 153</span>   enum_types=[
+<span class='lineno'> 154</span>   ],
+<span class='lineno'> 155</span>   serialized_options=None,
+<span class='lineno'> 156</span>   is_extendable=False,
+<span class='lineno'> 157</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 158</span>   extension_ranges=[],
+<span class='lineno'> 159</span>   oneofs=[
+<span class='lineno'> 160</span>   ],
+<span class='lineno'> 161</span>   serialized_start=106,
+<span class='lineno'> 162</span>   serialized_end=165,
+<span class='lineno'> 163</span> )
+<span class='lineno'> 164</span> 
+<span class='lineno'> 165</span> 
+<span class='lineno'> 166</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', title='?'>_SCOPEDALLOCATOROPTIONS</a> = _descriptor.Descriptor(
+<span class='lineno'> 167</span>   name=&#39;ScopedAllocatorOptions&#39;,
+<span class='lineno'> 168</span>   full_name=&#39;tensorflow.ScopedAllocatorOptions&#39;,
+<span class='lineno'> 169</span>   filename=None,
+<span class='lineno'> 170</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 171</span>   containing_type=None,
+<span class='lineno'> 172</span>   fields=[
+<span class='lineno'> 173</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 174</span>       name=&#39;enable_op&#39;, full_name=&#39;tensorflow.ScopedAllocatorOptions.enable_op&#39;, index=0,
+<span class='lineno'> 175</span>       number=1, type=9, cpp_type=9, label=3,
+<span class='lineno'> 176</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 177</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 178</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 179</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 180</span>   ],
+<span class='lineno'> 181</span>   extensions=[
+<span class='lineno'> 182</span>   ],
+<span class='lineno'> 183</span>   nested_types=[],
+<span class='lineno'> 184</span>   enum_types=[
+<span class='lineno'> 185</span>   ],
+<span class='lineno'> 186</span>   serialized_options=None,
+<span class='lineno'> 187</span>   is_extendable=False,
+<span class='lineno'> 188</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 189</span>   extension_ranges=[],
+<span class='lineno'> 190</span>   oneofs=[
+<span class='lineno'> 191</span>   ],
+<span class='lineno'> 192</span>   serialized_start=167,
+<span class='lineno'> 193</span>   serialized_end=210,
+<span class='lineno'> 194</span> )
+<span class='lineno'> 195</span> 
+<span class='lineno'> 196</span> 
+<span class='lineno'> 197</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 198</span>   name=&#39;ParameterMapEntry&#39;,
+<span class='lineno'> 199</span>   full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer.ParameterMapEntry&#39;,
+<span class='lineno'> 200</span>   filename=None,
+<span class='lineno'> 201</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 202</span>   containing_type=None,
+<span class='lineno'> 203</span>   fields=[
+<span class='lineno'> 204</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 205</span>       name=&#39;key&#39;, full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer.ParameterMapEntry.key&#39;, index=0,
+<span class='lineno'> 206</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 207</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 208</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 209</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 210</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 211</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 212</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer.ParameterMapEntry.value&#39;, index=1,
+<span class='lineno'> 213</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 214</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 215</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 216</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 217</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 218</span>   ],
+<span class='lineno'> 219</span>   extensions=[
+<span class='lineno'> 220</span>   ],
+<span class='lineno'> 221</span>   nested_types=[],
+<span class='lineno'> 222</span>   enum_types=[
+<span class='lineno'> 223</span>   ],
+<span class='lineno'> 224</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&#39;8\001&#39;),
+<span class='lineno'> 225</span>   is_extendable=False,
+<span class='lineno'> 226</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 227</span>   extension_ranges=[],
+<span class='lineno'> 228</span>   oneofs=[
+<span class='lineno'> 229</span>   ],
+<span class='lineno'> 230</span>   serialized_start=1571,
+<span class='lineno'> 231</span>   serialized_end=1645,
+<span class='lineno'> 232</span> )
+<span class='lineno'> 233</span> 
+<span class='lineno'> 234</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a> = _descriptor.Descriptor(
+<span class='lineno'> 235</span>   name=&#39;CustomGraphOptimizer&#39;,
+<span class='lineno'> 236</span>   full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer&#39;,
+<span class='lineno'> 237</span>   filename=None,
+<span class='lineno'> 238</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 239</span>   containing_type=None,
+<span class='lineno'> 240</span>   fields=[
+<span class='lineno'> 241</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 242</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer.name&#39;, index=0,
+<span class='lineno'> 243</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 244</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 245</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 246</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 247</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 248</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 249</span>       name=&#39;parameter_map&#39;, full_name=&#39;tensorflow.RewriterConfig.CustomGraphOptimizer.parameter_map&#39;, index=1,
+<span class='lineno'> 250</span>       number=2, type=11, cpp_type=10, label=3,
+<span class='lineno'> 251</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 252</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 253</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 254</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 255</span>   ],
+<span class='lineno'> 256</span>   extensions=[
+<span class='lineno'> 257</span>   ],
+<span class='lineno'> 258</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>, ],
+<span class='lineno'> 259</span>   enum_types=[
+<span class='lineno'> 260</span>   ],
+<span class='lineno'> 261</span>   serialized_options=None,
+<span class='lineno'> 262</span>   is_extendable=False,
+<span class='lineno'> 263</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 264</span>   extension_ranges=[],
+<span class='lineno'> 265</span>   oneofs=[
+<span class='lineno'> 266</span>   ],
+<span class='lineno'> 267</span>   serialized_start=1443,
+<span class='lineno'> 268</span>   serialized_end=1645,
+<span class='lineno'> 269</span> )
+<span class='lineno'> 270</span> 
+<span class='lineno'> 271</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a> = _descriptor.Descriptor(
+<span class='lineno'> 272</span>   name=&#39;RewriterConfig&#39;,
+<span class='lineno'> 273</span>   full_name=&#39;tensorflow.RewriterConfig&#39;,
+<span class='lineno'> 274</span>   filename=None,
+<span class='lineno'> 275</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 276</span>   containing_type=None,
+<span class='lineno'> 277</span>   fields=[
+<span class='lineno'> 278</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 279</span>       name=&#39;layout_optimizer&#39;, full_name=&#39;tensorflow.RewriterConfig.layout_optimizer&#39;, index=0,
+<span class='lineno'> 280</span>       number=1, type=14, cpp_type=8, label=1,
+<span class='lineno'> 281</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 282</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 283</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 284</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 285</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 286</span>       name=&#39;constant_folding&#39;, full_name=&#39;tensorflow.RewriterConfig.constant_folding&#39;, index=1,
+<span class='lineno'> 287</span>       number=3, type=14, cpp_type=8, label=1,
+<span class='lineno'> 288</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 289</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 290</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 291</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 292</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 293</span>       name=&#39;shape_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.shape_optimization&#39;, index=2,
+<span class='lineno'> 294</span>       number=13, type=14, cpp_type=8, label=1,
+<span class='lineno'> 295</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 296</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 297</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 298</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 299</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 300</span>       name=&#39;remapping&#39;, full_name=&#39;tensorflow.RewriterConfig.remapping&#39;, index=3,
+<span class='lineno'> 301</span>       number=14, type=14, cpp_type=8, label=1,
+<span class='lineno'> 302</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 303</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 304</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 305</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 306</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 307</span>       name=&#39;arithmetic_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.arithmetic_optimization&#39;, index=4,
+<span class='lineno'> 308</span>       number=7, type=14, cpp_type=8, label=1,
+<span class='lineno'> 309</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 310</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 311</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 312</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 313</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 314</span>       name=&#39;dependency_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.dependency_optimization&#39;, index=5,
+<span class='lineno'> 315</span>       number=8, type=14, cpp_type=8, label=1,
+<span class='lineno'> 316</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 317</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 318</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 319</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 320</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 321</span>       name=&#39;loop_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.loop_optimization&#39;, index=6,
+<span class='lineno'> 322</span>       number=9, type=14, cpp_type=8, label=1,
+<span class='lineno'> 323</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 324</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 325</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 326</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 327</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 328</span>       name=&#39;function_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.function_optimization&#39;, index=7,
+<span class='lineno'> 329</span>       number=10, type=14, cpp_type=8, label=1,
+<span class='lineno'> 330</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 331</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 332</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 333</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 334</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 335</span>       name=&#39;debug_stripper&#39;, full_name=&#39;tensorflow.RewriterConfig.debug_stripper&#39;, index=8,
+<span class='lineno'> 336</span>       number=11, type=14, cpp_type=8, label=1,
+<span class='lineno'> 337</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 338</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 339</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 340</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 341</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 342</span>       name=&#39;disable_model_pruning&#39;, full_name=&#39;tensorflow.RewriterConfig.disable_model_pruning&#39;, index=9,
+<span class='lineno'> 343</span>       number=2, type=8, cpp_type=7, label=1,
+<span class='lineno'> 344</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 345</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 346</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 347</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 348</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 349</span>       name=&#39;scoped_allocator_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.scoped_allocator_optimization&#39;, index=10,
+<span class='lineno'> 350</span>       number=15, type=14, cpp_type=8, label=1,
+<span class='lineno'> 351</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 352</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 353</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 354</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 355</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 356</span>       name=&#39;pin_to_host_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.pin_to_host_optimization&#39;, index=11,
+<span class='lineno'> 357</span>       number=18, type=14, cpp_type=8, label=1,
+<span class='lineno'> 358</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 359</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 360</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 361</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 362</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 363</span>       name=&#39;disable_meta_optimizer&#39;, full_name=&#39;tensorflow.RewriterConfig.disable_meta_optimizer&#39;, index=12,
+<span class='lineno'> 364</span>       number=19, type=8, cpp_type=7, label=1,
+<span class='lineno'> 365</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 366</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 367</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 368</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 369</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 370</span>       name=&#39;meta_optimizer_iterations&#39;, full_name=&#39;tensorflow.RewriterConfig.meta_optimizer_iterations&#39;, index=13,
+<span class='lineno'> 371</span>       number=12, type=14, cpp_type=8, label=1,
+<span class='lineno'> 372</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 373</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 374</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 375</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 376</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 377</span>       name=&#39;min_graph_nodes&#39;, full_name=&#39;tensorflow.RewriterConfig.min_graph_nodes&#39;, index=14,
+<span class='lineno'> 378</span>       number=17, type=5, cpp_type=1, label=1,
+<span class='lineno'> 379</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 380</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 381</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 382</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 383</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 384</span>       name=&#39;memory_optimization&#39;, full_name=&#39;tensorflow.RewriterConfig.memory_optimization&#39;, index=15,
+<span class='lineno'> 385</span>       number=4, type=14, cpp_type=8, label=1,
+<span class='lineno'> 386</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 387</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 388</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 389</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 390</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 391</span>       name=&#39;memory_optimizer_target_node_name_scope&#39;, full_name=&#39;tensorflow.RewriterConfig.memory_optimizer_target_node_name_scope&#39;, index=16,
+<span class='lineno'> 392</span>       number=6, type=9, cpp_type=9, label=1,
+<span class='lineno'> 393</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 394</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 395</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 396</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 397</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 398</span>       name=&#39;auto_parallel&#39;, full_name=&#39;tensorflow.RewriterConfig.auto_parallel&#39;, index=17,
+<span class='lineno'> 399</span>       number=5, type=11, cpp_type=10, label=1,
+<span class='lineno'> 400</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 401</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 402</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 403</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 404</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 405</span>       name=&#39;scoped_allocator_opts&#39;, full_name=&#39;tensorflow.RewriterConfig.scoped_allocator_opts&#39;, index=18,
+<span class='lineno'> 406</span>       number=16, type=11, cpp_type=10, label=1,
+<span class='lineno'> 407</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 408</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 409</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 410</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 411</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 412</span>       name=&#39;optimizers&#39;, full_name=&#39;tensorflow.RewriterConfig.optimizers&#39;, index=19,
+<span class='lineno'> 413</span>       number=100, type=9, cpp_type=9, label=3,
+<span class='lineno'> 414</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 415</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 416</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 417</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 418</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 419</span>       name=&#39;custom_optimizers&#39;, full_name=&#39;tensorflow.RewriterConfig.custom_optimizers&#39;, index=20,
+<span class='lineno'> 420</span>       number=200, type=11, cpp_type=10, label=3,
+<span class='lineno'> 421</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 422</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 423</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 424</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 425</span>   ],
+<span class='lineno'> 426</span>   extensions=[
+<span class='lineno'> 427</span>   ],
+<span class='lineno'> 428</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>, ],
+<span class='lineno'> 429</span>   enum_types=[
+<span class='lineno'> 430</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>,
+<span class='lineno'> 431</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', title='?'>_REWRITERCONFIG_NUMITERATIONSTYPE</a>,
+<span class='lineno'> 432</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', title='?'>_REWRITERCONFIG_MEMOPTTYPE</a>,
+<span class='lineno'> 433</span>   ],
+<span class='lineno'> 434</span>   serialized_options=None,
+<span class='lineno'> 435</span>   is_extendable=False,
+<span class='lineno'> 436</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 437</span>   extension_ranges=[],
+<span class='lineno'> 438</span>   oneofs=[
+<span class='lineno'> 439</span>   ],
+<span class='lineno'> 440</span>   serialized_start=213,
+<span class='lineno'> 441</span>   serialized_end=1925,
+<span class='lineno'> 442</span> )
+<span class='lineno'> 443</span> 
+<span class='lineno'> 444</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>.fields_by_name[&#39;value&#39;].message_type = <a href='../framework/attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>.<a href='../framework/attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2._ATTRVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2._ATTRVALUE', title='?'>_ATTRVALUE</a>
+<span class='lineno'> 445</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>
+<span class='lineno'> 446</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>.fields_by_name[&#39;parameter_map&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>
+<span class='lineno'> 447</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>
+<span class='lineno'> 448</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;layout_optimizer&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 449</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;constant_folding&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 450</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;shape_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 451</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;remapping&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 452</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;arithmetic_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 453</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;dependency_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 454</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;loop_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 455</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;function_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 456</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;debug_stripper&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 457</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;scoped_allocator_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 458</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;pin_to_host_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>
+<span class='lineno'> 459</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;meta_optimizer_iterations&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', title='?'>_REWRITERCONFIG_NUMITERATIONSTYPE</a>
+<span class='lineno'> 460</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;memory_optimization&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', title='?'>_REWRITERCONFIG_MEMOPTTYPE</a>
+<span class='lineno'> 461</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;auto_parallel&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', title='?'>_AUTOPARALLELOPTIONS</a>
+<span class='lineno'> 462</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;scoped_allocator_opts&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', title='?'>_SCOPEDALLOCATOROPTIONS</a>
+<span class='lineno'> 463</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>.fields_by_name[&#39;custom_optimizers&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>
+<span class='lineno'> 464</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_TOGGLE', title='?'>_REWRITERCONFIG_TOGGLE</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>
+<span class='lineno'> 465</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_NUMITERATIONSTYPE', title='?'>_REWRITERCONFIG_NUMITERATIONSTYPE</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>
+<span class='lineno'> 466</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_MEMOPTTYPE', title='?'>_REWRITERCONFIG_MEMOPTTYPE</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>
+<span class='lineno'> 467</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;AutoParallelOptions&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', title='?'>_AUTOPARALLELOPTIONS</a>
+<span class='lineno'> 468</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ScopedAllocatorOptions&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', title='?'>_SCOPEDALLOCATOROPTIONS</a>
+<span class='lineno'> 469</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;RewriterConfig&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>
+<span class='lineno'> 470</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 471</span> 
+<span class='lineno'> 472</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions', title='?'>AutoParallelOptions</a> = _reflection.GeneratedProtocolMessageType(&#39;AutoParallelOptions&#39;, (_message.Message,), dict(
+<span class='lineno'> 473</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._AUTOPARALLELOPTIONS', title='?'>_AUTOPARALLELOPTIONS</a>,
+<span class='lineno'> 474</span>   __module__ = &#39;tensorflow.core.protobuf.rewriter_config_pb2&#39;
+<span class='lineno'> 475</span>   # @@protoc_insertion_point(class_scope:tensorflow.AutoParallelOptions)
+<span class='lineno'> 476</span>   ))
+<span class='lineno'> 477</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.AutoParallelOptions', title='?'>AutoParallelOptions</a>)
+<span class='lineno'> 478</span> 
+<span class='lineno'> 479</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions', title='?'>ScopedAllocatorOptions</a> = _reflection.GeneratedProtocolMessageType(&#39;ScopedAllocatorOptions&#39;, (_message.Message,), dict(
+<span class='lineno'> 480</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._SCOPEDALLOCATOROPTIONS', title='?'>_SCOPEDALLOCATOROPTIONS</a>,
+<span class='lineno'> 481</span>   __module__ = &#39;tensorflow.core.protobuf.rewriter_config_pb2&#39;
+<span class='lineno'> 482</span>   # @@protoc_insertion_point(class_scope:tensorflow.ScopedAllocatorOptions)
+<span class='lineno'> 483</span>   ))
+<span class='lineno'> 484</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.ScopedAllocatorOptions', title='?'>ScopedAllocatorOptions</a>)
+<span class='lineno'> 485</span> 
+<span class='lineno'> 486</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', title='?'>RewriterConfig</a> = _reflection.GeneratedProtocolMessageType(&#39;RewriterConfig&#39;, (_message.Message,), dict(
+<span class='lineno'> 487</span> 
+<span class='lineno'> 488</span>   CustomGraphOptimizer = _reflection.GeneratedProtocolMessageType(&#39;CustomGraphOptimizer&#39;, (_message.Message,), dict(
+<span class='lineno'> 489</span> 
+<span class='lineno'> 490</span>     ParameterMapEntry = _reflection.GeneratedProtocolMessageType(&#39;ParameterMapEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 491</span>       DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>,
+<span class='lineno'> 492</span>       __module__ = &#39;tensorflow.core.protobuf.rewriter_config_pb2&#39;
+<span class='lineno'> 493</span>       # @@protoc_insertion_point(class_scope:tensorflow.RewriterConfig.CustomGraphOptimizer.ParameterMapEntry)
+<span class='lineno'> 494</span>       ))
+<span class='lineno'> 495</span>     ,
+<span class='lineno'> 496</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER</a>,
+<span class='lineno'> 497</span>     __module__ = &#39;tensorflow.core.protobuf.rewriter_config_pb2&#39;
+<span class='lineno'> 498</span>     # @@protoc_insertion_point(class_scope:tensorflow.RewriterConfig.CustomGraphOptimizer)
+<span class='lineno'> 499</span>     ))
+<span class='lineno'> 500</span>   ,
+<span class='lineno'> 501</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG', title='?'>_REWRITERCONFIG</a>,
+<span class='lineno'> 502</span>   __module__ = &#39;tensorflow.core.protobuf.rewriter_config_pb2&#39;
+<span class='lineno'> 503</span>   # @@protoc_insertion_point(class_scope:tensorflow.RewriterConfig)
+<span class='lineno'> 504</span>   ))
+<span class='lineno'> 505</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', title='?'>RewriterConfig</a>)
+<span class='lineno'> 506</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', title='?'>RewriterConfig</a>.CustomGraphOptimizer)
+<span class='lineno'> 507</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.RewriterConfig', title='?'>RewriterConfig</a>.CustomGraphOptimizer.ParameterMapEntry)
+<span class='lineno'> 508</span> 
+<span class='lineno'> 509</span> 
+<span class='lineno'> 510</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 511</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.rewriter_config_pb2._REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY', title='?'>_REWRITERCONFIG_CUSTOMGRAPHOPTIMIZER_PARAMETERMAPENTRY</a>._options = None
+<span class='lineno'> 512</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

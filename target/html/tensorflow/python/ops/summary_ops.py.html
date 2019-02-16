@@ -1,0 +1,158 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/ops/summary_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary'>tensor_summary</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Summary Operations.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../core/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../../core/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import <a href='../../core/framework/summary_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2', title='summary_pb2'>summary_pb2</a>
+<span class='lineno'>  21</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', title='constant_op'>constant_op</a>
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='gen_logging_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', title='gen_logging_ops'>gen_logging_ops</a>
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', title='summary_op_util'>summary_op_util</a>
+<span class='lineno'>  25</span> # go/tf-wildcard-import
+<span class='lineno'>  26</span> # pylint: disable=wildcard-import
+<span class='lineno'>  27</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='gen_logging_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', title='gen_logging_ops'>gen_logging_ops</a> import *
+<span class='lineno'>  28</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  29</span> # pylint: enable=wildcard-import
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> @tf_export(&quot;summary.tensor_summary&quot;)
+<span class='lineno'>  33</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary', title='(?, ?, None, None, None, None, None) -> None'>tensor_summary</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.name', title='?'>name</a>,
+<span class='lineno'>  34</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', title='?'>tensor</a>,
+<span class='lineno'>  35</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', title='None'>summary_description</a>=None,
+<span class='lineno'>  36</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.collections', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.collections', title='None'>collections</a>=None,
+<span class='lineno'>  37</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='None'>summary_metadata</a>=None,
+<span class='lineno'>  38</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.family', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.family', title='None'>family</a>=None,
+<span class='lineno'>  39</span>                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', title='None'>display_name</a>=None):
+<span class='lineno'>  40</span>   &quot;&quot;&quot;Outputs a `Summary` protocol buffer with a serialized tensor.proto.
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   Args:
+<span class='lineno'>  43</span>     name: A name for the generated node. If display_name is not set, it will
+<span class='lineno'>  44</span>       also serve as the tag name in TensorBoard. (In that case, the tag
+<span class='lineno'>  45</span>       name will inherit tf name scopes.)
+<span class='lineno'>  46</span>     tensor: A tensor of any type and shape to serialize.
+<span class='lineno'>  47</span>     summary_description: A long description of the summary sequence. Markdown
+<span class='lineno'>  48</span>       is supported.
+<span class='lineno'>  49</span>     collections: Optional list of graph collections keys. The new summary op is
+<span class='lineno'>  50</span>       added to these collections. Defaults to `[GraphKeys.SUMMARIES]`.
+<span class='lineno'>  51</span>     summary_metadata: Optional SummaryMetadata proto (which describes which
+<span class='lineno'>  52</span>       plugins may use the summary value).
+<span class='lineno'>  53</span>     family: Optional; if provided, used as the prefix of the summary tag,
+<span class='lineno'>  54</span>       which controls the name used for display on TensorBoard when
+<span class='lineno'>  55</span>       display_name is not set.
+<span class='lineno'>  56</span>     display_name: A string used to name this data in TensorBoard. If this is
+<span class='lineno'>  57</span>       not set, then the node name will be used instead.
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   Returns:
+<span class='lineno'>  60</span>     A scalar `Tensor` of type `string`. The serialized `Summary` protocol
+<span class='lineno'>  61</span>     buffer.
+<span class='lineno'>  62</span>   &quot;&quot;&quot;
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='None'>summary_metadata</a> is None:
+<span class='lineno'>  65</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='?'>summary_metadata</a> = <a href='../../core/framework/summary_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2', title='summary_pb2'>summary_pb2</a>.<a href='../../core/framework/summary_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2.SummaryMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.summary_pb2.SummaryMetadata', title='?'>SummaryMetadata</a>()
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', title='None'>summary_description</a> is not None:
+<span class='lineno'>  68</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='None'>summary_metadata</a>.<a name='None.summary_description', xid ='None.summary_description', title='None'>summary_description</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_description', title='None'>summary_description</a>
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', title='None'>display_name</a> is not None:
+<span class='lineno'>  71</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='None'>summary_metadata</a>.<a name='None.display_name', xid ='None.display_name', title='None'>display_name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.display_name', title='None'>display_name</a>
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.serialized_summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.serialized_summary_metadata', title='?'>serialized_summary_metadata</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.summary_metadata', title='None'>summary_metadata</a>.SerializeToString()
+<span class='lineno'>  74</span> 
+<span class='lineno'>  75</span>   if <a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', title='summary_op_util'>summary_op_util</a>.<a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.skip_summary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.skip_summary', title='{() -> None | () -> bool}'>skip_summary</a>():
+<span class='lineno'>  76</span>     return <a href='../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', title='constant_op'>constant_op</a>.<a href='../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', title='(str, None, None, str, bool) -> ? / (int, None, None, str, bool) -> None / (?, ?, None, str, bool) -> None / (int, DType, None, str, bool) -> None / ([?], None, None, str, bool) -> None / ([int], None, None, str, bool) -> None / ({bool | int | str}, None, None, str, bool) -> None / (?, DType, None, str, bool) -> None / (?, None, None, str, bool) -> None / ({bool | int}, None, None, str, bool) -> None'>constant</a>(&quot;&quot;)
+<span class='lineno'>  77</span>   with <a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', title='summary_op_util'>summary_op_util</a>.<a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.summary_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.summary_scope', title='(None, None, None, None) -> None / (?, None, None, None) -> None / (str, None, None, None) -> None'>summary_scope</a>(
+<span class='lineno'>  78</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.name', title='?'>name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.family', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.family', title='None'>family</a>, values=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', title='?'>tensor</a>]) as (<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tag', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tag', title='?'>tag</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.scope', title='?'>scope</a>):
+<span class='lineno'>  79</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', title='?'>val</a> = <a href='gen_logging_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops', title='gen_logging_ops'>gen_logging_ops</a>.<a href='gen_logging_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops.tensor_summary_v2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_logging_ops.tensor_summary_v2', title='(?, ?, ?, None) -> ?'>tensor_summary_v2</a>(
+<span class='lineno'>  80</span>         tensor=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tensor', title='?'>tensor</a>,
+<span class='lineno'>  81</span>         tag=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tag', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.tag', title='?'>tag</a>,
+<span class='lineno'>  82</span>         name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.scope', title='?'>scope</a>,
+<span class='lineno'>  83</span>         serialized_summary_metadata=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.serialized_summary_metadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.serialized_summary_metadata', title='?'>serialized_summary_metadata</a>)
+<span class='lineno'>  84</span>     <a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util', title='summary_op_util'>summary_op_util</a>.<a href='summary_op_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.collect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_op_util.collect', title='(?, ?, ?) -> None / (?, None, [str]) -> None / (?, None, [?]) -> None'>collect</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', title='?'>val</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.collections', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.collections', title='None'>collections</a>, [<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', title='<GraphKeys>'>GraphKeys</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.SUMMARIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.SUMMARIES', title='str'>SUMMARIES</a>])
+<span class='lineno'>  85</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.summary_ops.tensor_summary.val', title='?'>val</a>
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span> <a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.NotDifferentiable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.NotDifferentiable', title='str -> None'>NotDifferentiable</a>(&quot;TensorSummary&quot;)
+</pre></td></tr></table></body></html>

@@ -1,0 +1,143 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/data/experimental/ops/get_single_element.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element'>get_single_element</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Python wrappers for Datasets and Iterators.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops', title='ops'>ops</a> import <a href='../../ops/dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops', title='dataset_ops'>dataset_ops</a>
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util', title='util'>util</a> import <a href='../../util/nest.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest', title='nest'>nest</a>
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util', title='util'>util</a> import <a href='../../util/sparse.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse', title='sparse'>sparse</a>
+<span class='lineno'>  23</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../ops/gen_dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops', title='gen_dataset_ops'>gen_dataset_ops</a>
+<span class='lineno'>  24</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> @tf_export(&quot;data.experimental.get_single_element&quot;)
+<span class='lineno'>  28</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element', title='? -> None'>get_single_element</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>):
+<span class='lineno'>  29</span>   &quot;&quot;&quot;Returns the single element in `dataset` as a nested structure of tensors.
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span>   This function enables you to use a `tf.data.Dataset` in a stateless
+<span class='lineno'>  32</span>   &quot;tensor-in tensor-out&quot; expression, without creating a `tf.data.Iterator`.
+<span class='lineno'>  33</span>   This can be useful when your preprocessing transformations are expressed
+<span class='lineno'>  34</span>   as a `Dataset`, and you want to use the transformation at serving time.
+<span class='lineno'>  35</span>   For example:
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   ```python
+<span class='lineno'>  38</span>   input_batch = tf.placeholder(tf.string, shape=[BATCH_SIZE])
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   def preprocessing_fn(input_str):
+<span class='lineno'>  41</span>     # ...
+<span class='lineno'>  42</span>     return image, label
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   dataset = (tf.data.Dataset.from_tensor_slices(input_batch)
+<span class='lineno'>  45</span>              .map(preprocessing_fn, num_parallel_calls=BATCH_SIZE)
+<span class='lineno'>  46</span>              .batch(BATCH_SIZE))
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span>   image_batch, label_batch = tf.data.experimental.get_single_element(dataset)
+<span class='lineno'>  49</span>   ```
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   Args:
+<span class='lineno'>  52</span>     dataset: A `tf.data.Dataset` object containing a single element.
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   Returns:
+<span class='lineno'>  55</span>     A nested structure of `tf.Tensor` objects, corresponding to the single
+<span class='lineno'>  56</span>     element of `dataset`.
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   Raises:
+<span class='lineno'>  59</span>     TypeError: if `dataset` is not a `tf.data.Dataset` object.
+<span class='lineno'>  60</span>     InvalidArgumentError (at runtime): if `dataset` does not contain exactly
+<span class='lineno'>  61</span>       one element.
+<span class='lineno'>  62</span>   &quot;&quot;&quot;
+<span class='lineno'>  63</span>   if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>, <a href='../../ops/dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops', title='dataset_ops'>dataset_ops</a>.<a href='../../ops/dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.ops.dataset_ops.Dataset', title='<Dataset>'>Dataset</a>):
+<span class='lineno'>  64</span>     raise TypeError(&quot;`dataset` must be a `tf.data.Dataset` object.&quot;)
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.nested_ret', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.nested_ret', title='?'>nested_ret</a> = <a href='../../util/nest.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest', title='nest'>nest</a>.<a href='../../util/nest.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest.pack_sequence_as', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.nest.pack_sequence_as', title='(Dataset -> None, ?) -> ? / ({(None, None) | (None, None, None) | None | dict | tuple}, [{None | SparseTensor}]) -> SparseTensor / (Dataset -> None, [TensorShape]) -> TensorShape / (Dataset -> None, [DType]) -> DType / (SparseTensor, [None]) -> None / ((?, ?), [TensorShape]) -> TensorShape / (int, [{None | SparseTensor}]) -> SparseTensor / (SparseTensor, [{<SparseTensor> | <Tensor>}]) -> {<SparseTensor> | <Tensor>} / (SparseTensor, [?]) -> None / (?, [TensorShape]) -> TensorShape'>pack_sequence_as</a>(
+<span class='lineno'>  67</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>.output_types, <a href='../../../ops/gen_dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops', title='gen_dataset_ops'>gen_dataset_ops</a>.<a href='../../../ops/gen_dataset_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops.dataset_to_single_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_dataset_ops.dataset_to_single_element', title='(?, ?, ?, None) -> ?'>dataset_to_single_element</a>(
+<span class='lineno'>  68</span>           <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>._as_variant_tensor(),  # pylint: disable=protected-access
+<span class='lineno'>  69</span>           **dataset_ops.flat_structure(dataset)))
+<span class='lineno'>  70</span>   return <a href='../../util/sparse.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse', title='sparse'>sparse</a>.<a href='../../util/sparse.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse.deserialize_sparse_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.util.sparse.deserialize_sparse_tensors', title='({None | _VariantDataset}, ?, ?, _NestedDatasetComponent) -> None / (?, {FlatMapDataset -> ? | _ModelDataset -> {FlatMapDataset -> ? | _OptimizeDataset -> FlatMapDataset -> ?} | _OptimizeDataset -> FlatMapDataset -> ?}, {FlatMapDataset -> ? | _ModelDataset -> {FlatMapDataset -> ? | _OptimizeDataset -> FlatMapDataset -> ?} | _OptimizeDataset -> FlatMapDataset -> ?}, {FlatMapDataset -> ? | _ModelDataset -> {FlatMapDataset -> ? | _OptimizeDataset -> FlatMapDataset -> ?} | _OptimizeDataset -> FlatMapDataset -> ?}) -> None / (None, Dataset -> None, Dataset -> None, Dataset -> None) -> None / (?, ?, ?, ?) -> None / (?, _PrefetchToDeviceIterator -> ?, _PrefetchToDeviceIterator -> ?, _PrefetchToDeviceIterator -> ?) -> None / (?, StructuredFunctionWrapper -> ?, StructuredFunctionWrapper -> ?, StructuredFunctionWrapper -> ?) -> None'>deserialize_sparse_tensors</a>(
+<span class='lineno'>  71</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.nested_ret', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.nested_ret', title='?'>nested_ret</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>.output_types, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>.output_shapes,
+<span class='lineno'>  72</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.get_single_element.get_single_element.dataset', title='?'>dataset</a>.output_classes)
+</pre></td></tr></table></body></html>

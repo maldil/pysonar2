@@ -1,0 +1,158 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/specs/python/params_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf'>Uf</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui'>Ui</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf'>Lf</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li'>Li</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt'>Nt</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> # http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Operators for concise TensorFlow parameter specifications.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module is used as an environment for evaluating expressions
+<span class='lineno'>  18</span> in the &quot;params&quot; DSL.
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> Specifications are intended to assign simple numerical
+<span class='lineno'>  21</span> values. Examples:
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span>     --params &quot;n=64; d=5&quot; --spec &quot;(Cr(n) | Mp([2, 2])) ** d | Fm&quot;
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> The random parameter primitives are useful for running large numbers
+<span class='lineno'>  26</span> of experiments with randomly distributed parameters:
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span>     --params &quot;n=Li(5,500); d=Ui(1,5)&quot; --spec &quot;(Cr(n) | Mp([2, 2])) ** d | Fm&quot;
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> Internally, this might be implemented as follows:
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>     params = specs.create_params(FLAGS.params, {})
+<span class='lineno'>  33</span>     logging.info(repr(params))
+<span class='lineno'>  34</span>     net = specs.create_net(FLAGS.spec, inputs, params)
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> Note that separating the specifications into parameters and network
+<span class='lineno'>  37</span> creation allows us to log the random parameter values easily.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> The implementation of this will change soon in order to support
+<span class='lineno'>  40</span> hyperparameter tuning with steering. Instead of returning a number,
+<span class='lineno'>  41</span> the primitives below will return a class instance that is then
+<span class='lineno'>  42</span> used to generate a random number by the framework.
+<span class='lineno'>  43</span> &quot;&quot;&quot;
+<span class='lineno'>  44</span> from __future__ import absolute_import
+<span class='lineno'>  45</span> from __future__ import division
+<span class='lineno'>  46</span> from __future__ import print_function
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span> # Lint disabled because these are operators in the DSL, not regular
+<span class='lineno'>  49</span> # Python functions.
+<span class='lineno'>  50</span> # pylint: disable=invalid-name
+<span class='lineno'>  51</span> # pylint: disable=wildcard-import,unused-wildcard-import,redefining-builtin
+<span class='lineno'>  52</span> # pylint: disable=redefined-builtin,g-importing-member,no-member
+<span class='lineno'>  53</span> # make available all math expressions
+<span class='lineno'>  54</span> import math
+<span class='lineno'>  55</span> from math import *
+<span class='lineno'>  56</span> import random
+<span class='lineno'>  57</span> # pylint: enable=wildcard-import,unused-wildcard-import,redefining-builtin
+<span class='lineno'>  58</span> # pylint: enable=redefined-builtin,g-importing-member,no-member
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf', title='(float, float) -> None'>Uf</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.lo', title='float'>lo</a>=0.0, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.hi', title='float'>hi</a>=1.0):
+<span class='lineno'>  62</span>   &quot;&quot;&quot;Uniformly distributed floating number.&quot;&quot;&quot;
+<span class='lineno'>  63</span>   return random.uniform(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.lo', title='float'>lo</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Uf.hi', title='float'>hi</a>)
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui', title='(?, ?) -> None'>Ui</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.lo', title='?'>lo</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.hi', title='?'>hi</a>):
+<span class='lineno'>  67</span>   &quot;&quot;&quot;Uniformly distributed integer, inclusive limits.&quot;&quot;&quot;
+<span class='lineno'>  68</span>   return random.randint(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.lo', title='?'>lo</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Ui.hi', title='?'>hi</a>)
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf', title='(?, ?) -> int'>Lf</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.lo', title='?'>lo</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.hi', title='?'>hi</a>):
+<span class='lineno'>  72</span>   &quot;&quot;&quot;Log-uniform distributed floatint point number.&quot;&quot;&quot;
+<span class='lineno'>  73</span>   return math.exp(random.uniform(math.log(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.lo', title='?'>lo</a>), math.log(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Lf.hi', title='?'>hi</a>)))
+<span class='lineno'>  74</span> 
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li', title='(?, ?) -> int'>Li</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.lo', title='?'>lo</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.hi', title='?'>hi</a>):
+<span class='lineno'>  77</span>   &quot;&quot;&quot;Log-uniform distributed integer, inclusive limits.&quot;&quot;&quot;
+<span class='lineno'>  78</span>   return int(math.floor(math.exp(random.uniform(math.log(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.lo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.lo', title='?'>lo</a>),
+<span class='lineno'>  79</span>                                                 math.log(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.hi', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Li.hi', title='?'>hi</a>+1-1e-5)))))
+<span class='lineno'>  80</span> 
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt', title='(?, ?, float) -> int'>Nt</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', title='?'>mu</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', title='?'>sigma</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', title='float'>limit</a>=3.0):
+<span class='lineno'>  83</span>   &quot;&quot;&quot;Normally distributed floating point number with truncation.&quot;&quot;&quot;
+<span class='lineno'>  84</span>   return min(max(random.gauss(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', title='?'>mu</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', title='?'>sigma</a>), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', title='?'>mu</a>-<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', title='float'>limit</a>*<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', title='?'>sigma</a>), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.mu', title='?'>mu</a>+<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.limit', title='float'>limit</a>*<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.specs.python.params_ops.Nt.sigma', title='?'>sigma</a>)
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span> # pylint: enable=invalid-name
+</pre></td></tr></table></body></html>

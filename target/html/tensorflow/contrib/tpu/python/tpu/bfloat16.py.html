@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/tpu/python/tpu/bfloat16.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter'>_get_custom_getter</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope'>bfloat16_scope</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # =============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Helper context for running models with bfloat16.&quot;&quot;&quot;
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> from __future__ import absolute_import
+<span class='lineno'>  19</span> from __future__ import division
+<span class='lineno'>  20</span> from __future__ import print_function
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>
+<span class='lineno'>  23</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>
+<span class='lineno'>  24</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../python/ops/variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', title='variable_scope'>variable_scope</a>
+<span class='lineno'>  25</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../python/util/tf_contextlib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib', title='tf_contextlib'>tf_contextlib</a>
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter', title='() -> ? -> None'>_get_custom_getter</a>():
+<span class='lineno'>  29</span>   &quot;&quot;&quot;Returns a custom getter that this class&#39;s methods must be called under.
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span>   All methods of this class must be called under a variable scope that was
+<span class='lineno'>  32</span>   passed this custom getter. Example:
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span>   ```python
+<span class='lineno'>  35</span>   network = ConvNetBuilder(...)
+<span class='lineno'>  36</span>   with tf.variable_scope(&#39;cg&#39;, custom_getter=network.get_custom_getter()):
+<span class='lineno'>  37</span>     network.conv(...)
+<span class='lineno'>  38</span>     # Call more methods of network here
+<span class='lineno'>  39</span>   ```
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span>   Currently, this custom getter only does anything if self.use_tf_layers is
+<span class='lineno'>  42</span>   True. In that case, it causes variables to be stored as dtype
+<span class='lineno'>  43</span>   self.variable_type, then casted to the requested dtype, instead of directly
+<span class='lineno'>  44</span>   storing the variable as the requested dtype.
+<span class='lineno'>  45</span>   &quot;&quot;&quot;
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter', title='? -> None'>inner_custom_getter</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.getter', title='?'>getter</a>, *args, **kwargs):
+<span class='lineno'>  48</span>     &quot;&quot;&quot;Custom getter that forces variables to have type self.variable_type.&quot;&quot;&quot;
+<span class='lineno'>  49</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', title='bool'>cast_to_bfloat16</a> = False
+<span class='lineno'>  50</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.requested_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.requested_dtype', title='?'>requested_dtype</a> = kwargs[&#39;dtype&#39;]
+<span class='lineno'>  51</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.requested_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.requested_dtype', title='?'>requested_dtype</a> == <a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.bfloat16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.bfloat16', title='DType'>bfloat16</a>:
+<span class='lineno'>  52</span>       # Only change the variable dtype if doing so does not decrease variable
+<span class='lineno'>  53</span>       # precision.
+<span class='lineno'>  54</span>       kwargs[&#39;dtype&#39;] = <a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>
+<span class='lineno'>  55</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', title='bool'>cast_to_bfloat16</a> = True
+<span class='lineno'>  56</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', title='?'>var</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.getter', title='?'>getter</a>(*args, **kwargs)
+<span class='lineno'>  57</span>     # This if statement is needed to guard the cast, because batch norm
+<span class='lineno'>  58</span>     # assigns directly to the return value of this custom getter. The cast
+<span class='lineno'>  59</span>     # makes the return value not a variable so it cannot be assigned. Batch
+<span class='lineno'>  60</span>     # norm variables are always in fp32 so this if statement is never
+<span class='lineno'>  61</span>     # triggered for them.
+<span class='lineno'>  62</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.cast_to_bfloat16', title='bool'>cast_to_bfloat16</a>:
+<span class='lineno'>  63</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', title='?'>var</a> = <a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>.<a href='../../../../python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.cast', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.cast', title='(IndexedSlices -> None, ?, None) -> ? / (SparseTensor -> None, ?, None) -> {IndexedSlices | SparseTensor | SparseTensor -> None} / ({int | str}, SparseTensor -> None, None) -> {int | str} / (IndexedSlices -> None, DType, None) -> {IndexedSlices | IndexedSlices -> None | SparseTensor} / (IndexedSlices -> None, DType -> DType, None) -> {IndexedSlices | IndexedSlices -> None | SparseTensor} / (None, int, None) -> {IndexedSlices | SparseTensor} / (SparseTensor -> None, DType -> DType, None) -> {IndexedSlices | SparseTensor | SparseTensor -> None} / (None, DType, None) -> {IndexedSlices | SparseTensor} / (?, ?, None) -> {IndexedSlices | SparseTensor} / (int, DType, None) -> {IndexedSlices | SparseTensor | int}'>cast</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', title='?'>var</a>, <a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.bfloat16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.bfloat16', title='DType'>bfloat16</a>)
+<span class='lineno'>  64</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter.var', title='?'>var</a>
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter.inner_custom_getter', title='? -> None'>inner_custom_getter</a>
+<span class='lineno'>  67</span> 
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span> @tf_contextlib.contextmanager
+<span class='lineno'>  70</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope', title='() -> None'>bfloat16_scope</a>():
+<span class='lineno'>  71</span>   &quot;&quot;&quot;Scope class for bfloat16 variables so that the model uses custom getter.
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>   This enables variables to be read as bfloat16 type when using get_variable.
+<span class='lineno'>  74</span>   &quot;&quot;&quot;
+<span class='lineno'>  75</span>   with <a href='../../../../python/ops/variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', title='variable_scope'>variable_scope</a>.<a href='../../../../python/ops/variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope.variable_scope', title='<variable_scope>'>variable_scope</a>(
+<span class='lineno'>  76</span>       &#39;&#39;, custom_getter=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16._get_custom_getter', title='() -> ? -> None'>_get_custom_getter</a>()) as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope.varscope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope.varscope', title='variable_scope'>varscope</a>:
+<span class='lineno'>  77</span>     yield <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope.varscope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.python.tpu.bfloat16.bfloat16_scope.varscope', title='variable_scope'>varscope</a>
+</pre></td></tr></table></body></html>

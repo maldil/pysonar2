@@ -1,0 +1,199 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/utils/input_fn_utils.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps'>InputFnOps</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn'>build_parsing_serving_input_fn</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn'>build_default_serving_input_fn</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Utilities for creating input_fns (deprecated).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> Contents of this file are moved to tensorflow/python/estimator/export.py.
+<span class='lineno'>  22</span> InputFnOps is renamed to ServingInputReceiver.
+<span class='lineno'>  23</span> build_parsing_serving_input_fn is renamed to
+<span class='lineno'>  24</span>   build_parsing_serving_input_receiver_fn.
+<span class='lineno'>  25</span> build_default_serving_input_fn is renamed to
+<span class='lineno'>  26</span>   build_raw_serving_input_receiver_fn.
+<span class='lineno'>  27</span> &quot;&quot;&quot;
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> from __future__ import absolute_import
+<span class='lineno'>  30</span> from __future__ import division
+<span class='lineno'>  31</span> from __future__ import print_function
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> import collections
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>
+<span class='lineno'>  36</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../../python/framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', title='tensor_shape'>tensor_shape</a>
+<span class='lineno'>  37</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>
+<span class='lineno'>  38</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../../../../python/ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', title='parsing_ops'>parsing_ops</a>
+<span class='lineno'>  39</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a> import <a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', title='(str, str, bool) -> ? -> ? / (None, str, bool) -> (SparseTensor, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, ?, DType, None) -> ? -> ? -> ? / (None, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (None, int, DType, None) -> ? / (Categorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (OneHotCategorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (?, ?, DType, None) -> ? -> () -> None'>deprecated</a>
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', title='<InputFnOps>'>InputFnOps</a>(collections.namedtuple(&#39;InputFnOps&#39;,
+<span class='lineno'>  43</span>                                         [&#39;features&#39;,
+<span class='lineno'>  44</span>                                          &#39;labels&#39;,
+<span class='lineno'>  45</span>                                          &#39;default_inputs&#39;])):
+<span class='lineno'>  46</span>   &quot;&quot;&quot;A return type for an input_fn (deprecated).
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span>   THIS CLASS IS DEPRECATED. Please use tf.estimator.export.ServingInputReceiver
+<span class='lineno'>  49</span>   instead.
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   This return type is currently only supported for serving input_fn.
+<span class='lineno'>  52</span>   Training and eval input_fn should return a `(features, labels)` tuple.
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   The expected return values are:
+<span class='lineno'>  55</span>     features: A dict of string to `Tensor` or `SparseTensor`, specifying the
+<span class='lineno'>  56</span>       features to be passed to the model.
+<span class='lineno'>  57</span>     labels: A `Tensor`, `SparseTensor`, or a dict of string to `Tensor` or
+<span class='lineno'>  58</span>       `SparseTensor`, specifying labels for training or eval. For serving, set
+<span class='lineno'>  59</span>       `labels` to `None`.
+<span class='lineno'>  60</span>     default_inputs: a dict of string to `Tensor` or `SparseTensor`, specifying
+<span class='lineno'>  61</span>       the input placeholders (if any) that this input_fn expects to be fed.
+<span class='lineno'>  62</span>       Typically, this is used by a serving input_fn, which expects to be fed
+<span class='lineno'>  63</span>       serialized `tf.Example` protos.
+<span class='lineno'>  64</span>   &quot;&quot;&quot;
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span> @deprecated(None, &#39;Please use &#39;
+<span class='lineno'>  68</span>             &#39;tf.estimator.export.build_parsing_serving_input_receiver_fn.&#39;)
+<span class='lineno'>  69</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn', title='(?, None) -> ? -> ? / (dict, None) -> () -> InputFnOps'>build_parsing_serving_input_fn</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.feature_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.feature_spec', title='dict'>feature_spec</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.default_batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.default_batch_size', title='None'>default_batch_size</a>=None):
+<span class='lineno'>  70</span>   &quot;&quot;&quot;Build an input_fn appropriate for serving, expecting fed tf.Examples.
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>   Creates an input_fn that expects a serialized tf.Example fed into a string
+<span class='lineno'>  73</span>   placeholder.  The function parses the tf.Example according to the provided
+<span class='lineno'>  74</span>   feature_spec, and returns all parsed Tensors as features.  This input_fn is
+<span class='lineno'>  75</span>   for use at serving time, so the labels return value is always None.
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   Args:
+<span class='lineno'>  78</span>     feature_spec: a dict of string to `VarLenFeature`/`FixedLenFeature`.
+<span class='lineno'>  79</span>     default_batch_size: the number of query examples expected per batch.
+<span class='lineno'>  80</span>         Leave unset for variable batch size (recommended).
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>   Returns:
+<span class='lineno'>  83</span>     An input_fn suitable for use in serving.
+<span class='lineno'>  84</span>   &quot;&quot;&quot;
+<span class='lineno'>  85</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn', title='() -> InputFnOps'>input_fn</a>():
+<span class='lineno'>  86</span>     &quot;&quot;&quot;An input_fn that expects a serialized tf.Example.&quot;&quot;&quot;
+<span class='lineno'>  87</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', title='None'>serialized_tf_example</a> = <a href='../../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>.<a href='../../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', title='{(?, [?], None) -> None / (DType, None, None) -> None / (?, None, None) -> None | (TPURewriteContext, ?, None) -> ? / (TPURewriteContext, DType, None) -> None / (TensorSpec -> DType, None, None) -> None / (DType, [int], None) -> None / ({None | str}, None, None) -> None / (DType, None, None) -> None / (str, None, None) -> None / (?, None, None) -> None / (DType, [None], None) -> None / (?, [None], None) -> None}'>placeholder</a>(dtype=<a href='../../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../../../../python/framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', title='DType'>string</a>,
+<span class='lineno'>  88</span>                                                   shape=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.default_batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.default_batch_size', title='None'>default_batch_size</a>],
+<span class='lineno'>  89</span>                                                   name=&#39;input_example_tensor&#39;)
+<span class='lineno'>  90</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.inputs', title='dict'>inputs</a> = {&#39;examples&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', title='None'>serialized_tf_example</a>}
+<span class='lineno'>  91</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.features', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.features', title='dict'>features</a> = <a href='../../../../../python/ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', title='parsing_ops'>parsing_ops</a>.<a href='../../../../../python/ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.parse_example', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.parse_example', title='(LabeledTensor -> ?, dict, None, None) -> dict / (None, {dict | dict}, None, None) -> dict / (?, {dict | dict}, None, None) -> dict / (None, dict, None, None) -> dict / (?, ?, None, None) -> dict / (?, dict, None, None) -> dict'>parse_example</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.serialized_tf_example', title='None'>serialized_tf_example</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.feature_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.feature_spec', title='dict'>feature_spec</a>)
+<span class='lineno'>  92</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.labels', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.labels', title='None'>labels</a> = None  # these are not known in serving!
+<span class='lineno'>  93</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', title='<InputFnOps>'>InputFnOps</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.features', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.features', title='dict'>features</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.labels', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.labels', title='None'>labels</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn.inputs', title='dict'>inputs</a>)
+<span class='lineno'>  94</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_parsing_serving_input_fn.input_fn', title='() -> InputFnOps'>input_fn</a>
+<span class='lineno'>  95</span> 
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span> @deprecated(None, &#39;Please use &#39;
+<span class='lineno'>  98</span>             &#39;tf.estimator.export.build_raw_serving_input_receiver_fn.&#39;)
+<span class='lineno'>  99</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn', title='(?, None) -> () -> InputFnOps'>build_default_serving_input_fn</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.features', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.features', title='?'>features</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.default_batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.default_batch_size', title='None'>default_batch_size</a>=None):
+<span class='lineno'> 100</span>   &quot;&quot;&quot;Build an input_fn appropriate for serving, expecting feature Tensors.
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span>   Creates an input_fn that expects all features to be fed directly.
+<span class='lineno'> 103</span>   This input_fn is for use at serving time, so the labels return value is always
+<span class='lineno'> 104</span>   None.
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   Args:
+<span class='lineno'> 107</span>     features: a dict of string to `Tensor`.
+<span class='lineno'> 108</span>     default_batch_size: the number of query examples expected per batch.
+<span class='lineno'> 109</span>         Leave unset for variable batch size (recommended).
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   Returns:
+<span class='lineno'> 112</span>     An input_fn suitable for use in serving.
+<span class='lineno'> 113</span>   &quot;&quot;&quot;
+<span class='lineno'> 114</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn', title='() -> InputFnOps'>input_fn</a>():
+<span class='lineno'> 115</span>     &quot;&quot;&quot;an input_fn that expects all features to be fed directly.&quot;&quot;&quot;
+<span class='lineno'> 116</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', title='dict'>features_placeholders</a> = {}
+<span class='lineno'> 117</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.name', title='?'>name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', title='?'>t</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.features', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.features', title='?'>features</a>.items():
+<span class='lineno'> 118</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', title='?'>shape_list</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', title='?'>t</a>.get_shape().as_list()
+<span class='lineno'> 119</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', title='?'>shape_list</a>[0] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.default_batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.default_batch_size', title='None'>default_batch_size</a>
+<span class='lineno'> 120</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape', title='TensorShape'>shape</a> = <a href='../../../../../python/framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', title='tensor_shape'>tensor_shape</a>.<a href='../../../../../python/framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape.TensorShape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape.TensorShape', title='<TensorShape>'>TensorShape</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape_list', title='?'>shape_list</a>)
+<span class='lineno'> 121</span> 
+<span class='lineno'> 122</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', title='dict'>features_placeholders</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.name', title='?'>name</a>] = <a href='../../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>.<a href='../../../../../python/ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', title='{(?, [?], None) -> None / (DType, None, None) -> None / (?, None, None) -> None | (TPURewriteContext, ?, None) -> ? / (TPURewriteContext, DType, None) -> None / (TensorSpec -> DType, None, None) -> None / (DType, [int], None) -> None / ({None | str}, None, None) -> None / (DType, None, None) -> None / (str, None, None) -> None / (?, None, None) -> None / (DType, [None], None) -> None / (?, [None], None) -> None}'>placeholder</a>(
+<span class='lineno'> 123</span>           dtype=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', title='?'>t</a>.dtype, shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.shape', title='TensorShape'>shape</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.t', title='?'>t</a>.op.name)
+<span class='lineno'> 124</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.labels', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.labels', title='None'>labels</a> = None  # these are not known in serving!
+<span class='lineno'> 125</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.InputFnOps', title='<InputFnOps>'>InputFnOps</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', title='dict'>features_placeholders</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.labels', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.labels', title='None'>labels</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn.features_placeholders', title='dict'>features_placeholders</a>)
+<span class='lineno'> 126</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.input_fn_utils.build_default_serving_input_fn.input_fn', title='() -> InputFnOps'>input_fn</a>
+</pre></td></tr></table></body></html>

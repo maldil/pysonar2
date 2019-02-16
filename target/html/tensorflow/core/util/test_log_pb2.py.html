@@ -1,0 +1,1071 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/util/test_log_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE'>_TESTRESULTS_BENCHMARKTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE'>_ENTRYVALUE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY'>_BENCHMARKENTRY_EXTRASENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY'>_BENCHMARKENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES'>_BENCHMARKENTRIES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION'>_BUILDCONFIGURATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID'>_COMMITID</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY'>_CPUINFO_CACHESIZEENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO'>_CPUINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO'>_MEMORYINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO'>_GPUINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO'>_PLATFORMINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO'>_AVAILABLEDEVICEINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION'>_MACHINECONFIGURATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION'>_RUNCONFIGURATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS'>_TESTRESULTS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue'>EntryValue</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry'>BenchmarkEntry</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries'>BenchmarkEntries</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration'>BuildConfiguration</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId'>CommitId</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo'>CPUInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo'>MemoryInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo'>GPUInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo'>PlatformInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo'>AvailableDeviceInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration'>MachineConfiguration</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration'>RunConfiguration</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults'>TestResults</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/util/test_log.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%411.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%411.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%411.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%411.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%412.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%412.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%412.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.lambda%412.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/core/util/test_log.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  22</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&#39;\n\033org.tensorflow.util.testlogB\rTestLogProtosP\001\370\001\001&#39;),
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&#39;\n#tensorflow/core/util/test_log.proto\x12\ntensorflow\x1a\x19google/protobuf/any.proto\&quot;D\n\nEntryValue\x12\x16\n\x0c\x64ouble_value\x18\x01 \x01(\x01H\x00\x12\x16\n\x0cstring_value\x18\x02 \x01(\tH\x00\x42\x06\n\x04kind\&quot;\xe5\x01\n\x0e\x42\x65nchmarkEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05iters\x18\x02 \x01(\x03\x12\x10\n\x08\x63pu_time\x18\x03 \x01(\x01\x12\x11\n\twall_time\x18\x04 \x01(\x01\x12\x12\n\nthroughput\x18\x05 \x01(\x01\x12\x36\n\x06\x65xtras\x18\x06 \x03(\x0b\x32&amp;.tensorflow.BenchmarkEntry.ExtrasEntry\x1a\x45\n\x0b\x45xtrasEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.tensorflow.EntryValue:\x02\x38\x01\&quot;=\n\x10\x42\x65nchmarkEntries\x12)\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x1a.tensorflow.BenchmarkEntry\&quot;B\n\x12\x42uildConfiguration\x12\x0c\n\x04mode\x18\x01 \x01(\t\x12\x10\n\x08\x63\x63_flags\x18\x02 \x03(\t\x12\x0c\n\x04opts\x18\x03 \x03(\t\&quot;f\n\x08\x43ommitId\x12\x14\n\nchangelist\x18\x01 \x01(\x03H\x00\x12\x0e\n\x04hash\x18\x02 \x01(\tH\x00\x12\x10\n\x08snapshot\x18\x03 \x01(\t\x12\x1a\n\x12pending_changelist\x18\x04 \x01(\x03\x42\x06\n\x04kind\&quot;\xde\x01\n\x07\x43PUInfo\x12\x11\n\tnum_cores\x18\x01 \x01(\x03\x12\x19\n\x11num_cores_allowed\x18\x02 \x01(\x03\x12\x13\n\x0bmhz_per_cpu\x18\x03 \x01(\x01\x12\x10\n\x08\x63pu_info\x18\x04 \x01(\t\x12\x14\n\x0c\x63pu_governor\x18\x05 \x01(\t\x12\x36\n\ncache_size\x18\x06 \x03(\x0b\x32\&quot;.tensorflow.CPUInfo.CacheSizeEntry\x1a\x30\n\x0e\x43\x61\x63heSizeEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\&quot;.\n\nMemoryInfo\x12\r\n\x05total\x18\x01 \x01(\x03\x12\x11\n\tavailable\x18\x02 \x01(\x03\&quot;6\n\x07GPUInfo\x12\r\n\x05model\x18\x01 \x01(\t\x12\x0c\n\x04uuid\x18\x02 \x01(\t\x12\x0e\n\x06\x62us_id\x18\x03 \x01(\t\&quot;p\n\x0cPlatformInfo\x12\x0c\n\x04\x62its\x18\x01 \x01(\t\x12\x0f\n\x07linkage\x18\x02 \x01(\t\x12\x0f\n\x07machine\x18\x03 \x01(\t\x12\x0f\n\x07release\x18\x04 \x01(\t\x12\x0e\n\x06system\x18\x05 \x01(\t\x12\x0f\n\x07version\x18\x06 \x01(\t\&quot;e\n\x13\x41vailableDeviceInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x14\n\x0cmemory_limit\x18\x03 \x01(\x03\x12\x1c\n\x14physical_description\x18\x04 \x01(\t\&quot;\xb3\x02\n\x14MachineConfiguration\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\x19\n\x11serial_identifier\x18\x07 \x01(\t\x12/\n\rplatform_info\x18\x02 \x01(\x0b\x32\x18.tensorflow.PlatformInfo\x12%\n\x08\x63pu_info\x18\x03 \x01(\x0b\x32\x13.tensorflow.CPUInfo\x12)\n\x0b\x64\x65vice_info\x18\x04 \x03(\x0b\x32\x14.google.protobuf.Any\x12&gt;\n\x15\x61vailable_device_info\x18\x05 \x03(\x0b\x32\x1f.tensorflow.AvailableDeviceInfo\x12+\n\x0bmemory_info\x18\x06 \x01(\x0b\x32\x16.tensorflow.MemoryInfo\&quot;$\n\x10RunConfiguration\x12\x10\n\x08\x61rgument\x18\x01 \x03(\t\&quot;\x94\x04\n\x0bTestResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12-\n\x07\x65ntries\x18\x02 \x01(\x0b\x32\x1c.tensorflow.BenchmarkEntries\x12;\n\x13\x62uild_configuration\x18\x03 \x01(\x0b\x32\x1e.tensorflow.BuildConfiguration\x12\&#39;\n\tcommit_id\x18\x04 \x01(\x0b\x32\x14.tensorflow.CommitId\x12\x12\n\nstart_time\x18\x05 \x01(\x03\x12\x10\n\x08run_time\x18\x06 \x01(\x01\x12?\n\x15machine_configuration\x18\x07 \x01(\x0b\x32 .tensorflow.MachineConfiguration\x12\x37\n\x11run_configuration\x18\x08 \x01(\x0b\x32\x1c.tensorflow.RunConfiguration\x12\x0c\n\x04name\x18\t \x01(\t\x12=\n\x0e\x62\x65nchmark_type\x18\n \x01(\x0e\x32%.tensorflow.TestResults.BenchmarkType\x12\x10\n\x08run_mode\x18\x0b \x01(\t\&quot;a\n\rBenchmarkType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x16\n\x12\x43PP_MICROBENCHMARK\x10\x01\x12\x14\n\x10PYTHON_BENCHMARK\x10\x02\x12\x15\n\x11\x41NDROID_BENCHMARK\x10\x03\x42\x31\n\x1borg.tensorflow.util.testlogB\rTestLogProtosP\x01\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  24</span>   ,
+<span class='lineno'>  25</span>   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', title='?'>_TESTRESULTS_BENCHMARKTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  30</span>   name=&#39;BenchmarkType&#39;,
+<span class='lineno'>  31</span>   full_name=&#39;tensorflow.TestResults.BenchmarkType&#39;,
+<span class='lineno'>  32</span>   filename=None,
+<span class='lineno'>  33</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  34</span>   values=[
+<span class='lineno'>  35</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  36</span>       name=&#39;UNKNOWN&#39;, index=0, number=0,
+<span class='lineno'>  37</span>       serialized_options=None,
+<span class='lineno'>  38</span>       type=None),
+<span class='lineno'>  39</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  40</span>       name=&#39;CPP_MICROBENCHMARK&#39;, index=1, number=1,
+<span class='lineno'>  41</span>       serialized_options=None,
+<span class='lineno'>  42</span>       type=None),
+<span class='lineno'>  43</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  44</span>       name=&#39;PYTHON_BENCHMARK&#39;, index=2, number=2,
+<span class='lineno'>  45</span>       serialized_options=None,
+<span class='lineno'>  46</span>       type=None),
+<span class='lineno'>  47</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  48</span>       name=&#39;ANDROID_BENCHMARK&#39;, index=3, number=3,
+<span class='lineno'>  49</span>       serialized_options=None,
+<span class='lineno'>  50</span>       type=None),
+<span class='lineno'>  51</span>   ],
+<span class='lineno'>  52</span>   containing_type=None,
+<span class='lineno'>  53</span>   serialized_options=None,
+<span class='lineno'>  54</span>   serialized_start=1945,
+<span class='lineno'>  55</span>   serialized_end=2042,
+<span class='lineno'>  56</span> )
+<span class='lineno'>  57</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', title='?'>_TESTRESULTS_BENCHMARKTYPE</a>)
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a> = _descriptor.Descriptor(
+<span class='lineno'>  61</span>   name=&#39;EntryValue&#39;,
+<span class='lineno'>  62</span>   full_name=&#39;tensorflow.EntryValue&#39;,
+<span class='lineno'>  63</span>   filename=None,
+<span class='lineno'>  64</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  65</span>   containing_type=None,
+<span class='lineno'>  66</span>   fields=[
+<span class='lineno'>  67</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  68</span>       name=&#39;double_value&#39;, full_name=&#39;tensorflow.EntryValue.double_value&#39;, index=0,
+<span class='lineno'>  69</span>       number=1, type=1, cpp_type=5, label=1,
+<span class='lineno'>  70</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'>  71</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  72</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  73</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  74</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  75</span>       name=&#39;string_value&#39;, full_name=&#39;tensorflow.EntryValue.string_value&#39;, index=1,
+<span class='lineno'>  76</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'>  77</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'>  78</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  79</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  80</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  81</span>   ],
+<span class='lineno'>  82</span>   extensions=[
+<span class='lineno'>  83</span>   ],
+<span class='lineno'>  84</span>   nested_types=[],
+<span class='lineno'>  85</span>   enum_types=[
+<span class='lineno'>  86</span>   ],
+<span class='lineno'>  87</span>   serialized_options=None,
+<span class='lineno'>  88</span>   is_extendable=False,
+<span class='lineno'>  89</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  90</span>   extension_ranges=[],
+<span class='lineno'>  91</span>   oneofs=[
+<span class='lineno'>  92</span>     _descriptor.OneofDescriptor(
+<span class='lineno'>  93</span>       name=&#39;kind&#39;, full_name=&#39;tensorflow.EntryValue.kind&#39;,
+<span class='lineno'>  94</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'>  95</span>   ],
+<span class='lineno'>  96</span>   serialized_start=78,
+<span class='lineno'>  97</span>   serialized_end=146,
+<span class='lineno'>  98</span> )
+<span class='lineno'>  99</span> 
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 102</span>   name=&#39;ExtrasEntry&#39;,
+<span class='lineno'> 103</span>   full_name=&#39;tensorflow.BenchmarkEntry.ExtrasEntry&#39;,
+<span class='lineno'> 104</span>   filename=None,
+<span class='lineno'> 105</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 106</span>   containing_type=None,
+<span class='lineno'> 107</span>   fields=[
+<span class='lineno'> 108</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 109</span>       name=&#39;key&#39;, full_name=&#39;tensorflow.BenchmarkEntry.ExtrasEntry.key&#39;, index=0,
+<span class='lineno'> 110</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 111</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 112</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 113</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 114</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 115</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 116</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.BenchmarkEntry.ExtrasEntry.value&#39;, index=1,
+<span class='lineno'> 117</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 118</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 119</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 120</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 121</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 122</span>   ],
+<span class='lineno'> 123</span>   extensions=[
+<span class='lineno'> 124</span>   ],
+<span class='lineno'> 125</span>   nested_types=[],
+<span class='lineno'> 126</span>   enum_types=[
+<span class='lineno'> 127</span>   ],
+<span class='lineno'> 128</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&#39;8\001&#39;),
+<span class='lineno'> 129</span>   is_extendable=False,
+<span class='lineno'> 130</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 131</span>   extension_ranges=[],
+<span class='lineno'> 132</span>   oneofs=[
+<span class='lineno'> 133</span>   ],
+<span class='lineno'> 134</span>   serialized_start=309,
+<span class='lineno'> 135</span>   serialized_end=378,
+<span class='lineno'> 136</span> )
+<span class='lineno'> 137</span> 
+<span class='lineno'> 138</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 139</span>   name=&#39;BenchmarkEntry&#39;,
+<span class='lineno'> 140</span>   full_name=&#39;tensorflow.BenchmarkEntry&#39;,
+<span class='lineno'> 141</span>   filename=None,
+<span class='lineno'> 142</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 143</span>   containing_type=None,
+<span class='lineno'> 144</span>   fields=[
+<span class='lineno'> 145</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 146</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.BenchmarkEntry.name&#39;, index=0,
+<span class='lineno'> 147</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 148</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 149</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 150</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 151</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 152</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 153</span>       name=&#39;iters&#39;, full_name=&#39;tensorflow.BenchmarkEntry.iters&#39;, index=1,
+<span class='lineno'> 154</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 155</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 156</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 157</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 158</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 159</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 160</span>       name=&#39;cpu_time&#39;, full_name=&#39;tensorflow.BenchmarkEntry.cpu_time&#39;, index=2,
+<span class='lineno'> 161</span>       number=3, type=1, cpp_type=5, label=1,
+<span class='lineno'> 162</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 163</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 164</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 165</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 166</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 167</span>       name=&#39;wall_time&#39;, full_name=&#39;tensorflow.BenchmarkEntry.wall_time&#39;, index=3,
+<span class='lineno'> 168</span>       number=4, type=1, cpp_type=5, label=1,
+<span class='lineno'> 169</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 170</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 171</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 172</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 173</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 174</span>       name=&#39;throughput&#39;, full_name=&#39;tensorflow.BenchmarkEntry.throughput&#39;, index=4,
+<span class='lineno'> 175</span>       number=5, type=1, cpp_type=5, label=1,
+<span class='lineno'> 176</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 177</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 178</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 179</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 180</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 181</span>       name=&#39;extras&#39;, full_name=&#39;tensorflow.BenchmarkEntry.extras&#39;, index=5,
+<span class='lineno'> 182</span>       number=6, type=11, cpp_type=10, label=3,
+<span class='lineno'> 183</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 184</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 185</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 186</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 187</span>   ],
+<span class='lineno'> 188</span>   extensions=[
+<span class='lineno'> 189</span>   ],
+<span class='lineno'> 190</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>, ],
+<span class='lineno'> 191</span>   enum_types=[
+<span class='lineno'> 192</span>   ],
+<span class='lineno'> 193</span>   serialized_options=None,
+<span class='lineno'> 194</span>   is_extendable=False,
+<span class='lineno'> 195</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 196</span>   extension_ranges=[],
+<span class='lineno'> 197</span>   oneofs=[
+<span class='lineno'> 198</span>   ],
+<span class='lineno'> 199</span>   serialized_start=149,
+<span class='lineno'> 200</span>   serialized_end=378,
+<span class='lineno'> 201</span> )
+<span class='lineno'> 202</span> 
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', title='?'>_BENCHMARKENTRIES</a> = _descriptor.Descriptor(
+<span class='lineno'> 205</span>   name=&#39;BenchmarkEntries&#39;,
+<span class='lineno'> 206</span>   full_name=&#39;tensorflow.BenchmarkEntries&#39;,
+<span class='lineno'> 207</span>   filename=None,
+<span class='lineno'> 208</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 209</span>   containing_type=None,
+<span class='lineno'> 210</span>   fields=[
+<span class='lineno'> 211</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 212</span>       name=&#39;entry&#39;, full_name=&#39;tensorflow.BenchmarkEntries.entry&#39;, index=0,
+<span class='lineno'> 213</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 214</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 215</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 216</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 217</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 218</span>   ],
+<span class='lineno'> 219</span>   extensions=[
+<span class='lineno'> 220</span>   ],
+<span class='lineno'> 221</span>   nested_types=[],
+<span class='lineno'> 222</span>   enum_types=[
+<span class='lineno'> 223</span>   ],
+<span class='lineno'> 224</span>   serialized_options=None,
+<span class='lineno'> 225</span>   is_extendable=False,
+<span class='lineno'> 226</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 227</span>   extension_ranges=[],
+<span class='lineno'> 228</span>   oneofs=[
+<span class='lineno'> 229</span>   ],
+<span class='lineno'> 230</span>   serialized_start=380,
+<span class='lineno'> 231</span>   serialized_end=441,
+<span class='lineno'> 232</span> )
+<span class='lineno'> 233</span> 
+<span class='lineno'> 234</span> 
+<span class='lineno'> 235</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', title='?'>_BUILDCONFIGURATION</a> = _descriptor.Descriptor(
+<span class='lineno'> 236</span>   name=&#39;BuildConfiguration&#39;,
+<span class='lineno'> 237</span>   full_name=&#39;tensorflow.BuildConfiguration&#39;,
+<span class='lineno'> 238</span>   filename=None,
+<span class='lineno'> 239</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 240</span>   containing_type=None,
+<span class='lineno'> 241</span>   fields=[
+<span class='lineno'> 242</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 243</span>       name=&#39;mode&#39;, full_name=&#39;tensorflow.BuildConfiguration.mode&#39;, index=0,
+<span class='lineno'> 244</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 245</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 246</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 247</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 248</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 249</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 250</span>       name=&#39;cc_flags&#39;, full_name=&#39;tensorflow.BuildConfiguration.cc_flags&#39;, index=1,
+<span class='lineno'> 251</span>       number=2, type=9, cpp_type=9, label=3,
+<span class='lineno'> 252</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 253</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 254</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 255</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 256</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 257</span>       name=&#39;opts&#39;, full_name=&#39;tensorflow.BuildConfiguration.opts&#39;, index=2,
+<span class='lineno'> 258</span>       number=3, type=9, cpp_type=9, label=3,
+<span class='lineno'> 259</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 260</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 261</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 262</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 263</span>   ],
+<span class='lineno'> 264</span>   extensions=[
+<span class='lineno'> 265</span>   ],
+<span class='lineno'> 266</span>   nested_types=[],
+<span class='lineno'> 267</span>   enum_types=[
+<span class='lineno'> 268</span>   ],
+<span class='lineno'> 269</span>   serialized_options=None,
+<span class='lineno'> 270</span>   is_extendable=False,
+<span class='lineno'> 271</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 272</span>   extension_ranges=[],
+<span class='lineno'> 273</span>   oneofs=[
+<span class='lineno'> 274</span>   ],
+<span class='lineno'> 275</span>   serialized_start=443,
+<span class='lineno'> 276</span>   serialized_end=509,
+<span class='lineno'> 277</span> )
+<span class='lineno'> 278</span> 
+<span class='lineno'> 279</span> 
+<span class='lineno'> 280</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a> = _descriptor.Descriptor(
+<span class='lineno'> 281</span>   name=&#39;CommitId&#39;,
+<span class='lineno'> 282</span>   full_name=&#39;tensorflow.CommitId&#39;,
+<span class='lineno'> 283</span>   filename=None,
+<span class='lineno'> 284</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 285</span>   containing_type=None,
+<span class='lineno'> 286</span>   fields=[
+<span class='lineno'> 287</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 288</span>       name=&#39;changelist&#39;, full_name=&#39;tensorflow.CommitId.changelist&#39;, index=0,
+<span class='lineno'> 289</span>       number=1, type=3, cpp_type=2, label=1,
+<span class='lineno'> 290</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 291</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 292</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 293</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 294</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 295</span>       name=&#39;hash&#39;, full_name=&#39;tensorflow.CommitId.hash&#39;, index=1,
+<span class='lineno'> 296</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 297</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 298</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 299</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 300</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 301</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 302</span>       name=&#39;snapshot&#39;, full_name=&#39;tensorflow.CommitId.snapshot&#39;, index=2,
+<span class='lineno'> 303</span>       number=3, type=9, cpp_type=9, label=1,
+<span class='lineno'> 304</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 305</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 306</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 307</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 308</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 309</span>       name=&#39;pending_changelist&#39;, full_name=&#39;tensorflow.CommitId.pending_changelist&#39;, index=3,
+<span class='lineno'> 310</span>       number=4, type=3, cpp_type=2, label=1,
+<span class='lineno'> 311</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 312</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 313</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 314</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 315</span>   ],
+<span class='lineno'> 316</span>   extensions=[
+<span class='lineno'> 317</span>   ],
+<span class='lineno'> 318</span>   nested_types=[],
+<span class='lineno'> 319</span>   enum_types=[
+<span class='lineno'> 320</span>   ],
+<span class='lineno'> 321</span>   serialized_options=None,
+<span class='lineno'> 322</span>   is_extendable=False,
+<span class='lineno'> 323</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 324</span>   extension_ranges=[],
+<span class='lineno'> 325</span>   oneofs=[
+<span class='lineno'> 326</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 327</span>       name=&#39;kind&#39;, full_name=&#39;tensorflow.CommitId.kind&#39;,
+<span class='lineno'> 328</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 329</span>   ],
+<span class='lineno'> 330</span>   serialized_start=511,
+<span class='lineno'> 331</span>   serialized_end=613,
+<span class='lineno'> 332</span> )
+<span class='lineno'> 333</span> 
+<span class='lineno'> 334</span> 
+<span class='lineno'> 335</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 336</span>   name=&#39;CacheSizeEntry&#39;,
+<span class='lineno'> 337</span>   full_name=&#39;tensorflow.CPUInfo.CacheSizeEntry&#39;,
+<span class='lineno'> 338</span>   filename=None,
+<span class='lineno'> 339</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 340</span>   containing_type=None,
+<span class='lineno'> 341</span>   fields=[
+<span class='lineno'> 342</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 343</span>       name=&#39;key&#39;, full_name=&#39;tensorflow.CPUInfo.CacheSizeEntry.key&#39;, index=0,
+<span class='lineno'> 344</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 345</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 346</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 347</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 348</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 349</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 350</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.CPUInfo.CacheSizeEntry.value&#39;, index=1,
+<span class='lineno'> 351</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 352</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 353</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 354</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 355</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 356</span>   ],
+<span class='lineno'> 357</span>   extensions=[
+<span class='lineno'> 358</span>   ],
+<span class='lineno'> 359</span>   nested_types=[],
+<span class='lineno'> 360</span>   enum_types=[
+<span class='lineno'> 361</span>   ],
+<span class='lineno'> 362</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&#39;8\001&#39;),
+<span class='lineno'> 363</span>   is_extendable=False,
+<span class='lineno'> 364</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 365</span>   extension_ranges=[],
+<span class='lineno'> 366</span>   oneofs=[
+<span class='lineno'> 367</span>   ],
+<span class='lineno'> 368</span>   serialized_start=790,
+<span class='lineno'> 369</span>   serialized_end=838,
+<span class='lineno'> 370</span> )
+<span class='lineno'> 371</span> 
+<span class='lineno'> 372</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 373</span>   name=&#39;CPUInfo&#39;,
+<span class='lineno'> 374</span>   full_name=&#39;tensorflow.CPUInfo&#39;,
+<span class='lineno'> 375</span>   filename=None,
+<span class='lineno'> 376</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 377</span>   containing_type=None,
+<span class='lineno'> 378</span>   fields=[
+<span class='lineno'> 379</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 380</span>       name=&#39;num_cores&#39;, full_name=&#39;tensorflow.CPUInfo.num_cores&#39;, index=0,
+<span class='lineno'> 381</span>       number=1, type=3, cpp_type=2, label=1,
+<span class='lineno'> 382</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 383</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 384</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 385</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 386</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 387</span>       name=&#39;num_cores_allowed&#39;, full_name=&#39;tensorflow.CPUInfo.num_cores_allowed&#39;, index=1,
+<span class='lineno'> 388</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 389</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 390</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 391</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 392</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 393</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 394</span>       name=&#39;mhz_per_cpu&#39;, full_name=&#39;tensorflow.CPUInfo.mhz_per_cpu&#39;, index=2,
+<span class='lineno'> 395</span>       number=3, type=1, cpp_type=5, label=1,
+<span class='lineno'> 396</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 397</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 398</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 399</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 400</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 401</span>       name=&#39;cpu_info&#39;, full_name=&#39;tensorflow.CPUInfo.cpu_info&#39;, index=3,
+<span class='lineno'> 402</span>       number=4, type=9, cpp_type=9, label=1,
+<span class='lineno'> 403</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 404</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 405</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 406</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 407</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 408</span>       name=&#39;cpu_governor&#39;, full_name=&#39;tensorflow.CPUInfo.cpu_governor&#39;, index=4,
+<span class='lineno'> 409</span>       number=5, type=9, cpp_type=9, label=1,
+<span class='lineno'> 410</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 411</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 412</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 413</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 414</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 415</span>       name=&#39;cache_size&#39;, full_name=&#39;tensorflow.CPUInfo.cache_size&#39;, index=5,
+<span class='lineno'> 416</span>       number=6, type=11, cpp_type=10, label=3,
+<span class='lineno'> 417</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 418</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 419</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 420</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 421</span>   ],
+<span class='lineno'> 422</span>   extensions=[
+<span class='lineno'> 423</span>   ],
+<span class='lineno'> 424</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a>, ],
+<span class='lineno'> 425</span>   enum_types=[
+<span class='lineno'> 426</span>   ],
+<span class='lineno'> 427</span>   serialized_options=None,
+<span class='lineno'> 428</span>   is_extendable=False,
+<span class='lineno'> 429</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 430</span>   extension_ranges=[],
+<span class='lineno'> 431</span>   oneofs=[
+<span class='lineno'> 432</span>   ],
+<span class='lineno'> 433</span>   serialized_start=616,
+<span class='lineno'> 434</span>   serialized_end=838,
+<span class='lineno'> 435</span> )
+<span class='lineno'> 436</span> 
+<span class='lineno'> 437</span> 
+<span class='lineno'> 438</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', title='?'>_MEMORYINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 439</span>   name=&#39;MemoryInfo&#39;,
+<span class='lineno'> 440</span>   full_name=&#39;tensorflow.MemoryInfo&#39;,
+<span class='lineno'> 441</span>   filename=None,
+<span class='lineno'> 442</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 443</span>   containing_type=None,
+<span class='lineno'> 444</span>   fields=[
+<span class='lineno'> 445</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 446</span>       name=&#39;total&#39;, full_name=&#39;tensorflow.MemoryInfo.total&#39;, index=0,
+<span class='lineno'> 447</span>       number=1, type=3, cpp_type=2, label=1,
+<span class='lineno'> 448</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 449</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 450</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 451</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 452</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 453</span>       name=&#39;available&#39;, full_name=&#39;tensorflow.MemoryInfo.available&#39;, index=1,
+<span class='lineno'> 454</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 455</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 456</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 457</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 458</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 459</span>   ],
+<span class='lineno'> 460</span>   extensions=[
+<span class='lineno'> 461</span>   ],
+<span class='lineno'> 462</span>   nested_types=[],
+<span class='lineno'> 463</span>   enum_types=[
+<span class='lineno'> 464</span>   ],
+<span class='lineno'> 465</span>   serialized_options=None,
+<span class='lineno'> 466</span>   is_extendable=False,
+<span class='lineno'> 467</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 468</span>   extension_ranges=[],
+<span class='lineno'> 469</span>   oneofs=[
+<span class='lineno'> 470</span>   ],
+<span class='lineno'> 471</span>   serialized_start=840,
+<span class='lineno'> 472</span>   serialized_end=886,
+<span class='lineno'> 473</span> )
+<span class='lineno'> 474</span> 
+<span class='lineno'> 475</span> 
+<span class='lineno'> 476</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', title='?'>_GPUINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 477</span>   name=&#39;GPUInfo&#39;,
+<span class='lineno'> 478</span>   full_name=&#39;tensorflow.GPUInfo&#39;,
+<span class='lineno'> 479</span>   filename=None,
+<span class='lineno'> 480</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 481</span>   containing_type=None,
+<span class='lineno'> 482</span>   fields=[
+<span class='lineno'> 483</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 484</span>       name=&#39;model&#39;, full_name=&#39;tensorflow.GPUInfo.model&#39;, index=0,
+<span class='lineno'> 485</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 486</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 487</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 488</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 489</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 490</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 491</span>       name=&#39;uuid&#39;, full_name=&#39;tensorflow.GPUInfo.uuid&#39;, index=1,
+<span class='lineno'> 492</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 493</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 494</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 495</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 496</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 497</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 498</span>       name=&#39;bus_id&#39;, full_name=&#39;tensorflow.GPUInfo.bus_id&#39;, index=2,
+<span class='lineno'> 499</span>       number=3, type=9, cpp_type=9, label=1,
+<span class='lineno'> 500</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 501</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 502</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 503</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 504</span>   ],
+<span class='lineno'> 505</span>   extensions=[
+<span class='lineno'> 506</span>   ],
+<span class='lineno'> 507</span>   nested_types=[],
+<span class='lineno'> 508</span>   enum_types=[
+<span class='lineno'> 509</span>   ],
+<span class='lineno'> 510</span>   serialized_options=None,
+<span class='lineno'> 511</span>   is_extendable=False,
+<span class='lineno'> 512</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 513</span>   extension_ranges=[],
+<span class='lineno'> 514</span>   oneofs=[
+<span class='lineno'> 515</span>   ],
+<span class='lineno'> 516</span>   serialized_start=888,
+<span class='lineno'> 517</span>   serialized_end=942,
+<span class='lineno'> 518</span> )
+<span class='lineno'> 519</span> 
+<span class='lineno'> 520</span> 
+<span class='lineno'> 521</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', title='?'>_PLATFORMINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 522</span>   name=&#39;PlatformInfo&#39;,
+<span class='lineno'> 523</span>   full_name=&#39;tensorflow.PlatformInfo&#39;,
+<span class='lineno'> 524</span>   filename=None,
+<span class='lineno'> 525</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 526</span>   containing_type=None,
+<span class='lineno'> 527</span>   fields=[
+<span class='lineno'> 528</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 529</span>       name=&#39;bits&#39;, full_name=&#39;tensorflow.PlatformInfo.bits&#39;, index=0,
+<span class='lineno'> 530</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 531</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 532</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 533</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 534</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 535</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 536</span>       name=&#39;linkage&#39;, full_name=&#39;tensorflow.PlatformInfo.linkage&#39;, index=1,
+<span class='lineno'> 537</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 538</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 539</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 540</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 541</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 542</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 543</span>       name=&#39;machine&#39;, full_name=&#39;tensorflow.PlatformInfo.machine&#39;, index=2,
+<span class='lineno'> 544</span>       number=3, type=9, cpp_type=9, label=1,
+<span class='lineno'> 545</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 546</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 547</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 548</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 549</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 550</span>       name=&#39;release&#39;, full_name=&#39;tensorflow.PlatformInfo.release&#39;, index=3,
+<span class='lineno'> 551</span>       number=4, type=9, cpp_type=9, label=1,
+<span class='lineno'> 552</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 553</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 554</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 555</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 556</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 557</span>       name=&#39;system&#39;, full_name=&#39;tensorflow.PlatformInfo.system&#39;, index=4,
+<span class='lineno'> 558</span>       number=5, type=9, cpp_type=9, label=1,
+<span class='lineno'> 559</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 560</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 561</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 562</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 563</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 564</span>       name=&#39;version&#39;, full_name=&#39;tensorflow.PlatformInfo.version&#39;, index=5,
+<span class='lineno'> 565</span>       number=6, type=9, cpp_type=9, label=1,
+<span class='lineno'> 566</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 567</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 568</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 569</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 570</span>   ],
+<span class='lineno'> 571</span>   extensions=[
+<span class='lineno'> 572</span>   ],
+<span class='lineno'> 573</span>   nested_types=[],
+<span class='lineno'> 574</span>   enum_types=[
+<span class='lineno'> 575</span>   ],
+<span class='lineno'> 576</span>   serialized_options=None,
+<span class='lineno'> 577</span>   is_extendable=False,
+<span class='lineno'> 578</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 579</span>   extension_ranges=[],
+<span class='lineno'> 580</span>   oneofs=[
+<span class='lineno'> 581</span>   ],
+<span class='lineno'> 582</span>   serialized_start=944,
+<span class='lineno'> 583</span>   serialized_end=1056,
+<span class='lineno'> 584</span> )
+<span class='lineno'> 585</span> 
+<span class='lineno'> 586</span> 
+<span class='lineno'> 587</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', title='?'>_AVAILABLEDEVICEINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 588</span>   name=&#39;AvailableDeviceInfo&#39;,
+<span class='lineno'> 589</span>   full_name=&#39;tensorflow.AvailableDeviceInfo&#39;,
+<span class='lineno'> 590</span>   filename=None,
+<span class='lineno'> 591</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 592</span>   containing_type=None,
+<span class='lineno'> 593</span>   fields=[
+<span class='lineno'> 594</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 595</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.AvailableDeviceInfo.name&#39;, index=0,
+<span class='lineno'> 596</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 597</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 598</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 599</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 600</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 601</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 602</span>       name=&#39;type&#39;, full_name=&#39;tensorflow.AvailableDeviceInfo.type&#39;, index=1,
+<span class='lineno'> 603</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 604</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 605</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 606</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 607</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 608</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 609</span>       name=&#39;memory_limit&#39;, full_name=&#39;tensorflow.AvailableDeviceInfo.memory_limit&#39;, index=2,
+<span class='lineno'> 610</span>       number=3, type=3, cpp_type=2, label=1,
+<span class='lineno'> 611</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 612</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 613</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 614</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 615</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 616</span>       name=&#39;physical_description&#39;, full_name=&#39;tensorflow.AvailableDeviceInfo.physical_description&#39;, index=3,
+<span class='lineno'> 617</span>       number=4, type=9, cpp_type=9, label=1,
+<span class='lineno'> 618</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 619</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 620</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 621</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 622</span>   ],
+<span class='lineno'> 623</span>   extensions=[
+<span class='lineno'> 624</span>   ],
+<span class='lineno'> 625</span>   nested_types=[],
+<span class='lineno'> 626</span>   enum_types=[
+<span class='lineno'> 627</span>   ],
+<span class='lineno'> 628</span>   serialized_options=None,
+<span class='lineno'> 629</span>   is_extendable=False,
+<span class='lineno'> 630</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 631</span>   extension_ranges=[],
+<span class='lineno'> 632</span>   oneofs=[
+<span class='lineno'> 633</span>   ],
+<span class='lineno'> 634</span>   serialized_start=1058,
+<span class='lineno'> 635</span>   serialized_end=1159,
+<span class='lineno'> 636</span> )
+<span class='lineno'> 637</span> 
+<span class='lineno'> 638</span> 
+<span class='lineno'> 639</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a> = _descriptor.Descriptor(
+<span class='lineno'> 640</span>   name=&#39;MachineConfiguration&#39;,
+<span class='lineno'> 641</span>   full_name=&#39;tensorflow.MachineConfiguration&#39;,
+<span class='lineno'> 642</span>   filename=None,
+<span class='lineno'> 643</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 644</span>   containing_type=None,
+<span class='lineno'> 645</span>   fields=[
+<span class='lineno'> 646</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 647</span>       name=&#39;hostname&#39;, full_name=&#39;tensorflow.MachineConfiguration.hostname&#39;, index=0,
+<span class='lineno'> 648</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 649</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 650</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 651</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 652</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 653</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 654</span>       name=&#39;serial_identifier&#39;, full_name=&#39;tensorflow.MachineConfiguration.serial_identifier&#39;, index=1,
+<span class='lineno'> 655</span>       number=7, type=9, cpp_type=9, label=1,
+<span class='lineno'> 656</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 657</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 658</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 659</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 660</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 661</span>       name=&#39;platform_info&#39;, full_name=&#39;tensorflow.MachineConfiguration.platform_info&#39;, index=2,
+<span class='lineno'> 662</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 663</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 664</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 665</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 666</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 667</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 668</span>       name=&#39;cpu_info&#39;, full_name=&#39;tensorflow.MachineConfiguration.cpu_info&#39;, index=3,
+<span class='lineno'> 669</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 670</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 671</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 672</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 673</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 674</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 675</span>       name=&#39;device_info&#39;, full_name=&#39;tensorflow.MachineConfiguration.device_info&#39;, index=4,
+<span class='lineno'> 676</span>       number=4, type=11, cpp_type=10, label=3,
+<span class='lineno'> 677</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 678</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 679</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 680</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 681</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 682</span>       name=&#39;available_device_info&#39;, full_name=&#39;tensorflow.MachineConfiguration.available_device_info&#39;, index=5,
+<span class='lineno'> 683</span>       number=5, type=11, cpp_type=10, label=3,
+<span class='lineno'> 684</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 685</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 686</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 687</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 688</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 689</span>       name=&#39;memory_info&#39;, full_name=&#39;tensorflow.MachineConfiguration.memory_info&#39;, index=6,
+<span class='lineno'> 690</span>       number=6, type=11, cpp_type=10, label=1,
+<span class='lineno'> 691</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 692</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 693</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 694</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 695</span>   ],
+<span class='lineno'> 696</span>   extensions=[
+<span class='lineno'> 697</span>   ],
+<span class='lineno'> 698</span>   nested_types=[],
+<span class='lineno'> 699</span>   enum_types=[
+<span class='lineno'> 700</span>   ],
+<span class='lineno'> 701</span>   serialized_options=None,
+<span class='lineno'> 702</span>   is_extendable=False,
+<span class='lineno'> 703</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 704</span>   extension_ranges=[],
+<span class='lineno'> 705</span>   oneofs=[
+<span class='lineno'> 706</span>   ],
+<span class='lineno'> 707</span>   serialized_start=1162,
+<span class='lineno'> 708</span>   serialized_end=1469,
+<span class='lineno'> 709</span> )
+<span class='lineno'> 710</span> 
+<span class='lineno'> 711</span> 
+<span class='lineno'> 712</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', title='?'>_RUNCONFIGURATION</a> = _descriptor.Descriptor(
+<span class='lineno'> 713</span>   name=&#39;RunConfiguration&#39;,
+<span class='lineno'> 714</span>   full_name=&#39;tensorflow.RunConfiguration&#39;,
+<span class='lineno'> 715</span>   filename=None,
+<span class='lineno'> 716</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 717</span>   containing_type=None,
+<span class='lineno'> 718</span>   fields=[
+<span class='lineno'> 719</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 720</span>       name=&#39;argument&#39;, full_name=&#39;tensorflow.RunConfiguration.argument&#39;, index=0,
+<span class='lineno'> 721</span>       number=1, type=9, cpp_type=9, label=3,
+<span class='lineno'> 722</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 723</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 724</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 725</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 726</span>   ],
+<span class='lineno'> 727</span>   extensions=[
+<span class='lineno'> 728</span>   ],
+<span class='lineno'> 729</span>   nested_types=[],
+<span class='lineno'> 730</span>   enum_types=[
+<span class='lineno'> 731</span>   ],
+<span class='lineno'> 732</span>   serialized_options=None,
+<span class='lineno'> 733</span>   is_extendable=False,
+<span class='lineno'> 734</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 735</span>   extension_ranges=[],
+<span class='lineno'> 736</span>   oneofs=[
+<span class='lineno'> 737</span>   ],
+<span class='lineno'> 738</span>   serialized_start=1471,
+<span class='lineno'> 739</span>   serialized_end=1507,
+<span class='lineno'> 740</span> )
+<span class='lineno'> 741</span> 
+<span class='lineno'> 742</span> 
+<span class='lineno'> 743</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a> = _descriptor.Descriptor(
+<span class='lineno'> 744</span>   name=&#39;TestResults&#39;,
+<span class='lineno'> 745</span>   full_name=&#39;tensorflow.TestResults&#39;,
+<span class='lineno'> 746</span>   filename=None,
+<span class='lineno'> 747</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 748</span>   containing_type=None,
+<span class='lineno'> 749</span>   fields=[
+<span class='lineno'> 750</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 751</span>       name=&#39;target&#39;, full_name=&#39;tensorflow.TestResults.target&#39;, index=0,
+<span class='lineno'> 752</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 753</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 754</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 755</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 756</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 757</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 758</span>       name=&#39;entries&#39;, full_name=&#39;tensorflow.TestResults.entries&#39;, index=1,
+<span class='lineno'> 759</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 760</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 761</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 762</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 763</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 764</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 765</span>       name=&#39;build_configuration&#39;, full_name=&#39;tensorflow.TestResults.build_configuration&#39;, index=2,
+<span class='lineno'> 766</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 767</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 768</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 769</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 770</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 771</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 772</span>       name=&#39;commit_id&#39;, full_name=&#39;tensorflow.TestResults.commit_id&#39;, index=3,
+<span class='lineno'> 773</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 774</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 775</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 776</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 777</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 778</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 779</span>       name=&#39;start_time&#39;, full_name=&#39;tensorflow.TestResults.start_time&#39;, index=4,
+<span class='lineno'> 780</span>       number=5, type=3, cpp_type=2, label=1,
+<span class='lineno'> 781</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 782</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 783</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 784</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 785</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 786</span>       name=&#39;run_time&#39;, full_name=&#39;tensorflow.TestResults.run_time&#39;, index=5,
+<span class='lineno'> 787</span>       number=6, type=1, cpp_type=5, label=1,
+<span class='lineno'> 788</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 789</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 790</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 791</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 792</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 793</span>       name=&#39;machine_configuration&#39;, full_name=&#39;tensorflow.TestResults.machine_configuration&#39;, index=6,
+<span class='lineno'> 794</span>       number=7, type=11, cpp_type=10, label=1,
+<span class='lineno'> 795</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 796</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 797</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 798</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 799</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 800</span>       name=&#39;run_configuration&#39;, full_name=&#39;tensorflow.TestResults.run_configuration&#39;, index=7,
+<span class='lineno'> 801</span>       number=8, type=11, cpp_type=10, label=1,
+<span class='lineno'> 802</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 803</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 804</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 805</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 806</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 807</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.TestResults.name&#39;, index=8,
+<span class='lineno'> 808</span>       number=9, type=9, cpp_type=9, label=1,
+<span class='lineno'> 809</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 810</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 811</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 812</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 813</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 814</span>       name=&#39;benchmark_type&#39;, full_name=&#39;tensorflow.TestResults.benchmark_type&#39;, index=9,
+<span class='lineno'> 815</span>       number=10, type=14, cpp_type=8, label=1,
+<span class='lineno'> 816</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 817</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 818</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 819</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 820</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 821</span>       name=&#39;run_mode&#39;, full_name=&#39;tensorflow.TestResults.run_mode&#39;, index=10,
+<span class='lineno'> 822</span>       number=11, type=9, cpp_type=9, label=1,
+<span class='lineno'> 823</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 824</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 825</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 826</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 827</span>   ],
+<span class='lineno'> 828</span>   extensions=[
+<span class='lineno'> 829</span>   ],
+<span class='lineno'> 830</span>   nested_types=[],
+<span class='lineno'> 831</span>   enum_types=[
+<span class='lineno'> 832</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', title='?'>_TESTRESULTS_BENCHMARKTYPE</a>,
+<span class='lineno'> 833</span>   ],
+<span class='lineno'> 834</span>   serialized_options=None,
+<span class='lineno'> 835</span>   is_extendable=False,
+<span class='lineno'> 836</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 837</span>   extension_ranges=[],
+<span class='lineno'> 838</span>   oneofs=[
+<span class='lineno'> 839</span>   ],
+<span class='lineno'> 840</span>   serialized_start=1510,
+<span class='lineno'> 841</span>   serialized_end=2042,
+<span class='lineno'> 842</span> )
+<span class='lineno'> 843</span> 
+<span class='lineno'> 844</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.oneofs_by_name[&#39;kind&#39;].fields.append(
+<span class='lineno'> 845</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.fields_by_name[&#39;double_value&#39;])
+<span class='lineno'> 846</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.fields_by_name[&#39;double_value&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.oneofs_by_name[&#39;kind&#39;]
+<span class='lineno'> 847</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.oneofs_by_name[&#39;kind&#39;].fields.append(
+<span class='lineno'> 848</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.fields_by_name[&#39;string_value&#39;])
+<span class='lineno'> 849</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.fields_by_name[&#39;string_value&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>.oneofs_by_name[&#39;kind&#39;]
+<span class='lineno'> 850</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>.fields_by_name[&#39;value&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>
+<span class='lineno'> 851</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a>
+<span class='lineno'> 852</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a>.fields_by_name[&#39;extras&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>
+<span class='lineno'> 853</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', title='?'>_BENCHMARKENTRIES</a>.fields_by_name[&#39;entry&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a>
+<span class='lineno'> 854</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.oneofs_by_name[&#39;kind&#39;].fields.append(
+<span class='lineno'> 855</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.fields_by_name[&#39;changelist&#39;])
+<span class='lineno'> 856</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.fields_by_name[&#39;changelist&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.oneofs_by_name[&#39;kind&#39;]
+<span class='lineno'> 857</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.oneofs_by_name[&#39;kind&#39;].fields.append(
+<span class='lineno'> 858</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.fields_by_name[&#39;hash&#39;])
+<span class='lineno'> 859</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.fields_by_name[&#39;hash&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>.oneofs_by_name[&#39;kind&#39;]
+<span class='lineno'> 860</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a>
+<span class='lineno'> 861</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a>.fields_by_name[&#39;cache_size&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a>
+<span class='lineno'> 862</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>.fields_by_name[&#39;platform_info&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', title='?'>_PLATFORMINFO</a>
+<span class='lineno'> 863</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>.fields_by_name[&#39;cpu_info&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a>
+<span class='lineno'> 864</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>.fields_by_name[&#39;device_info&#39;].message_type = google_dot_protobuf_dot_any__pb2._ANY
+<span class='lineno'> 865</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>.fields_by_name[&#39;available_device_info&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', title='?'>_AVAILABLEDEVICEINFO</a>
+<span class='lineno'> 866</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>.fields_by_name[&#39;memory_info&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', title='?'>_MEMORYINFO</a>
+<span class='lineno'> 867</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;entries&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', title='?'>_BENCHMARKENTRIES</a>
+<span class='lineno'> 868</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;build_configuration&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', title='?'>_BUILDCONFIGURATION</a>
+<span class='lineno'> 869</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;commit_id&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>
+<span class='lineno'> 870</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;machine_configuration&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>
+<span class='lineno'> 871</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;run_configuration&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', title='?'>_RUNCONFIGURATION</a>
+<span class='lineno'> 872</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>.fields_by_name[&#39;benchmark_type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', title='?'>_TESTRESULTS_BENCHMARKTYPE</a>
+<span class='lineno'> 873</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS_BENCHMARKTYPE', title='?'>_TESTRESULTS_BENCHMARKTYPE</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>
+<span class='lineno'> 874</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;EntryValue&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>
+<span class='lineno'> 875</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;BenchmarkEntry&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a>
+<span class='lineno'> 876</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;BenchmarkEntries&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', title='?'>_BENCHMARKENTRIES</a>
+<span class='lineno'> 877</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;BuildConfiguration&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', title='?'>_BUILDCONFIGURATION</a>
+<span class='lineno'> 878</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;CommitId&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>
+<span class='lineno'> 879</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;CPUInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a>
+<span class='lineno'> 880</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;MemoryInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', title='?'>_MEMORYINFO</a>
+<span class='lineno'> 881</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;GPUInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', title='?'>_GPUINFO</a>
+<span class='lineno'> 882</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;PlatformInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', title='?'>_PLATFORMINFO</a>
+<span class='lineno'> 883</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;AvailableDeviceInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', title='?'>_AVAILABLEDEVICEINFO</a>
+<span class='lineno'> 884</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;MachineConfiguration&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>
+<span class='lineno'> 885</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;RunConfiguration&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', title='?'>_RUNCONFIGURATION</a>
+<span class='lineno'> 886</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TestResults&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>
+<span class='lineno'> 887</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 888</span> 
+<span class='lineno'> 889</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue', title='?'>EntryValue</a> = _reflection.GeneratedProtocolMessageType(&#39;EntryValue&#39;, (_message.Message,), dict(
+<span class='lineno'> 890</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._ENTRYVALUE', title='?'>_ENTRYVALUE</a>,
+<span class='lineno'> 891</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 892</span>   # @@protoc_insertion_point(class_scope:tensorflow.EntryValue)
+<span class='lineno'> 893</span>   ))
+<span class='lineno'> 894</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.EntryValue', title='?'>EntryValue</a>)
+<span class='lineno'> 895</span> 
+<span class='lineno'> 896</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', title='?'>BenchmarkEntry</a> = _reflection.GeneratedProtocolMessageType(&#39;BenchmarkEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 897</span> 
+<span class='lineno'> 898</span>   ExtrasEntry = _reflection.GeneratedProtocolMessageType(&#39;ExtrasEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 899</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>,
+<span class='lineno'> 900</span>     __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 901</span>     # @@protoc_insertion_point(class_scope:tensorflow.BenchmarkEntry.ExtrasEntry)
+<span class='lineno'> 902</span>     ))
+<span class='lineno'> 903</span>   ,
+<span class='lineno'> 904</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY', title='?'>_BENCHMARKENTRY</a>,
+<span class='lineno'> 905</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 906</span>   # @@protoc_insertion_point(class_scope:tensorflow.BenchmarkEntry)
+<span class='lineno'> 907</span>   ))
+<span class='lineno'> 908</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', title='?'>BenchmarkEntry</a>)
+<span class='lineno'> 909</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntry', title='?'>BenchmarkEntry</a>.ExtrasEntry)
+<span class='lineno'> 910</span> 
+<span class='lineno'> 911</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries', title='?'>BenchmarkEntries</a> = _reflection.GeneratedProtocolMessageType(&#39;BenchmarkEntries&#39;, (_message.Message,), dict(
+<span class='lineno'> 912</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRIES', title='?'>_BENCHMARKENTRIES</a>,
+<span class='lineno'> 913</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 914</span>   # @@protoc_insertion_point(class_scope:tensorflow.BenchmarkEntries)
+<span class='lineno'> 915</span>   ))
+<span class='lineno'> 916</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BenchmarkEntries', title='?'>BenchmarkEntries</a>)
+<span class='lineno'> 917</span> 
+<span class='lineno'> 918</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration', title='?'>BuildConfiguration</a> = _reflection.GeneratedProtocolMessageType(&#39;BuildConfiguration&#39;, (_message.Message,), dict(
+<span class='lineno'> 919</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BUILDCONFIGURATION', title='?'>_BUILDCONFIGURATION</a>,
+<span class='lineno'> 920</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 921</span>   # @@protoc_insertion_point(class_scope:tensorflow.BuildConfiguration)
+<span class='lineno'> 922</span>   ))
+<span class='lineno'> 923</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.BuildConfiguration', title='?'>BuildConfiguration</a>)
+<span class='lineno'> 924</span> 
+<span class='lineno'> 925</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId', title='?'>CommitId</a> = _reflection.GeneratedProtocolMessageType(&#39;CommitId&#39;, (_message.Message,), dict(
+<span class='lineno'> 926</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._COMMITID', title='?'>_COMMITID</a>,
+<span class='lineno'> 927</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 928</span>   # @@protoc_insertion_point(class_scope:tensorflow.CommitId)
+<span class='lineno'> 929</span>   ))
+<span class='lineno'> 930</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CommitId', title='?'>CommitId</a>)
+<span class='lineno'> 931</span> 
+<span class='lineno'> 932</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', title='?'>CPUInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;CPUInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 933</span> 
+<span class='lineno'> 934</span>   CacheSizeEntry = _reflection.GeneratedProtocolMessageType(&#39;CacheSizeEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 935</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a>,
+<span class='lineno'> 936</span>     __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 937</span>     # @@protoc_insertion_point(class_scope:tensorflow.CPUInfo.CacheSizeEntry)
+<span class='lineno'> 938</span>     ))
+<span class='lineno'> 939</span>   ,
+<span class='lineno'> 940</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO', title='?'>_CPUINFO</a>,
+<span class='lineno'> 941</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 942</span>   # @@protoc_insertion_point(class_scope:tensorflow.CPUInfo)
+<span class='lineno'> 943</span>   ))
+<span class='lineno'> 944</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', title='?'>CPUInfo</a>)
+<span class='lineno'> 945</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.CPUInfo', title='?'>CPUInfo</a>.CacheSizeEntry)
+<span class='lineno'> 946</span> 
+<span class='lineno'> 947</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo', title='?'>MemoryInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;MemoryInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 948</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MEMORYINFO', title='?'>_MEMORYINFO</a>,
+<span class='lineno'> 949</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 950</span>   # @@protoc_insertion_point(class_scope:tensorflow.MemoryInfo)
+<span class='lineno'> 951</span>   ))
+<span class='lineno'> 952</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MemoryInfo', title='?'>MemoryInfo</a>)
+<span class='lineno'> 953</span> 
+<span class='lineno'> 954</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo', title='?'>GPUInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;GPUInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 955</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._GPUINFO', title='?'>_GPUINFO</a>,
+<span class='lineno'> 956</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 957</span>   # @@protoc_insertion_point(class_scope:tensorflow.GPUInfo)
+<span class='lineno'> 958</span>   ))
+<span class='lineno'> 959</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.GPUInfo', title='?'>GPUInfo</a>)
+<span class='lineno'> 960</span> 
+<span class='lineno'> 961</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo', title='?'>PlatformInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;PlatformInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 962</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._PLATFORMINFO', title='?'>_PLATFORMINFO</a>,
+<span class='lineno'> 963</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 964</span>   # @@protoc_insertion_point(class_scope:tensorflow.PlatformInfo)
+<span class='lineno'> 965</span>   ))
+<span class='lineno'> 966</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.PlatformInfo', title='?'>PlatformInfo</a>)
+<span class='lineno'> 967</span> 
+<span class='lineno'> 968</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo', title='?'>AvailableDeviceInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;AvailableDeviceInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 969</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._AVAILABLEDEVICEINFO', title='?'>_AVAILABLEDEVICEINFO</a>,
+<span class='lineno'> 970</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 971</span>   # @@protoc_insertion_point(class_scope:tensorflow.AvailableDeviceInfo)
+<span class='lineno'> 972</span>   ))
+<span class='lineno'> 973</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.AvailableDeviceInfo', title='?'>AvailableDeviceInfo</a>)
+<span class='lineno'> 974</span> 
+<span class='lineno'> 975</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration', title='?'>MachineConfiguration</a> = _reflection.GeneratedProtocolMessageType(&#39;MachineConfiguration&#39;, (_message.Message,), dict(
+<span class='lineno'> 976</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._MACHINECONFIGURATION', title='?'>_MACHINECONFIGURATION</a>,
+<span class='lineno'> 977</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 978</span>   # @@protoc_insertion_point(class_scope:tensorflow.MachineConfiguration)
+<span class='lineno'> 979</span>   ))
+<span class='lineno'> 980</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.MachineConfiguration', title='?'>MachineConfiguration</a>)
+<span class='lineno'> 981</span> 
+<span class='lineno'> 982</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration', title='?'>RunConfiguration</a> = _reflection.GeneratedProtocolMessageType(&#39;RunConfiguration&#39;, (_message.Message,), dict(
+<span class='lineno'> 983</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._RUNCONFIGURATION', title='?'>_RUNCONFIGURATION</a>,
+<span class='lineno'> 984</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 985</span>   # @@protoc_insertion_point(class_scope:tensorflow.RunConfiguration)
+<span class='lineno'> 986</span>   ))
+<span class='lineno'> 987</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.RunConfiguration', title='?'>RunConfiguration</a>)
+<span class='lineno'> 988</span> 
+<span class='lineno'> 989</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults', title='?'>TestResults</a> = _reflection.GeneratedProtocolMessageType(&#39;TestResults&#39;, (_message.Message,), dict(
+<span class='lineno'> 990</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._TESTRESULTS', title='?'>_TESTRESULTS</a>,
+<span class='lineno'> 991</span>   __module__ = &#39;tensorflow.core.util.test_log_pb2&#39;
+<span class='lineno'> 992</span>   # @@protoc_insertion_point(class_scope:tensorflow.TestResults)
+<span class='lineno'> 993</span>   ))
+<span class='lineno'> 994</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.TestResults', title='?'>TestResults</a>)
+<span class='lineno'> 995</span> 
+<span class='lineno'> 996</span> 
+<span class='lineno'> 997</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 998</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._BENCHMARKENTRY_EXTRASENTRY', title='?'>_BENCHMARKENTRY_EXTRASENTRY</a>._options = None
+<span class='lineno'> 999</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.test_log_pb2._CPUINFO_CACHESIZEENTRY', title='?'>_CPUINFO_CACHESIZEENTRY</a>._options = None
+<span class='lineno'>1000</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

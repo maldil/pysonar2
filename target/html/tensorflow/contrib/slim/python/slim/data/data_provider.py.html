@@ -1,0 +1,188 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/slim/python/slim/data/data_provider.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider'>DataProvider</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__metaclass__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__metaclass__'>__metaclass__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get'>get</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items'>list_items</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples'>num_samples</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items'>_validate_items</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Contains code for the DataProvider.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> A DataProvider is a class which provides some predefined data types from some
+<span class='lineno'>  18</span> source (TFRecord, etc). The most basic function of a
+<span class='lineno'>  19</span> data provider is the `Get` operation where one requests one or more types of
+<span class='lineno'>  20</span> data, or &#39;items&#39;:
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span>   provider.get(items=[&#39;image&#39;, &#39;sentence&#39;, &#39;class&#39;])
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> More concretely, a data provider (a subclass of BaseDataProvider) returns a
+<span class='lineno'>  25</span> single tensor for each requested item (data type):
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span>   provider = MyDataProvider(...)
+<span class='lineno'>  28</span>   image, sentence, clazz = provider.get([&#39;image&#39;, &#39;sentence&#39;, &#39;class&#39;])
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> In this example, the provider `MyDataProvider` must know how to load each item.
+<span class='lineno'>  31</span> A data provider may be written in a way that the logic necessary to map from
+<span class='lineno'>  32</span> each item to tensor is completely encapsulated within the data_provider itself.
+<span class='lineno'>  33</span> &quot;&quot;&quot;
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span> from __future__ import absolute_import
+<span class='lineno'>  36</span> from __future__ import division
+<span class='lineno'>  37</span> from __future__ import print_function
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> import abc
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider', title='<DataProvider>'>DataProvider</a>(object):
+<span class='lineno'>  43</span>   &quot;&quot;&quot;Maps a list of requested data items to tensors from a data source.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   All data providers must inherit from DataProvider and implement the Get
+<span class='lineno'>  46</span>   method which returns arbitrary types of data. No assumption is made about the
+<span class='lineno'>  47</span>   source of the data nor the mechanism for providing it.
+<span class='lineno'>  48</span>   &quot;&quot;&quot;
+<span class='lineno'>  49</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__metaclass__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__metaclass__', title='?'>__metaclass__</a> = abc.ABCMeta
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', title='DataProvider'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.items_to_tensors', title='?'>items_to_tensors</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.num_samples', title='?'>num_samples</a>):
+<span class='lineno'>  52</span>     &quot;&quot;&quot;Constructs the Data Provider.
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>     Args:
+<span class='lineno'>  55</span>       items_to_tensors: a dictionary of names to tensors.
+<span class='lineno'>  56</span>       num_samples: the number of samples in the dataset being provided.
+<span class='lineno'>  57</span>     &quot;&quot;&quot;
+<span class='lineno'>  58</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', title='?'>_items_to_tensors</a></a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.items_to_tensors', title='?'>items_to_tensors</a>
+<span class='lineno'>  59</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', title='?'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', title='?'>_num_samples</a></a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.__init__.num_samples', title='?'>num_samples</a>
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get', title='(DataProvider, ?) -> [?]'>get</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', title='DataProvider'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', title='?'>items</a>):
+<span class='lineno'>  62</span>     &quot;&quot;&quot;Returns a list of tensors specified by the given list of items.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>     The list of items is arbitrary different data providers satisfy different
+<span class='lineno'>  65</span>     lists of items. For example the Pascal VOC might accept items &#39;image&#39; and
+<span class='lineno'>  66</span>     &#39;semantics&#39;, whereas the NYUDepthV2 data provider might accept items
+<span class='lineno'>  67</span>     &#39;image&#39;, &#39;depths&#39; and &#39;normals&#39;.
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>     Args:
+<span class='lineno'>  70</span>       items: a list of strings, each of which indicate a particular data type.
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>     Returns:
+<span class='lineno'>  73</span>       a list of tensors, whose length matches the length of `items`, where each
+<span class='lineno'>  74</span>       tensor corresponds to each item.
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span>     Raises:
+<span class='lineno'>  77</span>       ValueError: if any of the items cannot be satisfied.
+<span class='lineno'>  78</span>     &quot;&quot;&quot;
+<span class='lineno'>  79</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items', title='(DataProvider, ?) -> None'>_validate_items</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', title='?'>items</a>)
+<span class='lineno'>  80</span>     return [<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', title='?'>_items_to_tensors</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', title='?'>item</a>] for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.item', title='?'>item</a></a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.get.items', title='?'>items</a>]
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items', title='DataProvider -> None'>list_items</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items.self', title='DataProvider'>self</a>):
+<span class='lineno'>  83</span>     &quot;&quot;&quot;Returns the list of item names that can be provided by the data provider.
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>     Returns:
+<span class='lineno'>  86</span>       a list of item names that can be passed to Get([items]).
+<span class='lineno'>  87</span>     &quot;&quot;&quot;
+<span class='lineno'>  88</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._items_to_tensors', title='?'>_items_to_tensors</a>.keys()
+<span class='lineno'>  89</span> 
+<span class='lineno'>  90</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples', title='DataProvider -> None'>num_samples</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples.self', title='DataProvider'>self</a>):
+<span class='lineno'>  91</span>     &quot;&quot;&quot;Returns the number of data samples in the dataset.
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>     Returns:
+<span class='lineno'>  94</span>       a positive whole number.
+<span class='lineno'>  95</span>     &quot;&quot;&quot;
+<span class='lineno'>  96</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.num_samples.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._num_samples', title='?'>_num_samples</a>
+<span class='lineno'>  97</span> 
+<span class='lineno'>  98</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items', title='(DataProvider, ?) -> None'>_validate_items</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.self', title='DataProvider'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', title='?'>items</a>):
+<span class='lineno'>  99</span>     &quot;&quot;&quot;Verifies that each given item is a member of the list from ListItems().
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>     Args:
+<span class='lineno'> 102</span>       items: a list or tuple of strings.
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>     Raises:
+<span class='lineno'> 105</span>       ValueError: if `items` is not a tuple or list or if any of the elements of
+<span class='lineno'> 106</span>         `items` is not found in the list provided by self.ListItems().
+<span class='lineno'> 107</span>     &quot;&quot;&quot;
+<span class='lineno'> 108</span>     if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', title='?'>items</a>, (list, tuple)):
+<span class='lineno'> 109</span>       raise ValueError(&#39;items must be a list or tuple&#39;)
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.valid_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.valid_items', title='None'>valid_items</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.self', title='DataProvider'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider.list_items', title='DataProvider -> None'>list_items</a>()
+<span class='lineno'> 112</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.item', title='?'>item</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.items', title='?'>items</a>:
+<span class='lineno'> 113</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.item', title='?'>item</a> not in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.valid_items', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.data_provider.DataProvider._validate_items.valid_items', title='None'>valid_items</a>:
+<span class='lineno'> 114</span>         raise ValueError(&#39;Item [%s] is invalid. Valid entries include: %s&#39; %
+<span class='lineno'> 115</span>                          (item, valid_items))
+</pre></td></tr></table></body></html>

@@ -1,0 +1,158 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/debug/lib/common.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.GRPC_URL_PREFIX', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.GRPC_URL_PREFIX'>GRPC_URL_PREFIX</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey'>RunKey</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name'>get_graph_element_name</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names'>get_flattened_names</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key'>get_run_key</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Common values and methods for TensorFlow Debugger.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import collections
+<span class='lineno'>  21</span> import json
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.GRPC_URL_PREFIX', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.GRPC_URL_PREFIX', title='str'>GRPC_URL_PREFIX</a> = &quot;grpc://&quot;
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> # A key for a Session.run() call.
+<span class='lineno'>  26</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey', title='<(namedtuple)>'>RunKey</a> = collections.namedtuple(&quot;RunKey&quot;, [&quot;feed_names&quot;, &quot;fetch_names&quot;])
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name', title='None -> str / ? -> str / ? -> list -> str / (<Tensor>, <Operation>, <Variable>) -> str'>get_graph_element_name</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', title='{(<Tensor>, <Operation>, <Variable>) | ? -> list}'>elem</a>):
+<span class='lineno'>  30</span>   &quot;&quot;&quot;Obtain the name or string representation of a graph element.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   If the graph element has the attribute &quot;name&quot;, return name. Otherwise, return
+<span class='lineno'>  33</span>   a __str__ representation of the graph element. Certain graph elements, such as
+<span class='lineno'>  34</span>   `SparseTensor`s, do not have the attribute &quot;name&quot;.
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   Args:
+<span class='lineno'>  37</span>     elem: The graph element in question.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   Returns:
+<span class='lineno'>  40</span>     If the attribute &#39;name&#39; is available, return the name. Otherwise, return
+<span class='lineno'>  41</span>     str(fetch).
+<span class='lineno'>  42</span>   &quot;&quot;&quot;
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', title='{(<Tensor>, <Operation>, <Variable>) | ? -> list}'>elem</a>.<a href='../../ops/session_ops.py.html#None.name', xid ='None.name', title='str'>name</a> if hasattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', title='{(<Tensor>, <Operation>, <Variable>) | ? -> list}'>elem</a>, &quot;name&quot;) else str(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name.elem', title='{(<Tensor>, <Operation>, <Variable>) | ? -> list}'>elem</a>)
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', title='None -> [str] / ? -> [str] / ? -> list -> [str]'>get_flattened_names</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='? -> list'>feeds_or_fetches</a>):
+<span class='lineno'>  48</span>   &quot;&quot;&quot;Get a flattened list of the names in run() call feeds or fetches.
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span>   Args:
+<span class='lineno'>  51</span>     feeds_or_fetches: Feeds or fetches of the `Session.run()` call. It maybe
+<span class='lineno'>  52</span>       a Tensor, an Operation or a Variable. It may also be nested lists, tuples
+<span class='lineno'>  53</span>       or dicts. See doc of `Session.run()` for more details.
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span>   Returns:
+<span class='lineno'>  56</span>     (list of str) A flattened list of fetch names from `feeds_or_fetches`.
+<span class='lineno'>  57</span>   &quot;&quot;&quot;
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', title='[str]'>lines</a> = []
+<span class='lineno'>  60</span>   if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='? -> list'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='(? -> list, ? -> tuple)'>feeds_or_fetches</a></a>, (list, tuple)):
+<span class='lineno'>  61</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.item', title='? -> list'>item</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='(? -> list, ? -> tuple)'>feeds_or_fetches</a>:
+<span class='lineno'>  62</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', title='[str]'>lines</a>.extend(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', title='None -> [str] / ? -> [str] / ? -> list -> [str]'>get_flattened_names</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.item', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.item', title='? -> list'>item</a>))
+<span class='lineno'>  63</span>   elif isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='? -> list'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='dict'>feeds_or_fetches</a></a>, dict):
+<span class='lineno'>  64</span>     for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.key', title='?'>key</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='dict'>feeds_or_fetches</a>:
+<span class='lineno'>  65</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', title='[str]'>lines</a>.extend(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', title='None -> [str] / ? -> [str] / ? -> list -> [str]'>get_flattened_names</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='dict'>feeds_or_fetches</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.key', title='?'>key</a>]))
+<span class='lineno'>  66</span>   else:
+<span class='lineno'>  67</span>     # This ought to be a Tensor, an Operation or a Variable, for which the name
+<span class='lineno'>  68</span>     # attribute should be available. (Bottom-out condition of the recursion.)
+<span class='lineno'>  69</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', title='[str]'>lines</a>.append(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_graph_element_name', title='None -> str / ? -> str / ? -> list -> str / (<Tensor>, <Operation>, <Variable>) -> str'>get_graph_element_name</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.feeds_or_fetches', title='? -> list'>feeds_or_fetches</a>))
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names.lines', title='[str]'>lines</a>
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key', title='(None, ?) -> None / (?, ?) -> None'>get_run_key</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.feed_dict', title='None'>feed_dict</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.fetches', title='?'>fetches</a>):
+<span class='lineno'>  75</span>   &quot;&quot;&quot;Summarize the names of feeds and fetches as a RunKey JSON string.
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   Args:
+<span class='lineno'>  78</span>     feed_dict: The feed_dict given to the `Session.run()` call.
+<span class='lineno'>  79</span>     fetches: The fetches from the `Session.run()` call.
+<span class='lineno'>  80</span> 
+<span class='lineno'>  81</span>   Returns:
+<span class='lineno'>  82</span>     A JSON Array consisting of two items. They first items is a flattened
+<span class='lineno'>  83</span>     Array of the names of the feeds. The second item is a flattened Array of
+<span class='lineno'>  84</span>     the names of the fetches.
+<span class='lineno'>  85</span>   &quot;&quot;&quot;
+<span class='lineno'>  86</span>   return json.dumps(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.RunKey', title='<(namedtuple)>'>RunKey</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', title='None -> [str] / ? -> [str] / ? -> list -> [str]'>get_flattened_names</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.feed_dict', title='None'>feed_dict</a>),
+<span class='lineno'>  87</span>                            <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_flattened_names', title='None -> [str] / ? -> [str] / ? -> list -> [str]'>get_flattened_names</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.fetches', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.lib.common.get_run_key.fetches', title='?'>fetches</a>)))
+</pre></td></tr></table></body></html>

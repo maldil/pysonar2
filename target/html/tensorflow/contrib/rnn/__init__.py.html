@@ -1,0 +1,178 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/rnn/__init__.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+</ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;RNN Cells and additional RNN operations.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> See [Contrib RNN](https://tensorflow.org/api_guides/python/contrib.rnn) guide.
+<span class='lineno'>  18</span> 
+<span class='lineno'>  19</span> &lt;!--From core--&gt;
+<span class='lineno'>  20</span> @@RNNCell
+<span class='lineno'>  21</span> @@LayerRNNCell
+<span class='lineno'>  22</span> @@BasicRNNCell
+<span class='lineno'>  23</span> @@BasicLSTMCell
+<span class='lineno'>  24</span> @@GRUCell
+<span class='lineno'>  25</span> @@LSTMCell
+<span class='lineno'>  26</span> @@LSTMStateTuple
+<span class='lineno'>  27</span> @@DropoutWrapper
+<span class='lineno'>  28</span> @@MultiRNNCell
+<span class='lineno'>  29</span> @@DeviceWrapper
+<span class='lineno'>  30</span> @@ResidualWrapper
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> &lt;!--Used to be in core, but kept in contrib.--&gt;
+<span class='lineno'>  33</span> @@EmbeddingWrapper
+<span class='lineno'>  34</span> @@InputProjectionWrapper
+<span class='lineno'>  35</span> @@OutputProjectionWrapper
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> &lt;!--Created in contrib, eventual plans to move to core.--&gt;
+<span class='lineno'>  38</span> @@LayerNormBasicLSTMCell
+<span class='lineno'>  39</span> @@LSTMBlockWrapper
+<span class='lineno'>  40</span> @@LSTMBlockCell
+<span class='lineno'>  41</span> @@GRUBlockCell
+<span class='lineno'>  42</span> @@GRUBlockCellV2
+<span class='lineno'>  43</span> @@FusedRNNCell
+<span class='lineno'>  44</span> @@FusedRNNCellAdaptor
+<span class='lineno'>  45</span> @@TimeReversedFusedRNN
+<span class='lineno'>  46</span> @@LSTMBlockFusedCell
+<span class='lineno'>  47</span> @@CoupledInputForgetGateLSTMCell
+<span class='lineno'>  48</span> @@TimeFreqLSTMCell
+<span class='lineno'>  49</span> @@GridLSTMCell
+<span class='lineno'>  50</span> @@BidirectionalGridLSTMCell
+<span class='lineno'>  51</span> @@NASCell
+<span class='lineno'>  52</span> @@UGRNNCell
+<span class='lineno'>  53</span> @@IntersectionRNNCell
+<span class='lineno'>  54</span> @@PhasedLSTMCell
+<span class='lineno'>  55</span> @@ConvLSTMCell
+<span class='lineno'>  56</span> @@Conv1DLSTMCell
+<span class='lineno'>  57</span> @@Conv2DLSTMCell
+<span class='lineno'>  58</span> @@Conv3DLSTMCell
+<span class='lineno'>  59</span> @@HighwayWrapper
+<span class='lineno'>  60</span> @@GLSTMCell
+<span class='lineno'>  61</span> @@SRUCell
+<span class='lineno'>  62</span> @@IndRNNCell
+<span class='lineno'>  63</span> @@IndyGRUCell
+<span class='lineno'>  64</span> @@IndyLSTMCell
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> &lt;!--RNNCell wrappers--&gt;
+<span class='lineno'>  67</span> @@AttentionCellWrapper
+<span class='lineno'>  68</span> @@CompiledWrapper
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> &lt;!--RNN functions--&gt;
+<span class='lineno'>  71</span> @@static_rnn
+<span class='lineno'>  72</span> @@static_state_saving_rnn
+<span class='lineno'>  73</span> @@static_bidirectional_rnn
+<span class='lineno'>  74</span> @@stack_bidirectional_dynamic_rnn
+<span class='lineno'>  75</span> @@stack_bidirectional_rnn
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span> &lt;!--RNN utilities--&gt;
+<span class='lineno'>  78</span> @@transpose_batch_time
+<span class='lineno'>  79</span> @@best_effort_input_batch_size
+<span class='lineno'>  80</span> &quot;&quot;&quot;
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span> from __future__ import absolute_import
+<span class='lineno'>  83</span> from __future__ import division
+<span class='lineno'>  84</span> from __future__ import print_function
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> # pylint: disable=unused-import,wildcard-import,line-too-long
+<span class='lineno'>  87</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', title='core_rnn_cell'>core_rnn_cell</a> import <a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.EmbeddingWrapper', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.EmbeddingWrapper', title='<EmbeddingWrapper>'>EmbeddingWrapper</a>
+<span class='lineno'>  88</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', title='core_rnn_cell'>core_rnn_cell</a> import <a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.InputProjectionWrapper', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.InputProjectionWrapper', title='<InputProjectionWrapper>'>InputProjectionWrapper</a>
+<span class='lineno'>  89</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell', title='core_rnn_cell'>core_rnn_cell</a> import <a href='python/ops/core_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.OutputProjectionWrapper', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.core_rnn_cell.OutputProjectionWrapper', title='<OutputProjectionWrapper>'>OutputProjectionWrapper</a>
+<span class='lineno'>  90</span> 
+<span class='lineno'>  91</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/fused_rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.fused_rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.fused_rnn_cell', title='fused_rnn_cell'>fused_rnn_cell</a> import *
+<span class='lineno'>  92</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/gru_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.gru_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.gru_ops', title='gru_ops'>gru_ops</a> import *
+<span class='lineno'>  93</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/lstm_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.lstm_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.lstm_ops', title='lstm_ops'>lstm_ops</a> import *
+<span class='lineno'>  94</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.rnn', title='rnn'>rnn</a> import *
+<span class='lineno'>  95</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn', title='rnn'>rnn</a>.<a href='python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python', title='python'>python</a>.<a href='python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops', title='ops'>ops</a>.<a href='python/ops/rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.rnn.python.ops.rnn_cell', title='rnn_cell'>rnn_cell</a> import *
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', title='rnn'>rnn</a> import _best_effort_input_batch_size as <a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn._best_effort_input_batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn._best_effort_input_batch_size', title='{None | tuple} -> None / None -> None / ? -> None'>best_effort_input_batch_size</a>
+<span class='lineno'>  98</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', title='rnn'>rnn</a> import _transpose_batch_time as <a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn._transpose_batch_time', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn._transpose_batch_time', title='? -> None / None -> None'>transpose_batch_time</a>
+<span class='lineno'>  99</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', title='rnn'>rnn</a> import <a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_bidirectional_rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_bidirectional_rnn', title='(?, ?, ?, None, None, None, None, None) -> (?, [None], [None])'>static_bidirectional_rnn</a>
+<span class='lineno'> 100</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', title='rnn'>rnn</a> import <a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_rnn', title='(MultiRNNCell, list, None, None, None, None) -> ([?], {[tuple] | tuple}) / (MultiRNNCell, ?, None, None, None, None) -> ([?], {[tuple] | tuple}) / ({DropoutWrapper | MultiRNNCell}, None, None, None, None, None) -> ([?], [None]) / (?, list, None, None, None, None) -> ([?], [None]) / (?, ?, None, None, None, None) -> ([?], [None]) / (?, {[?] | list}, None, None, None, None) -> ([?], [None]) / (EmbeddingWrapper, ?, None, None, None, None) -> ([?], {None | [None]}) / (?, None, None, None, None, None) -> ([?], [None]) / (OutputProjectionWrapper, [None], None, None, None, None) -> ([?], {None | [None]})'>static_rnn</a>
+<span class='lineno'> 101</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn', title='rnn'>rnn</a> import <a href='../../python/ops/rnn.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_state_saving_rnn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn.static_state_saving_rnn', title='({DropoutWrapper | MultiRNNCell}, None, SequenceQueueingStateSaver -> NextQueuedSequenceBatch, {[[str]] | [str] | str}, None, None) -> ([?], ?) / (?, ?, ?, ?, None, None) -> ([?], ?)'>static_state_saving_rnn</a>
+<span class='lineno'> 102</span> 
+<span class='lineno'> 103</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a>.<a href='../../python/ops/rnn_cell.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn_cell', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.rnn_cell', title='rnn_cell'>rnn_cell</a> import *
+<span class='lineno'> 104</span> # pylint: enable=unused-import,wildcard-import,line-too-long
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../python/util/all_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util', title='all_util'>all_util</a> import <a href='../../python/util/all_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', title='(?, [?], None) -> None / (?, [str], None) -> None / (?, None, None) -> None / (str, None, None) -> None'>remove_undocumented</a>
+<span class='lineno'> 107</span> <a href='../../python/util/all_util.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.all_util.remove_undocumented', title='(?, [?], None) -> None / (?, [str], None) -> None / (?, None, None) -> None / (str, None, None) -> None'>remove_undocumented</a>(__name__)
+</pre></td></tr></table></body></html>

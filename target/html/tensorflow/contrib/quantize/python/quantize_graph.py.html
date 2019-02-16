@@ -1,0 +1,350 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/quantize/python/quantize_graph.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph'>_create_graph</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph'>create_training_graph</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph'>create_eval_graph</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph'>experimental_create_training_graph</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph'>experimental_create_eval_graph</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops'>_check_for_training_ops</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;API to simulate quantization on a python graph.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize', title='quantize'>quantize</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python', title='python'>python</a> import <a href='fold_batch_norms.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms', title='fold_batch_norms'>fold_batch_norms</a>
+<span class='lineno'>  22</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize', title='{quantize | quantize}'>quantize</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python', title='python'>python</a> import quantize
+<span class='lineno'>  23</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', title='(None, bool, int, int, None, None, None) -> None'>_create_graph</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a>=None,
+<span class='lineno'>  27</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', title='bool'>is_training</a>=True,
+<span class='lineno'>  28</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.weight_bits', title='int'>weight_bits</a>=8,
+<span class='lineno'>  29</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.activation_bits', title='int'>activation_bits</a>=8,
+<span class='lineno'>  30</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.quant_delay', title='None'>quant_delay</a>=None,
+<span class='lineno'>  31</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a>=None,
+<span class='lineno'>  32</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.scope', title='None'>scope</a>=None):
+<span class='lineno'>  33</span>   &quot;&quot;&quot;Rewrites an input_graph in place for simulated quantization.
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>   The graph has fake quantization ops inserted to simulate the error
+<span class='lineno'>  36</span>   introduced by quantization. Since the graph is transformed in place,
+<span class='lineno'>  37</span>   the expected behavior of previously held references to nodes and tensors may
+<span class='lineno'>  38</span>   change.
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   Args:
+<span class='lineno'>  41</span>     input_graph: The tf.Graph to be transformed, if None then defaults to the
+<span class='lineno'>  42</span>       default graph.
+<span class='lineno'>  43</span>     is_training: Whether quantizing training or eval graph.
+<span class='lineno'>  44</span>     weight_bits: Number of bits to use for quantizing weights.
+<span class='lineno'>  45</span>     activation_bits: Number of bits to use for quantizing activations.
+<span class='lineno'>  46</span>     quant_delay: Number of steps after which weights and activations are
+<span class='lineno'>  47</span>       quantized during training.
+<span class='lineno'>  48</span>     freeze_bn_delay: Number of steps after which moving mean and variance are
+<span class='lineno'>  49</span>       frozen and used instead of batch statistics during training.
+<span class='lineno'>  50</span>       freeze_bn_delay should be greater than quant_delay and should correspond
+<span class='lineno'>  51</span>       to the number of steps when training has almost converged
+<span class='lineno'>  52</span>     scope: The scope to be transformed. If it&#39;s not None, only the ops which
+<span class='lineno'>  53</span>       are in this scope will be transformed.
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span>   Raises:
+<span class='lineno'>  56</span>     ValueError: If elements contains an element that isn&#39;t a tf.Tensor or
+<span class='lineno'>  57</span>       tf.Operation.
+<span class='lineno'>  58</span>   &quot;&quot;&quot;
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a> is None:
+<span class='lineno'>  61</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='?'>input_graph</a> = <a href='../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.get_default_graph()
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span>   # Add check to see if graph has training ops, if so provide error message and
+<span class='lineno'>  64</span>   # exit
+<span class='lineno'>  65</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops', title='? -> None / None -> None'>_check_for_training_ops</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a>)
+<span class='lineno'>  66</span>   with <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a>.as_default():
+<span class='lineno'>  67</span>     <a href='fold_batch_norms.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms', title='fold_batch_norms'>fold_batch_norms</a>.<a href='fold_batch_norms.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms.FoldBatchNorms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.fold_batch_norms.FoldBatchNorms', title='(?, ?, None) -> None / (None, bool, None) -> None'>FoldBatchNorms</a>(
+<span class='lineno'>  68</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a>,
+<span class='lineno'>  69</span>         freeze_batch_norm_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a>,
+<span class='lineno'>  70</span>         is_training=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', title='bool'>is_training</a>)
+<span class='lineno'>  71</span>     <a href='quantize.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize', title='quantize'>quantize</a>.<a href='quantize.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize.Quantize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize.Quantize', title='(?, ?, int, int, float, None, str, None) -> None / (None, bool, int, int, float, None, str, None) -> None'>Quantize</a>(
+<span class='lineno'>  72</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.input_graph', title='None'>input_graph</a>,
+<span class='lineno'>  73</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.is_training', title='bool'>is_training</a>,
+<span class='lineno'>  74</span>         quant_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.quant_delay', title='None'>quant_delay</a>,
+<span class='lineno'>  75</span>         weight_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.weight_bits', title='int'>weight_bits</a>,
+<span class='lineno'>  76</span>         activation_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.activation_bits', title='int'>activation_bits</a>,
+<span class='lineno'>  77</span>         scope=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph.scope', title='None'>scope</a>)
+<span class='lineno'>  78</span> 
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph', title='(None, int) -> None'>create_training_graph</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.input_graph', title='None'>input_graph</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.quant_delay', title='int'>quant_delay</a>=0):
+<span class='lineno'>  81</span>   &quot;&quot;&quot;Rewrites a training input_graph in place for simulated quantization.
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   Variables added by the rewrite get added to the global variables collection.
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>   This function must be invoked prior to insertion of gradient ops in a graph
+<span class='lineno'>  86</span>   as quantization should be modeled in both forward and backward passes.
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span>   The graph has fake quantization ops inserted to simulate the error
+<span class='lineno'>  89</span>   introduced by quantization. Since the graph is transformed in place,
+<span class='lineno'>  90</span>   the expected behavior of previously held references to nodes and tensors may
+<span class='lineno'>  91</span>   change.
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>   The default value of quant_delay is suitable for finetuning an already trained
+<span class='lineno'>  94</span>   floating point model (recommended).
+<span class='lineno'>  95</span>   If one wants to train a quantized model from scratch, quant_delay should be
+<span class='lineno'>  96</span>   set to the number of steps it take the floating point model to converge.
+<span class='lineno'>  97</span>   Quantization will be activated at this point and effectively finetune the
+<span class='lineno'>  98</span>   model. If quant_delay is not provided when training from scratch, training can
+<span class='lineno'>  99</span>   often fail.
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   Args:
+<span class='lineno'> 102</span>     input_graph: The tf.Graph to be transformed.
+<span class='lineno'> 103</span>     quant_delay: Number of steps after which weights and activations are
+<span class='lineno'> 104</span>       quantized during training.
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   Raises:
+<span class='lineno'> 107</span>     ValueError: If elements contains an element that isn&#39;t a tf.Tensor or
+<span class='lineno'> 108</span>       tf.Operation.
+<span class='lineno'> 109</span>   &quot;&quot;&quot;
+<span class='lineno'> 110</span>   # TODO(raghuramank) Need to have freeze_bn_delay be a function of batch size
+<span class='lineno'> 111</span>   # Currently the values below are hardcoded for mobilenetV1 on imagenet
+<span class='lineno'> 112</span>   # Please use the experimental API if you need to tune these values.
+<span class='lineno'> 113</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a> = None
+<span class='lineno'> 114</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', title='(None, bool, int, int, None, None, None) -> None'>_create_graph</a>(
+<span class='lineno'> 115</span>       input_graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.input_graph', title='None'>input_graph</a>,
+<span class='lineno'> 116</span>       is_training=True,
+<span class='lineno'> 117</span>       quant_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.quant_delay', title='int'>quant_delay</a>,
+<span class='lineno'> 118</span>       freeze_bn_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_training_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a>)
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span> 
+<span class='lineno'> 121</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph', title='None -> None'>create_eval_graph</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph.input_graph', title='None'>input_graph</a>=None):
+<span class='lineno'> 122</span>   &quot;&quot;&quot;Rewrites an eval input_graph in place for simulated quantization.
+<span class='lineno'> 123</span> 
+<span class='lineno'> 124</span>   Variables added by the rewrite get added to the global variables collection.
+<span class='lineno'> 125</span> 
+<span class='lineno'> 126</span>   The graph has fake quantization ops inserted to simulate the error
+<span class='lineno'> 127</span>   introduced by quantization. Since the graph is transformed in place,
+<span class='lineno'> 128</span>   the expected behavior of previously held references to nodes and tensors may
+<span class='lineno'> 129</span>   change.
+<span class='lineno'> 130</span> 
+<span class='lineno'> 131</span>   Args:
+<span class='lineno'> 132</span>     input_graph: The tf.Graph to be transformed, if None then defaults to the
+<span class='lineno'> 133</span>       default graph.
+<span class='lineno'> 134</span> 
+<span class='lineno'> 135</span>   Raises:
+<span class='lineno'> 136</span>     ValueError: If elements contains an element that isn&#39;t a tf.Tensor or
+<span class='lineno'> 137</span>       tf.Operation.
+<span class='lineno'> 138</span>   &quot;&quot;&quot;
+<span class='lineno'> 139</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', title='(None, bool, int, int, None, None, None) -> None'>_create_graph</a>(input_graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.create_eval_graph.input_graph', title='None'>input_graph</a>, is_training=False)
+<span class='lineno'> 140</span> 
+<span class='lineno'> 141</span> 
+<span class='lineno'> 142</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph', title='(None, int, int, int, None, None) -> None'>experimental_create_training_graph</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.input_graph', title='None'>input_graph</a>=None,
+<span class='lineno'> 143</span>                                        <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.weight_bits', title='int'>weight_bits</a>=8,
+<span class='lineno'> 144</span>                                        <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.activation_bits', title='int'>activation_bits</a>=8,
+<span class='lineno'> 145</span>                                        <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.quant_delay', title='int'>quant_delay</a>=0,
+<span class='lineno'> 146</span>                                        <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a>=None,
+<span class='lineno'> 147</span>                                        <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.scope', title='None'>scope</a>=None):
+<span class='lineno'> 148</span>   &quot;&quot;&quot;Rewrites a training input_graph in place for simulated quantization.
+<span class='lineno'> 149</span> 
+<span class='lineno'> 150</span>   This function must be invoked prior to insertion of gradient ops in a graph
+<span class='lineno'> 151</span>   as quantization should be modeled in both forward and backward passes.
+<span class='lineno'> 152</span> 
+<span class='lineno'> 153</span>   Variables added by the rewrite get added to the global variables collection.
+<span class='lineno'> 154</span> 
+<span class='lineno'> 155</span>   This function has additional experimental options not (yet) available to
+<span class='lineno'> 156</span>   create_training_graph. The resulting behavior may be undefined.
+<span class='lineno'> 157</span> 
+<span class='lineno'> 158</span>   The graph has fake quantization ops inserted to simulate the error
+<span class='lineno'> 159</span>   introduced by quantization. Since the graph is transformed in place,
+<span class='lineno'> 160</span>   the expected behavior of previously held references to nodes and tensors may
+<span class='lineno'> 161</span>   change.
+<span class='lineno'> 162</span> 
+<span class='lineno'> 163</span>   The default value of quant_delay is suitable for finetuning an already trained
+<span class='lineno'> 164</span>   floating point model (recommended).
+<span class='lineno'> 165</span>   If one wants to train a quantized model from scratch, quant_delay should be
+<span class='lineno'> 166</span>   set to the number of steps it take the floating point model to converge.
+<span class='lineno'> 167</span>   Quantization will be activated at this point and effectively finetune the
+<span class='lineno'> 168</span>   model. If quant_delay is not provided when training from scratch, training can
+<span class='lineno'> 169</span>   often fail.
+<span class='lineno'> 170</span> 
+<span class='lineno'> 171</span>   Args:
+<span class='lineno'> 172</span>     input_graph: The tf.Graph to be transformed, if None then defaults to the
+<span class='lineno'> 173</span>       default graph.
+<span class='lineno'> 174</span>     weight_bits: Number of bits to use for quantizing weights.
+<span class='lineno'> 175</span>     activation_bits: Number of bits to use for quantizing activations.
+<span class='lineno'> 176</span>     quant_delay: Number of steps after which weights and activations are
+<span class='lineno'> 177</span>       quantized during training.
+<span class='lineno'> 178</span>     freeze_bn_delay: Number of steps after which moving mean and variance are
+<span class='lineno'> 179</span>       frozen and used instead of batch statistics during training.
+<span class='lineno'> 180</span>       freeze_bn_delay should be greater than quant_delay and should correspond
+<span class='lineno'> 181</span>       to when training has almost converged
+<span class='lineno'> 182</span>     scope: The scope to be transformed. If it&#39;s not None, only the ops which
+<span class='lineno'> 183</span>       are in this scope will be transformed.
+<span class='lineno'> 184</span> 
+<span class='lineno'> 185</span>   Raises:
+<span class='lineno'> 186</span>     ValueError: If elements contains an element that isn&#39;t a tf.Tensor or
+<span class='lineno'> 187</span>         tf.Operation.
+<span class='lineno'> 188</span>   &quot;&quot;&quot;
+<span class='lineno'> 189</span> 
+<span class='lineno'> 190</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', title='(None, bool, int, int, None, None, None) -> None'>_create_graph</a>(
+<span class='lineno'> 191</span>       input_graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.input_graph', title='None'>input_graph</a>,
+<span class='lineno'> 192</span>       is_training=True,
+<span class='lineno'> 193</span>       weight_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.weight_bits', title='int'>weight_bits</a>,
+<span class='lineno'> 194</span>       activation_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.activation_bits', title='int'>activation_bits</a>,
+<span class='lineno'> 195</span>       quant_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.quant_delay', title='int'>quant_delay</a>,
+<span class='lineno'> 196</span>       freeze_bn_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.freeze_bn_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.freeze_bn_delay', title='None'>freeze_bn_delay</a>,
+<span class='lineno'> 197</span>       scope=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_training_graph.scope', title='None'>scope</a>)
+<span class='lineno'> 198</span> 
+<span class='lineno'> 199</span> 
+<span class='lineno'> 200</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph', title='(None, int, int, None, None) -> None'>experimental_create_eval_graph</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.input_graph', title='None'>input_graph</a>=None,
+<span class='lineno'> 201</span>                                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.weight_bits', title='int'>weight_bits</a>=8,
+<span class='lineno'> 202</span>                                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.activation_bits', title='int'>activation_bits</a>=8,
+<span class='lineno'> 203</span>                                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.quant_delay', title='None'>quant_delay</a>=None,
+<span class='lineno'> 204</span>                                    <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.scope', title='None'>scope</a>=None):
+<span class='lineno'> 205</span>   &quot;&quot;&quot;Rewrites an eval input_graph in place for simulated quantization.
+<span class='lineno'> 206</span> 
+<span class='lineno'> 207</span>   Variables added by the rewrite get added to the global variables collection.
+<span class='lineno'> 208</span> 
+<span class='lineno'> 209</span>   This function has additional experimental options not (yet) available to
+<span class='lineno'> 210</span>   create_eval_graph. The resulting behavior may be undefined.
+<span class='lineno'> 211</span> 
+<span class='lineno'> 212</span>   The graph has fake quantization ops inserted to simulate the error
+<span class='lineno'> 213</span>   introduced by quantization. Since the graph is transformed in place,
+<span class='lineno'> 214</span>   the expected behavior of previously held references to nodes and tensors may
+<span class='lineno'> 215</span>   change.
+<span class='lineno'> 216</span> 
+<span class='lineno'> 217</span>   Args:
+<span class='lineno'> 218</span>     input_graph: The tf.Graph to be transformed, if None then defaults to the
+<span class='lineno'> 219</span>       default graph.
+<span class='lineno'> 220</span>     weight_bits: Number of bits to use for quantizing weights.
+<span class='lineno'> 221</span>     activation_bits: Number of bits to use for quantizing activations.
+<span class='lineno'> 222</span>     quant_delay: Number of steps after which weights and activations are
+<span class='lineno'> 223</span>       quantized during eval.
+<span class='lineno'> 224</span>     scope: The scope to be transformed. If it&#39;s not None, only the ops which
+<span class='lineno'> 225</span>       are in this scope will be transformed.
+<span class='lineno'> 226</span> 
+<span class='lineno'> 227</span>   Raises:
+<span class='lineno'> 228</span>     ValueError: If elements contains an element that isn&#39;t a tf.Tensor or
+<span class='lineno'> 229</span>       tf.Operation.
+<span class='lineno'> 230</span>   &quot;&quot;&quot;
+<span class='lineno'> 231</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._create_graph', title='(None, bool, int, int, None, None, None) -> None'>_create_graph</a>(
+<span class='lineno'> 232</span>       input_graph=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.input_graph', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.input_graph', title='None'>input_graph</a>,
+<span class='lineno'> 233</span>       is_training=False,
+<span class='lineno'> 234</span>       weight_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.weight_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.weight_bits', title='int'>weight_bits</a>,
+<span class='lineno'> 235</span>       activation_bits=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.activation_bits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.activation_bits', title='int'>activation_bits</a>,
+<span class='lineno'> 236</span>       quant_delay=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.quant_delay', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.quant_delay', title='None'>quant_delay</a>,
+<span class='lineno'> 237</span>       scope=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph.experimental_create_eval_graph.scope', title='None'>scope</a>)
+<span class='lineno'> 238</span> 
+<span class='lineno'> 239</span> 
+<span class='lineno'> 240</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops', title='? -> None / None -> None'>_check_for_training_ops</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.g', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.g', title='None'>g</a>):
+<span class='lineno'> 241</span>   &quot;&quot;&quot;Check if training ops are present in the graph.
+<span class='lineno'> 242</span> 
+<span class='lineno'> 243</span>   Args:
+<span class='lineno'> 244</span>    g: The tf.Graph on which the check for training ops needs to be
+<span class='lineno'> 245</span>    performed.
+<span class='lineno'> 246</span> 
+<span class='lineno'> 247</span>   Raises:
+<span class='lineno'> 248</span>     ValueError: If a training op is seen in the graph;
+<span class='lineno'> 249</span>   &quot;&quot;&quot;
+<span class='lineno'> 250</span> 
+<span class='lineno'> 251</span>   # The list here is obtained
+<span class='lineno'> 252</span>   # from https://www.tensorflow.org/api_docs/cc/group/training-ops
+<span class='lineno'> 253</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.training_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.training_ops', title='?'>training_ops</a> = frozenset([
+<span class='lineno'> 254</span>       &#39;ApplyAdagrad&#39;, &#39;ApplyAdagradDA&#39;, &#39;ApplyAdam&#39;, &#39;ApplyAddSign&#39;,
+<span class='lineno'> 255</span>       &#39;ApplyCenteredRMSProp&#39;, &#39;ApplyFtrl&#39;, &#39;ApplyFtrlV2&#39;,
+<span class='lineno'> 256</span>       &#39;ApplyGradientDescent&#39;, &#39;ApplyMomentum&#39;, &#39;ApplyPowerSign&#39;,
+<span class='lineno'> 257</span>       &#39;ApplyProximalAdagrad&#39;, &#39;ApplyProximalGradientDescent&#39;, &#39;ApplyRMSProp&#39;,
+<span class='lineno'> 258</span>       &#39;ResourceApplyAdadelta&#39;, &#39;ResourceApplyAdagrad&#39;, &#39;ResourceApplyAdagradDA&#39;,
+<span class='lineno'> 259</span>       &#39;ResourceApplyAdam&#39;, &#39;ResourceApplyAddSign&#39;,
+<span class='lineno'> 260</span>       &#39;ResourceApplyCenteredRMSProp&#39;, &#39;ResourceApplyFtrl&#39;,
+<span class='lineno'> 261</span>       &#39;ResourceApplyFtrlV2&#39;, &#39;ResourceApplyGradientDescent&#39;,
+<span class='lineno'> 262</span>       &#39;ResourceApplyMomentum&#39;, &#39;ResourceApplyPowerSign&#39;,
+<span class='lineno'> 263</span>       &#39;ResourceApplyProximalAdagrad&#39;, &#39;ResourceApplyProximalGradientDescent&#39;,
+<span class='lineno'> 264</span>       &#39;ResourceApplyRMSProp&#39;, &#39;ResourceSparseApplyAdadelta&#39;,
+<span class='lineno'> 265</span>       &#39;ResourceSparseApplyAdagrad&#39;, &#39;ResourceSparseApplyAdagradDA&#39;,
+<span class='lineno'> 266</span>       &#39;ResourceSparseApplyCenteredRMSProp&#39;, &#39;ResourceSparseApplyFtrl&#39;,
+<span class='lineno'> 267</span>       &#39;ResourceSparseApplyFtrlV2&#39;, &#39;ResourceSparseApplyMomentum&#39;,
+<span class='lineno'> 268</span>       &#39;ResourceSparseApplyProximalAdagrad&#39;,
+<span class='lineno'> 269</span>       &#39;ResourceSparseApplyProximalGradientDescent&#39;,
+<span class='lineno'> 270</span>       &#39;ResourceSparseApplyRMSProp&#39;, &#39;SparseApplyAdadelta&#39;, &#39;SparseApplyAdagrad&#39;,
+<span class='lineno'> 271</span>       &#39;SparseApplyAdagradDA&#39;, &#39;SparseApplyCenteredRMSProp&#39;, &#39;SparseApplyFtrl&#39;,
+<span class='lineno'> 272</span>       &#39;SparseApplyFtrlV2&#39;, &#39;SparseApplyMomentum&#39;, &#39;SparseApplyProximalAdagrad&#39;,
+<span class='lineno'> 273</span>       &#39;SparseApplyProximalGradientDescent&#39;, &#39;SparseApplyRMSProp&#39;
+<span class='lineno'> 274</span>   ])
+<span class='lineno'> 275</span> 
+<span class='lineno'> 276</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op_types', title='?'>op_types</a> = set([<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', title='?'>op</a>.type for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op', title='?'>op</a></a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.g', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.g', title='None'>g</a>.get_operations()])
+<span class='lineno'> 277</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.train_op_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.train_op_list', title='?'>train_op_list</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.op_types', title='?'>op_types</a>.intersection(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.training_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.training_ops', title='?'>training_ops</a>)
+<span class='lineno'> 278</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.train_op_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.quantize.python.quantize_graph._check_for_training_ops.train_op_list', title='?'>train_op_list</a>:
+<span class='lineno'> 279</span>     raise ValueError(&#39;Training op found in graph, exiting %s&#39; % train_op_list)
+</pre></td></tr></table></body></html>

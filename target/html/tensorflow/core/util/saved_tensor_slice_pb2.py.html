@@ -1,0 +1,322 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/util/saved_tensor_slice_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA'>_SAVEDSLICEMETA</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA'>_SAVEDTENSORSLICEMETA</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE'>_SAVEDSLICE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES'>_SAVEDTENSORSLICES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta'>SavedSliceMeta</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta'>SavedTensorSliceMeta</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice'>SavedSlice</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices'>SavedTensorSlices</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/util/saved_tensor_slice.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%429.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%429.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%429.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%429.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%430.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%430.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%430.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.lambda%430.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import tensor_shape_pb2 as <a href='../framework/tensor_shape_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', title='tensor_shape_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__shape__pb2</a>
+<span class='lineno'>  16</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import <a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', title='tensor_slice_pb2'>tensor_slice_pb2</a> as <a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', title='tensor_slice_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__slice__pb2</a>
+<span class='lineno'>  17</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import tensor_pb2 as <a href='../framework/tensor_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', title='tensor_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__pb2</a>
+<span class='lineno'>  18</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import types_pb2 as <a href='../framework/types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', title='types_pb2'>tensorflow_dot_core_dot_framework_dot_types__pb2</a>
+<span class='lineno'>  19</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import versions_pb2 as <a href='../framework/versions_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', title='versions_pb2'>tensorflow_dot_core_dot_framework_dot_versions__pb2</a>
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  23</span>   name=&#39;tensorflow/core/util/saved_tensor_slice.proto&#39;,
+<span class='lineno'>  24</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  25</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  26</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', title='str -> str'>_b</a>(&#39;\n\023org.tensorflow.utilB\026SavedTensorSliceProtosP\001\370\001\001&#39;),
+<span class='lineno'>  27</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', title='str -> str'>_b</a>(&#39;\n-tensorflow/core/util/saved_tensor_slice.proto\x12\ntensorflow\x1a,tensorflow/core/framework/tensor_shape.proto\x1a,tensorflow/core/framework/tensor_slice.proto\x1a&amp;tensorflow/core/framework/tensor.proto\x1a%tensorflow/core/framework/types.proto\x1a(tensorflow/core/framework/versions.proto\&quot;\x9c\x01\n\x0eSavedSliceMeta\x12\x0c\n\x04name\x18\x01 \x01(\t\x12+\n\x05shape\x18\x02 \x01(\x0b\x32\x1c.tensorflow.TensorShapeProto\x12\&quot;\n\x04type\x18\x03 \x01(\x0e\x32\x14.tensorflow.DataType\x12+\n\x05slice\x18\x04 \x03(\x0b\x32\x1c.tensorflow.TensorSliceProto\&quot;l\n\x14SavedTensorSliceMeta\x12*\n\x06tensor\x18\x01 \x03(\x0b\x32\x1a.tensorflow.SavedSliceMeta\x12(\n\x08versions\x18\x02 \x01(\x0b\x32\x16.tensorflow.VersionDef\&quot;n\n\nSavedSlice\x12\x0c\n\x04name\x18\x01 \x01(\t\x12+\n\x05slice\x18\x02 \x01(\x0b\x32\x1c.tensorflow.TensorSliceProto\x12%\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x17.tensorflow.TensorProto\&quot;i\n\x11SavedTensorSlices\x12.\n\x04meta\x18\x01 \x01(\x0b\x32 .tensorflow.SavedTensorSliceMeta\x12$\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x16.tensorflow.SavedSliceB2\n\x13org.tensorflow.utilB\x16SavedTensorSliceProtosP\x01\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  28</span>   ,
+<span class='lineno'>  29</span>   dependencies=[<a href='../framework/tensor_shape_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', title='tensor_shape_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__shape__pb2</a>.<a href='../framework/tensor_shape_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,<a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', title='tensor_slice_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__slice__pb2</a>.<a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,<a href='../framework/tensor_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', title='tensor_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__pb2</a>.<a href='../framework/tensor_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,<a href='../framework/types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', title='types_pb2'>tensorflow_dot_core_dot_framework_dot_types__pb2</a>.<a href='../framework/types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,<a href='../framework/versions_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', title='versions_pb2'>tensorflow_dot_core_dot_framework_dot_versions__pb2</a>.<a href='../framework/versions_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a> = _descriptor.Descriptor(
+<span class='lineno'>  35</span>   name=&#39;SavedSliceMeta&#39;,
+<span class='lineno'>  36</span>   full_name=&#39;tensorflow.SavedSliceMeta&#39;,
+<span class='lineno'>  37</span>   filename=None,
+<span class='lineno'>  38</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  39</span>   containing_type=None,
+<span class='lineno'>  40</span>   fields=[
+<span class='lineno'>  41</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  42</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.SavedSliceMeta.name&#39;, index=0,
+<span class='lineno'>  43</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'>  44</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'>  45</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  46</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  47</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  48</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  49</span>       name=&#39;shape&#39;, full_name=&#39;tensorflow.SavedSliceMeta.shape&#39;, index=1,
+<span class='lineno'>  50</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'>  51</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  52</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  53</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  54</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  55</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  56</span>       name=&#39;type&#39;, full_name=&#39;tensorflow.SavedSliceMeta.type&#39;, index=2,
+<span class='lineno'>  57</span>       number=3, type=14, cpp_type=8, label=1,
+<span class='lineno'>  58</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  59</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  60</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  61</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  62</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  63</span>       name=&#39;slice&#39;, full_name=&#39;tensorflow.SavedSliceMeta.slice&#39;, index=3,
+<span class='lineno'>  64</span>       number=4, type=11, cpp_type=10, label=3,
+<span class='lineno'>  65</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  66</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  67</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  68</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  69</span>   ],
+<span class='lineno'>  70</span>   extensions=[
+<span class='lineno'>  71</span>   ],
+<span class='lineno'>  72</span>   nested_types=[],
+<span class='lineno'>  73</span>   enum_types=[
+<span class='lineno'>  74</span>   ],
+<span class='lineno'>  75</span>   serialized_options=None,
+<span class='lineno'>  76</span>   is_extendable=False,
+<span class='lineno'>  77</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  78</span>   extension_ranges=[],
+<span class='lineno'>  79</span>   oneofs=[
+<span class='lineno'>  80</span>   ],
+<span class='lineno'>  81</span>   serialized_start=275,
+<span class='lineno'>  82</span>   serialized_end=431,
+<span class='lineno'>  83</span> )
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a> = _descriptor.Descriptor(
+<span class='lineno'>  87</span>   name=&#39;SavedTensorSliceMeta&#39;,
+<span class='lineno'>  88</span>   full_name=&#39;tensorflow.SavedTensorSliceMeta&#39;,
+<span class='lineno'>  89</span>   filename=None,
+<span class='lineno'>  90</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  91</span>   containing_type=None,
+<span class='lineno'>  92</span>   fields=[
+<span class='lineno'>  93</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  94</span>       name=&#39;tensor&#39;, full_name=&#39;tensorflow.SavedTensorSliceMeta.tensor&#39;, index=0,
+<span class='lineno'>  95</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'>  96</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  97</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  98</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  99</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 100</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 101</span>       name=&#39;versions&#39;, full_name=&#39;tensorflow.SavedTensorSliceMeta.versions&#39;, index=1,
+<span class='lineno'> 102</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 103</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 104</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 105</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 106</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 107</span>   ],
+<span class='lineno'> 108</span>   extensions=[
+<span class='lineno'> 109</span>   ],
+<span class='lineno'> 110</span>   nested_types=[],
+<span class='lineno'> 111</span>   enum_types=[
+<span class='lineno'> 112</span>   ],
+<span class='lineno'> 113</span>   serialized_options=None,
+<span class='lineno'> 114</span>   is_extendable=False,
+<span class='lineno'> 115</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 116</span>   extension_ranges=[],
+<span class='lineno'> 117</span>   oneofs=[
+<span class='lineno'> 118</span>   ],
+<span class='lineno'> 119</span>   serialized_start=433,
+<span class='lineno'> 120</span>   serialized_end=541,
+<span class='lineno'> 121</span> )
+<span class='lineno'> 122</span> 
+<span class='lineno'> 123</span> 
+<span class='lineno'> 124</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a> = _descriptor.Descriptor(
+<span class='lineno'> 125</span>   name=&#39;SavedSlice&#39;,
+<span class='lineno'> 126</span>   full_name=&#39;tensorflow.SavedSlice&#39;,
+<span class='lineno'> 127</span>   filename=None,
+<span class='lineno'> 128</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 129</span>   containing_type=None,
+<span class='lineno'> 130</span>   fields=[
+<span class='lineno'> 131</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 132</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.SavedSlice.name&#39;, index=0,
+<span class='lineno'> 133</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 134</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 135</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 136</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 137</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 138</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 139</span>       name=&#39;slice&#39;, full_name=&#39;tensorflow.SavedSlice.slice&#39;, index=1,
+<span class='lineno'> 140</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 141</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 142</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 143</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 144</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 145</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 146</span>       name=&#39;data&#39;, full_name=&#39;tensorflow.SavedSlice.data&#39;, index=2,
+<span class='lineno'> 147</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 148</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 149</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 150</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 151</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 152</span>   ],
+<span class='lineno'> 153</span>   extensions=[
+<span class='lineno'> 154</span>   ],
+<span class='lineno'> 155</span>   nested_types=[],
+<span class='lineno'> 156</span>   enum_types=[
+<span class='lineno'> 157</span>   ],
+<span class='lineno'> 158</span>   serialized_options=None,
+<span class='lineno'> 159</span>   is_extendable=False,
+<span class='lineno'> 160</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 161</span>   extension_ranges=[],
+<span class='lineno'> 162</span>   oneofs=[
+<span class='lineno'> 163</span>   ],
+<span class='lineno'> 164</span>   serialized_start=543,
+<span class='lineno'> 165</span>   serialized_end=653,
+<span class='lineno'> 166</span> )
+<span class='lineno'> 167</span> 
+<span class='lineno'> 168</span> 
+<span class='lineno'> 169</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', title='?'>_SAVEDTENSORSLICES</a> = _descriptor.Descriptor(
+<span class='lineno'> 170</span>   name=&#39;SavedTensorSlices&#39;,
+<span class='lineno'> 171</span>   full_name=&#39;tensorflow.SavedTensorSlices&#39;,
+<span class='lineno'> 172</span>   filename=None,
+<span class='lineno'> 173</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 174</span>   containing_type=None,
+<span class='lineno'> 175</span>   fields=[
+<span class='lineno'> 176</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 177</span>       name=&#39;meta&#39;, full_name=&#39;tensorflow.SavedTensorSlices.meta&#39;, index=0,
+<span class='lineno'> 178</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 179</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 180</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 181</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 182</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 183</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 184</span>       name=&#39;data&#39;, full_name=&#39;tensorflow.SavedTensorSlices.data&#39;, index=1,
+<span class='lineno'> 185</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 186</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 187</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 188</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 189</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 190</span>   ],
+<span class='lineno'> 191</span>   extensions=[
+<span class='lineno'> 192</span>   ],
+<span class='lineno'> 193</span>   nested_types=[],
+<span class='lineno'> 194</span>   enum_types=[
+<span class='lineno'> 195</span>   ],
+<span class='lineno'> 196</span>   serialized_options=None,
+<span class='lineno'> 197</span>   is_extendable=False,
+<span class='lineno'> 198</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 199</span>   extension_ranges=[],
+<span class='lineno'> 200</span>   oneofs=[
+<span class='lineno'> 201</span>   ],
+<span class='lineno'> 202</span>   serialized_start=655,
+<span class='lineno'> 203</span>   serialized_end=760,
+<span class='lineno'> 204</span> )
+<span class='lineno'> 205</span> 
+<span class='lineno'> 206</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>.fields_by_name[&#39;shape&#39;].message_type = <a href='../framework/tensor_shape_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2', title='tensor_shape_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__shape__pb2</a>.<a href='../framework/tensor_shape_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2._TENSORSHAPEPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_shape_pb2._TENSORSHAPEPROTO', title='?'>_TENSORSHAPEPROTO</a>
+<span class='lineno'> 207</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>.fields_by_name[&#39;type&#39;].enum_type = <a href='../framework/types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2', title='types_pb2'>tensorflow_dot_core_dot_framework_dot_types__pb2</a>.<a href='../framework/types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', title='?'>_DATATYPE</a>
+<span class='lineno'> 208</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>.fields_by_name[&#39;slice&#39;].message_type = <a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', title='tensor_slice_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__slice__pb2</a>.<a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2._TENSORSLICEPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2._TENSORSLICEPROTO', title='?'>_TENSORSLICEPROTO</a>
+<span class='lineno'> 209</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a>.fields_by_name[&#39;tensor&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>
+<span class='lineno'> 210</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a>.fields_by_name[&#39;versions&#39;].message_type = <a href='../framework/versions_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2', title='versions_pb2'>tensorflow_dot_core_dot_framework_dot_versions__pb2</a>.<a href='../framework/versions_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2._VERSIONDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.versions_pb2._VERSIONDEF', title='?'>_VERSIONDEF</a>
+<span class='lineno'> 211</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a>.fields_by_name[&#39;slice&#39;].message_type = <a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2', title='tensor_slice_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__slice__pb2</a>.<a href='../framework/tensor_slice_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2._TENSORSLICEPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_slice_pb2._TENSORSLICEPROTO', title='?'>_TENSORSLICEPROTO</a>
+<span class='lineno'> 212</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a>.fields_by_name[&#39;data&#39;].message_type = <a href='../framework/tensor_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2', title='tensor_pb2'>tensorflow_dot_core_dot_framework_dot_tensor__pb2</a>.<a href='../framework/tensor_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2._TENSORPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.tensor_pb2._TENSORPROTO', title='?'>_TENSORPROTO</a>
+<span class='lineno'> 213</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', title='?'>_SAVEDTENSORSLICES</a>.fields_by_name[&#39;meta&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a>
+<span class='lineno'> 214</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', title='?'>_SAVEDTENSORSLICES</a>.fields_by_name[&#39;data&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a>
+<span class='lineno'> 215</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SavedSliceMeta&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>
+<span class='lineno'> 216</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SavedTensorSliceMeta&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a>
+<span class='lineno'> 217</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SavedSlice&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a>
+<span class='lineno'> 218</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SavedTensorSlices&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', title='?'>_SAVEDTENSORSLICES</a>
+<span class='lineno'> 219</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 220</span> 
+<span class='lineno'> 221</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta', title='?'>SavedSliceMeta</a> = _reflection.GeneratedProtocolMessageType(&#39;SavedSliceMeta&#39;, (_message.Message,), dict(
+<span class='lineno'> 222</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICEMETA', title='?'>_SAVEDSLICEMETA</a>,
+<span class='lineno'> 223</span>   __module__ = &#39;tensorflow.core.util.saved_tensor_slice_pb2&#39;
+<span class='lineno'> 224</span>   # @@protoc_insertion_point(class_scope:tensorflow.SavedSliceMeta)
+<span class='lineno'> 225</span>   ))
+<span class='lineno'> 226</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSliceMeta', title='?'>SavedSliceMeta</a>)
+<span class='lineno'> 227</span> 
+<span class='lineno'> 228</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta', title='?'>SavedTensorSliceMeta</a> = _reflection.GeneratedProtocolMessageType(&#39;SavedTensorSliceMeta&#39;, (_message.Message,), dict(
+<span class='lineno'> 229</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICEMETA', title='?'>_SAVEDTENSORSLICEMETA</a>,
+<span class='lineno'> 230</span>   __module__ = &#39;tensorflow.core.util.saved_tensor_slice_pb2&#39;
+<span class='lineno'> 231</span>   # @@protoc_insertion_point(class_scope:tensorflow.SavedTensorSliceMeta)
+<span class='lineno'> 232</span>   ))
+<span class='lineno'> 233</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSliceMeta', title='?'>SavedTensorSliceMeta</a>)
+<span class='lineno'> 234</span> 
+<span class='lineno'> 235</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice', title='?'>SavedSlice</a> = _reflection.GeneratedProtocolMessageType(&#39;SavedSlice&#39;, (_message.Message,), dict(
+<span class='lineno'> 236</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDSLICE', title='?'>_SAVEDSLICE</a>,
+<span class='lineno'> 237</span>   __module__ = &#39;tensorflow.core.util.saved_tensor_slice_pb2&#39;
+<span class='lineno'> 238</span>   # @@protoc_insertion_point(class_scope:tensorflow.SavedSlice)
+<span class='lineno'> 239</span>   ))
+<span class='lineno'> 240</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedSlice', title='?'>SavedSlice</a>)
+<span class='lineno'> 241</span> 
+<span class='lineno'> 242</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices', title='?'>SavedTensorSlices</a> = _reflection.GeneratedProtocolMessageType(&#39;SavedTensorSlices&#39;, (_message.Message,), dict(
+<span class='lineno'> 243</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._SAVEDTENSORSLICES', title='?'>_SAVEDTENSORSLICES</a>,
+<span class='lineno'> 244</span>   __module__ = &#39;tensorflow.core.util.saved_tensor_slice_pb2&#39;
+<span class='lineno'> 245</span>   # @@protoc_insertion_point(class_scope:tensorflow.SavedTensorSlices)
+<span class='lineno'> 246</span>   ))
+<span class='lineno'> 247</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.SavedTensorSlices', title='?'>SavedTensorSlices</a>)
+<span class='lineno'> 248</span> 
+<span class='lineno'> 249</span> 
+<span class='lineno'> 250</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.util.saved_tensor_slice_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 251</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

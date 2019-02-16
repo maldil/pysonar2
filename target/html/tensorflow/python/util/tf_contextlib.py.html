@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/util/tf_contextlib.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager'>contextmanager</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;TFDecorator-aware replacements for the contextlib module.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import contextlib as _contextlib
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='tf_decorator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator', title='tf_decorator'>tf_decorator</a>
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager', title='? -> None'>contextmanager</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', title='?'>target</a>):
+<span class='lineno'>  26</span>   &quot;&quot;&quot;A tf_decorator-aware wrapper for `contextlib.contextmanager`.
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span>   Usage is identical to `contextlib.contextmanager`.
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   Args:
+<span class='lineno'>  31</span>     target: A callable to be wrapped in a contextmanager.
+<span class='lineno'>  32</span>   Returns:
+<span class='lineno'>  33</span>     A callable that can be used inside of a `with` statement.
+<span class='lineno'>  34</span>   &quot;&quot;&quot;
+<span class='lineno'>  35</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.context_manager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.context_manager', title='?'>context_manager</a> = _contextlib.contextmanager(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', title='?'>target</a>)
+<span class='lineno'>  36</span>   return <a href='tf_decorator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator', title='tf_decorator'>tf_decorator</a>.<a href='tf_decorator.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator.make_decorator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_decorator.make_decorator', title='(<SummarySaverHook>, ? -> ?, str, str, None) -> ? / (<NanTensorHook>, ? -> ?, str, str, None) -> ? -> ? / (<NanLossDuringTrainingError>, ? -> ?, str, str, None) -> ? -> ? / (<StepCounterHook>, ? -> ?, str, str, None) -> ? -> ? / ((SparseTensor, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, ?, DType, None) -> ?, ? -> ?, str, str, None) -> ? -> ? / (?, () -> None, None, str, None) -> () -> None / ((None, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (None, int, DType, None) -> ? / (Categorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (OneHotCategorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (?, ?, DType, None) -> ?, () -> None, str, str, None) -> () -> None / (<LoggingTensorHook>, () -> LoggingTensorHook, str, str, None) -> () -> LoggingTensorHook / (<StopAtStepHook>, ? -> ?, str, str, None) -> ? -> ? / (<CheckpointSaverHook>, ? -> ?, str, str, None) -> ? -> ?'>make_decorator</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.target', title='?'>target</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.context_manager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib.contextmanager.context_manager', title='?'>context_manager</a>, &#39;contextmanager&#39;)
+</pre></td></tr></table></body></html>

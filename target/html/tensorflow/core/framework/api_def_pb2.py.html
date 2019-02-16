@@ -1,0 +1,457 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/framework/api_def_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY'>_APIDEF_VISIBILITY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT'>_APIDEF_ENDPOINT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG'>_APIDEF_ARG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR'>_APIDEF_ATTR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF'>_APIDEF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS'>_APIDEFS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef'>ApiDef</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs'>ApiDefs</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/framework/api_def.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%113.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%113.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%113.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%113.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%114.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%114.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%114.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.lambda%114.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core', title='core'>core</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework', title='framework'>framework</a> import attr_value_pb2 as <a href='attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/core/framework/api_def.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  22</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&#39;\n\030org.tensorflow.frameworkB\014ApiDefProtosP\001Z=github.com/tensorflow/tensorflow/tensorflow/go/core/framework\370\001\001&#39;),
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&#39;\n\&#39;tensorflow/core/framework/api_def.proto\x12\ntensorflow\x1a*tensorflow/core/framework/attr_value.proto\&quot;\xa7\x05\n\x06\x41piDef\x12\x15\n\rgraph_op_name\x18\x01 \x01(\t\x12\x1b\n\x13\x64\x65precation_message\x18\x0c \x01(\t\x12\x31\n\nvisibility\x18\x02 \x01(\x0e\x32\x1d.tensorflow.ApiDef.Visibility\x12-\n\x08\x65ndpoint\x18\x03 \x03(\x0b\x32\x1b.tensorflow.ApiDef.Endpoint\x12&amp;\n\x06in_arg\x18\x04 \x03(\x0b\x32\x16.tensorflow.ApiDef.Arg\x12\&#39;\n\x07out_arg\x18\x05 \x03(\x0b\x32\x16.tensorflow.ApiDef.Arg\x12\x11\n\targ_order\x18\x0b \x03(\t\x12%\n\x04\x61ttr\x18\x06 \x03(\x0b\x32\x17.tensorflow.ApiDef.Attr\x12\x0f\n\x07summary\x18\x07 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x08 \x01(\t\x12\x1a\n\x12\x64\x65scription_prefix\x18\t \x01(\t\x12\x1a\n\x12\x64\x65scription_suffix\x18\n \x01(\t\x1a,\n\x08\x45ndpoint\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\ndeprecated\x18\x03 \x01(\x08\x1a;\n\x03\x41rg\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\trename_to\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x1aj\n\x04\x41ttr\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\trename_to\x18\x02 \x01(\t\x12,\n\rdefault_value\x18\x03 \x01(\x0b\x32\x15.tensorflow.AttrValue\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\&quot;G\n\nVisibility\x12\x16\n\x12\x44\x45\x46\x41ULT_VISIBILITY\x10\x00\x12\x0b\n\x07VISIBLE\x10\x01\x12\x08\n\x04SKIP\x10\x02\x12\n\n\x06HIDDEN\x10\x03\&quot;)\n\x07\x41piDefs\x12\x1e\n\x02op\x18\x01 \x03(\x0b\x32\x12.tensorflow.ApiDefBl\n\x18org.tensorflow.frameworkB\x0c\x41piDefProtosP\x01Z=github.com/tensorflow/tensorflow/tensorflow/go/core/framework\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  24</span>   ,
+<span class='lineno'>  25</span>   dependencies=[<a href='attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>.<a href='attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', title='?'>_APIDEF_VISIBILITY</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  30</span>   name=&#39;Visibility&#39;,
+<span class='lineno'>  31</span>   full_name=&#39;tensorflow.ApiDef.Visibility&#39;,
+<span class='lineno'>  32</span>   filename=None,
+<span class='lineno'>  33</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  34</span>   values=[
+<span class='lineno'>  35</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  36</span>       name=&#39;DEFAULT_VISIBILITY&#39;, index=0, number=0,
+<span class='lineno'>  37</span>       serialized_options=None,
+<span class='lineno'>  38</span>       type=None),
+<span class='lineno'>  39</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  40</span>       name=&#39;VISIBLE&#39;, index=1, number=1,
+<span class='lineno'>  41</span>       serialized_options=None,
+<span class='lineno'>  42</span>       type=None),
+<span class='lineno'>  43</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  44</span>       name=&#39;SKIP&#39;, index=2, number=2,
+<span class='lineno'>  45</span>       serialized_options=None,
+<span class='lineno'>  46</span>       type=None),
+<span class='lineno'>  47</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  48</span>       name=&#39;HIDDEN&#39;, index=3, number=3,
+<span class='lineno'>  49</span>       serialized_options=None,
+<span class='lineno'>  50</span>       type=None),
+<span class='lineno'>  51</span>   ],
+<span class='lineno'>  52</span>   containing_type=None,
+<span class='lineno'>  53</span>   serialized_options=None,
+<span class='lineno'>  54</span>   serialized_start=708,
+<span class='lineno'>  55</span>   serialized_end=779,
+<span class='lineno'>  56</span> )
+<span class='lineno'>  57</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', title='?'>_APIDEF_VISIBILITY</a>)
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', title='?'>_APIDEF_ENDPOINT</a> = _descriptor.Descriptor(
+<span class='lineno'>  61</span>   name=&#39;Endpoint&#39;,
+<span class='lineno'>  62</span>   full_name=&#39;tensorflow.ApiDef.Endpoint&#39;,
+<span class='lineno'>  63</span>   filename=None,
+<span class='lineno'>  64</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  65</span>   containing_type=None,
+<span class='lineno'>  66</span>   fields=[
+<span class='lineno'>  67</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  68</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.ApiDef.Endpoint.name&#39;, index=0,
+<span class='lineno'>  69</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'>  70</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'>  71</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  72</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  73</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  74</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  75</span>       name=&#39;deprecated&#39;, full_name=&#39;tensorflow.ApiDef.Endpoint.deprecated&#39;, index=1,
+<span class='lineno'>  76</span>       number=3, type=8, cpp_type=7, label=1,
+<span class='lineno'>  77</span>       has_default_value=False, default_value=False,
+<span class='lineno'>  78</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  79</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  80</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  81</span>   ],
+<span class='lineno'>  82</span>   extensions=[
+<span class='lineno'>  83</span>   ],
+<span class='lineno'>  84</span>   nested_types=[],
+<span class='lineno'>  85</span>   enum_types=[
+<span class='lineno'>  86</span>   ],
+<span class='lineno'>  87</span>   serialized_options=None,
+<span class='lineno'>  88</span>   is_extendable=False,
+<span class='lineno'>  89</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  90</span>   extension_ranges=[],
+<span class='lineno'>  91</span>   oneofs=[
+<span class='lineno'>  92</span>   ],
+<span class='lineno'>  93</span>   serialized_start=493,
+<span class='lineno'>  94</span>   serialized_end=537,
+<span class='lineno'>  95</span> )
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a> = _descriptor.Descriptor(
+<span class='lineno'>  98</span>   name=&#39;Arg&#39;,
+<span class='lineno'>  99</span>   full_name=&#39;tensorflow.ApiDef.Arg&#39;,
+<span class='lineno'> 100</span>   filename=None,
+<span class='lineno'> 101</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 102</span>   containing_type=None,
+<span class='lineno'> 103</span>   fields=[
+<span class='lineno'> 104</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 105</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.ApiDef.Arg.name&#39;, index=0,
+<span class='lineno'> 106</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 107</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 108</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 109</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 110</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 111</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 112</span>       name=&#39;rename_to&#39;, full_name=&#39;tensorflow.ApiDef.Arg.rename_to&#39;, index=1,
+<span class='lineno'> 113</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 114</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 115</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 116</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 117</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 118</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 119</span>       name=&#39;description&#39;, full_name=&#39;tensorflow.ApiDef.Arg.description&#39;, index=2,
+<span class='lineno'> 120</span>       number=3, type=9, cpp_type=9, label=1,
+<span class='lineno'> 121</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 122</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 123</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 124</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 125</span>   ],
+<span class='lineno'> 126</span>   extensions=[
+<span class='lineno'> 127</span>   ],
+<span class='lineno'> 128</span>   nested_types=[],
+<span class='lineno'> 129</span>   enum_types=[
+<span class='lineno'> 130</span>   ],
+<span class='lineno'> 131</span>   serialized_options=None,
+<span class='lineno'> 132</span>   is_extendable=False,
+<span class='lineno'> 133</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 134</span>   extension_ranges=[],
+<span class='lineno'> 135</span>   oneofs=[
+<span class='lineno'> 136</span>   ],
+<span class='lineno'> 137</span>   serialized_start=539,
+<span class='lineno'> 138</span>   serialized_end=598,
+<span class='lineno'> 139</span> )
+<span class='lineno'> 140</span> 
+<span class='lineno'> 141</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a> = _descriptor.Descriptor(
+<span class='lineno'> 142</span>   name=&#39;Attr&#39;,
+<span class='lineno'> 143</span>   full_name=&#39;tensorflow.ApiDef.Attr&#39;,
+<span class='lineno'> 144</span>   filename=None,
+<span class='lineno'> 145</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 146</span>   containing_type=None,
+<span class='lineno'> 147</span>   fields=[
+<span class='lineno'> 148</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 149</span>       name=&#39;name&#39;, full_name=&#39;tensorflow.ApiDef.Attr.name&#39;, index=0,
+<span class='lineno'> 150</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 151</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 152</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 153</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 154</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 155</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 156</span>       name=&#39;rename_to&#39;, full_name=&#39;tensorflow.ApiDef.Attr.rename_to&#39;, index=1,
+<span class='lineno'> 157</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 158</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 159</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 160</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 161</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 162</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 163</span>       name=&#39;default_value&#39;, full_name=&#39;tensorflow.ApiDef.Attr.default_value&#39;, index=2,
+<span class='lineno'> 164</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 165</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 166</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 167</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 168</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 169</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 170</span>       name=&#39;description&#39;, full_name=&#39;tensorflow.ApiDef.Attr.description&#39;, index=3,
+<span class='lineno'> 171</span>       number=4, type=9, cpp_type=9, label=1,
+<span class='lineno'> 172</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 173</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 174</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 175</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 176</span>   ],
+<span class='lineno'> 177</span>   extensions=[
+<span class='lineno'> 178</span>   ],
+<span class='lineno'> 179</span>   nested_types=[],
+<span class='lineno'> 180</span>   enum_types=[
+<span class='lineno'> 181</span>   ],
+<span class='lineno'> 182</span>   serialized_options=None,
+<span class='lineno'> 183</span>   is_extendable=False,
+<span class='lineno'> 184</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 185</span>   extension_ranges=[],
+<span class='lineno'> 186</span>   oneofs=[
+<span class='lineno'> 187</span>   ],
+<span class='lineno'> 188</span>   serialized_start=600,
+<span class='lineno'> 189</span>   serialized_end=706,
+<span class='lineno'> 190</span> )
+<span class='lineno'> 191</span> 
+<span class='lineno'> 192</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a> = _descriptor.Descriptor(
+<span class='lineno'> 193</span>   name=&#39;ApiDef&#39;,
+<span class='lineno'> 194</span>   full_name=&#39;tensorflow.ApiDef&#39;,
+<span class='lineno'> 195</span>   filename=None,
+<span class='lineno'> 196</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 197</span>   containing_type=None,
+<span class='lineno'> 198</span>   fields=[
+<span class='lineno'> 199</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 200</span>       name=&#39;graph_op_name&#39;, full_name=&#39;tensorflow.ApiDef.graph_op_name&#39;, index=0,
+<span class='lineno'> 201</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 202</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 203</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 204</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 205</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 206</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 207</span>       name=&#39;deprecation_message&#39;, full_name=&#39;tensorflow.ApiDef.deprecation_message&#39;, index=1,
+<span class='lineno'> 208</span>       number=12, type=9, cpp_type=9, label=1,
+<span class='lineno'> 209</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 210</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 211</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 212</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 213</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 214</span>       name=&#39;visibility&#39;, full_name=&#39;tensorflow.ApiDef.visibility&#39;, index=2,
+<span class='lineno'> 215</span>       number=2, type=14, cpp_type=8, label=1,
+<span class='lineno'> 216</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 217</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 218</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 219</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 220</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 221</span>       name=&#39;endpoint&#39;, full_name=&#39;tensorflow.ApiDef.endpoint&#39;, index=3,
+<span class='lineno'> 222</span>       number=3, type=11, cpp_type=10, label=3,
+<span class='lineno'> 223</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 224</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 225</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 226</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 227</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 228</span>       name=&#39;in_arg&#39;, full_name=&#39;tensorflow.ApiDef.in_arg&#39;, index=4,
+<span class='lineno'> 229</span>       number=4, type=11, cpp_type=10, label=3,
+<span class='lineno'> 230</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 231</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 232</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 233</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 234</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 235</span>       name=&#39;out_arg&#39;, full_name=&#39;tensorflow.ApiDef.out_arg&#39;, index=5,
+<span class='lineno'> 236</span>       number=5, type=11, cpp_type=10, label=3,
+<span class='lineno'> 237</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 238</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 239</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 240</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 241</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 242</span>       name=&#39;arg_order&#39;, full_name=&#39;tensorflow.ApiDef.arg_order&#39;, index=6,
+<span class='lineno'> 243</span>       number=11, type=9, cpp_type=9, label=3,
+<span class='lineno'> 244</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 245</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 246</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 247</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 248</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 249</span>       name=&#39;attr&#39;, full_name=&#39;tensorflow.ApiDef.attr&#39;, index=7,
+<span class='lineno'> 250</span>       number=6, type=11, cpp_type=10, label=3,
+<span class='lineno'> 251</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 252</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 253</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 254</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 255</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 256</span>       name=&#39;summary&#39;, full_name=&#39;tensorflow.ApiDef.summary&#39;, index=8,
+<span class='lineno'> 257</span>       number=7, type=9, cpp_type=9, label=1,
+<span class='lineno'> 258</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 259</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 260</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 261</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 262</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 263</span>       name=&#39;description&#39;, full_name=&#39;tensorflow.ApiDef.description&#39;, index=9,
+<span class='lineno'> 264</span>       number=8, type=9, cpp_type=9, label=1,
+<span class='lineno'> 265</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 266</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 267</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 268</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 269</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 270</span>       name=&#39;description_prefix&#39;, full_name=&#39;tensorflow.ApiDef.description_prefix&#39;, index=10,
+<span class='lineno'> 271</span>       number=9, type=9, cpp_type=9, label=1,
+<span class='lineno'> 272</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 273</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 274</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 275</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 276</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 277</span>       name=&#39;description_suffix&#39;, full_name=&#39;tensorflow.ApiDef.description_suffix&#39;, index=11,
+<span class='lineno'> 278</span>       number=10, type=9, cpp_type=9, label=1,
+<span class='lineno'> 279</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 280</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 281</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 282</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 283</span>   ],
+<span class='lineno'> 284</span>   extensions=[
+<span class='lineno'> 285</span>   ],
+<span class='lineno'> 286</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', title='?'>_APIDEF_ENDPOINT</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a>, ],
+<span class='lineno'> 287</span>   enum_types=[
+<span class='lineno'> 288</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', title='?'>_APIDEF_VISIBILITY</a>,
+<span class='lineno'> 289</span>   ],
+<span class='lineno'> 290</span>   serialized_options=None,
+<span class='lineno'> 291</span>   is_extendable=False,
+<span class='lineno'> 292</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 293</span>   extension_ranges=[],
+<span class='lineno'> 294</span>   oneofs=[
+<span class='lineno'> 295</span>   ],
+<span class='lineno'> 296</span>   serialized_start=100,
+<span class='lineno'> 297</span>   serialized_end=779,
+<span class='lineno'> 298</span> )
+<span class='lineno'> 299</span> 
+<span class='lineno'> 300</span> 
+<span class='lineno'> 301</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', title='?'>_APIDEFS</a> = _descriptor.Descriptor(
+<span class='lineno'> 302</span>   name=&#39;ApiDefs&#39;,
+<span class='lineno'> 303</span>   full_name=&#39;tensorflow.ApiDefs&#39;,
+<span class='lineno'> 304</span>   filename=None,
+<span class='lineno'> 305</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 306</span>   containing_type=None,
+<span class='lineno'> 307</span>   fields=[
+<span class='lineno'> 308</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 309</span>       name=&#39;op&#39;, full_name=&#39;tensorflow.ApiDefs.op&#39;, index=0,
+<span class='lineno'> 310</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 311</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 312</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 313</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 314</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 315</span>   ],
+<span class='lineno'> 316</span>   extensions=[
+<span class='lineno'> 317</span>   ],
+<span class='lineno'> 318</span>   nested_types=[],
+<span class='lineno'> 319</span>   enum_types=[
+<span class='lineno'> 320</span>   ],
+<span class='lineno'> 321</span>   serialized_options=None,
+<span class='lineno'> 322</span>   is_extendable=False,
+<span class='lineno'> 323</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 324</span>   extension_ranges=[],
+<span class='lineno'> 325</span>   oneofs=[
+<span class='lineno'> 326</span>   ],
+<span class='lineno'> 327</span>   serialized_start=781,
+<span class='lineno'> 328</span>   serialized_end=822,
+<span class='lineno'> 329</span> )
+<span class='lineno'> 330</span> 
+<span class='lineno'> 331</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', title='?'>_APIDEF_ENDPOINT</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 332</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 333</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a>.fields_by_name[&#39;default_value&#39;].message_type = <a href='attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2', title='attr_value_pb2'>tensorflow_dot_core_dot_framework_dot_attr__value__pb2</a>.<a href='attr_value_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2._ATTRVALUE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.attr_value_pb2._ATTRVALUE', title='?'>_ATTRVALUE</a>
+<span class='lineno'> 334</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 335</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>.fields_by_name[&#39;visibility&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', title='?'>_APIDEF_VISIBILITY</a>
+<span class='lineno'> 336</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>.fields_by_name[&#39;endpoint&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', title='?'>_APIDEF_ENDPOINT</a>
+<span class='lineno'> 337</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>.fields_by_name[&#39;in_arg&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a>
+<span class='lineno'> 338</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>.fields_by_name[&#39;out_arg&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a>
+<span class='lineno'> 339</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>.fields_by_name[&#39;attr&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a>
+<span class='lineno'> 340</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_VISIBILITY', title='?'>_APIDEF_VISIBILITY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 341</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', title='?'>_APIDEFS</a>.fields_by_name[&#39;op&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 342</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ApiDef&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>
+<span class='lineno'> 343</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ApiDefs&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', title='?'>_APIDEFS</a>
+<span class='lineno'> 344</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 345</span> 
+<span class='lineno'> 346</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', title='?'>ApiDef</a> = _reflection.GeneratedProtocolMessageType(&#39;ApiDef&#39;, (_message.Message,), dict(
+<span class='lineno'> 347</span> 
+<span class='lineno'> 348</span>   Endpoint = _reflection.GeneratedProtocolMessageType(&#39;Endpoint&#39;, (_message.Message,), dict(
+<span class='lineno'> 349</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ENDPOINT', title='?'>_APIDEF_ENDPOINT</a>,
+<span class='lineno'> 350</span>     __module__ = &#39;tensorflow.core.framework.api_def_pb2&#39;
+<span class='lineno'> 351</span>     # @@protoc_insertion_point(class_scope:tensorflow.ApiDef.Endpoint)
+<span class='lineno'> 352</span>     ))
+<span class='lineno'> 353</span>   ,
+<span class='lineno'> 354</span> 
+<span class='lineno'> 355</span>   Arg = _reflection.GeneratedProtocolMessageType(&#39;Arg&#39;, (_message.Message,), dict(
+<span class='lineno'> 356</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ARG', title='?'>_APIDEF_ARG</a>,
+<span class='lineno'> 357</span>     __module__ = &#39;tensorflow.core.framework.api_def_pb2&#39;
+<span class='lineno'> 358</span>     # @@protoc_insertion_point(class_scope:tensorflow.ApiDef.Arg)
+<span class='lineno'> 359</span>     ))
+<span class='lineno'> 360</span>   ,
+<span class='lineno'> 361</span> 
+<span class='lineno'> 362</span>   Attr = _reflection.GeneratedProtocolMessageType(&#39;Attr&#39;, (_message.Message,), dict(
+<span class='lineno'> 363</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF_ATTR', title='?'>_APIDEF_ATTR</a>,
+<span class='lineno'> 364</span>     __module__ = &#39;tensorflow.core.framework.api_def_pb2&#39;
+<span class='lineno'> 365</span>     # @@protoc_insertion_point(class_scope:tensorflow.ApiDef.Attr)
+<span class='lineno'> 366</span>     ))
+<span class='lineno'> 367</span>   ,
+<span class='lineno'> 368</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEF', title='?'>_APIDEF</a>,
+<span class='lineno'> 369</span>   __module__ = &#39;tensorflow.core.framework.api_def_pb2&#39;
+<span class='lineno'> 370</span>   # @@protoc_insertion_point(class_scope:tensorflow.ApiDef)
+<span class='lineno'> 371</span>   ))
+<span class='lineno'> 372</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', title='?'>ApiDef</a>)
+<span class='lineno'> 373</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', title='?'>ApiDef</a>.Endpoint)
+<span class='lineno'> 374</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', title='?'>ApiDef</a>.Arg)
+<span class='lineno'> 375</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDef', title='?'>ApiDef</a>.Attr)
+<span class='lineno'> 376</span> 
+<span class='lineno'> 377</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs', title='?'>ApiDefs</a> = _reflection.GeneratedProtocolMessageType(&#39;ApiDefs&#39;, (_message.Message,), dict(
+<span class='lineno'> 378</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._APIDEFS', title='?'>_APIDEFS</a>,
+<span class='lineno'> 379</span>   __module__ = &#39;tensorflow.core.framework.api_def_pb2&#39;
+<span class='lineno'> 380</span>   # @@protoc_insertion_point(class_scope:tensorflow.ApiDefs)
+<span class='lineno'> 381</span>   ))
+<span class='lineno'> 382</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.ApiDefs', title='?'>ApiDefs</a>)
+<span class='lineno'> 383</span> 
+<span class='lineno'> 384</span> 
+<span class='lineno'> 385</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.api_def_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 386</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

@@ -1,0 +1,394 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/layers/core.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense'>Dense</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__'>__init__</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense'>dense</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout'>Dropout</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call'>call</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout'>dropout</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten'>Flatten</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten'>flatten</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.FullyConnected', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.FullyConnected'>FullyConnected</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.fully_connected', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.fully_connected'>fully_connected</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # =============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Contains the core layers: Dense, Dropout.
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> Also contains their functional aliases.
+<span class='lineno'>  19</span> &quot;&quot;&quot;
+<span class='lineno'>  20</span> from __future__ import absolute_import
+<span class='lineno'>  21</span> from __future__ import division
+<span class='lineno'>  22</span> from __future__ import print_function
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../keras/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras', title='keras'>keras</a> import layers as <a href='../keras/layers/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', title='layers'>keras_layers</a>
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers', title='layers'>layers</a> import <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', title='base'>base</a>
+<span class='lineno'>  27</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../ops/init_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', title='init_ops'>init_ops</a>
+<span class='lineno'>  28</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> @tf_export(&#39;layers.Dense&#39;)
+<span class='lineno'>  32</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', title='<Dense>'>Dense</a>(<a href='../keras/layers/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', title='layers'>keras_layers</a>.<a href='../keras/layers/core.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Dense', title='<Dense>'>Dense</a>, <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', title='<Layer>'>Layer</a>):
+<span class='lineno'>  33</span>   &quot;&quot;&quot;Densely-connected layer class.
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>   This layer implements the operation:
+<span class='lineno'>  36</span>   `outputs = activation(inputs * kernel + bias)`
+<span class='lineno'>  37</span>   Where `activation` is the activation function passed as the `activation`
+<span class='lineno'>  38</span>   argument (if not `None`), `kernel` is a weights matrix created by the layer,
+<span class='lineno'>  39</span>   and `bias` is a bias vector created by the layer
+<span class='lineno'>  40</span>   (only if `use_bias` is `True`).
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   Arguments:
+<span class='lineno'>  43</span>     units: Integer or Long, dimensionality of the output space.
+<span class='lineno'>  44</span>     activation: Activation function (callable). Set it to None to maintain a
+<span class='lineno'>  45</span>       linear activation.
+<span class='lineno'>  46</span>     use_bias: Boolean, whether the layer uses a bias.
+<span class='lineno'>  47</span>     kernel_initializer: Initializer function for the weight matrix.
+<span class='lineno'>  48</span>       If `None` (default), weights are initialized using the default
+<span class='lineno'>  49</span>       initializer used by `tf.get_variable`.
+<span class='lineno'>  50</span>     bias_initializer: Initializer function for the bias.
+<span class='lineno'>  51</span>     kernel_regularizer: Regularizer function for the weight matrix.
+<span class='lineno'>  52</span>     bias_regularizer: Regularizer function for the bias.
+<span class='lineno'>  53</span>     activity_regularizer: Regularizer function for the output.
+<span class='lineno'>  54</span>     kernel_constraint: An optional projection function to be applied to the
+<span class='lineno'>  55</span>         kernel after being updated by an `Optimizer` (e.g. used to implement
+<span class='lineno'>  56</span>         norm constraints or value constraints for layer weights). The function
+<span class='lineno'>  57</span>         must take as input the unprojected variable and must return the
+<span class='lineno'>  58</span>         projected variable (which must have the same shape). Constraints are
+<span class='lineno'>  59</span>         not safe to use when doing asynchronous distributed training.
+<span class='lineno'>  60</span>     bias_constraint: An optional projection function to be applied to the
+<span class='lineno'>  61</span>         bias after being updated by an `Optimizer`.
+<span class='lineno'>  62</span>     trainable: Boolean, if `True` also add variables to the graph collection
+<span class='lineno'>  63</span>       `GraphKeys.TRAINABLE_VARIABLES` (see `tf.Variable`).
+<span class='lineno'>  64</span>     name: String, the name of the layer. Layers with the same name will
+<span class='lineno'>  65</span>       share weights, but to avoid mistakes we require reuse=True in such cases.
+<span class='lineno'>  66</span>     reuse: Boolean, whether to reuse the weights of a previous layer
+<span class='lineno'>  67</span>       by the same name.
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   Properties:
+<span class='lineno'>  70</span>     units: Python integer, dimensionality of the output space.
+<span class='lineno'>  71</span>     activation: Activation function (callable).
+<span class='lineno'>  72</span>     use_bias: Boolean, whether the layer uses a bias.
+<span class='lineno'>  73</span>     kernel_initializer: Initializer instance (or name) for the kernel matrix.
+<span class='lineno'>  74</span>     bias_initializer: Initializer instance (or name) for the bias.
+<span class='lineno'>  75</span>     kernel_regularizer: Regularizer instance for the kernel matrix (callable)
+<span class='lineno'>  76</span>     bias_regularizer: Regularizer instance for the bias (callable).
+<span class='lineno'>  77</span>     activity_regularizer: Regularizer instance for the output (callable)
+<span class='lineno'>  78</span>     kernel_constraint: Constraint function for the kernel matrix.
+<span class='lineno'>  79</span>     bias_constraint: Constraint function for the bias.
+<span class='lineno'>  80</span>     kernel: Weight matrix (TensorFlow variable or tensor).
+<span class='lineno'>  81</span>     bias: Bias vector, if applicable (TensorFlow variable or tensor).
+<span class='lineno'>  82</span>   &quot;&quot;&quot;
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.self', title='Dense'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.units', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.units', title='{_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ? | int}'>units</a>,
+<span class='lineno'>  85</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activation', title='None'>activation</a>=None,
+<span class='lineno'>  86</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.use_bias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.use_bias', title='bool'>use_bias</a>=True,
+<span class='lineno'>  87</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_initializer', title='None'>kernel_initializer</a>=None,
+<span class='lineno'>  88</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_initializer', title='Zeros'>bias_initializer</a>=<a href='../ops/init_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', title='init_ops'>init_ops</a>.<a href='../ops/init_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops.zeros_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops.zeros_initializer', title='<Zeros>'>zeros_initializer</a>(),
+<span class='lineno'>  89</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_regularizer', title='None'>kernel_regularizer</a>=None,
+<span class='lineno'>  90</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_regularizer', title='None'>bias_regularizer</a>=None,
+<span class='lineno'>  91</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activity_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activity_regularizer', title='None'>activity_regularizer</a>=None,
+<span class='lineno'>  92</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_constraint', title='None'>kernel_constraint</a>=None,
+<span class='lineno'>  93</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_constraint', title='None'>bias_constraint</a>=None,
+<span class='lineno'>  94</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.trainable', title='bool'>trainable</a>=True,
+<span class='lineno'>  95</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.name', title='None'>name</a>=None,
+<span class='lineno'>  96</span>                **kwargs):
+<span class='lineno'>  97</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', title='<Dense>'>Dense</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.self', title='Dense'>self</a>).__init__(units=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.units', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.units', title='{_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ? | int}'>units</a>,
+<span class='lineno'>  98</span>                                 activation=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activation', title='None'>activation</a>,
+<span class='lineno'>  99</span>                                 use_bias=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.use_bias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.use_bias', title='bool'>use_bias</a>,
+<span class='lineno'> 100</span>                                 kernel_initializer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_initializer', title='None'>kernel_initializer</a>,
+<span class='lineno'> 101</span>                                 bias_initializer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_initializer', title='Zeros'>bias_initializer</a>,
+<span class='lineno'> 102</span>                                 kernel_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_regularizer', title='None'>kernel_regularizer</a>,
+<span class='lineno'> 103</span>                                 bias_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_regularizer', title='None'>bias_regularizer</a>,
+<span class='lineno'> 104</span>                                 activity_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activity_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.activity_regularizer', title='None'>activity_regularizer</a>,
+<span class='lineno'> 105</span>                                 kernel_constraint=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.kernel_constraint', title='None'>kernel_constraint</a>,
+<span class='lineno'> 106</span>                                 bias_constraint=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.bias_constraint', title='None'>bias_constraint</a>,
+<span class='lineno'> 107</span>                                 trainable=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.trainable', title='bool'>trainable</a>,
+<span class='lineno'> 108</span>                                 name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense.__init__.name', title='None'>name</a>,
+<span class='lineno'> 109</span>                                 **kwargs)
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span> @tf_export(&#39;layers.dense&#39;)
+<span class='lineno'> 113</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense', title='(None, {_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ?}, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (None, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (?, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None / ({DeferredTensor | None | [DeferredTensor] | [None]}, int, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None'>dense</a>(
+<span class='lineno'> 114</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.inputs', title='{DeferredTensor | None | [DeferredTensor] | [None]}'>inputs</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.units', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.units', title='{_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ? | int}'>units</a>,
+<span class='lineno'> 115</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activation', title='None'>activation</a>=None,
+<span class='lineno'> 116</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.use_bias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.use_bias', title='bool'>use_bias</a>=True,
+<span class='lineno'> 117</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_initializer', title='None'>kernel_initializer</a>=None,
+<span class='lineno'> 118</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_initializer', title='Zeros'>bias_initializer</a>=<a href='../ops/init_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops', title='init_ops'>init_ops</a>.<a href='../ops/init_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops.zeros_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.init_ops.zeros_initializer', title='<Zeros>'>zeros_initializer</a>(),
+<span class='lineno'> 119</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_regularizer', title='None'>kernel_regularizer</a>=None,
+<span class='lineno'> 120</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_regularizer', title='None'>bias_regularizer</a>=None,
+<span class='lineno'> 121</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activity_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activity_regularizer', title='None'>activity_regularizer</a>=None,
+<span class='lineno'> 122</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_constraint', title='None'>kernel_constraint</a>=None,
+<span class='lineno'> 123</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_constraint', title='None'>bias_constraint</a>=None,
+<span class='lineno'> 124</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.trainable', title='bool'>trainable</a>=True,
+<span class='lineno'> 125</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', title='None'>name</a>=None,
+<span class='lineno'> 126</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.reuse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.reuse', title='None'>reuse</a>=None):
+<span class='lineno'> 127</span>   &quot;&quot;&quot;Functional interface for the densely-connected layer.
+<span class='lineno'> 128</span> 
+<span class='lineno'> 129</span>   This layer implements the operation:
+<span class='lineno'> 130</span>   `outputs = activation(inputs * kernel + bias)`
+<span class='lineno'> 131</span>   where `activation` is the activation function passed as the `activation`
+<span class='lineno'> 132</span>   argument (if not `None`), `kernel` is a weights matrix created by the layer,
+<span class='lineno'> 133</span>   and `bias` is a bias vector created by the layer
+<span class='lineno'> 134</span>   (only if `use_bias` is `True`).
+<span class='lineno'> 135</span> 
+<span class='lineno'> 136</span>   Arguments:
+<span class='lineno'> 137</span>     inputs: Tensor input.
+<span class='lineno'> 138</span>     units: Integer or Long, dimensionality of the output space.
+<span class='lineno'> 139</span>     activation: Activation function (callable). Set it to None to maintain a
+<span class='lineno'> 140</span>       linear activation.
+<span class='lineno'> 141</span>     use_bias: Boolean, whether the layer uses a bias.
+<span class='lineno'> 142</span>     kernel_initializer: Initializer function for the weight matrix.
+<span class='lineno'> 143</span>       If `None` (default), weights are initialized using the default
+<span class='lineno'> 144</span>       initializer used by `tf.get_variable`.
+<span class='lineno'> 145</span>     bias_initializer: Initializer function for the bias.
+<span class='lineno'> 146</span>     kernel_regularizer: Regularizer function for the weight matrix.
+<span class='lineno'> 147</span>     bias_regularizer: Regularizer function for the bias.
+<span class='lineno'> 148</span>     activity_regularizer: Regularizer function for the output.
+<span class='lineno'> 149</span>     kernel_constraint: An optional projection function to be applied to the
+<span class='lineno'> 150</span>         kernel after being updated by an `Optimizer` (e.g. used to implement
+<span class='lineno'> 151</span>         norm constraints or value constraints for layer weights). The function
+<span class='lineno'> 152</span>         must take as input the unprojected variable and must return the
+<span class='lineno'> 153</span>         projected variable (which must have the same shape). Constraints are
+<span class='lineno'> 154</span>         not safe to use when doing asynchronous distributed training.
+<span class='lineno'> 155</span>     bias_constraint: An optional projection function to be applied to the
+<span class='lineno'> 156</span>         bias after being updated by an `Optimizer`.
+<span class='lineno'> 157</span>     trainable: Boolean, if `True` also add variables to the graph collection
+<span class='lineno'> 158</span>       `GraphKeys.TRAINABLE_VARIABLES` (see `tf.Variable`).
+<span class='lineno'> 159</span>     name: String, the name of the layer.
+<span class='lineno'> 160</span>     reuse: Boolean, whether to reuse the weights of a previous layer
+<span class='lineno'> 161</span>       by the same name.
+<span class='lineno'> 162</span> 
+<span class='lineno'> 163</span>   Returns:
+<span class='lineno'> 164</span>     Output tensor the same shape as `inputs` except the last dimension is of
+<span class='lineno'> 165</span>     size `units`.
+<span class='lineno'> 166</span> 
+<span class='lineno'> 167</span>   Raises:
+<span class='lineno'> 168</span>     ValueError: if eager execution is enabled.
+<span class='lineno'> 169</span>   &quot;&quot;&quot;
+<span class='lineno'> 170</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.layer', title='Dense'>layer</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', title='<Dense>'>Dense</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.units', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.units', title='{_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ? | int}'>units</a>,
+<span class='lineno'> 171</span>                 activation=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activation', title='None'>activation</a>,
+<span class='lineno'> 172</span>                 use_bias=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.use_bias', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.use_bias', title='bool'>use_bias</a>,
+<span class='lineno'> 173</span>                 kernel_initializer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_initializer', title='None'>kernel_initializer</a>,
+<span class='lineno'> 174</span>                 bias_initializer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_initializer', title='Zeros'>bias_initializer</a>,
+<span class='lineno'> 175</span>                 kernel_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_regularizer', title='None'>kernel_regularizer</a>,
+<span class='lineno'> 176</span>                 bias_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_regularizer', title='None'>bias_regularizer</a>,
+<span class='lineno'> 177</span>                 activity_regularizer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activity_regularizer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.activity_regularizer', title='None'>activity_regularizer</a>,
+<span class='lineno'> 178</span>                 kernel_constraint=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.kernel_constraint', title='None'>kernel_constraint</a>,
+<span class='lineno'> 179</span>                 bias_constraint=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_constraint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.bias_constraint', title='None'>bias_constraint</a>,
+<span class='lineno'> 180</span>                 trainable=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.trainable', title='bool'>trainable</a>,
+<span class='lineno'> 181</span>                 name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', title='None'>name</a>,
+<span class='lineno'> 182</span>                 _scope=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.name', title='None'>name</a>,
+<span class='lineno'> 183</span>                 _reuse=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.reuse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.reuse', title='None'>reuse</a>)
+<span class='lineno'> 184</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.layer', title='Dense'>layer</a>.<a href='../keras/engine/base_layer.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', title='(BatchNormalization, ?) -> ? / (AveragePooling3D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (SeparableConv2D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (MaxPooling2D, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dense, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (RevBlock, [?]) -> None / (BatchNormalization, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dropout, None) -> {DeferredTensor | [DeferredTensor] | [None]}'>apply</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense.inputs', title='{DeferredTensor | None | [DeferredTensor] | [None]}'>inputs</a>)
+<span class='lineno'> 185</span> 
+<span class='lineno'> 186</span> 
+<span class='lineno'> 187</span> @tf_export(&#39;layers.Dropout&#39;)
+<span class='lineno'> 188</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', title='<Dropout>'>Dropout</a>(<a href='../keras/layers/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', title='layers'>keras_layers</a>.<a href='../keras/layers/core.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Dropout', title='<Dropout>'>Dropout</a>, <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', title='<Layer>'>Layer</a>):
+<span class='lineno'> 189</span>   &quot;&quot;&quot;Applies Dropout to the input.
+<span class='lineno'> 190</span> 
+<span class='lineno'> 191</span>   Dropout consists in randomly setting a fraction `rate` of input units to 0
+<span class='lineno'> 192</span>   at each update during training time, which helps prevent overfitting.
+<span class='lineno'> 193</span>   The units that are kept are scaled by `1 / (1 - rate)`, so that their
+<span class='lineno'> 194</span>   sum is unchanged at training time and inference time.
+<span class='lineno'> 195</span> 
+<span class='lineno'> 196</span>   Arguments:
+<span class='lineno'> 197</span>     rate: The dropout rate, between 0 and 1. E.g. `rate=0.1` would drop out
+<span class='lineno'> 198</span>       10% of input units.
+<span class='lineno'> 199</span>     noise_shape: 1D tensor of type `int32` representing the shape of the
+<span class='lineno'> 200</span>       binary dropout mask that will be multiplied with the input.
+<span class='lineno'> 201</span>       For instance, if your inputs have shape
+<span class='lineno'> 202</span>       `(batch_size, timesteps, features)`, and you want the dropout mask
+<span class='lineno'> 203</span>       to be the same for all timesteps, you can use
+<span class='lineno'> 204</span>       `noise_shape=[batch_size, 1, features]`.
+<span class='lineno'> 205</span>     seed: A Python integer. Used to create random seeds. See
+<span class='lineno'> 206</span>       `tf.set_random_seed`.
+<span class='lineno'> 207</span>       for behavior.
+<span class='lineno'> 208</span>     name: The name of the layer (string).
+<span class='lineno'> 209</span>   &quot;&quot;&quot;
+<span class='lineno'> 210</span> 
+<span class='lineno'> 211</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.self', title='Dropout'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.rate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.rate', title='float'>rate</a>=0.5,
+<span class='lineno'> 212</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.noise_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.noise_shape', title='None'>noise_shape</a>=None,
+<span class='lineno'> 213</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.seed', title='None'>seed</a>=None,
+<span class='lineno'> 214</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.name', title='None'>name</a>=None,
+<span class='lineno'> 215</span>                **kwargs):
+<span class='lineno'> 216</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', title='<Dropout>'>Dropout</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.self', title='Dropout'>self</a>).__init__(rate=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.rate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.rate', title='float'>rate</a>,
+<span class='lineno'> 217</span>                                   noise_shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.noise_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.noise_shape', title='None'>noise_shape</a>,
+<span class='lineno'> 218</span>                                   seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.seed', title='None'>seed</a>,
+<span class='lineno'> 219</span>                                   name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.__init__.name', title='None'>name</a>,
+<span class='lineno'> 220</span>                                   **kwargs)
+<span class='lineno'> 221</span> 
+<span class='lineno'> 222</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call', title='(Dropout, ?, bool) -> ? / (Dropout, None, bool) -> ?'>call</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.self', title='Dropout'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.inputs', title='None'>inputs</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.training', title='bool'>training</a>=False):
+<span class='lineno'> 223</span>     return super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', title='<Dropout>'>Dropout</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.self', title='Dropout'>self</a>).call(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.inputs', title='None'>inputs</a>, training=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout.call.training', title='bool'>training</a>)
+<span class='lineno'> 224</span> 
+<span class='lineno'> 225</span> 
+<span class='lineno'> 226</span> @tf_export(&#39;layers.dropout&#39;)
+<span class='lineno'> 227</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout', title='(?, float, None, None, bool, None) -> None'>dropout</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.inputs', title='?'>inputs</a>,
+<span class='lineno'> 228</span>             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.rate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.rate', title='float'>rate</a>=0.5,
+<span class='lineno'> 229</span>             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.noise_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.noise_shape', title='None'>noise_shape</a>=None,
+<span class='lineno'> 230</span>             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.seed', title='None'>seed</a>=None,
+<span class='lineno'> 231</span>             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.training', title='bool'>training</a>=False,
+<span class='lineno'> 232</span>             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.name', title='None'>name</a>=None):
+<span class='lineno'> 233</span>   &quot;&quot;&quot;Applies Dropout to the input.
+<span class='lineno'> 234</span> 
+<span class='lineno'> 235</span>   Dropout consists in randomly setting a fraction `rate` of input units to 0
+<span class='lineno'> 236</span>   at each update during training time, which helps prevent overfitting.
+<span class='lineno'> 237</span>   The units that are kept are scaled by `1 / (1 - rate)`, so that their
+<span class='lineno'> 238</span>   sum is unchanged at training time and inference time.
+<span class='lineno'> 239</span> 
+<span class='lineno'> 240</span>   Arguments:
+<span class='lineno'> 241</span>     inputs: Tensor input.
+<span class='lineno'> 242</span>     rate: The dropout rate, between 0 and 1. E.g. &quot;rate=0.1&quot; would drop out
+<span class='lineno'> 243</span>       10% of input units.
+<span class='lineno'> 244</span>     noise_shape: 1D tensor of type `int32` representing the shape of the
+<span class='lineno'> 245</span>       binary dropout mask that will be multiplied with the input.
+<span class='lineno'> 246</span>       For instance, if your inputs have shape
+<span class='lineno'> 247</span>       `(batch_size, timesteps, features)`, and you want the dropout mask
+<span class='lineno'> 248</span>       to be the same for all timesteps, you can use
+<span class='lineno'> 249</span>       `noise_shape=[batch_size, 1, features]`.
+<span class='lineno'> 250</span>     seed: A Python integer. Used to create random seeds. See
+<span class='lineno'> 251</span>       `tf.set_random_seed`
+<span class='lineno'> 252</span>       for behavior.
+<span class='lineno'> 253</span>     training: Either a Python boolean, or a TensorFlow boolean scalar tensor
+<span class='lineno'> 254</span>       (e.g. a placeholder). Whether to return the output in training mode
+<span class='lineno'> 255</span>       (apply dropout) or in inference mode (return the input untouched).
+<span class='lineno'> 256</span>     name: The name of the layer (string).
+<span class='lineno'> 257</span> 
+<span class='lineno'> 258</span>   Returns:
+<span class='lineno'> 259</span>     Output tensor.
+<span class='lineno'> 260</span> 
+<span class='lineno'> 261</span>   Raises:
+<span class='lineno'> 262</span>     ValueError: if eager execution is enabled.
+<span class='lineno'> 263</span>   &quot;&quot;&quot;
+<span class='lineno'> 264</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.layer', title='Dropout'>layer</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dropout', title='<Dropout>'>Dropout</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.rate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.rate', title='float'>rate</a>, noise_shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.noise_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.noise_shape', title='None'>noise_shape</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.seed', title='None'>seed</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.name', title='None'>name</a>)
+<span class='lineno'> 265</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.layer', title='Dropout'>layer</a>.<a href='../keras/engine/base_layer.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', title='(BatchNormalization, ?) -> ? / (AveragePooling3D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (SeparableConv2D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (MaxPooling2D, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dense, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (RevBlock, [?]) -> None / (BatchNormalization, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dropout, None) -> {DeferredTensor | [DeferredTensor] | [None]}'>apply</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.inputs', title='?'>inputs</a>, training=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dropout.training', title='bool'>training</a>)
+<span class='lineno'> 266</span> 
+<span class='lineno'> 267</span> 
+<span class='lineno'> 268</span> @tf_export(&#39;layers.Flatten&#39;)
+<span class='lineno'> 269</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten', title='<Flatten>'>Flatten</a>(<a href='../keras/layers/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers', title='layers'>keras_layers</a>.<a href='../keras/layers/core.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Flatten', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.layers.core.Flatten', title='<Flatten>'>Flatten</a>, <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.base.Layer', title='<Layer>'>Layer</a>):
+<span class='lineno'> 270</span>   &quot;&quot;&quot;Flattens an input tensor while preserving the batch axis (axis 0).
+<span class='lineno'> 271</span> 
+<span class='lineno'> 272</span>   Examples:
+<span class='lineno'> 273</span> 
+<span class='lineno'> 274</span>   ```
+<span class='lineno'> 275</span>     x = tf.placeholder(shape=(None, 4, 4), dtype=&#39;float32&#39;)
+<span class='lineno'> 276</span>     y = Flatten()(x)
+<span class='lineno'> 277</span>     # now `y` has shape `(None, 16)`
+<span class='lineno'> 278</span> 
+<span class='lineno'> 279</span>     x = tf.placeholder(shape=(None, 3, None), dtype=&#39;float32&#39;)
+<span class='lineno'> 280</span>     y = Flatten()(x)
+<span class='lineno'> 281</span>     # now `y` has shape `(None, None)`
+<span class='lineno'> 282</span>   ```
+<span class='lineno'> 283</span>   &quot;&quot;&quot;
+<span class='lineno'> 284</span>   pass
+<span class='lineno'> 285</span> 
+<span class='lineno'> 286</span> 
+<span class='lineno'> 287</span> @tf_export(&#39;layers.flatten&#39;)
+<span class='lineno'> 288</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten', title='(None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (?, None) -> {DeferredTensor | [DeferredTensor] | [None]}'>flatten</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.inputs', title='None'>inputs</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.name', title='None'>name</a>=None):
+<span class='lineno'> 289</span>   &quot;&quot;&quot;Flattens an input tensor while preserving the batch axis (axis 0).
+<span class='lineno'> 290</span> 
+<span class='lineno'> 291</span>   Arguments:
+<span class='lineno'> 292</span>     inputs: Tensor input.
+<span class='lineno'> 293</span>     name: The name of the layer (string).
+<span class='lineno'> 294</span> 
+<span class='lineno'> 295</span>   Returns:
+<span class='lineno'> 296</span>     Reshaped tensor.
+<span class='lineno'> 297</span> 
+<span class='lineno'> 298</span>   Examples:
+<span class='lineno'> 299</span> 
+<span class='lineno'> 300</span>   ```
+<span class='lineno'> 301</span>     x = tf.placeholder(shape=(None, 4, 4), dtype=&#39;float32&#39;)
+<span class='lineno'> 302</span>     y = flatten(x)
+<span class='lineno'> 303</span>     # now `y` has shape `(None, 16)`
+<span class='lineno'> 304</span> 
+<span class='lineno'> 305</span>     x = tf.placeholder(shape=(None, 3, None), dtype=&#39;float32&#39;)
+<span class='lineno'> 306</span>     y = flatten(x)
+<span class='lineno'> 307</span>     # now `y` has shape `(None, None)`
+<span class='lineno'> 308</span>   ```
+<span class='lineno'> 309</span>   &quot;&quot;&quot;
+<span class='lineno'> 310</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.layer', title='Flatten'>layer</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Flatten', title='<Flatten>'>Flatten</a>(name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.name', title='None'>name</a>)
+<span class='lineno'> 311</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.layer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.layer', title='Flatten'>layer</a>.<a href='../keras/engine/base_layer.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.keras.engine.base_layer.Layer.apply', title='(BatchNormalization, ?) -> ? / (AveragePooling3D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (SeparableConv2D, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (MaxPooling2D, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dense, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (RevBlock, [?]) -> None / (BatchNormalization, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (Flatten, ?) -> {DeferredTensor | [DeferredTensor] | [None]} / (Dropout, None) -> {DeferredTensor | [DeferredTensor] | [None]}'>apply</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.inputs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.flatten.inputs', title='None'>inputs</a>)
+<span class='lineno'> 312</span> 
+<span class='lineno'> 313</span> 
+<span class='lineno'> 314</span> # Aliases
+<span class='lineno'> 315</span> 
+<span class='lineno'> 316</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.FullyConnected', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.FullyConnected', title='<Dense>'>FullyConnected</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.Dense', title='<Dense>'>Dense</a>
+<span class='lineno'> 317</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.fully_connected', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.fully_connected', title='(None, {_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ?}, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (None, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (?, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None / ({DeferredTensor | None | [DeferredTensor] | [None]}, int, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None'>fully_connected</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.layers.core.dense', title='(None, {_BinaryLogisticHeadWithSigmoidCrossEntropyLoss -> int | _MultiClassHeadWithSoftmaxCrossEntropyLoss -> ?}, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (None, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> {DeferredTensor | [DeferredTensor] | [None]} / (?, ?, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None / ({DeferredTensor | None | [DeferredTensor] | [None]}, int, None, bool, None, Zeros, None, None, None, None, None, bool, None, None) -> None'>dense</a>
+</pre></td></tr></table></body></html>

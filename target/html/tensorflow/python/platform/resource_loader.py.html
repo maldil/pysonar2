@@ -1,0 +1,194 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/platform/resource_loader.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#os', xid='os'>os</a></li><li><a href='#sys', xid='sys'>sys</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource'>load_resource</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path'>get_data_files_path</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources'>get_root_dir_with_all_resources</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile'>get_path_to_datafile</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path'>readahead_file_path</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Resource management library.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import os as <a name='os', xid ='os', title='os'>_os</a>
+<span class='lineno'>  21</span> import sys as <a name='sys', xid ='sys', title='sys'>_sys</a>
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import tf_inspect as <a href='../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>_inspect</a>
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> @tf_export(&#39;resource_loader.load_resource&#39;)
+<span class='lineno'>  28</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource', title='? -> str'>load_resource</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='?'>path</a>):
+<span class='lineno'>  29</span>   &quot;&quot;&quot;Load the resource at given path, where path is relative to tensorflow/.
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span>   Args:
+<span class='lineno'>  32</span>     path: a string resource path relative to tensorflow/.
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span>   Returns:
+<span class='lineno'>  35</span>     The contents of that resource.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   Raises:
+<span class='lineno'>  38</span>     IOError: If the path is not found, or the resource can&#39;t be opened.
+<span class='lineno'>  39</span>   &quot;&quot;&quot;
+<span class='lineno'>  40</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.tensorflow_root', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.tensorflow_root', title='str'>tensorflow_root</a> = (_os.path.join(
+<span class='lineno'>  41</span>       _os.path.dirname(__file__), _os.pardir, _os.pardir))
+<span class='lineno'>  42</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='str'>path</a> = _os.path.join(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.tensorflow_root', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.tensorflow_root', title='str'>tensorflow_root</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='?'>path</a>)
+<span class='lineno'>  43</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='str'>path</a> = _os.path.abspath(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='str'>path</a>)
+<span class='lineno'>  44</span>   with open(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.path', title='str'>path</a>, &#39;rb&#39;) as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.f', title='file'>f</a>:
+<span class='lineno'>  45</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.f', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.load_resource.f', title='file'>f</a>.read()
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span> # pylint: disable=protected-access
+<span class='lineno'>  49</span> @tf_export(&#39;resource_loader.get_data_files_path&#39;)
+<span class='lineno'>  50</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path', title='() -> str'>get_data_files_path</a>():
+<span class='lineno'>  51</span>   &quot;&quot;&quot;Get a direct path to the data files colocated with the script.
+<span class='lineno'>  52</span> 
+<span class='lineno'>  53</span>   Returns:
+<span class='lineno'>  54</span>     The directory where files specified in data attribute of py_test
+<span class='lineno'>  55</span>     and py_binary are stored.
+<span class='lineno'>  56</span>   &quot;&quot;&quot;
+<span class='lineno'>  57</span>   return _os.path.dirname(<a href='../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>_inspect</a>.<a href='../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getfile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getfile', title='? -> None'>getfile</a>(_sys._getframe(1)))
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> @tf_export(&#39;resource_loader.get_root_dir_with_all_resources&#39;)
+<span class='lineno'>  61</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources', title='() -> str'>get_root_dir_with_all_resources</a>():
+<span class='lineno'>  62</span>   &quot;&quot;&quot;Get a root directory containing all the data attributes in the build rule.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   Returns:
+<span class='lineno'>  65</span>     The path to the specified file present in the data attribute of py_test
+<span class='lineno'>  66</span>     or py_binary. Falls back to returning the same as get_data_files_path if it
+<span class='lineno'>  67</span>     fails to detect a bazel runfiles directory.
+<span class='lineno'>  68</span>   &quot;&quot;&quot;
+<span class='lineno'>  69</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', title='str'>script_dir</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_data_files_path', title='() -> str'>get_data_files_path</a>()
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span>   # Create a history of the paths, because the data files are located relative
+<span class='lineno'>  72</span>   # to the repository root directory, which is directly under runfiles
+<span class='lineno'>  73</span>   # directory.
+<span class='lineno'>  74</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', title='[str]'>directories</a> = [<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', title='str'>script_dir</a>]
+<span class='lineno'>  75</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', title='str'>data_files_dir</a> = &#39;&#39;
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   while True:
+<span class='lineno'>  78</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', title='str'>candidate_dir</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', title='[str]'>directories</a>[-1]
+<span class='lineno'>  79</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.current_directory', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.current_directory', title='str'>current_directory</a> = _os.path.basename(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', title='str'>candidate_dir</a>)
+<span class='lineno'>  80</span>     if &#39;.runfiles&#39; in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.current_directory', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.current_directory', title='str'>current_directory</a>:
+<span class='lineno'>  81</span>       # Our file should never be directly under runfiles.
+<span class='lineno'>  82</span>       # If the history has only one item, it means we are directly inside the
+<span class='lineno'>  83</span>       # runfiles directory, something is wrong, fall back to the default return
+<span class='lineno'>  84</span>       # value, script directory.
+<span class='lineno'>  85</span>       if len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', title='[str]'>directories</a>) &gt; 1:
+<span class='lineno'>  86</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', title='str'>data_files_dir</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', title='[str]'>directories</a>[-2]
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span>       break
+<span class='lineno'>  89</span>     else:
+<span class='lineno'>  90</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', title='str'>new_candidate_dir</a> = _os.path.dirname(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', title='str'>candidate_dir</a>)
+<span class='lineno'>  91</span>       # If we are at the root directory these two will be the same.
+<span class='lineno'>  92</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', title='str'>new_candidate_dir</a> == <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.candidate_dir', title='str'>candidate_dir</a>:
+<span class='lineno'>  93</span>         break
+<span class='lineno'>  94</span>       else:
+<span class='lineno'>  95</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.directories', title='[str]'>directories</a>.append(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.new_candidate_dir', title='str'>new_candidate_dir</a>)
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.data_files_dir', title='str'>data_files_dir</a> or <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_root_dir_with_all_resources.script_dir', title='str'>script_dir</a>
+<span class='lineno'>  98</span> 
+<span class='lineno'>  99</span> 
+<span class='lineno'> 100</span> @tf_export(&#39;resource_loader.get_path_to_datafile&#39;)
+<span class='lineno'> 101</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile', title='str -> str'>get_path_to_datafile</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.path', title='str'>path</a>):
+<span class='lineno'> 102</span>   &quot;&quot;&quot;Get the path to the specified file in the data dependencies.
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>   The path is relative to tensorflow/
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   Args:
+<span class='lineno'> 107</span>     path: a string resource path relative to tensorflow/
+<span class='lineno'> 108</span> 
+<span class='lineno'> 109</span>   Returns:
+<span class='lineno'> 110</span>     The path to the specified file present in the data attribute of py_test
+<span class='lineno'> 111</span>     or py_binary.
+<span class='lineno'> 112</span> 
+<span class='lineno'> 113</span>   Raises:
+<span class='lineno'> 114</span>     IOError: If the path is not found, or the resource can&#39;t be opened.
+<span class='lineno'> 115</span>   &quot;&quot;&quot;
+<span class='lineno'> 116</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.data_files_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.data_files_path', title='str'>data_files_path</a> = _os.path.dirname(<a href='../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>_inspect</a>.<a href='../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getfile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getfile', title='? -> None'>getfile</a>(_sys._getframe(1)))
+<span class='lineno'> 117</span>   return _os.path.join(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.data_files_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.data_files_path', title='str'>data_files_path</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile.path', title='str'>path</a>)
+<span class='lineno'> 118</span> 
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span> @tf_export(&#39;resource_loader.readahead_file_path&#39;)
+<span class='lineno'> 121</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path', title='(?, str) -> None'>readahead_file_path</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.path', title='?'>path</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.readahead', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.readahead', title='str'>readahead</a>=&#39;128M&#39;):  # pylint: disable=unused-argument
+<span class='lineno'> 122</span>   &quot;&quot;&quot;Readahead files not implemented; simply returns given path.&quot;&quot;&quot;
+<span class='lineno'> 123</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.readahead_file_path.path', title='?'>path</a>
+</pre></td></tr></table></body></html>

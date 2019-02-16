@@ -1,0 +1,330 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/protobuf/debug_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH'>_DEBUGTENSORWATCH</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS'>_DEBUGOPTIONS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE'>_DEBUGGEDSOURCEFILE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES'>_DEBUGGEDSOURCEFILES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch'>DebugTensorWatch</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions'>DebugOptions</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile'>DebuggedSourceFile</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles'>DebuggedSourceFiles</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/protobuf/debug.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%102.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%102.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%102.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%102.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%103.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%103.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%103.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.lambda%103.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  18</span>   name=&#39;tensorflow/core/protobuf/debug.proto&#39;,
+<span class='lineno'>  19</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  20</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  21</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>(&#39;\n\030org.tensorflow.frameworkB\013DebugProtosP\001Z&lt;github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf\370\001\001&#39;),
+<span class='lineno'>  22</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>(&#39;\n$tensorflow/core/protobuf/debug.proto\x12\ntensorflow\&quot;\x8e\x01\n\x10\x44\x65\x62ugTensorWatch\x12\x11\n\tnode_name\x18\x01 \x01(\t\x12\x13\n\x0boutput_slot\x18\x02 \x01(\x05\x12\x11\n\tdebug_ops\x18\x03 \x03(\t\x12\x12\n\ndebug_urls\x18\x04 \x03(\t\x12+\n#tolerate_debug_op_creation_failures\x18\x05 \x01(\x08\&quot;\x81\x01\n\x0c\x44\x65\x62ugOptions\x12=\n\x17\x64\x65\x62ug_tensor_watch_opts\x18\x04 \x03(\x0b\x32\x1c.tensorflow.DebugTensorWatch\x12\x13\n\x0bglobal_step\x18\n \x01(\x03\x12\x1d\n\x15reset_disk_byte_usage\x18\x0b \x01(\x08\&quot;j\n\x12\x44\x65\x62uggedSourceFile\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x11\n\tfile_path\x18\x02 \x01(\t\x12\x15\n\rlast_modified\x18\x03 \x01(\x03\x12\r\n\x05\x62ytes\x18\x04 \x01(\x03\x12\r\n\x05lines\x18\x05 \x03(\t\&quot;K\n\x13\x44\x65\x62uggedSourceFiles\x12\x34\n\x0csource_files\x18\x01 \x03(\x0b\x32\x1e.tensorflow.DebuggedSourceFileBj\n\x18org.tensorflow.frameworkB\x0b\x44\x65\x62ugProtosP\x01Z&lt;github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  23</span> )
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', title='?'>_DEBUGTENSORWATCH</a> = _descriptor.Descriptor(
+<span class='lineno'>  29</span>   name=&#39;DebugTensorWatch&#39;,
+<span class='lineno'>  30</span>   full_name=&#39;tensorflow.DebugTensorWatch&#39;,
+<span class='lineno'>  31</span>   filename=None,
+<span class='lineno'>  32</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  33</span>   containing_type=None,
+<span class='lineno'>  34</span>   fields=[
+<span class='lineno'>  35</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  36</span>       name=&#39;node_name&#39;, full_name=&#39;tensorflow.DebugTensorWatch.node_name&#39;, index=0,
+<span class='lineno'>  37</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'>  38</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'>  39</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  40</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  41</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  42</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  43</span>       name=&#39;output_slot&#39;, full_name=&#39;tensorflow.DebugTensorWatch.output_slot&#39;, index=1,
+<span class='lineno'>  44</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'>  45</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  46</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  47</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  48</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  49</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  50</span>       name=&#39;debug_ops&#39;, full_name=&#39;tensorflow.DebugTensorWatch.debug_ops&#39;, index=2,
+<span class='lineno'>  51</span>       number=3, type=9, cpp_type=9, label=3,
+<span class='lineno'>  52</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  53</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  54</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  55</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  56</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  57</span>       name=&#39;debug_urls&#39;, full_name=&#39;tensorflow.DebugTensorWatch.debug_urls&#39;, index=3,
+<span class='lineno'>  58</span>       number=4, type=9, cpp_type=9, label=3,
+<span class='lineno'>  59</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  60</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  61</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  62</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  63</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  64</span>       name=&#39;tolerate_debug_op_creation_failures&#39;, full_name=&#39;tensorflow.DebugTensorWatch.tolerate_debug_op_creation_failures&#39;, index=4,
+<span class='lineno'>  65</span>       number=5, type=8, cpp_type=7, label=1,
+<span class='lineno'>  66</span>       has_default_value=False, default_value=False,
+<span class='lineno'>  67</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  68</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  69</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  70</span>   ],
+<span class='lineno'>  71</span>   extensions=[
+<span class='lineno'>  72</span>   ],
+<span class='lineno'>  73</span>   nested_types=[],
+<span class='lineno'>  74</span>   enum_types=[
+<span class='lineno'>  75</span>   ],
+<span class='lineno'>  76</span>   serialized_options=None,
+<span class='lineno'>  77</span>   is_extendable=False,
+<span class='lineno'>  78</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  79</span>   extension_ranges=[],
+<span class='lineno'>  80</span>   oneofs=[
+<span class='lineno'>  81</span>   ],
+<span class='lineno'>  82</span>   serialized_start=53,
+<span class='lineno'>  83</span>   serialized_end=195,
+<span class='lineno'>  84</span> )
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', title='?'>_DEBUGOPTIONS</a> = _descriptor.Descriptor(
+<span class='lineno'>  88</span>   name=&#39;DebugOptions&#39;,
+<span class='lineno'>  89</span>   full_name=&#39;tensorflow.DebugOptions&#39;,
+<span class='lineno'>  90</span>   filename=None,
+<span class='lineno'>  91</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  92</span>   containing_type=None,
+<span class='lineno'>  93</span>   fields=[
+<span class='lineno'>  94</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  95</span>       name=&#39;debug_tensor_watch_opts&#39;, full_name=&#39;tensorflow.DebugOptions.debug_tensor_watch_opts&#39;, index=0,
+<span class='lineno'>  96</span>       number=4, type=11, cpp_type=10, label=3,
+<span class='lineno'>  97</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  98</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  99</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 100</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 101</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 102</span>       name=&#39;global_step&#39;, full_name=&#39;tensorflow.DebugOptions.global_step&#39;, index=1,
+<span class='lineno'> 103</span>       number=10, type=3, cpp_type=2, label=1,
+<span class='lineno'> 104</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 105</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 106</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 107</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 108</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 109</span>       name=&#39;reset_disk_byte_usage&#39;, full_name=&#39;tensorflow.DebugOptions.reset_disk_byte_usage&#39;, index=2,
+<span class='lineno'> 110</span>       number=11, type=8, cpp_type=7, label=1,
+<span class='lineno'> 111</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 112</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 113</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 114</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 115</span>   ],
+<span class='lineno'> 116</span>   extensions=[
+<span class='lineno'> 117</span>   ],
+<span class='lineno'> 118</span>   nested_types=[],
+<span class='lineno'> 119</span>   enum_types=[
+<span class='lineno'> 120</span>   ],
+<span class='lineno'> 121</span>   serialized_options=None,
+<span class='lineno'> 122</span>   is_extendable=False,
+<span class='lineno'> 123</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 124</span>   extension_ranges=[],
+<span class='lineno'> 125</span>   oneofs=[
+<span class='lineno'> 126</span>   ],
+<span class='lineno'> 127</span>   serialized_start=198,
+<span class='lineno'> 128</span>   serialized_end=327,
+<span class='lineno'> 129</span> )
+<span class='lineno'> 130</span> 
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', title='?'>_DEBUGGEDSOURCEFILE</a> = _descriptor.Descriptor(
+<span class='lineno'> 133</span>   name=&#39;DebuggedSourceFile&#39;,
+<span class='lineno'> 134</span>   full_name=&#39;tensorflow.DebuggedSourceFile&#39;,
+<span class='lineno'> 135</span>   filename=None,
+<span class='lineno'> 136</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 137</span>   containing_type=None,
+<span class='lineno'> 138</span>   fields=[
+<span class='lineno'> 139</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 140</span>       name=&#39;host&#39;, full_name=&#39;tensorflow.DebuggedSourceFile.host&#39;, index=0,
+<span class='lineno'> 141</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 142</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 143</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 144</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 145</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 146</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 147</span>       name=&#39;file_path&#39;, full_name=&#39;tensorflow.DebuggedSourceFile.file_path&#39;, index=1,
+<span class='lineno'> 148</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 149</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 150</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 151</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 152</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 153</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 154</span>       name=&#39;last_modified&#39;, full_name=&#39;tensorflow.DebuggedSourceFile.last_modified&#39;, index=2,
+<span class='lineno'> 155</span>       number=3, type=3, cpp_type=2, label=1,
+<span class='lineno'> 156</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 157</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 158</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 159</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 160</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 161</span>       name=&#39;bytes&#39;, full_name=&#39;tensorflow.DebuggedSourceFile.bytes&#39;, index=3,
+<span class='lineno'> 162</span>       number=4, type=3, cpp_type=2, label=1,
+<span class='lineno'> 163</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 164</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 165</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 166</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 167</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 168</span>       name=&#39;lines&#39;, full_name=&#39;tensorflow.DebuggedSourceFile.lines&#39;, index=4,
+<span class='lineno'> 169</span>       number=5, type=9, cpp_type=9, label=3,
+<span class='lineno'> 170</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 171</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 172</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 173</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 174</span>   ],
+<span class='lineno'> 175</span>   extensions=[
+<span class='lineno'> 176</span>   ],
+<span class='lineno'> 177</span>   nested_types=[],
+<span class='lineno'> 178</span>   enum_types=[
+<span class='lineno'> 179</span>   ],
+<span class='lineno'> 180</span>   serialized_options=None,
+<span class='lineno'> 181</span>   is_extendable=False,
+<span class='lineno'> 182</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 183</span>   extension_ranges=[],
+<span class='lineno'> 184</span>   oneofs=[
+<span class='lineno'> 185</span>   ],
+<span class='lineno'> 186</span>   serialized_start=329,
+<span class='lineno'> 187</span>   serialized_end=435,
+<span class='lineno'> 188</span> )
+<span class='lineno'> 189</span> 
+<span class='lineno'> 190</span> 
+<span class='lineno'> 191</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', title='?'>_DEBUGGEDSOURCEFILES</a> = _descriptor.Descriptor(
+<span class='lineno'> 192</span>   name=&#39;DebuggedSourceFiles&#39;,
+<span class='lineno'> 193</span>   full_name=&#39;tensorflow.DebuggedSourceFiles&#39;,
+<span class='lineno'> 194</span>   filename=None,
+<span class='lineno'> 195</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 196</span>   containing_type=None,
+<span class='lineno'> 197</span>   fields=[
+<span class='lineno'> 198</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 199</span>       name=&#39;source_files&#39;, full_name=&#39;tensorflow.DebuggedSourceFiles.source_files&#39;, index=0,
+<span class='lineno'> 200</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 201</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 202</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 203</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 204</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 205</span>   ],
+<span class='lineno'> 206</span>   extensions=[
+<span class='lineno'> 207</span>   ],
+<span class='lineno'> 208</span>   nested_types=[],
+<span class='lineno'> 209</span>   enum_types=[
+<span class='lineno'> 210</span>   ],
+<span class='lineno'> 211</span>   serialized_options=None,
+<span class='lineno'> 212</span>   is_extendable=False,
+<span class='lineno'> 213</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 214</span>   extension_ranges=[],
+<span class='lineno'> 215</span>   oneofs=[
+<span class='lineno'> 216</span>   ],
+<span class='lineno'> 217</span>   serialized_start=437,
+<span class='lineno'> 218</span>   serialized_end=512,
+<span class='lineno'> 219</span> )
+<span class='lineno'> 220</span> 
+<span class='lineno'> 221</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', title='?'>_DEBUGOPTIONS</a>.fields_by_name[&#39;debug_tensor_watch_opts&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', title='?'>_DEBUGTENSORWATCH</a>
+<span class='lineno'> 222</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', title='?'>_DEBUGGEDSOURCEFILES</a>.fields_by_name[&#39;source_files&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', title='?'>_DEBUGGEDSOURCEFILE</a>
+<span class='lineno'> 223</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DebugTensorWatch&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', title='?'>_DEBUGTENSORWATCH</a>
+<span class='lineno'> 224</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DebugOptions&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', title='?'>_DEBUGOPTIONS</a>
+<span class='lineno'> 225</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DebuggedSourceFile&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', title='?'>_DEBUGGEDSOURCEFILE</a>
+<span class='lineno'> 226</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DebuggedSourceFiles&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', title='?'>_DEBUGGEDSOURCEFILES</a>
+<span class='lineno'> 227</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 228</span> 
+<span class='lineno'> 229</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch', title='?'>DebugTensorWatch</a> = _reflection.GeneratedProtocolMessageType(&#39;DebugTensorWatch&#39;, (_message.Message,), dict(
+<span class='lineno'> 230</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGTENSORWATCH', title='?'>_DEBUGTENSORWATCH</a>,
+<span class='lineno'> 231</span>   __module__ = &#39;tensorflow.core.protobuf.debug_pb2&#39;
+<span class='lineno'> 232</span>   # @@protoc_insertion_point(class_scope:tensorflow.DebugTensorWatch)
+<span class='lineno'> 233</span>   ))
+<span class='lineno'> 234</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugTensorWatch', title='?'>DebugTensorWatch</a>)
+<span class='lineno'> 235</span> 
+<span class='lineno'> 236</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions', title='?'>DebugOptions</a> = _reflection.GeneratedProtocolMessageType(&#39;DebugOptions&#39;, (_message.Message,), dict(
+<span class='lineno'> 237</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGOPTIONS', title='?'>_DEBUGOPTIONS</a>,
+<span class='lineno'> 238</span>   __module__ = &#39;tensorflow.core.protobuf.debug_pb2&#39;
+<span class='lineno'> 239</span>   # @@protoc_insertion_point(class_scope:tensorflow.DebugOptions)
+<span class='lineno'> 240</span>   ))
+<span class='lineno'> 241</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebugOptions', title='?'>DebugOptions</a>)
+<span class='lineno'> 242</span> 
+<span class='lineno'> 243</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile', title='?'>DebuggedSourceFile</a> = _reflection.GeneratedProtocolMessageType(&#39;DebuggedSourceFile&#39;, (_message.Message,), dict(
+<span class='lineno'> 244</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILE', title='?'>_DEBUGGEDSOURCEFILE</a>,
+<span class='lineno'> 245</span>   __module__ = &#39;tensorflow.core.protobuf.debug_pb2&#39;
+<span class='lineno'> 246</span>   # @@protoc_insertion_point(class_scope:tensorflow.DebuggedSourceFile)
+<span class='lineno'> 247</span>   ))
+<span class='lineno'> 248</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFile', title='?'>DebuggedSourceFile</a>)
+<span class='lineno'> 249</span> 
+<span class='lineno'> 250</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles', title='?'>DebuggedSourceFiles</a> = _reflection.GeneratedProtocolMessageType(&#39;DebuggedSourceFiles&#39;, (_message.Message,), dict(
+<span class='lineno'> 251</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._DEBUGGEDSOURCEFILES', title='?'>_DEBUGGEDSOURCEFILES</a>,
+<span class='lineno'> 252</span>   __module__ = &#39;tensorflow.core.protobuf.debug_pb2&#39;
+<span class='lineno'> 253</span>   # @@protoc_insertion_point(class_scope:tensorflow.DebuggedSourceFiles)
+<span class='lineno'> 254</span>   ))
+<span class='lineno'> 255</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DebuggedSourceFiles', title='?'>DebuggedSourceFiles</a>)
+<span class='lineno'> 256</span> 
+<span class='lineno'> 257</span> 
+<span class='lineno'> 258</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.protobuf.debug_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 259</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

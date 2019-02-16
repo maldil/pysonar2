@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/tools/api/generator/doc_srcs.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource'>DocSource</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES'>_TENSORFLOW_DOC_SOURCES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES'>_ESTIMATOR_DOC_SOURCES</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources'>get_doc_sources</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2018 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Specifies sources of doc strings for API modules.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import collections
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a>
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> # Specifies docstring source for a module.
+<span class='lineno'>  26</span> # Only one of docstring or docstring_module_name should be set.
+<span class='lineno'>  27</span> # * If docstring is set, then we will use this docstring when
+<span class='lineno'>  28</span> #   for the module.
+<span class='lineno'>  29</span> # * If docstring_module_name is set, then we will copy the docstring
+<span class='lineno'>  30</span> #   from docstring source module.
+<span class='lineno'>  31</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a> = collections.namedtuple(
+<span class='lineno'>  32</span>     &#39;DocSource&#39;, [&#39;docstring&#39;, &#39;docstring_module_name&#39;])
+<span class='lineno'>  33</span> # Each attribute of DocSource is optional.
+<span class='lineno'>  34</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>.__new__.<a name='__defaults__', xid ='__defaults__', title='?'>__defaults__</a> = (None,) * len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>._fields)
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES', title='dict'>_TENSORFLOW_DOC_SOURCES</a> = {
+<span class='lineno'>  37</span>     &#39;app&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;platform.app&#39;),
+<span class='lineno'>  38</span>     &#39;compat&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;util.compat&#39;),
+<span class='lineno'>  39</span>     &#39;distributions&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(
+<span class='lineno'>  40</span>         docstring_module_name=&#39;ops.distributions.distributions&#39;),
+<span class='lineno'>  41</span>     &#39;bitwise&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.bitwise_ops&#39;),
+<span class='lineno'>  42</span>     &#39;errors&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;framework.errors&#39;),
+<span class='lineno'>  43</span>     &#39;gfile&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;platform.gfile&#39;),
+<span class='lineno'>  44</span>     &#39;graph_util&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;framework.graph_util&#39;),
+<span class='lineno'>  45</span>     &#39;image&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.image_ops&#39;),
+<span class='lineno'>  46</span>     &#39;keras.estimator&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;keras.estimator&#39;),
+<span class='lineno'>  47</span>     &#39;linalg&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.linalg_ops&#39;),
+<span class='lineno'>  48</span>     &#39;logging&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.logging_ops&#39;),
+<span class='lineno'>  49</span>     &#39;losses&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.losses.losses&#39;),
+<span class='lineno'>  50</span>     &#39;manip&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.manip_ops&#39;),
+<span class='lineno'>  51</span>     &#39;math&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.math_ops&#39;),
+<span class='lineno'>  52</span>     &#39;metrics&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.metrics&#39;),
+<span class='lineno'>  53</span>     &#39;nn&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.nn_ops&#39;),
+<span class='lineno'>  54</span>     &#39;nn.rnn_cell&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.rnn_cell&#39;),
+<span class='lineno'>  55</span>     &#39;python_io&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;lib.io.python_io&#39;),
+<span class='lineno'>  56</span>     &#39;resource_loader&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(
+<span class='lineno'>  57</span>         docstring_module_name=&#39;platform.resource_loader&#39;),
+<span class='lineno'>  58</span>     &#39;sets&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.sets&#39;),
+<span class='lineno'>  59</span>     &#39;sparse&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.sparse_ops&#39;),
+<span class='lineno'>  60</span>     &#39;spectral&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.spectral_ops&#39;),
+<span class='lineno'>  61</span>     &#39;strings&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;ops.string_ops&#39;),
+<span class='lineno'>  62</span>     &#39;sysconfig&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;platform.sysconfig&#39;),
+<span class='lineno'>  63</span>     &#39;test&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;platform.test&#39;),
+<span class='lineno'>  64</span>     &#39;train&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(docstring_module_name=&#39;training.training&#39;),
+<span class='lineno'>  65</span> }
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES', title='dict'>_ESTIMATOR_DOC_SOURCES</a> = {
+<span class='lineno'>  68</span>     &#39;estimator&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(
+<span class='lineno'>  69</span>         docstring_module_name=&#39;estimator_lib&#39;),
+<span class='lineno'>  70</span>     &#39;estimator.export&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(
+<span class='lineno'>  71</span>         docstring_module_name=&#39;export.export_lib&#39;),
+<span class='lineno'>  72</span>     &#39;estimator.inputs&#39;: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.DocSource', title='<(namedtuple)>'>DocSource</a>(
+<span class='lineno'>  73</span>         docstring_module_name=&#39;inputs.inputs&#39;),
+<span class='lineno'>  74</span> }
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources', title='? -> {dict | dict}'>get_doc_sources</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', title='?'>api_name</a>):
+<span class='lineno'>  78</span>   &quot;&quot;&quot;Get a map from module to a DocSource object.
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>   Args:
+<span class='lineno'>  81</span>     api_name: API you want to generate (e.g. `tensorflow` or `estimator`).
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   Returns:
+<span class='lineno'>  84</span>     Map from module name to DocSource object.
+<span class='lineno'>  85</span>   &quot;&quot;&quot;
+<span class='lineno'>  86</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', title='?'>api_name</a> == <a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a>.<a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.TENSORFLOW_API_NAME', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.TENSORFLOW_API_NAME', title='str'>TENSORFLOW_API_NAME</a>:
+<span class='lineno'>  87</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._TENSORFLOW_DOC_SOURCES', title='dict'>_TENSORFLOW_DOC_SOURCES</a>
+<span class='lineno'>  88</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs.get_doc_sources.api_name', title='?'>api_name</a> == <a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a>.<a href='../../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.ESTIMATOR_API_NAME', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.ESTIMATOR_API_NAME', title='str'>ESTIMATOR_API_NAME</a>:
+<span class='lineno'>  89</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.api.generator.doc_srcs._ESTIMATOR_DOC_SOURCES', title='dict'>_ESTIMATOR_DOC_SOURCES</a>
+<span class='lineno'>  90</span>   return {}
+</pre></td></tr></table></body></html>

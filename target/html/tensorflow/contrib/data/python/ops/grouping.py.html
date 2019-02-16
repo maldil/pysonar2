@@ -1,0 +1,230 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/data/python/ops/grouping.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer'>group_by_reducer</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window'>group_by_window</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length'>bucket_by_sequence_length</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer'>Reducer</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__'>__init__</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Grouping dataset transformations.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/data/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data', title='data'>data</a>.<a href='../../../../python/data/experimental/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental', title='experimental'>experimental</a>.<a href='../../../../python/data/experimental/ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops', title='ops'>ops</a> import <a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', title='grouping'>grouping</a>
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a>
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> @deprecation.deprecated(None,
+<span class='lineno'>  26</span>                         &quot;Use `tf.data.experimental.group_by_reducer(...)`.&quot;)
+<span class='lineno'>  27</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer', title='(?, ?) -> ? -> ?'>group_by_reducer</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.key_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.key_func', title='?'>key_func</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.reducer', title='?'>reducer</a>):
+<span class='lineno'>  28</span>   &quot;&quot;&quot;A transformation that groups elements and performs a reduction.
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   This transformation maps element of a dataset to a key using `key_func` and
+<span class='lineno'>  31</span>   groups the elements by key. The `reducer` is used to process each group; its
+<span class='lineno'>  32</span>   `init_func` is used to initialize state for each group when it is created, the
+<span class='lineno'>  33</span>   `reduce_func` is used to update the state every time an element is mapped to
+<span class='lineno'>  34</span>   the matching group, and the `finalize_func` is used to map the final state to
+<span class='lineno'>  35</span>   an output value.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   Args:
+<span class='lineno'>  38</span>     key_func: A function mapping a nested structure of tensors
+<span class='lineno'>  39</span>       (having shapes and types defined by `self.output_shapes` and
+<span class='lineno'>  40</span>       `self.output_types`) to a scalar `tf.int64` tensor.
+<span class='lineno'>  41</span>     reducer: An instance of `Reducer`, which captures the reduction logic using
+<span class='lineno'>  42</span>       the `init_func`, `reduce_func`, and `finalize_func` functions.
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   Returns:
+<span class='lineno'>  45</span>     A `Dataset` transformation function, which can be passed to
+<span class='lineno'>  46</span>     `tf.data.Dataset.apply`.
+<span class='lineno'>  47</span>   &quot;&quot;&quot;
+<span class='lineno'>  48</span>   return <a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', title='grouping'>grouping</a>.<a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.group_by_reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.group_by_reducer', title='(? -> ?, Reducer) -> ? -> ? / (?, ?) -> ? -> ? / (? -> ?, Reducer) -> ? -> _GroupByReducerDataset'>group_by_reducer</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.key_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.key_func', title='?'>key_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_reducer.reducer', title='?'>reducer</a>)
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span> @deprecation.deprecated(None,
+<span class='lineno'>  52</span>                         &quot;Use `tf.data.experimental.group_by_window(...)`.&quot;)
+<span class='lineno'>  53</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window', title='(?, ?, None, None) -> ? -> _GroupByWindowDataset'>group_by_window</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.key_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.key_func', title='?'>key_func</a>,
+<span class='lineno'>  54</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.reduce_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.reduce_func', title='?'>reduce_func</a>,
+<span class='lineno'>  55</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size', title='None'>window_size</a>=None,
+<span class='lineno'>  56</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size_func', title='None'>window_size_func</a>=None):
+<span class='lineno'>  57</span>   &quot;&quot;&quot;A transformation that groups windows of elements by key and reduces them.
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   This transformation maps each consecutive element in a dataset to a key
+<span class='lineno'>  60</span>   using `key_func` and groups the elements by key. It then applies
+<span class='lineno'>  61</span>   `reduce_func` to at most `window_size_func(key)` elements matching the same
+<span class='lineno'>  62</span>   key. All except the final window for each key will contain
+<span class='lineno'>  63</span>   `window_size_func(key)` elements; the final window may be smaller.
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span>   You may provide either a constant `window_size` or a window size determined by
+<span class='lineno'>  66</span>   the key through `window_size_func`.
+<span class='lineno'>  67</span> 
+<span class='lineno'>  68</span>   Args:
+<span class='lineno'>  69</span>     key_func: A function mapping a nested structure of tensors
+<span class='lineno'>  70</span>       (having shapes and types defined by `self.output_shapes` and
+<span class='lineno'>  71</span>       `self.output_types`) to a scalar `tf.int64` tensor.
+<span class='lineno'>  72</span>     reduce_func: A function mapping a key and a dataset of up to `window_size`
+<span class='lineno'>  73</span>       consecutive elements matching that key to another dataset.
+<span class='lineno'>  74</span>     window_size: A `tf.int64` scalar `tf.Tensor`, representing the number of
+<span class='lineno'>  75</span>       consecutive elements matching the same key to combine in a single
+<span class='lineno'>  76</span>       batch, which will be passed to `reduce_func`. Mutually exclusive with
+<span class='lineno'>  77</span>       `window_size_func`.
+<span class='lineno'>  78</span>     window_size_func: A function mapping a key to a `tf.int64` scalar
+<span class='lineno'>  79</span>       `tf.Tensor`, representing the number of consecutive elements matching
+<span class='lineno'>  80</span>       the same key to combine in a single batch, which will be passed to
+<span class='lineno'>  81</span>       `reduce_func`. Mutually exclusive with `window_size`.
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   Returns:
+<span class='lineno'>  84</span>     A `Dataset` transformation function, which can be passed to
+<span class='lineno'>  85</span>     `tf.data.Dataset.apply`.
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span>   Raises:
+<span class='lineno'>  88</span>     ValueError: if neither or both of {`window_size`, `window_size_func`} are
+<span class='lineno'>  89</span>       passed.
+<span class='lineno'>  90</span>   &quot;&quot;&quot;
+<span class='lineno'>  91</span>   return <a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', title='grouping'>grouping</a>.<a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.group_by_window', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.group_by_window', title='(() -> None, (?, ?) -> None, None, None) -> ? -> ? / (?, ?, None, None) -> ? -> _GroupByWindowDataset'>group_by_window</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.key_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.key_func', title='?'>key_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.reduce_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.reduce_func', title='?'>reduce_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size', title='None'>window_size</a>,
+<span class='lineno'>  92</span>                                   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.group_by_window.window_size_func', title='None'>window_size_func</a>)
+<span class='lineno'>  93</span> 
+<span class='lineno'>  94</span> 
+<span class='lineno'>  95</span> @deprecation.deprecated(
+<span class='lineno'>  96</span>     None, &quot;Use `tf.data.experimental.bucket_by_sequence_length(...)`.&quot;)
+<span class='lineno'>  97</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length', title='(?, ?, ?, None, None, bool, bool) -> ? -> ?'>bucket_by_sequence_length</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.element_length_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.element_length_func', title='?'>element_length_func</a>,
+<span class='lineno'>  98</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_boundaries', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_boundaries', title='?'>bucket_boundaries</a>,
+<span class='lineno'>  99</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_batch_sizes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_batch_sizes', title='?'>bucket_batch_sizes</a>,
+<span class='lineno'> 100</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padded_shapes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padded_shapes', title='None'>padded_shapes</a>=None,
+<span class='lineno'> 101</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padding_values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padding_values', title='None'>padding_values</a>=None,
+<span class='lineno'> 102</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.pad_to_bucket_boundary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.pad_to_bucket_boundary', title='bool'>pad_to_bucket_boundary</a>=False,
+<span class='lineno'> 103</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.no_padding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.no_padding', title='bool'>no_padding</a>=False):
+<span class='lineno'> 104</span>   &quot;&quot;&quot;A transformation that buckets elements in a `Dataset` by length.
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   Elements of the `Dataset` are grouped together by length and then are padded
+<span class='lineno'> 107</span>   and batched.
+<span class='lineno'> 108</span> 
+<span class='lineno'> 109</span>   This is useful for sequence tasks in which the elements have variable length.
+<span class='lineno'> 110</span>   Grouping together elements that have similar lengths reduces the total
+<span class='lineno'> 111</span>   fraction of padding in a batch which increases training step efficiency.
+<span class='lineno'> 112</span> 
+<span class='lineno'> 113</span>   Args:
+<span class='lineno'> 114</span>     element_length_func: function from element in `Dataset` to `tf.int32`,
+<span class='lineno'> 115</span>       determines the length of the element, which will determine the bucket it
+<span class='lineno'> 116</span>       goes into.
+<span class='lineno'> 117</span>     bucket_boundaries: `list&lt;int&gt;`, upper length boundaries of the buckets.
+<span class='lineno'> 118</span>     bucket_batch_sizes: `list&lt;int&gt;`, batch size per bucket. Length should be
+<span class='lineno'> 119</span>       `len(bucket_boundaries) + 1`.
+<span class='lineno'> 120</span>     padded_shapes: Nested structure of `tf.TensorShape` to pass to
+<span class='lineno'> 121</span>       `tf.data.Dataset.padded_batch`. If not provided, will use
+<span class='lineno'> 122</span>       `dataset.output_shapes`, which will result in variable length dimensions
+<span class='lineno'> 123</span>       being padded out to the maximum length in each batch.
+<span class='lineno'> 124</span>     padding_values: Values to pad with, passed to
+<span class='lineno'> 125</span>       `tf.data.Dataset.padded_batch`. Defaults to padding with 0.
+<span class='lineno'> 126</span>     pad_to_bucket_boundary: bool, if `False`, will pad dimensions with unknown
+<span class='lineno'> 127</span>       size to maximum length in batch. If `True`, will pad dimensions with
+<span class='lineno'> 128</span>       unknown size to bucket boundary minus 1 (i.e., the maximum length in each
+<span class='lineno'> 129</span>       bucket), and caller must ensure that the source `Dataset` does not contain
+<span class='lineno'> 130</span>       any elements with length longer than `max(bucket_boundaries)`.
+<span class='lineno'> 131</span>     no_padding: `bool`, indicates whether to pad the batch features (features
+<span class='lineno'> 132</span>       need to be either of type `tf.SparseTensor` or of same shape).
+<span class='lineno'> 133</span> 
+<span class='lineno'> 134</span>   Returns:
+<span class='lineno'> 135</span>     A `Dataset` transformation function, which can be passed to
+<span class='lineno'> 136</span>     `tf.data.Dataset.apply`.
+<span class='lineno'> 137</span> 
+<span class='lineno'> 138</span>   Raises:
+<span class='lineno'> 139</span>     ValueError: if `len(bucket_batch_sizes) != len(bucket_boundaries) + 1`.
+<span class='lineno'> 140</span>   &quot;&quot;&quot;
+<span class='lineno'> 141</span>   return <a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', title='grouping'>grouping</a>.<a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.bucket_by_sequence_length', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.bucket_by_sequence_length', title='(?, ?, ?, None, None, bool, bool) -> ? -> ?'>bucket_by_sequence_length</a>(
+<span class='lineno'> 142</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.element_length_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.element_length_func', title='?'>element_length_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_boundaries', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_boundaries', title='?'>bucket_boundaries</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_batch_sizes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.bucket_batch_sizes', title='?'>bucket_batch_sizes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padded_shapes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padded_shapes', title='None'>padded_shapes</a>,
+<span class='lineno'> 143</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padding_values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.padding_values', title='None'>padding_values</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.pad_to_bucket_boundary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.pad_to_bucket_boundary', title='bool'>pad_to_bucket_boundary</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.no_padding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.bucket_by_sequence_length.no_padding', title='bool'>no_padding</a>)
+<span class='lineno'> 144</span> 
+<span class='lineno'> 145</span> 
+<span class='lineno'> 146</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer', title='<Reducer>'>Reducer</a>(<a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping', title='grouping'>grouping</a>.<a href='../../../../python/data/experimental/ops/grouping.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.Reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.data.experimental.ops.grouping.Reducer', title='<Reducer>'>Reducer</a>):
+<span class='lineno'> 147</span>   &quot;&quot;&quot;A reducer is used for reducing a set of elements.
+<span class='lineno'> 148</span> 
+<span class='lineno'> 149</span>   A reducer is represented as a tuple of the three functions:
+<span class='lineno'> 150</span>     1) initialization function: key =&gt; initial state
+<span class='lineno'> 151</span>     2) reduce function: (old state, input) =&gt; new state
+<span class='lineno'> 152</span>     3) finalization function: state =&gt; result
+<span class='lineno'> 153</span>   &quot;&quot;&quot;
+<span class='lineno'> 154</span> 
+<span class='lineno'> 155</span>   @deprecation.deprecated(None, &quot;Use `tf.data.experimental.Reducer(...)`.&quot;)
+<span class='lineno'> 156</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.self', title='Reducer'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.init_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.init_func', title='?'>init_func</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.reduce_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.reduce_func', title='?'>reduce_func</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.finalize_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.finalize_func', title='?'>finalize_func</a>):
+<span class='lineno'> 157</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer', title='<Reducer>'>Reducer</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.self', title='Reducer'>self</a>).__init__(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.init_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.init_func', title='?'>init_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.reduce_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.reduce_func', title='?'>reduce_func</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.finalize_func', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.data.python.ops.grouping.Reducer.__init__.finalize_func', title='?'>finalize_func</a>)
+</pre></td></tr></table></body></html>

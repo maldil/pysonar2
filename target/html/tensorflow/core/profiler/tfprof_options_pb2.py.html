@@ -1,0 +1,462 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/profiler/tfprof_options_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO'>_OPTIONSPROTO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO'>_ADVISOROPTIONSPROTO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto'>OptionsProto</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto'>AdvisorOptionsProto</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/profiler/tfprof_options.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%405.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%405.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%405.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%405.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%406.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%406.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%406.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.lambda%406.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  18</span>   name=&#39;tensorflow/core/profiler/tfprof_options.proto&#39;,
+<span class='lineno'>  19</span>   package=&#39;tensorflow.tfprof&#39;,
+<span class='lineno'>  20</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  21</span>   serialized_options=None,
+<span class='lineno'>  22</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&#39;\n-tensorflow/core/profiler/tfprof_options.proto\x12\x11tensorflow.tfprof\&quot;\x95\x04\n\x0cOptionsProto\x12\x11\n\tmax_depth\x18\x01 \x01(\x03\x12\x11\n\tmin_bytes\x18\x02 \x01(\x03\x12\x16\n\x0emin_peak_bytes\x18\x13 \x01(\x03\x12\x1a\n\x12min_residual_bytes\x18\x14 \x01(\x03\x12\x18\n\x10min_output_bytes\x18\x15 \x01(\x03\x12\x12\n\nmin_micros\x18\x03 \x01(\x03\x12\x1e\n\x16min_accelerator_micros\x18\x16 \x01(\x03\x12\x16\n\x0emin_cpu_micros\x18\x17 \x01(\x03\x12\x12\n\nmin_params\x18\x04 \x01(\x03\x12\x15\n\rmin_float_ops\x18\x05 \x01(\x03\x12\x16\n\x0emin_occurrence\x18\x11 \x01(\x03\x12\x0c\n\x04step\x18\x12 \x01(\x03\x12\x10\n\x08order_by\x18\x07 \x01(\t\x12\x1c\n\x14\x61\x63\x63ount_type_regexes\x18\x08 \x03(\t\x12\x1a\n\x12start_name_regexes\x18\t \x03(\t\x12\x19\n\x11trim_name_regexes\x18\n \x03(\t\x12\x19\n\x11show_name_regexes\x18\x0b \x03(\t\x12\x19\n\x11hide_name_regexes\x18\x0c \x03(\t\x12!\n\x19\x61\x63\x63ount_displayed_op_only\x18\r \x01(\x08\x12\x0e\n\x06select\x18\x0e \x03(\t\x12\x0e\n\x06output\x18\x0f \x01(\t\x12\x14\n\x0c\x64ump_to_file\x18\x10 \x01(\t\&quot;\xda\x02\n\x13\x41\x64visorOptionsProto\x12\x46\n\x08\x63heckers\x18\x01 \x03(\x0b\x32\x34.tensorflow.tfprof.AdvisorOptionsProto.CheckersEntry\x1a\x65\n\rCheckersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x43\n\x05value\x18\x02 \x01(\x0b\x32\x34.tensorflow.tfprof.AdvisorOptionsProto.CheckerOption:\x02\x38\x01\x1a\x93\x01\n\rCheckerOption\x12R\n\x07options\x18\x01 \x03(\x0b\x32\x41.tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.OptionsEntry\x1a.\n\x0cOptionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x62\x06proto3&#39;)
+<span class='lineno'>  23</span> )
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', title='?'>_OPTIONSPROTO</a> = _descriptor.Descriptor(
+<span class='lineno'>  29</span>   name=&#39;OptionsProto&#39;,
+<span class='lineno'>  30</span>   full_name=&#39;tensorflow.tfprof.OptionsProto&#39;,
+<span class='lineno'>  31</span>   filename=None,
+<span class='lineno'>  32</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  33</span>   containing_type=None,
+<span class='lineno'>  34</span>   fields=[
+<span class='lineno'>  35</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  36</span>       name=&#39;max_depth&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.max_depth&#39;, index=0,
+<span class='lineno'>  37</span>       number=1, type=3, cpp_type=2, label=1,
+<span class='lineno'>  38</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  39</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  40</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  41</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  42</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  43</span>       name=&#39;min_bytes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_bytes&#39;, index=1,
+<span class='lineno'>  44</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'>  45</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  46</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  47</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  48</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  49</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  50</span>       name=&#39;min_peak_bytes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_peak_bytes&#39;, index=2,
+<span class='lineno'>  51</span>       number=19, type=3, cpp_type=2, label=1,
+<span class='lineno'>  52</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  53</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  54</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  55</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  56</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  57</span>       name=&#39;min_residual_bytes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_residual_bytes&#39;, index=3,
+<span class='lineno'>  58</span>       number=20, type=3, cpp_type=2, label=1,
+<span class='lineno'>  59</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  60</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  61</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  62</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  63</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  64</span>       name=&#39;min_output_bytes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_output_bytes&#39;, index=4,
+<span class='lineno'>  65</span>       number=21, type=3, cpp_type=2, label=1,
+<span class='lineno'>  66</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  67</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  68</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  69</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  70</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  71</span>       name=&#39;min_micros&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_micros&#39;, index=5,
+<span class='lineno'>  72</span>       number=3, type=3, cpp_type=2, label=1,
+<span class='lineno'>  73</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  74</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  75</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  76</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  77</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  78</span>       name=&#39;min_accelerator_micros&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_accelerator_micros&#39;, index=6,
+<span class='lineno'>  79</span>       number=22, type=3, cpp_type=2, label=1,
+<span class='lineno'>  80</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  81</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  82</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  83</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  84</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  85</span>       name=&#39;min_cpu_micros&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_cpu_micros&#39;, index=7,
+<span class='lineno'>  86</span>       number=23, type=3, cpp_type=2, label=1,
+<span class='lineno'>  87</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  88</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  89</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  90</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  91</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  92</span>       name=&#39;min_params&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_params&#39;, index=8,
+<span class='lineno'>  93</span>       number=4, type=3, cpp_type=2, label=1,
+<span class='lineno'>  94</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  95</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  96</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  97</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  98</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  99</span>       name=&#39;min_float_ops&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_float_ops&#39;, index=9,
+<span class='lineno'> 100</span>       number=5, type=3, cpp_type=2, label=1,
+<span class='lineno'> 101</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 102</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 103</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 104</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 105</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 106</span>       name=&#39;min_occurrence&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.min_occurrence&#39;, index=10,
+<span class='lineno'> 107</span>       number=17, type=3, cpp_type=2, label=1,
+<span class='lineno'> 108</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 109</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 110</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 111</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 112</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 113</span>       name=&#39;step&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.step&#39;, index=11,
+<span class='lineno'> 114</span>       number=18, type=3, cpp_type=2, label=1,
+<span class='lineno'> 115</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 116</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 117</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 118</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 119</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 120</span>       name=&#39;order_by&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.order_by&#39;, index=12,
+<span class='lineno'> 121</span>       number=7, type=9, cpp_type=9, label=1,
+<span class='lineno'> 122</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 123</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 124</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 125</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 126</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 127</span>       name=&#39;account_type_regexes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.account_type_regexes&#39;, index=13,
+<span class='lineno'> 128</span>       number=8, type=9, cpp_type=9, label=3,
+<span class='lineno'> 129</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 130</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 131</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 132</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 133</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 134</span>       name=&#39;start_name_regexes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.start_name_regexes&#39;, index=14,
+<span class='lineno'> 135</span>       number=9, type=9, cpp_type=9, label=3,
+<span class='lineno'> 136</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 137</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 138</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 139</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 140</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 141</span>       name=&#39;trim_name_regexes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.trim_name_regexes&#39;, index=15,
+<span class='lineno'> 142</span>       number=10, type=9, cpp_type=9, label=3,
+<span class='lineno'> 143</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 144</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 145</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 146</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 147</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 148</span>       name=&#39;show_name_regexes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.show_name_regexes&#39;, index=16,
+<span class='lineno'> 149</span>       number=11, type=9, cpp_type=9, label=3,
+<span class='lineno'> 150</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 151</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 152</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 153</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 154</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 155</span>       name=&#39;hide_name_regexes&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.hide_name_regexes&#39;, index=17,
+<span class='lineno'> 156</span>       number=12, type=9, cpp_type=9, label=3,
+<span class='lineno'> 157</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 158</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 159</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 160</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 161</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 162</span>       name=&#39;account_displayed_op_only&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.account_displayed_op_only&#39;, index=18,
+<span class='lineno'> 163</span>       number=13, type=8, cpp_type=7, label=1,
+<span class='lineno'> 164</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 165</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 166</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 167</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 168</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 169</span>       name=&#39;select&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.select&#39;, index=19,
+<span class='lineno'> 170</span>       number=14, type=9, cpp_type=9, label=3,
+<span class='lineno'> 171</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 172</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 173</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 174</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 175</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 176</span>       name=&#39;output&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.output&#39;, index=20,
+<span class='lineno'> 177</span>       number=15, type=9, cpp_type=9, label=1,
+<span class='lineno'> 178</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 179</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 180</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 181</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 182</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 183</span>       name=&#39;dump_to_file&#39;, full_name=&#39;tensorflow.tfprof.OptionsProto.dump_to_file&#39;, index=21,
+<span class='lineno'> 184</span>       number=16, type=9, cpp_type=9, label=1,
+<span class='lineno'> 185</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 186</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 187</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 188</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 189</span>   ],
+<span class='lineno'> 190</span>   extensions=[
+<span class='lineno'> 191</span>   ],
+<span class='lineno'> 192</span>   nested_types=[],
+<span class='lineno'> 193</span>   enum_types=[
+<span class='lineno'> 194</span>   ],
+<span class='lineno'> 195</span>   serialized_options=None,
+<span class='lineno'> 196</span>   is_extendable=False,
+<span class='lineno'> 197</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 198</span>   extension_ranges=[],
+<span class='lineno'> 199</span>   oneofs=[
+<span class='lineno'> 200</span>   ],
+<span class='lineno'> 201</span>   serialized_start=69,
+<span class='lineno'> 202</span>   serialized_end=602,
+<span class='lineno'> 203</span> )
+<span class='lineno'> 204</span> 
+<span class='lineno'> 205</span> 
+<span class='lineno'> 206</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 207</span>   name=&#39;CheckersEntry&#39;,
+<span class='lineno'> 208</span>   full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckersEntry&#39;,
+<span class='lineno'> 209</span>   filename=None,
+<span class='lineno'> 210</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 211</span>   containing_type=None,
+<span class='lineno'> 212</span>   fields=[
+<span class='lineno'> 213</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 214</span>       name=&#39;key&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckersEntry.key&#39;, index=0,
+<span class='lineno'> 215</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 216</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 217</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 218</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 219</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 220</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 221</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckersEntry.value&#39;, index=1,
+<span class='lineno'> 222</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 223</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 224</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 225</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 226</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 227</span>   ],
+<span class='lineno'> 228</span>   extensions=[
+<span class='lineno'> 229</span>   ],
+<span class='lineno'> 230</span>   nested_types=[],
+<span class='lineno'> 231</span>   enum_types=[
+<span class='lineno'> 232</span>   ],
+<span class='lineno'> 233</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&#39;8\001&#39;),
+<span class='lineno'> 234</span>   is_extendable=False,
+<span class='lineno'> 235</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 236</span>   extension_ranges=[],
+<span class='lineno'> 237</span>   oneofs=[
+<span class='lineno'> 238</span>   ],
+<span class='lineno'> 239</span>   serialized_start=700,
+<span class='lineno'> 240</span>   serialized_end=801,
+<span class='lineno'> 241</span> )
+<span class='lineno'> 242</span> 
+<span class='lineno'> 243</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 244</span>   name=&#39;OptionsEntry&#39;,
+<span class='lineno'> 245</span>   full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.OptionsEntry&#39;,
+<span class='lineno'> 246</span>   filename=None,
+<span class='lineno'> 247</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 248</span>   containing_type=None,
+<span class='lineno'> 249</span>   fields=[
+<span class='lineno'> 250</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 251</span>       name=&#39;key&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.OptionsEntry.key&#39;, index=0,
+<span class='lineno'> 252</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 253</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 254</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 255</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 256</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 257</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 258</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.OptionsEntry.value&#39;, index=1,
+<span class='lineno'> 259</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 260</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 261</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 262</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 263</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 264</span>   ],
+<span class='lineno'> 265</span>   extensions=[
+<span class='lineno'> 266</span>   ],
+<span class='lineno'> 267</span>   nested_types=[],
+<span class='lineno'> 268</span>   enum_types=[
+<span class='lineno'> 269</span>   ],
+<span class='lineno'> 270</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._b', title='str -> str'>_b</a>(&#39;8\001&#39;),
+<span class='lineno'> 271</span>   is_extendable=False,
+<span class='lineno'> 272</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 273</span>   extension_ranges=[],
+<span class='lineno'> 274</span>   oneofs=[
+<span class='lineno'> 275</span>   ],
+<span class='lineno'> 276</span>   serialized_start=905,
+<span class='lineno'> 277</span>   serialized_end=951,
+<span class='lineno'> 278</span> )
+<span class='lineno'> 279</span> 
+<span class='lineno'> 280</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a> = _descriptor.Descriptor(
+<span class='lineno'> 281</span>   name=&#39;CheckerOption&#39;,
+<span class='lineno'> 282</span>   full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckerOption&#39;,
+<span class='lineno'> 283</span>   filename=None,
+<span class='lineno'> 284</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 285</span>   containing_type=None,
+<span class='lineno'> 286</span>   fields=[
+<span class='lineno'> 287</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 288</span>       name=&#39;options&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.options&#39;, index=0,
+<span class='lineno'> 289</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 290</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 291</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 292</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 293</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 294</span>   ],
+<span class='lineno'> 295</span>   extensions=[
+<span class='lineno'> 296</span>   ],
+<span class='lineno'> 297</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a>, ],
+<span class='lineno'> 298</span>   enum_types=[
+<span class='lineno'> 299</span>   ],
+<span class='lineno'> 300</span>   serialized_options=None,
+<span class='lineno'> 301</span>   is_extendable=False,
+<span class='lineno'> 302</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 303</span>   extension_ranges=[],
+<span class='lineno'> 304</span>   oneofs=[
+<span class='lineno'> 305</span>   ],
+<span class='lineno'> 306</span>   serialized_start=804,
+<span class='lineno'> 307</span>   serialized_end=951,
+<span class='lineno'> 308</span> )
+<span class='lineno'> 309</span> 
+<span class='lineno'> 310</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a> = _descriptor.Descriptor(
+<span class='lineno'> 311</span>   name=&#39;AdvisorOptionsProto&#39;,
+<span class='lineno'> 312</span>   full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto&#39;,
+<span class='lineno'> 313</span>   filename=None,
+<span class='lineno'> 314</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 315</span>   containing_type=None,
+<span class='lineno'> 316</span>   fields=[
+<span class='lineno'> 317</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 318</span>       name=&#39;checkers&#39;, full_name=&#39;tensorflow.tfprof.AdvisorOptionsProto.checkers&#39;, index=0,
+<span class='lineno'> 319</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 320</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 321</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 322</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 323</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 324</span>   ],
+<span class='lineno'> 325</span>   extensions=[
+<span class='lineno'> 326</span>   ],
+<span class='lineno'> 327</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>, ],
+<span class='lineno'> 328</span>   enum_types=[
+<span class='lineno'> 329</span>   ],
+<span class='lineno'> 330</span>   serialized_options=None,
+<span class='lineno'> 331</span>   is_extendable=False,
+<span class='lineno'> 332</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 333</span>   extension_ranges=[],
+<span class='lineno'> 334</span>   oneofs=[
+<span class='lineno'> 335</span>   ],
+<span class='lineno'> 336</span>   serialized_start=605,
+<span class='lineno'> 337</span>   serialized_end=951,
+<span class='lineno'> 338</span> )
+<span class='lineno'> 339</span> 
+<span class='lineno'> 340</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>.fields_by_name[&#39;value&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>
+<span class='lineno'> 341</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a>
+<span class='lineno'> 342</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>
+<span class='lineno'> 343</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>.fields_by_name[&#39;options&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a>
+<span class='lineno'> 344</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a>
+<span class='lineno'> 345</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a>.fields_by_name[&#39;checkers&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>
+<span class='lineno'> 346</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;OptionsProto&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', title='?'>_OPTIONSPROTO</a>
+<span class='lineno'> 347</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;AdvisorOptionsProto&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a>
+<span class='lineno'> 348</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 349</span> 
+<span class='lineno'> 350</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto', title='?'>OptionsProto</a> = _reflection.GeneratedProtocolMessageType(&#39;OptionsProto&#39;, (_message.Message,), dict(
+<span class='lineno'> 351</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._OPTIONSPROTO', title='?'>_OPTIONSPROTO</a>,
+<span class='lineno'> 352</span>   __module__ = &#39;tensorflow.core.profiler.tfprof_options_pb2&#39;
+<span class='lineno'> 353</span>   # @@protoc_insertion_point(class_scope:tensorflow.tfprof.OptionsProto)
+<span class='lineno'> 354</span>   ))
+<span class='lineno'> 355</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.OptionsProto', title='?'>OptionsProto</a>)
+<span class='lineno'> 356</span> 
+<span class='lineno'> 357</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', title='?'>AdvisorOptionsProto</a> = _reflection.GeneratedProtocolMessageType(&#39;AdvisorOptionsProto&#39;, (_message.Message,), dict(
+<span class='lineno'> 358</span> 
+<span class='lineno'> 359</span>   CheckersEntry = _reflection.GeneratedProtocolMessageType(&#39;CheckersEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 360</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>,
+<span class='lineno'> 361</span>     __module__ = &#39;tensorflow.core.profiler.tfprof_options_pb2&#39;
+<span class='lineno'> 362</span>     # @@protoc_insertion_point(class_scope:tensorflow.tfprof.AdvisorOptionsProto.CheckersEntry)
+<span class='lineno'> 363</span>     ))
+<span class='lineno'> 364</span>   ,
+<span class='lineno'> 365</span> 
+<span class='lineno'> 366</span>   CheckerOption = _reflection.GeneratedProtocolMessageType(&#39;CheckerOption&#39;, (_message.Message,), dict(
+<span class='lineno'> 367</span> 
+<span class='lineno'> 368</span>     OptionsEntry = _reflection.GeneratedProtocolMessageType(&#39;OptionsEntry&#39;, (_message.Message,), dict(
+<span class='lineno'> 369</span>       DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a>,
+<span class='lineno'> 370</span>       __module__ = &#39;tensorflow.core.profiler.tfprof_options_pb2&#39;
+<span class='lineno'> 371</span>       # @@protoc_insertion_point(class_scope:tensorflow.tfprof.AdvisorOptionsProto.CheckerOption.OptionsEntry)
+<span class='lineno'> 372</span>       ))
+<span class='lineno'> 373</span>     ,
+<span class='lineno'> 374</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION</a>,
+<span class='lineno'> 375</span>     __module__ = &#39;tensorflow.core.profiler.tfprof_options_pb2&#39;
+<span class='lineno'> 376</span>     # @@protoc_insertion_point(class_scope:tensorflow.tfprof.AdvisorOptionsProto.CheckerOption)
+<span class='lineno'> 377</span>     ))
+<span class='lineno'> 378</span>   ,
+<span class='lineno'> 379</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO', title='?'>_ADVISOROPTIONSPROTO</a>,
+<span class='lineno'> 380</span>   __module__ = &#39;tensorflow.core.profiler.tfprof_options_pb2&#39;
+<span class='lineno'> 381</span>   # @@protoc_insertion_point(class_scope:tensorflow.tfprof.AdvisorOptionsProto)
+<span class='lineno'> 382</span>   ))
+<span class='lineno'> 383</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', title='?'>AdvisorOptionsProto</a>)
+<span class='lineno'> 384</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', title='?'>AdvisorOptionsProto</a>.CheckersEntry)
+<span class='lineno'> 385</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', title='?'>AdvisorOptionsProto</a>.CheckerOption)
+<span class='lineno'> 386</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2.AdvisorOptionsProto', title='?'>AdvisorOptionsProto</a>.CheckerOption.OptionsEntry)
+<span class='lineno'> 387</span> 
+<span class='lineno'> 388</span> 
+<span class='lineno'> 389</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKERSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKERSENTRY</a>._options = None
+<span class='lineno'> 390</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.profiler.tfprof_options_pb2._ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY', title='?'>_ADVISOROPTIONSPROTO_CHECKEROPTION_OPTIONSENTRY</a>._options = None
+<span class='lineno'> 391</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

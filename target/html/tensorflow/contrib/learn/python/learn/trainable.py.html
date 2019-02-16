@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/trainable.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable'>Trainable</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.__metaclass__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.__metaclass__'>__metaclass__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit'>fit</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;`Trainable` interface (deprecated).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import abc
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable', title='<Trainable>'>Trainable</a>(object):
+<span class='lineno'>  30</span>   &quot;&quot;&quot;Interface for objects that are trainable by, e.g., `Experiment`.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   THIS CLASS IS DEPRECATED.
+<span class='lineno'>  33</span>   &quot;&quot;&quot;
+<span class='lineno'>  34</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.__metaclass__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.__metaclass__', title='?'>__metaclass__</a> = abc.ABCMeta
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   @abc.abstractmethod
+<span class='lineno'>  37</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit', title='(Trainable, None, None, None, None, None, None, None) -> None'>fit</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.self', title='Trainable'>self</a>,
+<span class='lineno'>  38</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.x', title='None'>x</a>=None,
+<span class='lineno'>  39</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.y', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.y', title='None'>y</a>=None,
+<span class='lineno'>  40</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.input_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.input_fn', title='None'>input_fn</a>=None,
+<span class='lineno'>  41</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.steps', title='None'>steps</a>=None,
+<span class='lineno'>  42</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.batch_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.batch_size', title='None'>batch_size</a>=None,
+<span class='lineno'>  43</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.monitors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.monitors', title='None'>monitors</a>=None,
+<span class='lineno'>  44</span>           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.max_steps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.trainable.Trainable.fit.max_steps', title='None'>max_steps</a>=None):
+<span class='lineno'>  45</span>     &quot;&quot;&quot;Trains a model given training data `x` predictions and `y` labels.
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>     Args:
+<span class='lineno'>  48</span>       x: Matrix of shape [n_samples, n_features...] or the dictionary of
+<span class='lineno'>  49</span>         Matrices.
+<span class='lineno'>  50</span>          Can be iterator that returns arrays of features or dictionary of arrays
+<span class='lineno'>  51</span>            of features.
+<span class='lineno'>  52</span>          The training input samples for fitting the model. If set, `input_fn`
+<span class='lineno'>  53</span>            must be `None`.
+<span class='lineno'>  54</span>       y: Vector or matrix [n_samples] or [n_samples, n_outputs] or the
+<span class='lineno'>  55</span>         dictionary of same.
+<span class='lineno'>  56</span>          Can be iterator that returns array of labels or dictionary of array of
+<span class='lineno'>  57</span>            labels.
+<span class='lineno'>  58</span>          The training label values (class labels in classification, real numbers
+<span class='lineno'>  59</span>            in regression).
+<span class='lineno'>  60</span>          If set, `input_fn` must be `None`. Note: For classification, label
+<span class='lineno'>  61</span>            values must
+<span class='lineno'>  62</span>          be integers representing the class index (i.e. values from 0 to
+<span class='lineno'>  63</span>          n_classes-1).
+<span class='lineno'>  64</span>       input_fn: Input function returning a tuple of:
+<span class='lineno'>  65</span>           features - `Tensor` or dictionary of string feature name to `Tensor`.
+<span class='lineno'>  66</span>           labels - `Tensor` or dictionary of `Tensor` with labels.
+<span class='lineno'>  67</span>         If input_fn is set, `x`, `y`, and `batch_size` must be `None`.
+<span class='lineno'>  68</span>       steps: Number of steps for which to train model. If `None`, train forever.
+<span class='lineno'>  69</span>         &#39;steps&#39; works incrementally. If you call two times fit(steps=10) then
+<span class='lineno'>  70</span>         training occurs in total 20 steps. If you don&#39;t want to have incremental
+<span class='lineno'>  71</span>         behavior please set `max_steps` instead. If set, `max_steps` must be
+<span class='lineno'>  72</span>         `None`.
+<span class='lineno'>  73</span>       batch_size: minibatch size to use on the input, defaults to first
+<span class='lineno'>  74</span>         dimension of `x`. Must be `None` if `input_fn` is provided.
+<span class='lineno'>  75</span>       monitors: List of `BaseMonitor` subclass instances. Used for callbacks
+<span class='lineno'>  76</span>         inside the training loop.
+<span class='lineno'>  77</span>       max_steps: Number of total steps for which to train model. If `None`,
+<span class='lineno'>  78</span>         train forever. If set, `steps` must be `None`.
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>         Two calls to `fit(steps=100)` means 200 training
+<span class='lineno'>  81</span>         iterations. On the other hand, two calls to `fit(max_steps=100)` means
+<span class='lineno'>  82</span>         that the second call will not do any iteration since first call did
+<span class='lineno'>  83</span>         all 100 steps.
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>     Returns:
+<span class='lineno'>  86</span>       `self`, for chaining.
+<span class='lineno'>  87</span>     &quot;&quot;&quot;
+<span class='lineno'>  88</span>     raise NotImplementedError
+</pre></td></tr></table></body></html>

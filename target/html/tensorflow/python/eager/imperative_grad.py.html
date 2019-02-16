@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/eager/imperative_grad.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.VSpace', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.VSpace'>VSpace</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad'>imperative_grad</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Code for backpropagation using the tape utilities.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import collections
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a> import <a href='../pywrap_tensorflow.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', title='pywrap_tensorflow'>pywrap_tensorflow</a>
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.VSpace', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.VSpace', title='<(namedtuple)>'>VSpace</a> = collections.namedtuple(&quot;VSpace&quot;, [
+<span class='lineno'>  27</span>     &quot;aggregate_fn&quot;, &quot;num_elements_fn&quot;, &quot;zeros_fn&quot;, &quot;ones_fn&quot;, &quot;graph_shape_fn&quot;
+<span class='lineno'>  28</span> ])
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad', title='(Tape, None, [list], None) -> None / (?, ?, ?, None) -> None / (None, ?, [None], None) -> None / (None, None, [None], None) -> None / (Tape, None, [?], None) -> None'>imperative_grad</a>(
+<span class='lineno'>  32</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.tape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.tape', title='Tape'>tape</a>,
+<span class='lineno'>  33</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.target', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.target', title='None'>target</a>,
+<span class='lineno'>  34</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.sources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.sources', title='{[?] | [None] | [list]}'>sources</a>,
+<span class='lineno'>  35</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.output_gradients', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.output_gradients', title='None'>output_gradients</a>=None):
+<span class='lineno'>  36</span>   &quot;&quot;&quot;Computes gradients from the imperatively defined tape on top of the stack.
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   Works by filtering the tape, computing how many downstream usages are of each
+<span class='lineno'>  39</span>   tensor and entry, and repeatedly applying backward functions until we have
+<span class='lineno'>  40</span>   gradients for all sources.
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   Args:
+<span class='lineno'>  43</span>    tape: the gradient tape which stores the trace.
+<span class='lineno'>  44</span>    target: either a Tensor or list of Tensors to be differentiated.
+<span class='lineno'>  45</span>    sources: list of Tensors for which we want gradients
+<span class='lineno'>  46</span>    output_gradients: if not None, a list of gradient provided for each Target,
+<span class='lineno'>  47</span>     or None if we are to use the target&#39;s computed downstream gradient.
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   Returns:
+<span class='lineno'>  50</span>    the gradient wrt each of the sources.
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   Raises:
+<span class='lineno'>  53</span>     RuntimeError: if something goes wrong.
+<span class='lineno'>  54</span>     ValueError: if there is no sequence of differentiable operations connecting
+<span class='lineno'>  55</span>      a source and any target Tensor. This can happen either if the target is
+<span class='lineno'>  56</span>      not computed based on the source, if the tracing was set up incorrectly,
+<span class='lineno'>  57</span>      or if only non-differentiable functions of the source were used in the
+<span class='lineno'>  58</span>      computation of target.
+<span class='lineno'>  59</span>   &quot;&quot;&quot;
+<span class='lineno'>  60</span>   return <a href='../pywrap_tensorflow.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', title='pywrap_tensorflow'>pywrap_tensorflow</a>.<a href='../pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_TapeGradient', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_TapeGradient', title='?'>TFE_Py_TapeGradient</a>(
+<span class='lineno'>  61</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.tape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.tape', title='Tape'>tape</a>.<a href='tape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.tape.Tape._tape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.tape.Tape._tape', title='?'>_tape</a>,  # pylint: disable=protected-access
+<span class='lineno'>  62</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.target', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.target', title='None'>target</a>,
+<span class='lineno'>  63</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.sources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.sources', title='{[?] | [None] | [list]}'>sources</a>,
+<span class='lineno'>  64</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.output_gradients', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.imperative_grad.imperative_grad.output_gradients', title='None'>output_gradients</a>)
+</pre></td></tr></table></body></html>

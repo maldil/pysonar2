@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/checkpoint/python/containers.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker'>UniqueNameTracker</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track'>track</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> &quot;&quot;&quot;Checkpointable data structures.&quot;&quot;&quot;
+<span class='lineno'>   2</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   3</span> #
+<span class='lineno'>   4</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   5</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   6</span> # You may obtain a copy of the License at
+<span class='lineno'>   7</span> #
+<span class='lineno'>   8</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   9</span> #
+<span class='lineno'>  10</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  11</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  12</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  13</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  14</span> # limitations under the License.
+<span class='lineno'>  15</span> # ==============================================================================
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a>.<a href='../../../python/training/checkpointable/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable', title='checkpointable'>checkpointable</a> import base as <a href='../../../python/training/checkpointable/base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base', title='base'>checkpointable_lib</a>
+<span class='lineno'>  21</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a>.<a href='../../../python/training/checkpointable/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable', title='checkpointable'>checkpointable</a> import <a href='../../../python/training/checkpointable/data_structures.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures', title='data_structures'>data_structures</a>
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker', title='<UniqueNameTracker>'>UniqueNameTracker</a>(<a href='../../../python/training/checkpointable/data_structures.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures', title='data_structures'>data_structures</a>.<a href='../../../python/training/checkpointable/data_structures.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures.CheckpointableDataStructure', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures.CheckpointableDataStructure', title='<CheckpointableDataStructure>'>CheckpointableDataStructure</a>):
+<span class='lineno'>  25</span>   &quot;&quot;&quot;Adds dependencies on checkpointable objects with name hints.
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span>   Useful for creating dependencies with locally unique names.
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span>   Example usage:
+<span class='lineno'>  30</span>   ```python
+<span class='lineno'>  31</span>   class SlotManager(tf.contrib.checkpoint.Checkpointable):
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>     def __init__(self):
+<span class='lineno'>  34</span>       # Create a dependency named &quot;slotdeps&quot; on the container.
+<span class='lineno'>  35</span>       self.slotdeps = tf.contrib.checkpoint.UniqueNameTracker()
+<span class='lineno'>  36</span>       slotdeps = self.slotdeps
+<span class='lineno'>  37</span>       slots = []
+<span class='lineno'>  38</span>       slots.append(slotdeps.track(tf.Variable(3.), &quot;x&quot;))  # Named &quot;x&quot;
+<span class='lineno'>  39</span>       slots.append(slotdeps.track(tf.Variable(4.), &quot;y&quot;))
+<span class='lineno'>  40</span>       slots.append(slotdeps.track(tf.Variable(5.), &quot;x&quot;))  # Named &quot;x_1&quot;
+<span class='lineno'>  41</span>   ```
+<span class='lineno'>  42</span>   &quot;&quot;&quot;
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', title='UniqueNameTracker'>self</a>):
+<span class='lineno'>  45</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker', title='<UniqueNameTracker>'>UniqueNameTracker</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', title='UniqueNameTracker'>self</a>).__init__()
+<span class='lineno'>  46</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', title='UniqueNameTracker'>self</a>.<a href='../../../python/training/checkpointable/base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase._maybe_initialize_checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase._maybe_initialize_checkpointable', title='Checkpoint -> ? / Sequential -> None / DropoutWrapper -> None / CheckpointableBase -> None / Model -> None / TFOptimizer -> None / Optimizer -> None / TimeDistributed -> None / Dense -> None / List -> None'>_maybe_initialize_checkpointable</a>()
+<span class='lineno'>  47</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.__init__.self', title='UniqueNameTracker'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', title='dict'>_name_counts</a> = {}
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track', title='(UniqueNameTracker, ?, ?) -> None'>track</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', title='UniqueNameTracker'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', title='?'>checkpointable</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', title='?'>base_name</a>):
+<span class='lineno'>  50</span>     &quot;&quot;&quot;Add a dependency on `checkpointable`.
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>     Args:
+<span class='lineno'>  53</span>       checkpointable: An object to add a checkpoint dependency on.
+<span class='lineno'>  54</span>       base_name: A name hint, which is uniquified to determine the dependency
+<span class='lineno'>  55</span>         name.
+<span class='lineno'>  56</span>     Returns:
+<span class='lineno'>  57</span>       `checkpointable`, for chaining.
+<span class='lineno'>  58</span>     Raises:
+<span class='lineno'>  59</span>       ValueError: If `checkpointable` is not a checkpointable object.
+<span class='lineno'>  60</span>     &quot;&quot;&quot;
+<span class='lineno'>  61</span> 
+<span class='lineno'>  62</span>     if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', title='?'>checkpointable</a>, <a href='../../../python/training/checkpointable/base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base', title='base'>checkpointable_lib</a>.<a href='../../../python/training/checkpointable/base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase', title='<CheckpointableBase>'>CheckpointableBase</a>):
+<span class='lineno'>  63</span>       raise ValueError(
+<span class='lineno'>  64</span>           (&quot;Expected a checkpointable value, got %s which does not inherit &quot;
+<span class='lineno'>  65</span>            &quot;from CheckpointableBase.&quot;) % (checkpointable,))
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>     def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', title='(?, int) -> ? / (?, ?) -> ?'>_format_name</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', title='?'>prefix</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', title='int'>number</a>):
+<span class='lineno'>  68</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', title='int'>number</a> &gt; 0:
+<span class='lineno'>  69</span>         return &quot;%s_%d&quot; % (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', title='?'>prefix</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.number', title='int'>number</a>)
+<span class='lineno'>  70</span>       else:
+<span class='lineno'>  71</span>         return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name.prefix', title='?'>prefix</a>
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='?'>count</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', title='UniqueNameTracker'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', title='dict'>_name_counts</a>.get(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', title='?'>base_name</a>, 0)
+<span class='lineno'>  74</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', title='?'>candidate</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', title='(?, int) -> ? / (?, ?) -> ?'>_format_name</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', title='?'>base_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='?'>count</a>)
+<span class='lineno'>  75</span>     while <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', title='UniqueNameTracker'>self</a>.<a href='../../../python/training/checkpointable/base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase._lookup_dependency', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.base.CheckpointableBase._lookup_dependency', title='(UniqueNameTracker, ?) -> ? / (CheckpointableBase, ?) -> None / (Sequential, str) -> None / (Sequential, ?) -> None / (TimeDistributed, str) -> None / (TFOptimizer, str) -> None / (Model, str) -> None / (Dense, str) -> None / (List, ?) -> None / (DropoutWrapper, str) -> None'>_lookup_dependency</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', title='?'>candidate</a>) is not None:
+<span class='lineno'>  76</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='int'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='int'>count</a></a> += 1
+<span class='lineno'>  77</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', title='?'>candidate</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track._format_name', title='(?, int) -> ? / (?, ?) -> ?'>_format_name</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', title='?'>base_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='int'>count</a>)
+<span class='lineno'>  78</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', title='UniqueNameTracker'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker._name_counts', title='dict'>_name_counts</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.base_name', title='?'>base_name</a>] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.count', title='int'>count</a> + 1
+<span class='lineno'>  79</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.self', title='UniqueNameTracker'>self</a>.<a href='../../../python/training/checkpointable/data_structures.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures.CheckpointableDataStructure._track_value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.checkpointable.data_structures.CheckpointableDataStructure._track_value', title='(CheckpointableDataStructure, ?, ?) -> Variable / (UniqueNameTracker, ?, ?) -> {CheckpointableBase | NoDependency | Variable | _DictWrapper | _ListWrapper} / (Mapping, ?, str) -> {CheckpointableBase | NoDependency | Variable | _DictWrapper | _ListWrapper} / (List, _Residual, ?) -> {CheckpointableBase | NoDependency | Variable | _DictWrapper | _ListWrapper | _Residual} / (List, ?, ?) -> {CheckpointableBase | NoDependency | Variable | _DictWrapper | _ListWrapper} / (List, RevBlock, ?) -> {CheckpointableBase | NoDependency | RevBlock | Variable | _DictWrapper | _ListWrapper}'>_track_value</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', title='?'>checkpointable</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.candidate', title='?'>candidate</a>)
+<span class='lineno'>  80</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.checkpoint.python.containers.UniqueNameTracker.track.checkpointable', title='?'>checkpointable</a>
+</pre></td></tr></table></body></html>

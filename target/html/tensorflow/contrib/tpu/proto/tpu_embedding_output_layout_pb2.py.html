@@ -1,0 +1,374 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/tpu/proto/tpu_embedding_output_layout_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT'>_TPUEMBEDDINGOUTPUTLAYOUT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout'>TPUEmbeddingOutputLayout</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/contrib/tpu/proto/tpu_embedding_output_layout.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%852.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%852.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%852.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%852.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%853.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%853.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%853.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.lambda%853.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  18</span>   name=&#39;tensorflow/contrib/tpu/proto/tpu_embedding_output_layout.proto&#39;,
+<span class='lineno'>  19</span>   package=&#39;tensorflow.tpu&#39;,
+<span class='lineno'>  20</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  21</span>   serialized_options=None,
+<span class='lineno'>  22</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._b', title='str -> str'>_b</a>(&#39;\n&gt;tensorflow/contrib/tpu/proto/tpu_embedding_output_layout.proto\x12\x0etensorflow.tpu\&quot;\x87\x05\n\x18TPUEmbeddingOutputLayout\x12G\n\x05table\x18\x01 \x03(\x0b\x32\x38.tensorflow.tpu.TPUEmbeddingOutputLayout.TableDescriptor\x12N\n\x06output\x18\x02 \x03(\x0b\x32&gt;.tensorflow.tpu.TPUEmbeddingOutputLayout.EmbeddingOutputTensor\x1aP\n\x0eOutputLocation\x12\x14\n\x0ctensor_index\x18\x01 \x01(\x05\x12\x13\n\x0b\x64im0_offset\x18\x02 \x01(\x05\x12\x13\n\x0b\x64im1_offset\x18\x03 \x01(\x05\x1a\x65\n\x11\x46\x65\x61tureDescriptor\x12P\n\x0foutput_location\x18\x01 \x03(\x0b\x32\x37.tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation\x1a^\n\x0fTableDescriptor\x12K\n\x07\x66\x65\x61ture\x18\x01 \x03(\x0b\x32:.tensorflow.tpu.TPUEmbeddingOutputLayout.FeatureDescriptor\x1a\x43\n\x10TwoDOutputTensor\x12\x1c\n\x14\x64im0_size_per_sample\x18\x02 \x01(\x05\x12\x11\n\tdim1_size\x18\x01 \x01(\x05\x1at\n\x15\x45mbeddingOutputTensor\x12J\n\x05two_d\x18\x04 \x01(\x0b\x32\x39.tensorflow.tpu.TPUEmbeddingOutputLayout.TwoDOutputTensorH\x00\x42\x0f\n\routput_formatb\x06proto3&#39;)
+<span class='lineno'>  23</span> )
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a> = _descriptor.Descriptor(
+<span class='lineno'>  29</span>   name=&#39;OutputLocation&#39;,
+<span class='lineno'>  30</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation&#39;,
+<span class='lineno'>  31</span>   filename=None,
+<span class='lineno'>  32</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  33</span>   containing_type=None,
+<span class='lineno'>  34</span>   fields=[
+<span class='lineno'>  35</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  36</span>       name=&#39;tensor_index&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation.tensor_index&#39;, index=0,
+<span class='lineno'>  37</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'>  38</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  39</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  40</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  41</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  42</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  43</span>       name=&#39;dim0_offset&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation.dim0_offset&#39;, index=1,
+<span class='lineno'>  44</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'>  45</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  46</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  47</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  48</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  49</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  50</span>       name=&#39;dim1_offset&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation.dim1_offset&#39;, index=2,
+<span class='lineno'>  51</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'>  52</span>       has_default_value=False, default_value=0,
+<span class='lineno'>  53</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  54</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  55</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  56</span>   ],
+<span class='lineno'>  57</span>   extensions=[
+<span class='lineno'>  58</span>   ],
+<span class='lineno'>  59</span>   nested_types=[],
+<span class='lineno'>  60</span>   enum_types=[
+<span class='lineno'>  61</span>   ],
+<span class='lineno'>  62</span>   serialized_options=None,
+<span class='lineno'>  63</span>   is_extendable=False,
+<span class='lineno'>  64</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  65</span>   extension_ranges=[],
+<span class='lineno'>  66</span>   oneofs=[
+<span class='lineno'>  67</span>   ],
+<span class='lineno'>  68</span>   serialized_start=264,
+<span class='lineno'>  69</span>   serialized_end=344,
+<span class='lineno'>  70</span> )
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a> = _descriptor.Descriptor(
+<span class='lineno'>  73</span>   name=&#39;FeatureDescriptor&#39;,
+<span class='lineno'>  74</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.FeatureDescriptor&#39;,
+<span class='lineno'>  75</span>   filename=None,
+<span class='lineno'>  76</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  77</span>   containing_type=None,
+<span class='lineno'>  78</span>   fields=[
+<span class='lineno'>  79</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  80</span>       name=&#39;output_location&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.FeatureDescriptor.output_location&#39;, index=0,
+<span class='lineno'>  81</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'>  82</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  83</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  84</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  85</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  86</span>   ],
+<span class='lineno'>  87</span>   extensions=[
+<span class='lineno'>  88</span>   ],
+<span class='lineno'>  89</span>   nested_types=[],
+<span class='lineno'>  90</span>   enum_types=[
+<span class='lineno'>  91</span>   ],
+<span class='lineno'>  92</span>   serialized_options=None,
+<span class='lineno'>  93</span>   is_extendable=False,
+<span class='lineno'>  94</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  95</span>   extension_ranges=[],
+<span class='lineno'>  96</span>   oneofs=[
+<span class='lineno'>  97</span>   ],
+<span class='lineno'>  98</span>   serialized_start=346,
+<span class='lineno'>  99</span>   serialized_end=447,
+<span class='lineno'> 100</span> )
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a> = _descriptor.Descriptor(
+<span class='lineno'> 103</span>   name=&#39;TableDescriptor&#39;,
+<span class='lineno'> 104</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.TableDescriptor&#39;,
+<span class='lineno'> 105</span>   filename=None,
+<span class='lineno'> 106</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 107</span>   containing_type=None,
+<span class='lineno'> 108</span>   fields=[
+<span class='lineno'> 109</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 110</span>       name=&#39;feature&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.TableDescriptor.feature&#39;, index=0,
+<span class='lineno'> 111</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 112</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 113</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 114</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 115</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 116</span>   ],
+<span class='lineno'> 117</span>   extensions=[
+<span class='lineno'> 118</span>   ],
+<span class='lineno'> 119</span>   nested_types=[],
+<span class='lineno'> 120</span>   enum_types=[
+<span class='lineno'> 121</span>   ],
+<span class='lineno'> 122</span>   serialized_options=None,
+<span class='lineno'> 123</span>   is_extendable=False,
+<span class='lineno'> 124</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 125</span>   extension_ranges=[],
+<span class='lineno'> 126</span>   oneofs=[
+<span class='lineno'> 127</span>   ],
+<span class='lineno'> 128</span>   serialized_start=449,
+<span class='lineno'> 129</span>   serialized_end=543,
+<span class='lineno'> 130</span> )
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a> = _descriptor.Descriptor(
+<span class='lineno'> 133</span>   name=&#39;TwoDOutputTensor&#39;,
+<span class='lineno'> 134</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.TwoDOutputTensor&#39;,
+<span class='lineno'> 135</span>   filename=None,
+<span class='lineno'> 136</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 137</span>   containing_type=None,
+<span class='lineno'> 138</span>   fields=[
+<span class='lineno'> 139</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 140</span>       name=&#39;dim0_size_per_sample&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.TwoDOutputTensor.dim0_size_per_sample&#39;, index=0,
+<span class='lineno'> 141</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'> 142</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 143</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 144</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 145</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 146</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 147</span>       name=&#39;dim1_size&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.TwoDOutputTensor.dim1_size&#39;, index=1,
+<span class='lineno'> 148</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 149</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 150</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 151</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 152</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 153</span>   ],
+<span class='lineno'> 154</span>   extensions=[
+<span class='lineno'> 155</span>   ],
+<span class='lineno'> 156</span>   nested_types=[],
+<span class='lineno'> 157</span>   enum_types=[
+<span class='lineno'> 158</span>   ],
+<span class='lineno'> 159</span>   serialized_options=None,
+<span class='lineno'> 160</span>   is_extendable=False,
+<span class='lineno'> 161</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 162</span>   extension_ranges=[],
+<span class='lineno'> 163</span>   oneofs=[
+<span class='lineno'> 164</span>   ],
+<span class='lineno'> 165</span>   serialized_start=545,
+<span class='lineno'> 166</span>   serialized_end=612,
+<span class='lineno'> 167</span> )
+<span class='lineno'> 168</span> 
+<span class='lineno'> 169</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a> = _descriptor.Descriptor(
+<span class='lineno'> 170</span>   name=&#39;EmbeddingOutputTensor&#39;,
+<span class='lineno'> 171</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.EmbeddingOutputTensor&#39;,
+<span class='lineno'> 172</span>   filename=None,
+<span class='lineno'> 173</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 174</span>   containing_type=None,
+<span class='lineno'> 175</span>   fields=[
+<span class='lineno'> 176</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 177</span>       name=&#39;two_d&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.EmbeddingOutputTensor.two_d&#39;, index=0,
+<span class='lineno'> 178</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 179</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 180</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 181</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 182</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 183</span>   ],
+<span class='lineno'> 184</span>   extensions=[
+<span class='lineno'> 185</span>   ],
+<span class='lineno'> 186</span>   nested_types=[],
+<span class='lineno'> 187</span>   enum_types=[
+<span class='lineno'> 188</span>   ],
+<span class='lineno'> 189</span>   serialized_options=None,
+<span class='lineno'> 190</span>   is_extendable=False,
+<span class='lineno'> 191</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 192</span>   extension_ranges=[],
+<span class='lineno'> 193</span>   oneofs=[
+<span class='lineno'> 194</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 195</span>       name=&#39;output_format&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.EmbeddingOutputTensor.output_format&#39;,
+<span class='lineno'> 196</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 197</span>   ],
+<span class='lineno'> 198</span>   serialized_start=614,
+<span class='lineno'> 199</span>   serialized_end=730,
+<span class='lineno'> 200</span> )
+<span class='lineno'> 201</span> 
+<span class='lineno'> 202</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a> = _descriptor.Descriptor(
+<span class='lineno'> 203</span>   name=&#39;TPUEmbeddingOutputLayout&#39;,
+<span class='lineno'> 204</span>   full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout&#39;,
+<span class='lineno'> 205</span>   filename=None,
+<span class='lineno'> 206</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 207</span>   containing_type=None,
+<span class='lineno'> 208</span>   fields=[
+<span class='lineno'> 209</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 210</span>       name=&#39;table&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.table&#39;, index=0,
+<span class='lineno'> 211</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 212</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 213</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 214</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 215</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 216</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 217</span>       name=&#39;output&#39;, full_name=&#39;tensorflow.tpu.TPUEmbeddingOutputLayout.output&#39;, index=1,
+<span class='lineno'> 218</span>       number=2, type=11, cpp_type=10, label=3,
+<span class='lineno'> 219</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 220</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 221</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 222</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 223</span>   ],
+<span class='lineno'> 224</span>   extensions=[
+<span class='lineno'> 225</span>   ],
+<span class='lineno'> 226</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>, ],
+<span class='lineno'> 227</span>   enum_types=[
+<span class='lineno'> 228</span>   ],
+<span class='lineno'> 229</span>   serialized_options=None,
+<span class='lineno'> 230</span>   is_extendable=False,
+<span class='lineno'> 231</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 232</span>   extension_ranges=[],
+<span class='lineno'> 233</span>   oneofs=[
+<span class='lineno'> 234</span>   ],
+<span class='lineno'> 235</span>   serialized_start=83,
+<span class='lineno'> 236</span>   serialized_end=730,
+<span class='lineno'> 237</span> )
+<span class='lineno'> 238</span> 
+<span class='lineno'> 239</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 240</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a>.fields_by_name[&#39;output_location&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a>
+<span class='lineno'> 241</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 242</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a>.fields_by_name[&#39;feature&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a>
+<span class='lineno'> 243</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 244</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 245</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.fields_by_name[&#39;two_d&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a>
+<span class='lineno'> 246</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 247</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.oneofs_by_name[&#39;output_format&#39;].fields.append(
+<span class='lineno'> 248</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.fields_by_name[&#39;two_d&#39;])
+<span class='lineno'> 249</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.fields_by_name[&#39;two_d&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>.oneofs_by_name[&#39;output_format&#39;]
+<span class='lineno'> 250</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>.fields_by_name[&#39;table&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a>
+<span class='lineno'> 251</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>.fields_by_name[&#39;output&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>
+<span class='lineno'> 252</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TPUEmbeddingOutputLayout&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>
+<span class='lineno'> 253</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 254</span> 
+<span class='lineno'> 255</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a> = _reflection.GeneratedProtocolMessageType(&#39;TPUEmbeddingOutputLayout&#39;, (_message.Message,), dict(
+<span class='lineno'> 256</span> 
+<span class='lineno'> 257</span>   OutputLocation = _reflection.GeneratedProtocolMessageType(&#39;OutputLocation&#39;, (_message.Message,), dict(
+<span class='lineno'> 258</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_OUTPUTLOCATION</a>,
+<span class='lineno'> 259</span>     __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 260</span>     # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout.OutputLocation)
+<span class='lineno'> 261</span>     ))
+<span class='lineno'> 262</span>   ,
+<span class='lineno'> 263</span> 
+<span class='lineno'> 264</span>   FeatureDescriptor = _reflection.GeneratedProtocolMessageType(&#39;FeatureDescriptor&#39;, (_message.Message,), dict(
+<span class='lineno'> 265</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_FEATUREDESCRIPTOR</a>,
+<span class='lineno'> 266</span>     __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 267</span>     # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout.FeatureDescriptor)
+<span class='lineno'> 268</span>     ))
+<span class='lineno'> 269</span>   ,
+<span class='lineno'> 270</span> 
+<span class='lineno'> 271</span>   TableDescriptor = _reflection.GeneratedProtocolMessageType(&#39;TableDescriptor&#39;, (_message.Message,), dict(
+<span class='lineno'> 272</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TABLEDESCRIPTOR</a>,
+<span class='lineno'> 273</span>     __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 274</span>     # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout.TableDescriptor)
+<span class='lineno'> 275</span>     ))
+<span class='lineno'> 276</span>   ,
+<span class='lineno'> 277</span> 
+<span class='lineno'> 278</span>   TwoDOutputTensor = _reflection.GeneratedProtocolMessageType(&#39;TwoDOutputTensor&#39;, (_message.Message,), dict(
+<span class='lineno'> 279</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_TWODOUTPUTTENSOR</a>,
+<span class='lineno'> 280</span>     __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 281</span>     # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout.TwoDOutputTensor)
+<span class='lineno'> 282</span>     ))
+<span class='lineno'> 283</span>   ,
+<span class='lineno'> 284</span> 
+<span class='lineno'> 285</span>   EmbeddingOutputTensor = _reflection.GeneratedProtocolMessageType(&#39;EmbeddingOutputTensor&#39;, (_message.Message,), dict(
+<span class='lineno'> 286</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT_EMBEDDINGOUTPUTTENSOR</a>,
+<span class='lineno'> 287</span>     __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 288</span>     # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout.EmbeddingOutputTensor)
+<span class='lineno'> 289</span>     ))
+<span class='lineno'> 290</span>   ,
+<span class='lineno'> 291</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._TPUEMBEDDINGOUTPUTLAYOUT', title='?'>_TPUEMBEDDINGOUTPUTLAYOUT</a>,
+<span class='lineno'> 292</span>   __module__ = &#39;tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2&#39;
+<span class='lineno'> 293</span>   # @@protoc_insertion_point(class_scope:tensorflow.tpu.TPUEmbeddingOutputLayout)
+<span class='lineno'> 294</span>   ))
+<span class='lineno'> 295</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>)
+<span class='lineno'> 296</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>.OutputLocation)
+<span class='lineno'> 297</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>.FeatureDescriptor)
+<span class='lineno'> 298</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>.TableDescriptor)
+<span class='lineno'> 299</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>.TwoDOutputTensor)
+<span class='lineno'> 300</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tpu.proto.tpu_embedding_output_layout_pb2.TPUEmbeddingOutputLayout', title='?'>TPUEmbeddingOutputLayout</a>.EmbeddingOutputTensor)
+<span class='lineno'> 301</span> 
+<span class='lineno'> 302</span> 
+<span class='lineno'> 303</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

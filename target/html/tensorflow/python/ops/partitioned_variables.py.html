@@ -1,0 +1,384 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/ops/partitioned_variables.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.__all__'>__all__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner'>variable_axis_size_partitioner</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner'>min_max_variable_partitioner</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner'>fixed_size_partitioner</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables'>create_partitioned_variables</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Helper functions for creating partitioned variables.
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> This is a convenient abstraction to partition a large variable across
+<span class='lineno'>  19</span> multiple smaller variables that can be assigned to different devices.
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> The full variable can be reconstructed by concatenating the smaller variables.
+<span class='lineno'>  22</span> Using partitioned variables instead of a single variable is mostly a
+<span class='lineno'>  23</span> performance choice.  It however also has an impact on:
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 1. Random initialization, as the random number generator is called once per
+<span class='lineno'>  26</span>    slice
+<span class='lineno'>  27</span> 2. Updates, as they happen in parallel across slices
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> A key design goal is to allow a different graph to repartition a variable
+<span class='lineno'>  30</span> with the same name but different slicings, including possibly no partitions.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> TODO(touts): If an initializer provides a seed, the seed must be changed
+<span class='lineno'>  33</span> deterministically for each slice, maybe by adding one to it, otherwise each
+<span class='lineno'>  34</span> slice will use the same values.  Maybe this can be done by passing the
+<span class='lineno'>  35</span> slice offsets to the initializer functions.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> Typical usage:
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> ```python
+<span class='lineno'>  40</span> # Create a list of partitioned variables with:
+<span class='lineno'>  41</span> vs = create_partitioned_variables(
+<span class='lineno'>  42</span>     &lt;shape&gt;, &lt;slicing&gt;, &lt;initializer&gt;, name=&lt;optional-name&gt;)
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span> # Pass the list as inputs to embedding_lookup for sharded, parallel lookup:
+<span class='lineno'>  45</span> y = embedding_lookup(vs, ids, partition_strategy=&quot;div&quot;)
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span> # Or fetch the variables in parallel to speed up large matmuls:
+<span class='lineno'>  48</span> z = matmul(x, concat(slice_dim, vs))
+<span class='lineno'>  49</span> ```
+<span class='lineno'>  50</span> &quot;&quot;&quot;
+<span class='lineno'>  51</span> from __future__ import absolute_import
+<span class='lineno'>  52</span> from __future__ import division
+<span class='lineno'>  53</span> from __future__ import print_function
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span> import math
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>
+<span class='lineno'>  58</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', title='tensor_shape'>tensor_shape</a>
+<span class='lineno'>  59</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', title='variable_scope'>variable_scope</a>
+<span class='lineno'>  60</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import tf_logging as <a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', title='tf_logging'>logging</a>
+<span class='lineno'>  61</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.__all__', title='[str]'>__all__</a> = [
+<span class='lineno'>  64</span>     &quot;create_partitioned_variables&quot;,
+<span class='lineno'>  65</span>     &quot;variable_axis_size_partitioner&quot;,
+<span class='lineno'>  66</span>     &quot;min_max_variable_partitioner&quot;,
+<span class='lineno'>  67</span>     &quot;fixed_size_partitioner&quot;,
+<span class='lineno'>  68</span> ]
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span> @tf_export(&quot;variable_axis_size_partitioner&quot;)
+<span class='lineno'>  72</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner', title='(?, int, int, None) -> (?, ?) -> [int]'>variable_axis_size_partitioner</a>(
+<span class='lineno'>  73</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', title='?'>max_shard_bytes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', title='int'>axis</a>=0, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', title='int'>bytes_per_string_element</a>=16, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', title='None'>max_shards</a>=None):
+<span class='lineno'>  74</span>   &quot;&quot;&quot;Get a partitioner for VariableScope to keep shards below `max_shard_bytes`.
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span>   This partitioner will shard a Variable along one axis, attempting to keep
+<span class='lineno'>  77</span>   the maximum shard size below `max_shard_bytes`.  In practice, this is not
+<span class='lineno'>  78</span>   always possible when sharding along only one axis.  When this happens,
+<span class='lineno'>  79</span>   this axis is sharded as much as possible (i.e., every dimension becomes
+<span class='lineno'>  80</span>   a separate shard).
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>   If the partitioner hits the `max_shards` limit, then each shard may end up
+<span class='lineno'>  83</span>   larger than `max_shard_bytes`. By default `max_shards` equals `None` and no
+<span class='lineno'>  84</span>   limit on the number of shards is enforced.
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span>   One reasonable value for `max_shard_bytes` is `(64 &lt;&lt; 20) - 1`, or almost
+<span class='lineno'>  87</span>   `64MB`, to keep below the protobuf byte limit.
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span>   Args:
+<span class='lineno'>  90</span>     max_shard_bytes: The maximum size any given shard is allowed to be.
+<span class='lineno'>  91</span>     axis: The axis to partition along.  Default: outermost axis.
+<span class='lineno'>  92</span>     bytes_per_string_element: If the `Variable` is of type string, this provides
+<span class='lineno'>  93</span>       an estimate of how large each scalar in the `Variable` is.
+<span class='lineno'>  94</span>     max_shards: The maximum number of shards in int created taking precedence
+<span class='lineno'>  95</span>       over `max_shard_bytes`.
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>   Returns:
+<span class='lineno'>  98</span>     A partition function usable as the `partitioner` argument to
+<span class='lineno'>  99</span>     `variable_scope`, `get_variable`, and `get_partitioned_variable_list`.
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   Raises:
+<span class='lineno'> 102</span>     ValueError: If any of the byte counts are non-positive.
+<span class='lineno'> 103</span>   &quot;&quot;&quot;
+<span class='lineno'> 104</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', title='?'>max_shard_bytes</a> &lt; 1 or <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', title='int'>bytes_per_string_element</a> &lt; 1:
+<span class='lineno'> 105</span>     raise ValueError(
+<span class='lineno'> 106</span>         &quot;Both max_shard_bytes and bytes_per_string_element must be positive.&quot;)
+<span class='lineno'> 107</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', title='None'>max_shards</a> and <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', title='None'>max_shards</a> &lt; 1:
+<span class='lineno'> 108</span>     raise ValueError(
+<span class='lineno'> 109</span>         &quot;max_shards must be positive.&quot;)
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner', title='(?, ?) -> [int]'>_partitioner</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', title='?'>dtype</a>):
+<span class='lineno'> 112</span>     &quot;&quot;&quot;Partitioner that partitions shards to have max_shard_bytes total size.
+<span class='lineno'> 113</span> 
+<span class='lineno'> 114</span>     Args:
+<span class='lineno'> 115</span>       shape: A `TensorShape`.
+<span class='lineno'> 116</span>       dtype: A `DType`.
+<span class='lineno'> 117</span> 
+<span class='lineno'> 118</span>     Returns:
+<span class='lineno'> 119</span>       A tuple representing how much to slice each axis in shape.
+<span class='lineno'> 120</span> 
+<span class='lineno'> 121</span>     Raises:
+<span class='lineno'> 122</span>       ValueError: If shape is not a fully defined `TensorShape` or dtype is not
+<span class='lineno'> 123</span>         a `DType`.
+<span class='lineno'> 124</span>     &quot;&quot;&quot;
+<span class='lineno'> 125</span>     if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>, <a href='../framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape', title='tensor_shape'>tensor_shape</a>.<a href='../framework/tensor_shape.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape.TensorShape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.tensor_shape.TensorShape', title='<TensorShape>'>TensorShape</a>):
+<span class='lineno'> 126</span>       raise ValueError(&quot;shape is not a TensorShape: %s&quot; % shape)
+<span class='lineno'> 127</span>     if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>.is_fully_defined():
+<span class='lineno'> 128</span>       raise ValueError(&quot;shape is not fully defined: %s&quot; % shape)
+<span class='lineno'> 129</span>     if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', title='?'>dtype</a>, <a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.DType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.DType', title='<DType>'>DType</a>):
+<span class='lineno'> 130</span>       raise ValueError(&quot;dtype is not a DType: %s&quot; % dtype)
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', title='?'>dtype</a>.base_dtype == <a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', title='DType'>string</a>:
+<span class='lineno'> 133</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', title='int'>element_size</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.bytes_per_string_element', title='int'>bytes_per_string_element</a>
+<span class='lineno'> 134</span>     else:
+<span class='lineno'> 135</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', title='?'>element_size</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.dtype', title='?'>dtype</a>.size
+<span class='lineno'> 136</span> 
+<span class='lineno'> 137</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', title='[int]'>partitions</a> = [1] * <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>.ndims
+<span class='lineno'> 138</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.bytes_per_slice', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.bytes_per_slice', title='float'>bytes_per_slice</a> = 1.0 * (
+<span class='lineno'> 139</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>.num_elements() / <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', title='int'>axis</a>].value) * <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.element_size', title='int'>element_size</a>
+<span class='lineno'> 140</span>     # How many slices can we fit on one shard of size at most max_shard_bytes?
+<span class='lineno'> 141</span>     # At least one slice is required.
+<span class='lineno'> 142</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.slices_per_shard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.slices_per_shard', title='int'>slices_per_shard</a> = max(1, math.floor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shard_bytes', title='?'>max_shard_bytes</a> / <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.bytes_per_slice', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.bytes_per_slice', title='float'>bytes_per_slice</a>))
+<span class='lineno'> 143</span>     # How many shards do we need for axis given that each shard fits
+<span class='lineno'> 144</span>     # slices_per_shard slices from a total of shape[axis].value slices?
+<span class='lineno'> 145</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', title='int'>axis_shards</a> = int(math.ceil(1.0 * <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.shape', title='?'>shape</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', title='int'>axis</a>].value / <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.slices_per_shard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.slices_per_shard', title='int'>slices_per_shard</a>))
+<span class='lineno'> 146</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', title='None'>max_shards</a>:
+<span class='lineno'> 147</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', title='int'>axis_shards</a> = min(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.max_shards', title='None'>max_shards</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', title='int'>axis_shards</a>)
+<span class='lineno'> 148</span> 
+<span class='lineno'> 149</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', title='[int]'>partitions</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner.axis', title='int'>axis</a>] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.axis_shards', title='int'>axis_shards</a>
+<span class='lineno'> 150</span> 
+<span class='lineno'> 151</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner.partitions', title='[int]'>partitions</a>
+<span class='lineno'> 152</span> 
+<span class='lineno'> 153</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.variable_axis_size_partitioner._partitioner', title='(?, ?) -> [int]'>_partitioner</a>
+<span class='lineno'> 154</span> 
+<span class='lineno'> 155</span> 
+<span class='lineno'> 156</span> @tf_export(&quot;min_max_variable_partitioner&quot;)
+<span class='lineno'> 157</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner', title='(int, int, int, int) -> (?, ?) -> None'>min_max_variable_partitioner</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.max_partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.max_partitions', title='int'>max_partitions</a>=1, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', title='int'>axis</a>=0,
+<span class='lineno'> 158</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.min_slice_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.min_slice_size', title='int'>min_slice_size</a>=256 &lt;&lt; 10,
+<span class='lineno'> 159</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.bytes_per_string_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.bytes_per_string_element', title='int'>bytes_per_string_element</a>=16):
+<span class='lineno'> 160</span>   &quot;&quot;&quot;Partitioner to allocate minimum size per slice.
+<span class='lineno'> 161</span> 
+<span class='lineno'> 162</span>   Returns a partitioner that partitions the variable of given shape and dtype
+<span class='lineno'> 163</span>   such that each partition has a minimum of `min_slice_size` slice of the
+<span class='lineno'> 164</span>   variable. The maximum number of such partitions (upper bound) is given by
+<span class='lineno'> 165</span>   `max_partitions`.
+<span class='lineno'> 166</span> 
+<span class='lineno'> 167</span>   Args:
+<span class='lineno'> 168</span>     max_partitions: Upper bound on the number of partitions. Defaults to 1.
+<span class='lineno'> 169</span>     axis: Axis along which to partition the variable. Defaults to 0.
+<span class='lineno'> 170</span>     min_slice_size: Minimum size of the variable slice per partition. Defaults
+<span class='lineno'> 171</span>       to 256K.
+<span class='lineno'> 172</span>     bytes_per_string_element: If the `Variable` is of type string, this provides
+<span class='lineno'> 173</span>       an estimate of how large each scalar in the `Variable` is.
+<span class='lineno'> 174</span> 
+<span class='lineno'> 175</span>   Returns:
+<span class='lineno'> 176</span>     A partition function usable as the `partitioner` argument to
+<span class='lineno'> 177</span>     `variable_scope`, `get_variable`, and `get_partitioned_variable_list`.
+<span class='lineno'> 178</span> 
+<span class='lineno'> 179</span>   &quot;&quot;&quot;
+<span class='lineno'> 180</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner', title='(?, ?) -> None'>_partitioner</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', title='?'>shape</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', title='?'>dtype</a>):
+<span class='lineno'> 181</span>     &quot;&quot;&quot;Partitioner that partitions list for a variable of given shape and type.
+<span class='lineno'> 182</span> 
+<span class='lineno'> 183</span>     Ex: Consider partitioning a variable of type float32 with
+<span class='lineno'> 184</span>       shape=[1024, 1024].
+<span class='lineno'> 185</span>       If `max_partitions` &gt;= 16, this function would return
+<span class='lineno'> 186</span>         [(1024 * 1024 * 4) / (256 * 1024), 1] = [16, 1].
+<span class='lineno'> 187</span>       If `max_partitions` &lt; 16, this function would return
+<span class='lineno'> 188</span>         [`max_partitions`, 1].
+<span class='lineno'> 189</span> 
+<span class='lineno'> 190</span>     Args:
+<span class='lineno'> 191</span>       shape: Shape of the variable.
+<span class='lineno'> 192</span>       dtype: Type of the variable.
+<span class='lineno'> 193</span> 
+<span class='lineno'> 194</span>     Returns:
+<span class='lineno'> 195</span>       List of partitions for each axis (currently only one axis can be
+<span class='lineno'> 196</span>       partitioned).
+<span class='lineno'> 197</span> 
+<span class='lineno'> 198</span>     Raises:
+<span class='lineno'> 199</span>       ValueError: If axis to partition along does not exist for the variable.
+<span class='lineno'> 200</span>     &quot;&quot;&quot;
+<span class='lineno'> 201</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', title='int'>axis</a> &gt;= len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', title='?'>shape</a>):
+<span class='lineno'> 202</span>       raise ValueError(&quot;Can not partition variable along axis %d when shape is &quot;
+<span class='lineno'> 203</span>                        &quot;only %s&quot; % (axis, shape))
+<span class='lineno'> 204</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', title='?'>dtype</a>.base_dtype == <a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.string', title='DType'>string</a>:
+<span class='lineno'> 205</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', title='int'>bytes_per_element</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.bytes_per_string_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.bytes_per_string_element', title='int'>bytes_per_string_element</a>
+<span class='lineno'> 206</span>     else:
+<span class='lineno'> 207</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', title='?'>bytes_per_element</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.dtype', title='?'>dtype</a>.size
+<span class='lineno'> 208</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.total_size_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.total_size_bytes', title='int'>total_size_bytes</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', title='?'>shape</a>.num_elements() * <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.bytes_per_element', title='int'>bytes_per_element</a>
+<span class='lineno'> 209</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions', title='int'>partitions</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.total_size_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.total_size_bytes', title='int'>total_size_bytes</a> / <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.min_slice_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.min_slice_size', title='int'>min_slice_size</a>
+<span class='lineno'> 210</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', title='?'>partitions_list</a> = [1] * len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', title='?'>shape</a>)
+<span class='lineno'> 211</span>     # We can not partition the variable beyond what its shape or
+<span class='lineno'> 212</span>     # `max_partitions` allows.
+<span class='lineno'> 213</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', title='?'>partitions_list</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', title='int'>axis</a>] = max(1, min(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.shape', title='?'>shape</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.axis', title='int'>axis</a>].value,
+<span class='lineno'> 214</span>                                        <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.max_partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner.max_partitions', title='int'>max_partitions</a>,
+<span class='lineno'> 215</span>                                        int(math.ceil(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions', title='int'>partitions</a>))))
+<span class='lineno'> 216</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner.partitions_list', title='?'>partitions_list</a>
+<span class='lineno'> 217</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.min_max_variable_partitioner._partitioner', title='(?, ?) -> None'>_partitioner</a>
+<span class='lineno'> 218</span> 
+<span class='lineno'> 219</span> 
+<span class='lineno'> 220</span> @tf_export(&quot;fixed_size_partitioner&quot;)
+<span class='lineno'> 221</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner', title='(None, int) -> ? -> ? / (?, int) -> ? -> None'>fixed_size_partitioner</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.num_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.num_shards', title='None'>num_shards</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', title='int'>axis</a>=0):
+<span class='lineno'> 222</span>   &quot;&quot;&quot;Partitioner to specify a fixed number of shards along given axis.
+<span class='lineno'> 223</span> 
+<span class='lineno'> 224</span>   Args:
+<span class='lineno'> 225</span>     num_shards: `int`, number of shards to partition variable.
+<span class='lineno'> 226</span>     axis: `int`, axis to partition on.
+<span class='lineno'> 227</span> 
+<span class='lineno'> 228</span>   Returns:
+<span class='lineno'> 229</span>     A partition function usable as the `partitioner` argument to
+<span class='lineno'> 230</span>     `variable_scope`, `get_variable`, and `get_partitioned_variable_list`.
+<span class='lineno'> 231</span>   &quot;&quot;&quot;
+<span class='lineno'> 232</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner', title='? -> None'>_partitioner</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', title='?'>shape</a>, **unused_args):
+<span class='lineno'> 233</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', title='?'>partitions_list</a> = [1] * len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', title='?'>shape</a>)
+<span class='lineno'> 234</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', title='?'>partitions_list</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', title='int'>axis</a>] = min(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.num_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.num_shards', title='?'>num_shards</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.shape', title='?'>shape</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner.axis', title='int'>axis</a>].value)
+<span class='lineno'> 235</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner.partitions_list', title='?'>partitions_list</a>
+<span class='lineno'> 236</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.fixed_size_partitioner._partitioner', title='? -> None'>_partitioner</a>
+<span class='lineno'> 237</span> 
+<span class='lineno'> 238</span> 
+<span class='lineno'> 239</span> @tf_export(&quot;create_partitioned_variables&quot;)
+<span class='lineno'> 240</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables', title='(?, ?, ?, DType, bool, None, None, None) -> list'>create_partitioned_variables</a>(
+<span class='lineno'> 241</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', title='?'>shape</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', title='?'>slicing</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.initializer', title='?'>initializer</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.dtype', title='DType'>dtype</a>=<a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>,
+<span class='lineno'> 242</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.trainable', title='bool'>trainable</a>=True, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.collections', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.collections', title='None'>collections</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.name', title='None'>name</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.reuse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.reuse', title='None'>reuse</a>=None):
+<span class='lineno'> 243</span>   &quot;&quot;&quot;Create a list of partitioned variables according to the given `slicing`.
+<span class='lineno'> 244</span> 
+<span class='lineno'> 245</span>   Currently only one dimension of the full variable can be sliced, and the
+<span class='lineno'> 246</span>   full variable can be reconstructed by the concatenation of the returned
+<span class='lineno'> 247</span>   list along that dimension.
+<span class='lineno'> 248</span> 
+<span class='lineno'> 249</span>   Args:
+<span class='lineno'> 250</span>     shape: List of integers.  The shape of the full variable.
+<span class='lineno'> 251</span>     slicing: List of integers.  How to partition the variable.
+<span class='lineno'> 252</span>       Must be of the same length as `shape`.  Each value
+<span class='lineno'> 253</span>       indicate how many slices to create in the corresponding
+<span class='lineno'> 254</span>       dimension.  Presently only one of the values can be more than 1;
+<span class='lineno'> 255</span>       that is, the variable can only be sliced along one dimension.
+<span class='lineno'> 256</span> 
+<span class='lineno'> 257</span>       For convenience, The requested number of partitions does not have to
+<span class='lineno'> 258</span>       divide the corresponding dimension evenly.  If it does not, the
+<span class='lineno'> 259</span>       shapes of the partitions are incremented by 1 starting from partition
+<span class='lineno'> 260</span>       0 until all slack is absorbed.  The adjustment rules may change in the
+<span class='lineno'> 261</span>       future, but as you can save/restore these variables with different
+<span class='lineno'> 262</span>       slicing specifications this should not be a problem.
+<span class='lineno'> 263</span>     initializer: A `Tensor` of shape `shape` or a variable initializer
+<span class='lineno'> 264</span>       function.  If a function, it will be called once for each slice,
+<span class='lineno'> 265</span>       passing the shape and data type of the slice as parameters.  The
+<span class='lineno'> 266</span>       function must return a tensor with the same shape as the slice.
+<span class='lineno'> 267</span>     dtype: Type of the variables. Ignored if `initializer` is a `Tensor`.
+<span class='lineno'> 268</span>     trainable: If True also add all the variables to the graph collection
+<span class='lineno'> 269</span>       `GraphKeys.TRAINABLE_VARIABLES`.
+<span class='lineno'> 270</span>     collections: List of graph collections keys to add the variables to.
+<span class='lineno'> 271</span>       Defaults to `[GraphKeys.GLOBAL_VARIABLES]`.
+<span class='lineno'> 272</span>     name: Optional name for the full variable.  Defaults to
+<span class='lineno'> 273</span>       `&quot;PartitionedVariable&quot;` and gets uniquified automatically.
+<span class='lineno'> 274</span>     reuse: Boolean or `None`; if `True` and name is set, it would reuse
+<span class='lineno'> 275</span>       previously created variables. if `False` it will create new variables.
+<span class='lineno'> 276</span>       if `None`, it would inherit the parent scope reuse.
+<span class='lineno'> 277</span> 
+<span class='lineno'> 278</span>   Returns:
+<span class='lineno'> 279</span>     A list of Variables corresponding to the slicing.
+<span class='lineno'> 280</span> 
+<span class='lineno'> 281</span>   Raises:
+<span class='lineno'> 282</span>     ValueError: If any of the arguments is malformed.
+<span class='lineno'> 283</span>   &quot;&quot;&quot;
+<span class='lineno'> 284</span>   <a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', title='tf_logging'>logging</a>.<a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging.warn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging.warn', title='? -> None / str -> None'>warn</a>(
+<span class='lineno'> 285</span>       &quot;create_partitioned_variables is deprecated.  Use &quot;
+<span class='lineno'> 286</span>       &quot;tf.get_variable with a partitioner set, or &quot;
+<span class='lineno'> 287</span>       &quot;tf.get_partitioned_variable_list, instead.&quot;)
+<span class='lineno'> 288</span> 
+<span class='lineno'> 289</span>   if len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', title='?'>shape</a>) != len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', title='?'>slicing</a>):
+<span class='lineno'> 290</span>     raise ValueError(&quot;The &#39;shape&#39; and &#39;slicing&#39; of a partitioned Variable &quot;
+<span class='lineno'> 291</span>                      &quot;must have the length: shape: %s, slicing: %s&quot; %
+<span class='lineno'> 292</span>                      (shape, slicing))
+<span class='lineno'> 293</span>   if len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', title='?'>shape</a>) &lt; 1:
+<span class='lineno'> 294</span>     raise ValueError(&quot;A partitioned Variable must have rank at least 1: &quot;
+<span class='lineno'> 295</span>                      &quot;shape: %s&quot; % shape)
+<span class='lineno'> 296</span> 
+<span class='lineno'> 297</span>   # Legacy: we are provided the slicing directly, so just pass it to
+<span class='lineno'> 298</span>   # the partitioner.
+<span class='lineno'> 299</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioner', title='() -> ?'>partitioner</a> = lambda **unused_kwargs: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.slicing', title='?'>slicing</a>
+<span class='lineno'> 300</span> 
+<span class='lineno'> 301</span>   with <a href='variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', title='variable_scope'>variable_scope</a>.<a href='variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope.variable_scope', title='<variable_scope>'>variable_scope</a>(
+<span class='lineno'> 302</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.name', title='None'>name</a>, &quot;PartitionedVariable&quot;, reuse=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.reuse', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.reuse', title='None'>reuse</a>):
+<span class='lineno'> 303</span>     # pylint: disable=protected-access
+<span class='lineno'> 304</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioned_var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioned_var', title='PartitionedVariable'>partitioned_var</a> = <a href='variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope', title='variable_scope'>variable_scope</a>.<a href='variable_scope.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope._get_partitioned_variable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variable_scope._get_partitioned_variable', title='(?, None, None, None, None, bool, None, None, None, bool, None, None) -> PartitionedVariable / (None, None, None, None, None, bool, None, None, None, bool, None, None) -> PartitionedVariable'>_get_partitioned_variable</a>(
+<span class='lineno'> 305</span>         name=None,
+<span class='lineno'> 306</span>         shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.shape', title='?'>shape</a>,
+<span class='lineno'> 307</span>         dtype=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.dtype', title='DType'>dtype</a>,
+<span class='lineno'> 308</span>         initializer=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.initializer', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.initializer', title='?'>initializer</a>,
+<span class='lineno'> 309</span>         trainable=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.trainable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.trainable', title='bool'>trainable</a>,
+<span class='lineno'> 310</span>         partitioner=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioner', title='() -> ?'>partitioner</a>,
+<span class='lineno'> 311</span>         collections=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.collections', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.collections', title='None'>collections</a>)
+<span class='lineno'> 312</span>     return list(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioned_var', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.partitioned_variables.create_partitioned_variables.partitioned_var', title='PartitionedVariable'>partitioned_var</a>)
+<span class='lineno'> 313</span>     # pylint: enable=protected-access
+</pre></td></tr></table></body></html>

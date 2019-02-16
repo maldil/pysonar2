@@ -1,0 +1,189 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/datasets/__init__.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_iris', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_iris'>load_iris</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_boston', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_boston'>load_boston</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS'>DATASETS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC'>SYNTHETIC</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset'>load_dataset</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset'>make_dataset</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Dataset utilities and synthetic/reference datasets (deprecated).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import csv
+<span class='lineno'>  27</span> from os import path
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> import numpy as np
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', title='learn'>learn</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', title='learn'>learn</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', title='datasets'>datasets</a> import <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', title='base'>base</a>
+<span class='lineno'>  32</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', title='learn'>learn</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', title='learn'>learn</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', title='datasets'>datasets</a> import <a href='mnist.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist', title='mnist'>mnist</a>
+<span class='lineno'>  33</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', title='learn'>learn</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', title='learn'>learn</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', title='datasets'>datasets</a> import <a href='synthetic.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', title='synthetic'>synthetic</a>
+<span class='lineno'>  34</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn', title='learn'>learn</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn', title='learn'>learn</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets', title='datasets'>datasets</a> import <a href='text_datasets.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets', title='text_datasets'>text_datasets</a>
+<span class='lineno'>  35</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a> import <a href='../../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', title='(str, str, bool) -> ? -> ? / (None, str, bool) -> (SparseTensor, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, ?, DType, None) -> ? -> ? -> ? / (None, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (None, int, DType, None) -> ? / (Categorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (OneHotCategorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (?, ?, DType, None) -> ? -> () -> None'>deprecated</a>
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> # Export load_iris and load_boston.
+<span class='lineno'>  38</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_iris', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_iris', title='str -> (namedtuple) / None -> (namedtuple)'>load_iris</a> = <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_iris', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_iris', title='str -> (namedtuple) / None -> (namedtuple)'>load_iris</a>
+<span class='lineno'>  39</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_boston', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_boston', title='str -> (namedtuple) / None -> (namedtuple)'>load_boston</a> = <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_boston', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_boston', title='str -> (namedtuple) / None -> (namedtuple)'>load_boston</a>
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span> # List of all available datasets.
+<span class='lineno'>  42</span> # Note, currently they may return different types.
+<span class='lineno'>  43</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', title='dict'>DATASETS</a> = {
+<span class='lineno'>  44</span>     # Returns base.Dataset.
+<span class='lineno'>  45</span>     &#39;iris&#39;: <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_iris', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_iris', title='str -> (namedtuple) / None -> (namedtuple)'>load_iris</a>,
+<span class='lineno'>  46</span>     &#39;boston&#39;: <a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base', title='base'>base</a>.<a href='base.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_boston', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.base.load_boston', title='str -> (namedtuple) / None -> (namedtuple)'>load_boston</a>,
+<span class='lineno'>  47</span>     # Returns base.Datasets (train/validation/test sets).
+<span class='lineno'>  48</span>     &#39;mnist&#39;: <a href='mnist.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist', title='mnist'>mnist</a>.<a href='mnist.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist.load_mnist', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.mnist.load_mnist', title='str -> (namedtuple)'>load_mnist</a>,
+<span class='lineno'>  49</span>     &#39;dbpedia&#39;: <a href='text_datasets.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets', title='text_datasets'>text_datasets</a>.<a href='text_datasets.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets.load_dbpedia', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.text_datasets.load_dbpedia', title='(str, bool) -> (namedtuple)'>load_dbpedia</a>,
+<span class='lineno'>  50</span> }
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span> # List of all synthetic datasets
+<span class='lineno'>  53</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', title='dict'>SYNTHETIC</a> = {
+<span class='lineno'>  54</span>     # All of these will return [&#39;data&#39;, &#39;target&#39;] -&gt; base.Dataset
+<span class='lineno'>  55</span>     &#39;circles&#39;: <a href='synthetic.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', title='synthetic'>synthetic</a>.<a href='synthetic.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic.circles', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic.circles', title='(int, None, None, float, int) -> (namedtuple)'>circles</a>,
+<span class='lineno'>  56</span>     &#39;spirals&#39;: <a href='synthetic.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic', title='synthetic'>synthetic</a>.<a href='synthetic.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic.spirals', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.synthetic.spirals', title='(int, None, None, str, int) -> (namedtuple)'>spirals</a>
+<span class='lineno'>  57</span> }
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> @deprecated(None, &#39;Please use tf.data.&#39;)
+<span class='lineno'>  61</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset', title='(?, str, bool) -> (namedtuple)'>load_dataset</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', title='?'>name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.size', title='str'>size</a>=&#39;small&#39;, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.test_with_fake_data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.test_with_fake_data', title='bool'>test_with_fake_data</a>=False):
+<span class='lineno'>  62</span>   &quot;&quot;&quot;Loads dataset by name.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   Args:
+<span class='lineno'>  65</span>     name: Name of the dataset to load.
+<span class='lineno'>  66</span>     size: Size of the dataset to load.
+<span class='lineno'>  67</span>     test_with_fake_data: If true, load with fake dataset.
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   Returns:
+<span class='lineno'>  70</span>     Features and labels for given dataset. Can be numpy or iterator.
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>   Raises:
+<span class='lineno'>  73</span>     ValueError: if `name` is not found.
+<span class='lineno'>  74</span>   &quot;&quot;&quot;
+<span class='lineno'>  75</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', title='?'>name</a> not in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', title='dict'>DATASETS</a>:
+<span class='lineno'>  76</span>     raise ValueError(&#39;Name of dataset is not found: %s&#39; % name)
+<span class='lineno'>  77</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', title='?'>name</a> == &#39;dbpedia&#39;:
+<span class='lineno'>  78</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', title='dict'>DATASETS</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', title='?'>name</a>](<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.size', title='str'>size</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.test_with_fake_data', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.test_with_fake_data', title='bool'>test_with_fake_data</a>)
+<span class='lineno'>  79</span>   else:
+<span class='lineno'>  80</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.DATASETS', title='dict'>DATASETS</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.load_dataset.name', title='?'>name</a>]()
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span> @deprecated(None, &#39;Please use tf.data.&#39;)
+<span class='lineno'>  84</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset', title='(?, int, None, int) -> (namedtuple)'>make_dataset</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', title='?'>name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.n_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.n_samples', title='int'>n_samples</a>=100, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.noise', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.noise', title='None'>noise</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.seed', title='int'>seed</a>=42, *args, **kwargs):
+<span class='lineno'>  85</span>   &quot;&quot;&quot;Creates binary synthetic datasets.
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span>   Args:
+<span class='lineno'>  88</span>     name: str, name of the dataset to generate
+<span class='lineno'>  89</span>     n_samples: int, number of datapoints to generate
+<span class='lineno'>  90</span>     noise: float or None, standard deviation of the Gaussian noise added
+<span class='lineno'>  91</span>     seed: int or None, seed for noise
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>   Returns:
+<span class='lineno'>  94</span>     Shuffled features and labels for given synthetic dataset of type
+<span class='lineno'>  95</span>     `base.Dataset`
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>   Raises:
+<span class='lineno'>  98</span>     ValueError: Raised if `name` not found
+<span class='lineno'>  99</span> 
+<span class='lineno'> 100</span>   Note:
+<span class='lineno'> 101</span>     - This is a generic synthetic data generator - individual generators might
+<span class='lineno'> 102</span>     have more parameters!
+<span class='lineno'> 103</span>       See documentation for individual parameters
+<span class='lineno'> 104</span>     - Note that the `noise` parameter uses `numpy.random.normal` and depends on
+<span class='lineno'> 105</span>     `numpy`&#39;s seed
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span>   TODO:
+<span class='lineno'> 108</span>     - Support multiclass datasets
+<span class='lineno'> 109</span>     - Need shuffling routine. Currently synthetic datasets are reshuffled to
+<span class='lineno'> 110</span>     avoid train/test correlation,
+<span class='lineno'> 111</span>       but that hurts reprodusability
+<span class='lineno'> 112</span>   &quot;&quot;&quot;
+<span class='lineno'> 113</span>   # seed = kwargs.pop(&#39;seed&#39;, None)
+<span class='lineno'> 114</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', title='?'>name</a> not in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', title='dict'>SYNTHETIC</a>:
+<span class='lineno'> 115</span>     raise ValueError(&#39;Synthetic dataset not found or not implemeted: %s&#39; % name)
+<span class='lineno'> 116</span>   else:
+<span class='lineno'> 117</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.SYNTHETIC', title='dict'>SYNTHETIC</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.name', title='?'>name</a>](
+<span class='lineno'> 118</span>         n_samples=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.n_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.n_samples', title='int'>n_samples</a>, noise=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.noise', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.noise', title='None'>noise</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.datasets.make_dataset.seed', title='int'>seed</a>, *args, **kwargs)
+</pre></td></tr></table></body></html>

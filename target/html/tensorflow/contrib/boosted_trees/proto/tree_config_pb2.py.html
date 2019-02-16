@@ -1,0 +1,998 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/boosted_trees/proto/tree_config_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE'>_TREENODE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA'>_TREENODEMETADATA</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF'>_LEAF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR'>_VECTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR'>_SPARSEVECTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT'>_DENSEFLOATBINARYSPLIT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT'>_CATEGORICALIDBINARYSPLIT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT'>_CATEGORICALIDSETMEMBERSHIPBINARYSPLIT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT'>_OBLIVIOUSDENSEFLOATBINARYSPLIT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT'>_OBLIVIOUSCATEGORICALIDBINARYSPLIT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG'>_DECISIONTREECONFIG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA'>_DECISIONTREEMETADATA</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA'>_GROWINGMETADATA</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG'>_DECISIONTREEENSEMBLECONFIG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode'>TreeNode</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata'>TreeNodeMetadata</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf'>Leaf</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector'>Vector</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector'>SparseVector</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit'>DenseFloatBinarySplit</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft'>SparseFloatBinarySplitDefaultLeft</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight'>SparseFloatBinarySplitDefaultRight</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit'>CategoricalIdBinarySplit</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit'>CategoricalIdSetMembershipBinarySplit</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit'>ObliviousDenseFloatBinarySplit</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit'>ObliviousCategoricalIdBinarySplit</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig'>DecisionTreeConfig</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata'>DecisionTreeMetadata</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata'>GrowingMetadata</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig'>DecisionTreeEnsembleConfig</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/contrib/boosted_trees/proto/tree_config.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%842.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%842.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%842.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%842.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%843.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%843.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%843.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.lambda%843.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  18</span>   name=&#39;tensorflow/contrib/boosted_trees/proto/tree_config.proto&#39;,
+<span class='lineno'>  19</span>   package=&#39;tensorflow.boosted_trees.trees&#39;,
+<span class='lineno'>  20</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  21</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', title='str -> str'>_b</a>(&#39;\370\001\001&#39;),
+<span class='lineno'>  22</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._b', title='str -> str'>_b</a>(&#39;\n8tensorflow/contrib/boosted_trees/proto/tree_config.proto\x12\x1etensorflow.boosted_trees.trees\&quot;\x99\x07\n\x08TreeNode\x12\x34\n\x04leaf\x18\x01 \x01(\x0b\x32$.tensorflow.boosted_trees.trees.LeafH\x00\x12Y\n\x18\x64\x65nse_float_binary_split\x18\x02 \x01(\x0b\x32\x35.tensorflow.boosted_trees.trees.DenseFloatBinarySplitH\x00\x12s\n&amp;sparse_float_binary_split_default_left\x18\x03 \x01(\x0b\x32\x41.tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultLeftH\x00\x12u\n\&#39;sparse_float_binary_split_default_right\x18\x04 \x01(\x0b\x32\x42.tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultRightH\x00\x12_\n\x1b\x63\x61tegorical_id_binary_split\x18\x05 \x01(\x0b\x32\x38.tensorflow.boosted_trees.trees.CategoricalIdBinarySplitH\x00\x12{\n*categorical_id_set_membership_binary_split\x18\x06 \x01(\x0b\x32\x45.tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplitH\x00\x12l\n\&quot;oblivious_dense_float_binary_split\x18\x07 \x01(\x0b\x32&gt;.tensorflow.boosted_trees.trees.ObliviousDenseFloatBinarySplitH\x00\x12r\n%oblivious_categorical_id_binary_split\x18\x08 \x01(\x0b\x32\x41.tensorflow.boosted_trees.trees.ObliviousCategoricalIdBinarySplitH\x00\x12H\n\rnode_metadata\x18\x89\x06 \x01(\x0b\x32\x30.tensorflow.boosted_trees.trees.TreeNodeMetadataB\x06\n\x04node\&quot;\xa6\x01\n\x10TreeNodeMetadata\x12\x0c\n\x04gain\x18\x01 \x01(\x02\x12;\n\roriginal_leaf\x18\x02 \x01(\x0b\x32$.tensorflow.boosted_trees.trees.Leaf\x12G\n\x19original_oblivious_leaves\x18\x03 \x03(\x0b\x32$.tensorflow.boosted_trees.trees.Leaf\&quot;\x8f\x01\n\x04Leaf\x12\x38\n\x06vector\x18\x01 \x01(\x0b\x32&amp;.tensorflow.boosted_trees.trees.VectorH\x00\x12\x45\n\rsparse_vector\x18\x02 \x01(\x0b\x32,.tensorflow.boosted_trees.trees.SparseVectorH\x00\x42\x06\n\x04leaf\&quot;\x17\n\x06Vector\x12\r\n\x05value\x18\x01 \x03(\x02\&quot;,\n\x0cSparseVector\x12\r\n\x05index\x18\x01 \x03(\x05\x12\r\n\x05value\x18\x02 \x03(\x02\&quot;{\n\x15\x44\x65nseFloatBinarySplit\x12\x16\n\x0e\x66\x65\x61ture_column\x18\x01 \x01(\x05\x12\x14\n\x0c\x64imension_id\x18\x05 \x01(\x05\x12\x11\n\tthreshold\x18\x02 \x01(\x02\x12\x0f\n\x07left_id\x18\x03 \x01(\x05\x12\x10\n\x08right_id\x18\x04 \x01(\x05\&quot;i\n!SparseFloatBinarySplitDefaultLeft\x12\x44\n\x05split\x18\x01 \x01(\x0b\x32\x35.tensorflow.boosted_trees.trees.DenseFloatBinarySplit\&quot;j\n\&quot;SparseFloatBinarySplitDefaultRight\x12\x44\n\x05split\x18\x01 \x01(\x0b\x32\x35.tensorflow.boosted_trees.trees.DenseFloatBinarySplit\&quot;i\n\x18\x43\x61tegoricalIdBinarySplit\x12\x16\n\x0e\x66\x65\x61ture_column\x18\x01 \x01(\x05\x12\x12\n\nfeature_id\x18\x02 \x01(\x03\x12\x0f\n\x07left_id\x18\x03 \x01(\x05\x12\x10\n\x08right_id\x18\x04 \x01(\x05\&quot;w\n%CategoricalIdSetMembershipBinarySplit\x12\x16\n\x0e\x66\x65\x61ture_column\x18\x01 \x01(\x05\x12\x13\n\x0b\x66\x65\x61ture_ids\x18\x02 \x03(\x03\x12\x0f\n\x07left_id\x18\x03 \x01(\x05\x12\x10\n\x08right_id\x18\x04 \x01(\x05\&quot;K\n\x1eObliviousDenseFloatBinarySplit\x12\x16\n\x0e\x66\x65\x61ture_column\x18\x01 \x01(\x05\x12\x11\n\tthreshold\x18\x02 \x01(\x02\&quot;O\n!ObliviousCategoricalIdBinarySplit\x12\x16\n\x0e\x66\x65\x61ture_column\x18\x01 \x01(\x05\x12\x12\n\nfeature_id\x18\x02 \x01(\x03\&quot;M\n\x12\x44\x65\x63isionTreeConfig\x12\x37\n\x05nodes\x18\x01 \x03(\x0b\x32(.tensorflow.boosted_trees.trees.TreeNode\&quot;g\n\x14\x44\x65\x63isionTreeMetadata\x12\x1f\n\x17num_tree_weight_updates\x18\x01 \x01(\x05\x12\x18\n\x10num_layers_grown\x18\x02 \x01(\x05\x12\x14\n\x0cis_finalized\x18\x03 \x01(\x08\&quot;f\n\x0fGrowingMetadata\x12\x1b\n\x13num_trees_attempted\x18\x01 \x01(\x03\x12\x1c\n\x14num_layers_attempted\x18\x02 \x01(\x03\x12\x18\n\x10used_handler_ids\x18\x03 \x03(\x03\&quot;\x8d\x02\n\x1a\x44\x65\x63isionTreeEnsembleConfig\x12\x41\n\x05trees\x18\x01 \x03(\x0b\x32\x32.tensorflow.boosted_trees.trees.DecisionTreeConfig\x12\x14\n\x0ctree_weights\x18\x02 \x03(\x02\x12K\n\rtree_metadata\x18\x03 \x03(\x0b\x32\x34.tensorflow.boosted_trees.trees.DecisionTreeMetadata\x12I\n\x10growing_metadata\x18\x04 \x01(\x0b\x32/.tensorflow.boosted_trees.trees.GrowingMetadataB\x03\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  23</span> )
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a> = _descriptor.Descriptor(
+<span class='lineno'>  29</span>   name=&#39;TreeNode&#39;,
+<span class='lineno'>  30</span>   full_name=&#39;tensorflow.boosted_trees.trees.TreeNode&#39;,
+<span class='lineno'>  31</span>   filename=None,
+<span class='lineno'>  32</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  33</span>   containing_type=None,
+<span class='lineno'>  34</span>   fields=[
+<span class='lineno'>  35</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  36</span>       name=&#39;leaf&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.leaf&#39;, index=0,
+<span class='lineno'>  37</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'>  38</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  39</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  40</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  41</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  42</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  43</span>       name=&#39;dense_float_binary_split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.dense_float_binary_split&#39;, index=1,
+<span class='lineno'>  44</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'>  45</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  46</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  47</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  48</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  49</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  50</span>       name=&#39;sparse_float_binary_split_default_left&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.sparse_float_binary_split_default_left&#39;, index=2,
+<span class='lineno'>  51</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'>  52</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  53</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  54</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  55</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  56</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  57</span>       name=&#39;sparse_float_binary_split_default_right&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.sparse_float_binary_split_default_right&#39;, index=3,
+<span class='lineno'>  58</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'>  59</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  60</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  61</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  62</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  63</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  64</span>       name=&#39;categorical_id_binary_split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.categorical_id_binary_split&#39;, index=4,
+<span class='lineno'>  65</span>       number=5, type=11, cpp_type=10, label=1,
+<span class='lineno'>  66</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  67</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  68</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  69</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  70</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  71</span>       name=&#39;categorical_id_set_membership_binary_split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.categorical_id_set_membership_binary_split&#39;, index=5,
+<span class='lineno'>  72</span>       number=6, type=11, cpp_type=10, label=1,
+<span class='lineno'>  73</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  74</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  75</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  76</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  77</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  78</span>       name=&#39;oblivious_dense_float_binary_split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.oblivious_dense_float_binary_split&#39;, index=6,
+<span class='lineno'>  79</span>       number=7, type=11, cpp_type=10, label=1,
+<span class='lineno'>  80</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  81</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  82</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  83</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  84</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  85</span>       name=&#39;oblivious_categorical_id_binary_split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.oblivious_categorical_id_binary_split&#39;, index=7,
+<span class='lineno'>  86</span>       number=8, type=11, cpp_type=10, label=1,
+<span class='lineno'>  87</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  88</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  89</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  90</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  91</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  92</span>       name=&#39;node_metadata&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.node_metadata&#39;, index=8,
+<span class='lineno'>  93</span>       number=777, type=11, cpp_type=10, label=1,
+<span class='lineno'>  94</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  95</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  96</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  97</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  98</span>   ],
+<span class='lineno'>  99</span>   extensions=[
+<span class='lineno'> 100</span>   ],
+<span class='lineno'> 101</span>   nested_types=[],
+<span class='lineno'> 102</span>   enum_types=[
+<span class='lineno'> 103</span>   ],
+<span class='lineno'> 104</span>   serialized_options=None,
+<span class='lineno'> 105</span>   is_extendable=False,
+<span class='lineno'> 106</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 107</span>   extension_ranges=[],
+<span class='lineno'> 108</span>   oneofs=[
+<span class='lineno'> 109</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 110</span>       name=&#39;node&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNode.node&#39;,
+<span class='lineno'> 111</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 112</span>   ],
+<span class='lineno'> 113</span>   serialized_start=93,
+<span class='lineno'> 114</span>   serialized_end=1014,
+<span class='lineno'> 115</span> )
+<span class='lineno'> 116</span> 
+<span class='lineno'> 117</span> 
+<span class='lineno'> 118</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a> = _descriptor.Descriptor(
+<span class='lineno'> 119</span>   name=&#39;TreeNodeMetadata&#39;,
+<span class='lineno'> 120</span>   full_name=&#39;tensorflow.boosted_trees.trees.TreeNodeMetadata&#39;,
+<span class='lineno'> 121</span>   filename=None,
+<span class='lineno'> 122</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 123</span>   containing_type=None,
+<span class='lineno'> 124</span>   fields=[
+<span class='lineno'> 125</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 126</span>       name=&#39;gain&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNodeMetadata.gain&#39;, index=0,
+<span class='lineno'> 127</span>       number=1, type=2, cpp_type=6, label=1,
+<span class='lineno'> 128</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 129</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 130</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 131</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 132</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 133</span>       name=&#39;original_leaf&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNodeMetadata.original_leaf&#39;, index=1,
+<span class='lineno'> 134</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 135</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 136</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 137</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 138</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 139</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 140</span>       name=&#39;original_oblivious_leaves&#39;, full_name=&#39;tensorflow.boosted_trees.trees.TreeNodeMetadata.original_oblivious_leaves&#39;, index=2,
+<span class='lineno'> 141</span>       number=3, type=11, cpp_type=10, label=3,
+<span class='lineno'> 142</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 143</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 144</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 145</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 146</span>   ],
+<span class='lineno'> 147</span>   extensions=[
+<span class='lineno'> 148</span>   ],
+<span class='lineno'> 149</span>   nested_types=[],
+<span class='lineno'> 150</span>   enum_types=[
+<span class='lineno'> 151</span>   ],
+<span class='lineno'> 152</span>   serialized_options=None,
+<span class='lineno'> 153</span>   is_extendable=False,
+<span class='lineno'> 154</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 155</span>   extension_ranges=[],
+<span class='lineno'> 156</span>   oneofs=[
+<span class='lineno'> 157</span>   ],
+<span class='lineno'> 158</span>   serialized_start=1017,
+<span class='lineno'> 159</span>   serialized_end=1183,
+<span class='lineno'> 160</span> )
+<span class='lineno'> 161</span> 
+<span class='lineno'> 162</span> 
+<span class='lineno'> 163</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a> = _descriptor.Descriptor(
+<span class='lineno'> 164</span>   name=&#39;Leaf&#39;,
+<span class='lineno'> 165</span>   full_name=&#39;tensorflow.boosted_trees.trees.Leaf&#39;,
+<span class='lineno'> 166</span>   filename=None,
+<span class='lineno'> 167</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 168</span>   containing_type=None,
+<span class='lineno'> 169</span>   fields=[
+<span class='lineno'> 170</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 171</span>       name=&#39;vector&#39;, full_name=&#39;tensorflow.boosted_trees.trees.Leaf.vector&#39;, index=0,
+<span class='lineno'> 172</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 173</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 174</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 175</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 176</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 177</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 178</span>       name=&#39;sparse_vector&#39;, full_name=&#39;tensorflow.boosted_trees.trees.Leaf.sparse_vector&#39;, index=1,
+<span class='lineno'> 179</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 180</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 181</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 182</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 183</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 184</span>   ],
+<span class='lineno'> 185</span>   extensions=[
+<span class='lineno'> 186</span>   ],
+<span class='lineno'> 187</span>   nested_types=[],
+<span class='lineno'> 188</span>   enum_types=[
+<span class='lineno'> 189</span>   ],
+<span class='lineno'> 190</span>   serialized_options=None,
+<span class='lineno'> 191</span>   is_extendable=False,
+<span class='lineno'> 192</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 193</span>   extension_ranges=[],
+<span class='lineno'> 194</span>   oneofs=[
+<span class='lineno'> 195</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 196</span>       name=&#39;leaf&#39;, full_name=&#39;tensorflow.boosted_trees.trees.Leaf.leaf&#39;,
+<span class='lineno'> 197</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 198</span>   ],
+<span class='lineno'> 199</span>   serialized_start=1186,
+<span class='lineno'> 200</span>   serialized_end=1329,
+<span class='lineno'> 201</span> )
+<span class='lineno'> 202</span> 
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', title='?'>_VECTOR</a> = _descriptor.Descriptor(
+<span class='lineno'> 205</span>   name=&#39;Vector&#39;,
+<span class='lineno'> 206</span>   full_name=&#39;tensorflow.boosted_trees.trees.Vector&#39;,
+<span class='lineno'> 207</span>   filename=None,
+<span class='lineno'> 208</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 209</span>   containing_type=None,
+<span class='lineno'> 210</span>   fields=[
+<span class='lineno'> 211</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 212</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.boosted_trees.trees.Vector.value&#39;, index=0,
+<span class='lineno'> 213</span>       number=1, type=2, cpp_type=6, label=3,
+<span class='lineno'> 214</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 215</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 216</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 217</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 218</span>   ],
+<span class='lineno'> 219</span>   extensions=[
+<span class='lineno'> 220</span>   ],
+<span class='lineno'> 221</span>   nested_types=[],
+<span class='lineno'> 222</span>   enum_types=[
+<span class='lineno'> 223</span>   ],
+<span class='lineno'> 224</span>   serialized_options=None,
+<span class='lineno'> 225</span>   is_extendable=False,
+<span class='lineno'> 226</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 227</span>   extension_ranges=[],
+<span class='lineno'> 228</span>   oneofs=[
+<span class='lineno'> 229</span>   ],
+<span class='lineno'> 230</span>   serialized_start=1331,
+<span class='lineno'> 231</span>   serialized_end=1354,
+<span class='lineno'> 232</span> )
+<span class='lineno'> 233</span> 
+<span class='lineno'> 234</span> 
+<span class='lineno'> 235</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', title='?'>_SPARSEVECTOR</a> = _descriptor.Descriptor(
+<span class='lineno'> 236</span>   name=&#39;SparseVector&#39;,
+<span class='lineno'> 237</span>   full_name=&#39;tensorflow.boosted_trees.trees.SparseVector&#39;,
+<span class='lineno'> 238</span>   filename=None,
+<span class='lineno'> 239</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 240</span>   containing_type=None,
+<span class='lineno'> 241</span>   fields=[
+<span class='lineno'> 242</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 243</span>       name=&#39;index&#39;, full_name=&#39;tensorflow.boosted_trees.trees.SparseVector.index&#39;, index=0,
+<span class='lineno'> 244</span>       number=1, type=5, cpp_type=1, label=3,
+<span class='lineno'> 245</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 246</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 247</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 248</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 249</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 250</span>       name=&#39;value&#39;, full_name=&#39;tensorflow.boosted_trees.trees.SparseVector.value&#39;, index=1,
+<span class='lineno'> 251</span>       number=2, type=2, cpp_type=6, label=3,
+<span class='lineno'> 252</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 253</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 254</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 255</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 256</span>   ],
+<span class='lineno'> 257</span>   extensions=[
+<span class='lineno'> 258</span>   ],
+<span class='lineno'> 259</span>   nested_types=[],
+<span class='lineno'> 260</span>   enum_types=[
+<span class='lineno'> 261</span>   ],
+<span class='lineno'> 262</span>   serialized_options=None,
+<span class='lineno'> 263</span>   is_extendable=False,
+<span class='lineno'> 264</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 265</span>   extension_ranges=[],
+<span class='lineno'> 266</span>   oneofs=[
+<span class='lineno'> 267</span>   ],
+<span class='lineno'> 268</span>   serialized_start=1356,
+<span class='lineno'> 269</span>   serialized_end=1400,
+<span class='lineno'> 270</span> )
+<span class='lineno'> 271</span> 
+<span class='lineno'> 272</span> 
+<span class='lineno'> 273</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a> = _descriptor.Descriptor(
+<span class='lineno'> 274</span>   name=&#39;DenseFloatBinarySplit&#39;,
+<span class='lineno'> 275</span>   full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit&#39;,
+<span class='lineno'> 276</span>   filename=None,
+<span class='lineno'> 277</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 278</span>   containing_type=None,
+<span class='lineno'> 279</span>   fields=[
+<span class='lineno'> 280</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 281</span>       name=&#39;feature_column&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit.feature_column&#39;, index=0,
+<span class='lineno'> 282</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 283</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 284</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 285</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 286</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 287</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 288</span>       name=&#39;dimension_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit.dimension_id&#39;, index=1,
+<span class='lineno'> 289</span>       number=5, type=5, cpp_type=1, label=1,
+<span class='lineno'> 290</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 291</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 292</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 293</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 294</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 295</span>       name=&#39;threshold&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit.threshold&#39;, index=2,
+<span class='lineno'> 296</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'> 297</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 298</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 299</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 300</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 301</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 302</span>       name=&#39;left_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit.left_id&#39;, index=3,
+<span class='lineno'> 303</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'> 304</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 305</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 306</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 307</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 308</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 309</span>       name=&#39;right_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DenseFloatBinarySplit.right_id&#39;, index=4,
+<span class='lineno'> 310</span>       number=4, type=5, cpp_type=1, label=1,
+<span class='lineno'> 311</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 312</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 313</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 314</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 315</span>   ],
+<span class='lineno'> 316</span>   extensions=[
+<span class='lineno'> 317</span>   ],
+<span class='lineno'> 318</span>   nested_types=[],
+<span class='lineno'> 319</span>   enum_types=[
+<span class='lineno'> 320</span>   ],
+<span class='lineno'> 321</span>   serialized_options=None,
+<span class='lineno'> 322</span>   is_extendable=False,
+<span class='lineno'> 323</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 324</span>   extension_ranges=[],
+<span class='lineno'> 325</span>   oneofs=[
+<span class='lineno'> 326</span>   ],
+<span class='lineno'> 327</span>   serialized_start=1402,
+<span class='lineno'> 328</span>   serialized_end=1525,
+<span class='lineno'> 329</span> )
+<span class='lineno'> 330</span> 
+<span class='lineno'> 331</span> 
+<span class='lineno'> 332</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a> = _descriptor.Descriptor(
+<span class='lineno'> 333</span>   name=&#39;SparseFloatBinarySplitDefaultLeft&#39;,
+<span class='lineno'> 334</span>   full_name=&#39;tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultLeft&#39;,
+<span class='lineno'> 335</span>   filename=None,
+<span class='lineno'> 336</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 337</span>   containing_type=None,
+<span class='lineno'> 338</span>   fields=[
+<span class='lineno'> 339</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 340</span>       name=&#39;split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultLeft.split&#39;, index=0,
+<span class='lineno'> 341</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 342</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 343</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 344</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 345</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 346</span>   ],
+<span class='lineno'> 347</span>   extensions=[
+<span class='lineno'> 348</span>   ],
+<span class='lineno'> 349</span>   nested_types=[],
+<span class='lineno'> 350</span>   enum_types=[
+<span class='lineno'> 351</span>   ],
+<span class='lineno'> 352</span>   serialized_options=None,
+<span class='lineno'> 353</span>   is_extendable=False,
+<span class='lineno'> 354</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 355</span>   extension_ranges=[],
+<span class='lineno'> 356</span>   oneofs=[
+<span class='lineno'> 357</span>   ],
+<span class='lineno'> 358</span>   serialized_start=1527,
+<span class='lineno'> 359</span>   serialized_end=1632,
+<span class='lineno'> 360</span> )
+<span class='lineno'> 361</span> 
+<span class='lineno'> 362</span> 
+<span class='lineno'> 363</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a> = _descriptor.Descriptor(
+<span class='lineno'> 364</span>   name=&#39;SparseFloatBinarySplitDefaultRight&#39;,
+<span class='lineno'> 365</span>   full_name=&#39;tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultRight&#39;,
+<span class='lineno'> 366</span>   filename=None,
+<span class='lineno'> 367</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 368</span>   containing_type=None,
+<span class='lineno'> 369</span>   fields=[
+<span class='lineno'> 370</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 371</span>       name=&#39;split&#39;, full_name=&#39;tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultRight.split&#39;, index=0,
+<span class='lineno'> 372</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 373</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 374</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 375</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 376</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 377</span>   ],
+<span class='lineno'> 378</span>   extensions=[
+<span class='lineno'> 379</span>   ],
+<span class='lineno'> 380</span>   nested_types=[],
+<span class='lineno'> 381</span>   enum_types=[
+<span class='lineno'> 382</span>   ],
+<span class='lineno'> 383</span>   serialized_options=None,
+<span class='lineno'> 384</span>   is_extendable=False,
+<span class='lineno'> 385</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 386</span>   extension_ranges=[],
+<span class='lineno'> 387</span>   oneofs=[
+<span class='lineno'> 388</span>   ],
+<span class='lineno'> 389</span>   serialized_start=1634,
+<span class='lineno'> 390</span>   serialized_end=1740,
+<span class='lineno'> 391</span> )
+<span class='lineno'> 392</span> 
+<span class='lineno'> 393</span> 
+<span class='lineno'> 394</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', title='?'>_CATEGORICALIDBINARYSPLIT</a> = _descriptor.Descriptor(
+<span class='lineno'> 395</span>   name=&#39;CategoricalIdBinarySplit&#39;,
+<span class='lineno'> 396</span>   full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdBinarySplit&#39;,
+<span class='lineno'> 397</span>   filename=None,
+<span class='lineno'> 398</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 399</span>   containing_type=None,
+<span class='lineno'> 400</span>   fields=[
+<span class='lineno'> 401</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 402</span>       name=&#39;feature_column&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdBinarySplit.feature_column&#39;, index=0,
+<span class='lineno'> 403</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 404</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 405</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 406</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 407</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 408</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 409</span>       name=&#39;feature_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdBinarySplit.feature_id&#39;, index=1,
+<span class='lineno'> 410</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 411</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 412</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 413</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 414</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 415</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 416</span>       name=&#39;left_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdBinarySplit.left_id&#39;, index=2,
+<span class='lineno'> 417</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'> 418</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 419</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 420</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 421</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 422</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 423</span>       name=&#39;right_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdBinarySplit.right_id&#39;, index=3,
+<span class='lineno'> 424</span>       number=4, type=5, cpp_type=1, label=1,
+<span class='lineno'> 425</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 426</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 427</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 428</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 429</span>   ],
+<span class='lineno'> 430</span>   extensions=[
+<span class='lineno'> 431</span>   ],
+<span class='lineno'> 432</span>   nested_types=[],
+<span class='lineno'> 433</span>   enum_types=[
+<span class='lineno'> 434</span>   ],
+<span class='lineno'> 435</span>   serialized_options=None,
+<span class='lineno'> 436</span>   is_extendable=False,
+<span class='lineno'> 437</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 438</span>   extension_ranges=[],
+<span class='lineno'> 439</span>   oneofs=[
+<span class='lineno'> 440</span>   ],
+<span class='lineno'> 441</span>   serialized_start=1742,
+<span class='lineno'> 442</span>   serialized_end=1847,
+<span class='lineno'> 443</span> )
+<span class='lineno'> 444</span> 
+<span class='lineno'> 445</span> 
+<span class='lineno'> 446</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', title='?'>_CATEGORICALIDSETMEMBERSHIPBINARYSPLIT</a> = _descriptor.Descriptor(
+<span class='lineno'> 447</span>   name=&#39;CategoricalIdSetMembershipBinarySplit&#39;,
+<span class='lineno'> 448</span>   full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit&#39;,
+<span class='lineno'> 449</span>   filename=None,
+<span class='lineno'> 450</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 451</span>   containing_type=None,
+<span class='lineno'> 452</span>   fields=[
+<span class='lineno'> 453</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 454</span>       name=&#39;feature_column&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit.feature_column&#39;, index=0,
+<span class='lineno'> 455</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 456</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 457</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 458</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 459</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 460</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 461</span>       name=&#39;feature_ids&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit.feature_ids&#39;, index=1,
+<span class='lineno'> 462</span>       number=2, type=3, cpp_type=2, label=3,
+<span class='lineno'> 463</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 464</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 465</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 466</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 467</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 468</span>       name=&#39;left_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit.left_id&#39;, index=2,
+<span class='lineno'> 469</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'> 470</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 471</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 472</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 473</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 474</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 475</span>       name=&#39;right_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit.right_id&#39;, index=3,
+<span class='lineno'> 476</span>       number=4, type=5, cpp_type=1, label=1,
+<span class='lineno'> 477</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 478</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 479</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 480</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 481</span>   ],
+<span class='lineno'> 482</span>   extensions=[
+<span class='lineno'> 483</span>   ],
+<span class='lineno'> 484</span>   nested_types=[],
+<span class='lineno'> 485</span>   enum_types=[
+<span class='lineno'> 486</span>   ],
+<span class='lineno'> 487</span>   serialized_options=None,
+<span class='lineno'> 488</span>   is_extendable=False,
+<span class='lineno'> 489</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 490</span>   extension_ranges=[],
+<span class='lineno'> 491</span>   oneofs=[
+<span class='lineno'> 492</span>   ],
+<span class='lineno'> 493</span>   serialized_start=1849,
+<span class='lineno'> 494</span>   serialized_end=1968,
+<span class='lineno'> 495</span> )
+<span class='lineno'> 496</span> 
+<span class='lineno'> 497</span> 
+<span class='lineno'> 498</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', title='?'>_OBLIVIOUSDENSEFLOATBINARYSPLIT</a> = _descriptor.Descriptor(
+<span class='lineno'> 499</span>   name=&#39;ObliviousDenseFloatBinarySplit&#39;,
+<span class='lineno'> 500</span>   full_name=&#39;tensorflow.boosted_trees.trees.ObliviousDenseFloatBinarySplit&#39;,
+<span class='lineno'> 501</span>   filename=None,
+<span class='lineno'> 502</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 503</span>   containing_type=None,
+<span class='lineno'> 504</span>   fields=[
+<span class='lineno'> 505</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 506</span>       name=&#39;feature_column&#39;, full_name=&#39;tensorflow.boosted_trees.trees.ObliviousDenseFloatBinarySplit.feature_column&#39;, index=0,
+<span class='lineno'> 507</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 508</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 509</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 510</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 511</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 512</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 513</span>       name=&#39;threshold&#39;, full_name=&#39;tensorflow.boosted_trees.trees.ObliviousDenseFloatBinarySplit.threshold&#39;, index=1,
+<span class='lineno'> 514</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'> 515</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 516</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 517</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 518</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 519</span>   ],
+<span class='lineno'> 520</span>   extensions=[
+<span class='lineno'> 521</span>   ],
+<span class='lineno'> 522</span>   nested_types=[],
+<span class='lineno'> 523</span>   enum_types=[
+<span class='lineno'> 524</span>   ],
+<span class='lineno'> 525</span>   serialized_options=None,
+<span class='lineno'> 526</span>   is_extendable=False,
+<span class='lineno'> 527</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 528</span>   extension_ranges=[],
+<span class='lineno'> 529</span>   oneofs=[
+<span class='lineno'> 530</span>   ],
+<span class='lineno'> 531</span>   serialized_start=1970,
+<span class='lineno'> 532</span>   serialized_end=2045,
+<span class='lineno'> 533</span> )
+<span class='lineno'> 534</span> 
+<span class='lineno'> 535</span> 
+<span class='lineno'> 536</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', title='?'>_OBLIVIOUSCATEGORICALIDBINARYSPLIT</a> = _descriptor.Descriptor(
+<span class='lineno'> 537</span>   name=&#39;ObliviousCategoricalIdBinarySplit&#39;,
+<span class='lineno'> 538</span>   full_name=&#39;tensorflow.boosted_trees.trees.ObliviousCategoricalIdBinarySplit&#39;,
+<span class='lineno'> 539</span>   filename=None,
+<span class='lineno'> 540</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 541</span>   containing_type=None,
+<span class='lineno'> 542</span>   fields=[
+<span class='lineno'> 543</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 544</span>       name=&#39;feature_column&#39;, full_name=&#39;tensorflow.boosted_trees.trees.ObliviousCategoricalIdBinarySplit.feature_column&#39;, index=0,
+<span class='lineno'> 545</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 546</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 547</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 548</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 549</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 550</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 551</span>       name=&#39;feature_id&#39;, full_name=&#39;tensorflow.boosted_trees.trees.ObliviousCategoricalIdBinarySplit.feature_id&#39;, index=1,
+<span class='lineno'> 552</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 553</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 554</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 555</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 556</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 557</span>   ],
+<span class='lineno'> 558</span>   extensions=[
+<span class='lineno'> 559</span>   ],
+<span class='lineno'> 560</span>   nested_types=[],
+<span class='lineno'> 561</span>   enum_types=[
+<span class='lineno'> 562</span>   ],
+<span class='lineno'> 563</span>   serialized_options=None,
+<span class='lineno'> 564</span>   is_extendable=False,
+<span class='lineno'> 565</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 566</span>   extension_ranges=[],
+<span class='lineno'> 567</span>   oneofs=[
+<span class='lineno'> 568</span>   ],
+<span class='lineno'> 569</span>   serialized_start=2047,
+<span class='lineno'> 570</span>   serialized_end=2126,
+<span class='lineno'> 571</span> )
+<span class='lineno'> 572</span> 
+<span class='lineno'> 573</span> 
+<span class='lineno'> 574</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', title='?'>_DECISIONTREECONFIG</a> = _descriptor.Descriptor(
+<span class='lineno'> 575</span>   name=&#39;DecisionTreeConfig&#39;,
+<span class='lineno'> 576</span>   full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeConfig&#39;,
+<span class='lineno'> 577</span>   filename=None,
+<span class='lineno'> 578</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 579</span>   containing_type=None,
+<span class='lineno'> 580</span>   fields=[
+<span class='lineno'> 581</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 582</span>       name=&#39;nodes&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeConfig.nodes&#39;, index=0,
+<span class='lineno'> 583</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 584</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 585</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 586</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 587</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 588</span>   ],
+<span class='lineno'> 589</span>   extensions=[
+<span class='lineno'> 590</span>   ],
+<span class='lineno'> 591</span>   nested_types=[],
+<span class='lineno'> 592</span>   enum_types=[
+<span class='lineno'> 593</span>   ],
+<span class='lineno'> 594</span>   serialized_options=None,
+<span class='lineno'> 595</span>   is_extendable=False,
+<span class='lineno'> 596</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 597</span>   extension_ranges=[],
+<span class='lineno'> 598</span>   oneofs=[
+<span class='lineno'> 599</span>   ],
+<span class='lineno'> 600</span>   serialized_start=2128,
+<span class='lineno'> 601</span>   serialized_end=2205,
+<span class='lineno'> 602</span> )
+<span class='lineno'> 603</span> 
+<span class='lineno'> 604</span> 
+<span class='lineno'> 605</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', title='?'>_DECISIONTREEMETADATA</a> = _descriptor.Descriptor(
+<span class='lineno'> 606</span>   name=&#39;DecisionTreeMetadata&#39;,
+<span class='lineno'> 607</span>   full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeMetadata&#39;,
+<span class='lineno'> 608</span>   filename=None,
+<span class='lineno'> 609</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 610</span>   containing_type=None,
+<span class='lineno'> 611</span>   fields=[
+<span class='lineno'> 612</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 613</span>       name=&#39;num_tree_weight_updates&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeMetadata.num_tree_weight_updates&#39;, index=0,
+<span class='lineno'> 614</span>       number=1, type=5, cpp_type=1, label=1,
+<span class='lineno'> 615</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 616</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 617</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 618</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 619</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 620</span>       name=&#39;num_layers_grown&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeMetadata.num_layers_grown&#39;, index=1,
+<span class='lineno'> 621</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'> 622</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 623</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 624</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 625</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 626</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 627</span>       name=&#39;is_finalized&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeMetadata.is_finalized&#39;, index=2,
+<span class='lineno'> 628</span>       number=3, type=8, cpp_type=7, label=1,
+<span class='lineno'> 629</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 630</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 631</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 632</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 633</span>   ],
+<span class='lineno'> 634</span>   extensions=[
+<span class='lineno'> 635</span>   ],
+<span class='lineno'> 636</span>   nested_types=[],
+<span class='lineno'> 637</span>   enum_types=[
+<span class='lineno'> 638</span>   ],
+<span class='lineno'> 639</span>   serialized_options=None,
+<span class='lineno'> 640</span>   is_extendable=False,
+<span class='lineno'> 641</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 642</span>   extension_ranges=[],
+<span class='lineno'> 643</span>   oneofs=[
+<span class='lineno'> 644</span>   ],
+<span class='lineno'> 645</span>   serialized_start=2207,
+<span class='lineno'> 646</span>   serialized_end=2310,
+<span class='lineno'> 647</span> )
+<span class='lineno'> 648</span> 
+<span class='lineno'> 649</span> 
+<span class='lineno'> 650</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', title='?'>_GROWINGMETADATA</a> = _descriptor.Descriptor(
+<span class='lineno'> 651</span>   name=&#39;GrowingMetadata&#39;,
+<span class='lineno'> 652</span>   full_name=&#39;tensorflow.boosted_trees.trees.GrowingMetadata&#39;,
+<span class='lineno'> 653</span>   filename=None,
+<span class='lineno'> 654</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 655</span>   containing_type=None,
+<span class='lineno'> 656</span>   fields=[
+<span class='lineno'> 657</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 658</span>       name=&#39;num_trees_attempted&#39;, full_name=&#39;tensorflow.boosted_trees.trees.GrowingMetadata.num_trees_attempted&#39;, index=0,
+<span class='lineno'> 659</span>       number=1, type=3, cpp_type=2, label=1,
+<span class='lineno'> 660</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 661</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 662</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 663</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 664</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 665</span>       name=&#39;num_layers_attempted&#39;, full_name=&#39;tensorflow.boosted_trees.trees.GrowingMetadata.num_layers_attempted&#39;, index=1,
+<span class='lineno'> 666</span>       number=2, type=3, cpp_type=2, label=1,
+<span class='lineno'> 667</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 668</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 669</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 670</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 671</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 672</span>       name=&#39;used_handler_ids&#39;, full_name=&#39;tensorflow.boosted_trees.trees.GrowingMetadata.used_handler_ids&#39;, index=2,
+<span class='lineno'> 673</span>       number=3, type=3, cpp_type=2, label=3,
+<span class='lineno'> 674</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 675</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 676</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 677</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 678</span>   ],
+<span class='lineno'> 679</span>   extensions=[
+<span class='lineno'> 680</span>   ],
+<span class='lineno'> 681</span>   nested_types=[],
+<span class='lineno'> 682</span>   enum_types=[
+<span class='lineno'> 683</span>   ],
+<span class='lineno'> 684</span>   serialized_options=None,
+<span class='lineno'> 685</span>   is_extendable=False,
+<span class='lineno'> 686</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 687</span>   extension_ranges=[],
+<span class='lineno'> 688</span>   oneofs=[
+<span class='lineno'> 689</span>   ],
+<span class='lineno'> 690</span>   serialized_start=2312,
+<span class='lineno'> 691</span>   serialized_end=2414,
+<span class='lineno'> 692</span> )
+<span class='lineno'> 693</span> 
+<span class='lineno'> 694</span> 
+<span class='lineno'> 695</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a> = _descriptor.Descriptor(
+<span class='lineno'> 696</span>   name=&#39;DecisionTreeEnsembleConfig&#39;,
+<span class='lineno'> 697</span>   full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig&#39;,
+<span class='lineno'> 698</span>   filename=None,
+<span class='lineno'> 699</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 700</span>   containing_type=None,
+<span class='lineno'> 701</span>   fields=[
+<span class='lineno'> 702</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 703</span>       name=&#39;trees&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig.trees&#39;, index=0,
+<span class='lineno'> 704</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 705</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 706</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 707</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 708</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 709</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 710</span>       name=&#39;tree_weights&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig.tree_weights&#39;, index=1,
+<span class='lineno'> 711</span>       number=2, type=2, cpp_type=6, label=3,
+<span class='lineno'> 712</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 713</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 714</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 715</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 716</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 717</span>       name=&#39;tree_metadata&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig.tree_metadata&#39;, index=2,
+<span class='lineno'> 718</span>       number=3, type=11, cpp_type=10, label=3,
+<span class='lineno'> 719</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 720</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 721</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 722</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 723</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 724</span>       name=&#39;growing_metadata&#39;, full_name=&#39;tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig.growing_metadata&#39;, index=3,
+<span class='lineno'> 725</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 726</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 727</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 728</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 729</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 730</span>   ],
+<span class='lineno'> 731</span>   extensions=[
+<span class='lineno'> 732</span>   ],
+<span class='lineno'> 733</span>   nested_types=[],
+<span class='lineno'> 734</span>   enum_types=[
+<span class='lineno'> 735</span>   ],
+<span class='lineno'> 736</span>   serialized_options=None,
+<span class='lineno'> 737</span>   is_extendable=False,
+<span class='lineno'> 738</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 739</span>   extension_ranges=[],
+<span class='lineno'> 740</span>   oneofs=[
+<span class='lineno'> 741</span>   ],
+<span class='lineno'> 742</span>   serialized_start=2417,
+<span class='lineno'> 743</span>   serialized_end=2686,
+<span class='lineno'> 744</span> )
+<span class='lineno'> 745</span> 
+<span class='lineno'> 746</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;leaf&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>
+<span class='lineno'> 747</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;dense_float_binary_split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 748</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_left&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a>
+<span class='lineno'> 749</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_right&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a>
+<span class='lineno'> 750</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_binary_split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', title='?'>_CATEGORICALIDBINARYSPLIT</a>
+<span class='lineno'> 751</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_set_membership_binary_split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', title='?'>_CATEGORICALIDSETMEMBERSHIPBINARYSPLIT</a>
+<span class='lineno'> 752</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_dense_float_binary_split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', title='?'>_OBLIVIOUSDENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 753</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_categorical_id_binary_split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', title='?'>_OBLIVIOUSCATEGORICALIDBINARYSPLIT</a>
+<span class='lineno'> 754</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;node_metadata&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a>
+<span class='lineno'> 755</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 756</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;leaf&#39;])
+<span class='lineno'> 757</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;leaf&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 758</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 759</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;dense_float_binary_split&#39;])
+<span class='lineno'> 760</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;dense_float_binary_split&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 761</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 762</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_left&#39;])
+<span class='lineno'> 763</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_left&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 764</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 765</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_right&#39;])
+<span class='lineno'> 766</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;sparse_float_binary_split_default_right&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 767</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 768</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_binary_split&#39;])
+<span class='lineno'> 769</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_binary_split&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 770</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 771</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_set_membership_binary_split&#39;])
+<span class='lineno'> 772</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;categorical_id_set_membership_binary_split&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 773</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 774</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_dense_float_binary_split&#39;])
+<span class='lineno'> 775</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_dense_float_binary_split&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 776</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;].fields.append(
+<span class='lineno'> 777</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_categorical_id_binary_split&#39;])
+<span class='lineno'> 778</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.fields_by_name[&#39;oblivious_categorical_id_binary_split&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>.oneofs_by_name[&#39;node&#39;]
+<span class='lineno'> 779</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a>.fields_by_name[&#39;original_leaf&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>
+<span class='lineno'> 780</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a>.fields_by_name[&#39;original_oblivious_leaves&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>
+<span class='lineno'> 781</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;vector&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', title='?'>_VECTOR</a>
+<span class='lineno'> 782</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;sparse_vector&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', title='?'>_SPARSEVECTOR</a>
+<span class='lineno'> 783</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.oneofs_by_name[&#39;leaf&#39;].fields.append(
+<span class='lineno'> 784</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;vector&#39;])
+<span class='lineno'> 785</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;vector&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.oneofs_by_name[&#39;leaf&#39;]
+<span class='lineno'> 786</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.oneofs_by_name[&#39;leaf&#39;].fields.append(
+<span class='lineno'> 787</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;sparse_vector&#39;])
+<span class='lineno'> 788</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.fields_by_name[&#39;sparse_vector&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>.oneofs_by_name[&#39;leaf&#39;]
+<span class='lineno'> 789</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a>.fields_by_name[&#39;split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 790</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a>.fields_by_name[&#39;split&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 791</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', title='?'>_DECISIONTREECONFIG</a>.fields_by_name[&#39;nodes&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>
+<span class='lineno'> 792</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a>.fields_by_name[&#39;trees&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', title='?'>_DECISIONTREECONFIG</a>
+<span class='lineno'> 793</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a>.fields_by_name[&#39;tree_metadata&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', title='?'>_DECISIONTREEMETADATA</a>
+<span class='lineno'> 794</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a>.fields_by_name[&#39;growing_metadata&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', title='?'>_GROWINGMETADATA</a>
+<span class='lineno'> 795</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TreeNode&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>
+<span class='lineno'> 796</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TreeNodeMetadata&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a>
+<span class='lineno'> 797</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;Leaf&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>
+<span class='lineno'> 798</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;Vector&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', title='?'>_VECTOR</a>
+<span class='lineno'> 799</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SparseVector&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', title='?'>_SPARSEVECTOR</a>
+<span class='lineno'> 800</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DenseFloatBinarySplit&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 801</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SparseFloatBinarySplitDefaultLeft&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a>
+<span class='lineno'> 802</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SparseFloatBinarySplitDefaultRight&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a>
+<span class='lineno'> 803</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;CategoricalIdBinarySplit&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', title='?'>_CATEGORICALIDBINARYSPLIT</a>
+<span class='lineno'> 804</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;CategoricalIdSetMembershipBinarySplit&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', title='?'>_CATEGORICALIDSETMEMBERSHIPBINARYSPLIT</a>
+<span class='lineno'> 805</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ObliviousDenseFloatBinarySplit&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', title='?'>_OBLIVIOUSDENSEFLOATBINARYSPLIT</a>
+<span class='lineno'> 806</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ObliviousCategoricalIdBinarySplit&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', title='?'>_OBLIVIOUSCATEGORICALIDBINARYSPLIT</a>
+<span class='lineno'> 807</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DecisionTreeConfig&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', title='?'>_DECISIONTREECONFIG</a>
+<span class='lineno'> 808</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DecisionTreeMetadata&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', title='?'>_DECISIONTREEMETADATA</a>
+<span class='lineno'> 809</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;GrowingMetadata&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', title='?'>_GROWINGMETADATA</a>
+<span class='lineno'> 810</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DecisionTreeEnsembleConfig&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a>
+<span class='lineno'> 811</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 812</span> 
+<span class='lineno'> 813</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode', title='?'>TreeNode</a> = _reflection.GeneratedProtocolMessageType(&#39;TreeNode&#39;, (_message.Message,), dict(
+<span class='lineno'> 814</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODE', title='?'>_TREENODE</a>,
+<span class='lineno'> 815</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 816</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.TreeNode)
+<span class='lineno'> 817</span>   ))
+<span class='lineno'> 818</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNode', title='?'>TreeNode</a>)
+<span class='lineno'> 819</span> 
+<span class='lineno'> 820</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata', title='?'>TreeNodeMetadata</a> = _reflection.GeneratedProtocolMessageType(&#39;TreeNodeMetadata&#39;, (_message.Message,), dict(
+<span class='lineno'> 821</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._TREENODEMETADATA', title='?'>_TREENODEMETADATA</a>,
+<span class='lineno'> 822</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 823</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.TreeNodeMetadata)
+<span class='lineno'> 824</span>   ))
+<span class='lineno'> 825</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.TreeNodeMetadata', title='?'>TreeNodeMetadata</a>)
+<span class='lineno'> 826</span> 
+<span class='lineno'> 827</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf', title='?'>Leaf</a> = _reflection.GeneratedProtocolMessageType(&#39;Leaf&#39;, (_message.Message,), dict(
+<span class='lineno'> 828</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._LEAF', title='?'>_LEAF</a>,
+<span class='lineno'> 829</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 830</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.Leaf)
+<span class='lineno'> 831</span>   ))
+<span class='lineno'> 832</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Leaf', title='?'>Leaf</a>)
+<span class='lineno'> 833</span> 
+<span class='lineno'> 834</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector', title='?'>Vector</a> = _reflection.GeneratedProtocolMessageType(&#39;Vector&#39;, (_message.Message,), dict(
+<span class='lineno'> 835</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._VECTOR', title='?'>_VECTOR</a>,
+<span class='lineno'> 836</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 837</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.Vector)
+<span class='lineno'> 838</span>   ))
+<span class='lineno'> 839</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.Vector', title='?'>Vector</a>)
+<span class='lineno'> 840</span> 
+<span class='lineno'> 841</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector', title='?'>SparseVector</a> = _reflection.GeneratedProtocolMessageType(&#39;SparseVector&#39;, (_message.Message,), dict(
+<span class='lineno'> 842</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEVECTOR', title='?'>_SPARSEVECTOR</a>,
+<span class='lineno'> 843</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 844</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.SparseVector)
+<span class='lineno'> 845</span>   ))
+<span class='lineno'> 846</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseVector', title='?'>SparseVector</a>)
+<span class='lineno'> 847</span> 
+<span class='lineno'> 848</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit', title='?'>DenseFloatBinarySplit</a> = _reflection.GeneratedProtocolMessageType(&#39;DenseFloatBinarySplit&#39;, (_message.Message,), dict(
+<span class='lineno'> 849</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DENSEFLOATBINARYSPLIT', title='?'>_DENSEFLOATBINARYSPLIT</a>,
+<span class='lineno'> 850</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 851</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.DenseFloatBinarySplit)
+<span class='lineno'> 852</span>   ))
+<span class='lineno'> 853</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DenseFloatBinarySplit', title='?'>DenseFloatBinarySplit</a>)
+<span class='lineno'> 854</span> 
+<span class='lineno'> 855</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft', title='?'>SparseFloatBinarySplitDefaultLeft</a> = _reflection.GeneratedProtocolMessageType(&#39;SparseFloatBinarySplitDefaultLeft&#39;, (_message.Message,), dict(
+<span class='lineno'> 856</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTLEFT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTLEFT</a>,
+<span class='lineno'> 857</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 858</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultLeft)
+<span class='lineno'> 859</span>   ))
+<span class='lineno'> 860</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultLeft', title='?'>SparseFloatBinarySplitDefaultLeft</a>)
+<span class='lineno'> 861</span> 
+<span class='lineno'> 862</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight', title='?'>SparseFloatBinarySplitDefaultRight</a> = _reflection.GeneratedProtocolMessageType(&#39;SparseFloatBinarySplitDefaultRight&#39;, (_message.Message,), dict(
+<span class='lineno'> 863</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._SPARSEFLOATBINARYSPLITDEFAULTRIGHT', title='?'>_SPARSEFLOATBINARYSPLITDEFAULTRIGHT</a>,
+<span class='lineno'> 864</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 865</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.SparseFloatBinarySplitDefaultRight)
+<span class='lineno'> 866</span>   ))
+<span class='lineno'> 867</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.SparseFloatBinarySplitDefaultRight', title='?'>SparseFloatBinarySplitDefaultRight</a>)
+<span class='lineno'> 868</span> 
+<span class='lineno'> 869</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit', title='?'>CategoricalIdBinarySplit</a> = _reflection.GeneratedProtocolMessageType(&#39;CategoricalIdBinarySplit&#39;, (_message.Message,), dict(
+<span class='lineno'> 870</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDBINARYSPLIT', title='?'>_CATEGORICALIDBINARYSPLIT</a>,
+<span class='lineno'> 871</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 872</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.CategoricalIdBinarySplit)
+<span class='lineno'> 873</span>   ))
+<span class='lineno'> 874</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdBinarySplit', title='?'>CategoricalIdBinarySplit</a>)
+<span class='lineno'> 875</span> 
+<span class='lineno'> 876</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit', title='?'>CategoricalIdSetMembershipBinarySplit</a> = _reflection.GeneratedProtocolMessageType(&#39;CategoricalIdSetMembershipBinarySplit&#39;, (_message.Message,), dict(
+<span class='lineno'> 877</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._CATEGORICALIDSETMEMBERSHIPBINARYSPLIT', title='?'>_CATEGORICALIDSETMEMBERSHIPBINARYSPLIT</a>,
+<span class='lineno'> 878</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 879</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.CategoricalIdSetMembershipBinarySplit)
+<span class='lineno'> 880</span>   ))
+<span class='lineno'> 881</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.CategoricalIdSetMembershipBinarySplit', title='?'>CategoricalIdSetMembershipBinarySplit</a>)
+<span class='lineno'> 882</span> 
+<span class='lineno'> 883</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit', title='?'>ObliviousDenseFloatBinarySplit</a> = _reflection.GeneratedProtocolMessageType(&#39;ObliviousDenseFloatBinarySplit&#39;, (_message.Message,), dict(
+<span class='lineno'> 884</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSDENSEFLOATBINARYSPLIT', title='?'>_OBLIVIOUSDENSEFLOATBINARYSPLIT</a>,
+<span class='lineno'> 885</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 886</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.ObliviousDenseFloatBinarySplit)
+<span class='lineno'> 887</span>   ))
+<span class='lineno'> 888</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousDenseFloatBinarySplit', title='?'>ObliviousDenseFloatBinarySplit</a>)
+<span class='lineno'> 889</span> 
+<span class='lineno'> 890</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit', title='?'>ObliviousCategoricalIdBinarySplit</a> = _reflection.GeneratedProtocolMessageType(&#39;ObliviousCategoricalIdBinarySplit&#39;, (_message.Message,), dict(
+<span class='lineno'> 891</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._OBLIVIOUSCATEGORICALIDBINARYSPLIT', title='?'>_OBLIVIOUSCATEGORICALIDBINARYSPLIT</a>,
+<span class='lineno'> 892</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 893</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.ObliviousCategoricalIdBinarySplit)
+<span class='lineno'> 894</span>   ))
+<span class='lineno'> 895</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.ObliviousCategoricalIdBinarySplit', title='?'>ObliviousCategoricalIdBinarySplit</a>)
+<span class='lineno'> 896</span> 
+<span class='lineno'> 897</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig', title='?'>DecisionTreeConfig</a> = _reflection.GeneratedProtocolMessageType(&#39;DecisionTreeConfig&#39;, (_message.Message,), dict(
+<span class='lineno'> 898</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREECONFIG', title='?'>_DECISIONTREECONFIG</a>,
+<span class='lineno'> 899</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 900</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.DecisionTreeConfig)
+<span class='lineno'> 901</span>   ))
+<span class='lineno'> 902</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeConfig', title='?'>DecisionTreeConfig</a>)
+<span class='lineno'> 903</span> 
+<span class='lineno'> 904</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata', title='?'>DecisionTreeMetadata</a> = _reflection.GeneratedProtocolMessageType(&#39;DecisionTreeMetadata&#39;, (_message.Message,), dict(
+<span class='lineno'> 905</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEMETADATA', title='?'>_DECISIONTREEMETADATA</a>,
+<span class='lineno'> 906</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 907</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.DecisionTreeMetadata)
+<span class='lineno'> 908</span>   ))
+<span class='lineno'> 909</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeMetadata', title='?'>DecisionTreeMetadata</a>)
+<span class='lineno'> 910</span> 
+<span class='lineno'> 911</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata', title='?'>GrowingMetadata</a> = _reflection.GeneratedProtocolMessageType(&#39;GrowingMetadata&#39;, (_message.Message,), dict(
+<span class='lineno'> 912</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._GROWINGMETADATA', title='?'>_GROWINGMETADATA</a>,
+<span class='lineno'> 913</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 914</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.GrowingMetadata)
+<span class='lineno'> 915</span>   ))
+<span class='lineno'> 916</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.GrowingMetadata', title='?'>GrowingMetadata</a>)
+<span class='lineno'> 917</span> 
+<span class='lineno'> 918</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig', title='?'>DecisionTreeEnsembleConfig</a> = _reflection.GeneratedProtocolMessageType(&#39;DecisionTreeEnsembleConfig&#39;, (_message.Message,), dict(
+<span class='lineno'> 919</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._DECISIONTREEENSEMBLECONFIG', title='?'>_DECISIONTREEENSEMBLECONFIG</a>,
+<span class='lineno'> 920</span>   __module__ = &#39;tensorflow.contrib.boosted_trees.proto.tree_config_pb2&#39;
+<span class='lineno'> 921</span>   # @@protoc_insertion_point(class_scope:tensorflow.boosted_trees.trees.DecisionTreeEnsembleConfig)
+<span class='lineno'> 922</span>   ))
+<span class='lineno'> 923</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DecisionTreeEnsembleConfig', title='?'>DecisionTreeEnsembleConfig</a>)
+<span class='lineno'> 924</span> 
+<span class='lineno'> 925</span> 
+<span class='lineno'> 926</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.boosted_trees.proto.tree_config_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 927</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

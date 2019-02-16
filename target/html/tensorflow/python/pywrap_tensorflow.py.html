@@ -1,0 +1,147 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/pywrap_tensorflow.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags'>_use_dlopen_global_flags</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local'>_can_set_rtld_local</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags'>_default_dlopen_flags</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow.msg', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow.msg'>msg</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # =============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;A wrapper for TensorFlow SWIG-generated bindings.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import ctypes
+<span class='lineno'>  22</span> import sys
+<span class='lineno'>  23</span> import traceback
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='platform/self_check.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check', title='self_check'>self_check</a>
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> # Perform pre-load sanity checks in order to produce a more actionable error
+<span class='lineno'>  29</span> # than we get from an error during SWIG import.
+<span class='lineno'>  30</span> <a href='platform/self_check.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check', title='self_check'>self_check</a>.<a href='platform/self_check.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check', title='() -> ?'>preload_check</a>()
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> # pylint: disable=wildcard-import,g-import-not-at-top,unused-import,line-too-long
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span> try:
+<span class='lineno'>  35</span>   # This import is expected to fail if there is an explicit shared object
+<span class='lineno'>  36</span>   # dependency (with_framework_lib=true), since we do not need RTLD_GLOBAL.
+<span class='lineno'>  37</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a> import pywrap_dlopen_global_flags
+<span class='lineno'>  38</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', title='bool'>_use_dlopen_global_flags</a> = True
+<span class='lineno'>  39</span> except ImportError:
+<span class='lineno'>  40</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', title='bool'>_use_dlopen_global_flags</a> = False
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span> # On UNIX-based platforms, pywrap_tensorflow is a SWIG-generated
+<span class='lineno'>  43</span> # python library that dynamically loads _pywrap_tensorflow.so.
+<span class='lineno'>  44</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', title='int'>_can_set_rtld_local</a> = (hasattr(sys, &#39;getdlopenflags&#39;)
+<span class='lineno'>  45</span>                        and hasattr(sys, &#39;setdlopenflags&#39;))
+<span class='lineno'>  46</span> if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', title='int'>_can_set_rtld_local</a>:
+<span class='lineno'>  47</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', title='?'>_default_dlopen_flags</a> = sys.getdlopenflags()
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span> try:
+<span class='lineno'>  50</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', title='bool'>_use_dlopen_global_flags</a>:
+<span class='lineno'>  51</span>     pywrap_dlopen_global_flags.set_dlopen_flags()
+<span class='lineno'>  52</span>   elif <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', title='int'>_can_set_rtld_local</a>:
+<span class='lineno'>  53</span>     # Ensure RTLD_LOCAL behavior for platforms where it isn&#39;t the default
+<span class='lineno'>  54</span>     # (macOS). On Linux RTLD_LOCAL is 0, so this does nothing (and would not
+<span class='lineno'>  55</span>     # override an RTLD_GLOBAL in _default_dlopen_flags).
+<span class='lineno'>  56</span>     sys.setdlopenflags(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', title='?'>_default_dlopen_flags</a> | ctypes.RTLD_LOCAL)
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import *
+<span class='lineno'>  59</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import <a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__version__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__version__', title='?'>__version__</a>
+<span class='lineno'>  60</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import <a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__git_version__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__git_version__', title='?'>__git_version__</a>
+<span class='lineno'>  61</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import <a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__compiler_version__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__compiler_version__', title='?'>__compiler_version__</a>
+<span class='lineno'>  62</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import <a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__cxx11_abi_flag__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__cxx11_abi_flag__', title='?'>__cxx11_abi_flag__</a>
+<span class='lineno'>  63</span>   from <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal', title='pywrap_tensorflow_internal'>pywrap_tensorflow_internal</a> import <a href='pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__monolithic_build__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.__monolithic_build__', title='?'>__monolithic_build__</a>
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._use_dlopen_global_flags', title='bool'>_use_dlopen_global_flags</a>:
+<span class='lineno'>  66</span>     pywrap_dlopen_global_flags.reset_dlopen_flags()
+<span class='lineno'>  67</span>   elif <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._can_set_rtld_local', title='int'>_can_set_rtld_local</a>:
+<span class='lineno'>  68</span>     sys.setdlopenflags(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow._default_dlopen_flags', title='?'>_default_dlopen_flags</a>)
+<span class='lineno'>  69</span> except ImportError:
+<span class='lineno'>  70</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow.msg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow.msg', title='str'>msg</a> = &quot;&quot;&quot;%s\n\nFailed to load the native TensorFlow runtime.\n
+<span class='lineno'>  71</span> See https://www.tensorflow.org/install/errors\n
+<span class='lineno'>  72</span> for some common reasons and solutions.  Include the entire stack trace
+<span class='lineno'>  73</span> above this error message when asking for help.&quot;&quot;&quot; % traceback.format_exc()
+<span class='lineno'>  74</span>   raise ImportError(msg)
+<span class='lineno'>  75</span> 
+<span class='lineno'>  76</span> # pylint: enable=wildcard-import,g-import-not-at-top,unused-import,line-too-long
+</pre></td></tr></table></body></html>

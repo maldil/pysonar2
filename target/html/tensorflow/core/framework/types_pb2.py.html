@@ -1,0 +1,354 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/core/framework/types_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE'>_DATATYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DataType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DataType'>DataType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INVALID', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INVALID'>DT_INVALID</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT'>DT_FLOAT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE'>DT_DOUBLE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32'>DT_INT32</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8'>DT_UINT8</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16'>DT_INT16</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8'>DT_INT8</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING'>DT_STRING</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64'>DT_COMPLEX64</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64'>DT_INT64</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL'>DT_BOOL</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8'>DT_QINT8</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8'>DT_QUINT8</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32'>DT_QINT32</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16'>DT_BFLOAT16</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16'>DT_QINT16</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16'>DT_QUINT16</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16'>DT_UINT16</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128'>DT_COMPLEX128</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF'>DT_HALF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE'>DT_RESOURCE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT'>DT_VARIANT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32'>DT_UINT32</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64'>DT_UINT64</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT_REF'>DT_FLOAT_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE_REF'>DT_DOUBLE_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32_REF'>DT_INT32_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8_REF'>DT_UINT8_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16_REF'>DT_INT16_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8_REF'>DT_INT8_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING_REF'>DT_STRING_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64_REF'>DT_COMPLEX64_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64_REF'>DT_INT64_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL_REF'>DT_BOOL_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8_REF'>DT_QINT8_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8_REF'>DT_QUINT8_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32_REF'>DT_QINT32_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16_REF'>DT_BFLOAT16_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16_REF'>DT_QINT16_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16_REF'>DT_QUINT16_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16_REF'>DT_UINT16_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128_REF'>DT_COMPLEX128_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF_REF'>DT_HALF_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE_REF'>DT_RESOURCE_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT_REF'>DT_VARIANT_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32_REF'>DT_UINT32_REF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64_REF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64_REF'>DT_UINT64_REF</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/core/framework/types.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%78.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%78.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%78.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%78.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%79.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%79.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%79.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.lambda%79.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf.internal import enum_type_wrapper
+<span class='lineno'>   7</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   8</span> from google.protobuf import message as _message
+<span class='lineno'>   9</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>  10</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  11</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  12</span> 
+<span class='lineno'>  13</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/core/framework/types.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;tensorflow&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  22</span>   serialized_options=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', title='str -> str'>_b</a>(&#39;\n\030org.tensorflow.frameworkB\013TypesProtosP\001Z=github.com/tensorflow/tensorflow/tensorflow/go/core/framework\370\001\001&#39;),
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._b', title='str -> str'>_b</a>(&#39;\n%tensorflow/core/framework/types.proto\x12\ntensorflow*\xaa\x06\n\x08\x44\x61taType\x12\x0e\n\nDT_INVALID\x10\x00\x12\x0c\n\x08\x44T_FLOAT\x10\x01\x12\r\n\tDT_DOUBLE\x10\x02\x12\x0c\n\x08\x44T_INT32\x10\x03\x12\x0c\n\x08\x44T_UINT8\x10\x04\x12\x0c\n\x08\x44T_INT16\x10\x05\x12\x0b\n\x07\x44T_INT8\x10\x06\x12\r\n\tDT_STRING\x10\x07\x12\x10\n\x0c\x44T_COMPLEX64\x10\x08\x12\x0c\n\x08\x44T_INT64\x10\t\x12\x0b\n\x07\x44T_BOOL\x10\n\x12\x0c\n\x08\x44T_QINT8\x10\x0b\x12\r\n\tDT_QUINT8\x10\x0c\x12\r\n\tDT_QINT32\x10\r\x12\x0f\n\x0b\x44T_BFLOAT16\x10\x0e\x12\r\n\tDT_QINT16\x10\x0f\x12\x0e\n\nDT_QUINT16\x10\x10\x12\r\n\tDT_UINT16\x10\x11\x12\x11\n\rDT_COMPLEX128\x10\x12\x12\x0b\n\x07\x44T_HALF\x10\x13\x12\x0f\n\x0b\x44T_RESOURCE\x10\x14\x12\x0e\n\nDT_VARIANT\x10\x15\x12\r\n\tDT_UINT32\x10\x16\x12\r\n\tDT_UINT64\x10\x17\x12\x10\n\x0c\x44T_FLOAT_REF\x10\x65\x12\x11\n\rDT_DOUBLE_REF\x10\x66\x12\x10\n\x0c\x44T_INT32_REF\x10g\x12\x10\n\x0c\x44T_UINT8_REF\x10h\x12\x10\n\x0c\x44T_INT16_REF\x10i\x12\x0f\n\x0b\x44T_INT8_REF\x10j\x12\x11\n\rDT_STRING_REF\x10k\x12\x14\n\x10\x44T_COMPLEX64_REF\x10l\x12\x10\n\x0c\x44T_INT64_REF\x10m\x12\x0f\n\x0b\x44T_BOOL_REF\x10n\x12\x10\n\x0c\x44T_QINT8_REF\x10o\x12\x11\n\rDT_QUINT8_REF\x10p\x12\x11\n\rDT_QINT32_REF\x10q\x12\x13\n\x0f\x44T_BFLOAT16_REF\x10r\x12\x11\n\rDT_QINT16_REF\x10s\x12\x12\n\x0e\x44T_QUINT16_REF\x10t\x12\x11\n\rDT_UINT16_REF\x10u\x12\x15\n\x11\x44T_COMPLEX128_REF\x10v\x12\x0f\n\x0b\x44T_HALF_REF\x10w\x12\x13\n\x0f\x44T_RESOURCE_REF\x10x\x12\x12\n\x0e\x44T_VARIANT_REF\x10y\x12\x11\n\rDT_UINT32_REF\x10z\x12\x11\n\rDT_UINT64_REF\x10{Bk\n\x18org.tensorflow.frameworkB\x0bTypesProtosP\x01Z=github.com/tensorflow/tensorflow/tensorflow/go/core/framework\xf8\x01\x01\x62\x06proto3&#39;)
+<span class='lineno'>  24</span> )
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', title='?'>_DATATYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  27</span>   name=&#39;DataType&#39;,
+<span class='lineno'>  28</span>   full_name=&#39;tensorflow.DataType&#39;,
+<span class='lineno'>  29</span>   filename=None,
+<span class='lineno'>  30</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  31</span>   values=[
+<span class='lineno'>  32</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  33</span>       name=&#39;DT_INVALID&#39;, index=0, number=0,
+<span class='lineno'>  34</span>       serialized_options=None,
+<span class='lineno'>  35</span>       type=None),
+<span class='lineno'>  36</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  37</span>       name=&#39;DT_FLOAT&#39;, index=1, number=1,
+<span class='lineno'>  38</span>       serialized_options=None,
+<span class='lineno'>  39</span>       type=None),
+<span class='lineno'>  40</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  41</span>       name=&#39;DT_DOUBLE&#39;, index=2, number=2,
+<span class='lineno'>  42</span>       serialized_options=None,
+<span class='lineno'>  43</span>       type=None),
+<span class='lineno'>  44</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  45</span>       name=&#39;DT_INT32&#39;, index=3, number=3,
+<span class='lineno'>  46</span>       serialized_options=None,
+<span class='lineno'>  47</span>       type=None),
+<span class='lineno'>  48</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  49</span>       name=&#39;DT_UINT8&#39;, index=4, number=4,
+<span class='lineno'>  50</span>       serialized_options=None,
+<span class='lineno'>  51</span>       type=None),
+<span class='lineno'>  52</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  53</span>       name=&#39;DT_INT16&#39;, index=5, number=5,
+<span class='lineno'>  54</span>       serialized_options=None,
+<span class='lineno'>  55</span>       type=None),
+<span class='lineno'>  56</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  57</span>       name=&#39;DT_INT8&#39;, index=6, number=6,
+<span class='lineno'>  58</span>       serialized_options=None,
+<span class='lineno'>  59</span>       type=None),
+<span class='lineno'>  60</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  61</span>       name=&#39;DT_STRING&#39;, index=7, number=7,
+<span class='lineno'>  62</span>       serialized_options=None,
+<span class='lineno'>  63</span>       type=None),
+<span class='lineno'>  64</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  65</span>       name=&#39;DT_COMPLEX64&#39;, index=8, number=8,
+<span class='lineno'>  66</span>       serialized_options=None,
+<span class='lineno'>  67</span>       type=None),
+<span class='lineno'>  68</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  69</span>       name=&#39;DT_INT64&#39;, index=9, number=9,
+<span class='lineno'>  70</span>       serialized_options=None,
+<span class='lineno'>  71</span>       type=None),
+<span class='lineno'>  72</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  73</span>       name=&#39;DT_BOOL&#39;, index=10, number=10,
+<span class='lineno'>  74</span>       serialized_options=None,
+<span class='lineno'>  75</span>       type=None),
+<span class='lineno'>  76</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  77</span>       name=&#39;DT_QINT8&#39;, index=11, number=11,
+<span class='lineno'>  78</span>       serialized_options=None,
+<span class='lineno'>  79</span>       type=None),
+<span class='lineno'>  80</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  81</span>       name=&#39;DT_QUINT8&#39;, index=12, number=12,
+<span class='lineno'>  82</span>       serialized_options=None,
+<span class='lineno'>  83</span>       type=None),
+<span class='lineno'>  84</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  85</span>       name=&#39;DT_QINT32&#39;, index=13, number=13,
+<span class='lineno'>  86</span>       serialized_options=None,
+<span class='lineno'>  87</span>       type=None),
+<span class='lineno'>  88</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  89</span>       name=&#39;DT_BFLOAT16&#39;, index=14, number=14,
+<span class='lineno'>  90</span>       serialized_options=None,
+<span class='lineno'>  91</span>       type=None),
+<span class='lineno'>  92</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  93</span>       name=&#39;DT_QINT16&#39;, index=15, number=15,
+<span class='lineno'>  94</span>       serialized_options=None,
+<span class='lineno'>  95</span>       type=None),
+<span class='lineno'>  96</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  97</span>       name=&#39;DT_QUINT16&#39;, index=16, number=16,
+<span class='lineno'>  98</span>       serialized_options=None,
+<span class='lineno'>  99</span>       type=None),
+<span class='lineno'> 100</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 101</span>       name=&#39;DT_UINT16&#39;, index=17, number=17,
+<span class='lineno'> 102</span>       serialized_options=None,
+<span class='lineno'> 103</span>       type=None),
+<span class='lineno'> 104</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 105</span>       name=&#39;DT_COMPLEX128&#39;, index=18, number=18,
+<span class='lineno'> 106</span>       serialized_options=None,
+<span class='lineno'> 107</span>       type=None),
+<span class='lineno'> 108</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 109</span>       name=&#39;DT_HALF&#39;, index=19, number=19,
+<span class='lineno'> 110</span>       serialized_options=None,
+<span class='lineno'> 111</span>       type=None),
+<span class='lineno'> 112</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 113</span>       name=&#39;DT_RESOURCE&#39;, index=20, number=20,
+<span class='lineno'> 114</span>       serialized_options=None,
+<span class='lineno'> 115</span>       type=None),
+<span class='lineno'> 116</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 117</span>       name=&#39;DT_VARIANT&#39;, index=21, number=21,
+<span class='lineno'> 118</span>       serialized_options=None,
+<span class='lineno'> 119</span>       type=None),
+<span class='lineno'> 120</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 121</span>       name=&#39;DT_UINT32&#39;, index=22, number=22,
+<span class='lineno'> 122</span>       serialized_options=None,
+<span class='lineno'> 123</span>       type=None),
+<span class='lineno'> 124</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 125</span>       name=&#39;DT_UINT64&#39;, index=23, number=23,
+<span class='lineno'> 126</span>       serialized_options=None,
+<span class='lineno'> 127</span>       type=None),
+<span class='lineno'> 128</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 129</span>       name=&#39;DT_FLOAT_REF&#39;, index=24, number=101,
+<span class='lineno'> 130</span>       serialized_options=None,
+<span class='lineno'> 131</span>       type=None),
+<span class='lineno'> 132</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 133</span>       name=&#39;DT_DOUBLE_REF&#39;, index=25, number=102,
+<span class='lineno'> 134</span>       serialized_options=None,
+<span class='lineno'> 135</span>       type=None),
+<span class='lineno'> 136</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 137</span>       name=&#39;DT_INT32_REF&#39;, index=26, number=103,
+<span class='lineno'> 138</span>       serialized_options=None,
+<span class='lineno'> 139</span>       type=None),
+<span class='lineno'> 140</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 141</span>       name=&#39;DT_UINT8_REF&#39;, index=27, number=104,
+<span class='lineno'> 142</span>       serialized_options=None,
+<span class='lineno'> 143</span>       type=None),
+<span class='lineno'> 144</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 145</span>       name=&#39;DT_INT16_REF&#39;, index=28, number=105,
+<span class='lineno'> 146</span>       serialized_options=None,
+<span class='lineno'> 147</span>       type=None),
+<span class='lineno'> 148</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 149</span>       name=&#39;DT_INT8_REF&#39;, index=29, number=106,
+<span class='lineno'> 150</span>       serialized_options=None,
+<span class='lineno'> 151</span>       type=None),
+<span class='lineno'> 152</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 153</span>       name=&#39;DT_STRING_REF&#39;, index=30, number=107,
+<span class='lineno'> 154</span>       serialized_options=None,
+<span class='lineno'> 155</span>       type=None),
+<span class='lineno'> 156</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 157</span>       name=&#39;DT_COMPLEX64_REF&#39;, index=31, number=108,
+<span class='lineno'> 158</span>       serialized_options=None,
+<span class='lineno'> 159</span>       type=None),
+<span class='lineno'> 160</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 161</span>       name=&#39;DT_INT64_REF&#39;, index=32, number=109,
+<span class='lineno'> 162</span>       serialized_options=None,
+<span class='lineno'> 163</span>       type=None),
+<span class='lineno'> 164</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 165</span>       name=&#39;DT_BOOL_REF&#39;, index=33, number=110,
+<span class='lineno'> 166</span>       serialized_options=None,
+<span class='lineno'> 167</span>       type=None),
+<span class='lineno'> 168</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 169</span>       name=&#39;DT_QINT8_REF&#39;, index=34, number=111,
+<span class='lineno'> 170</span>       serialized_options=None,
+<span class='lineno'> 171</span>       type=None),
+<span class='lineno'> 172</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 173</span>       name=&#39;DT_QUINT8_REF&#39;, index=35, number=112,
+<span class='lineno'> 174</span>       serialized_options=None,
+<span class='lineno'> 175</span>       type=None),
+<span class='lineno'> 176</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 177</span>       name=&#39;DT_QINT32_REF&#39;, index=36, number=113,
+<span class='lineno'> 178</span>       serialized_options=None,
+<span class='lineno'> 179</span>       type=None),
+<span class='lineno'> 180</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 181</span>       name=&#39;DT_BFLOAT16_REF&#39;, index=37, number=114,
+<span class='lineno'> 182</span>       serialized_options=None,
+<span class='lineno'> 183</span>       type=None),
+<span class='lineno'> 184</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 185</span>       name=&#39;DT_QINT16_REF&#39;, index=38, number=115,
+<span class='lineno'> 186</span>       serialized_options=None,
+<span class='lineno'> 187</span>       type=None),
+<span class='lineno'> 188</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 189</span>       name=&#39;DT_QUINT16_REF&#39;, index=39, number=116,
+<span class='lineno'> 190</span>       serialized_options=None,
+<span class='lineno'> 191</span>       type=None),
+<span class='lineno'> 192</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 193</span>       name=&#39;DT_UINT16_REF&#39;, index=40, number=117,
+<span class='lineno'> 194</span>       serialized_options=None,
+<span class='lineno'> 195</span>       type=None),
+<span class='lineno'> 196</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 197</span>       name=&#39;DT_COMPLEX128_REF&#39;, index=41, number=118,
+<span class='lineno'> 198</span>       serialized_options=None,
+<span class='lineno'> 199</span>       type=None),
+<span class='lineno'> 200</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 201</span>       name=&#39;DT_HALF_REF&#39;, index=42, number=119,
+<span class='lineno'> 202</span>       serialized_options=None,
+<span class='lineno'> 203</span>       type=None),
+<span class='lineno'> 204</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 205</span>       name=&#39;DT_RESOURCE_REF&#39;, index=43, number=120,
+<span class='lineno'> 206</span>       serialized_options=None,
+<span class='lineno'> 207</span>       type=None),
+<span class='lineno'> 208</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 209</span>       name=&#39;DT_VARIANT_REF&#39;, index=44, number=121,
+<span class='lineno'> 210</span>       serialized_options=None,
+<span class='lineno'> 211</span>       type=None),
+<span class='lineno'> 212</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 213</span>       name=&#39;DT_UINT32_REF&#39;, index=45, number=122,
+<span class='lineno'> 214</span>       serialized_options=None,
+<span class='lineno'> 215</span>       type=None),
+<span class='lineno'> 216</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 217</span>       name=&#39;DT_UINT64_REF&#39;, index=46, number=123,
+<span class='lineno'> 218</span>       serialized_options=None,
+<span class='lineno'> 219</span>       type=None),
+<span class='lineno'> 220</span>   ],
+<span class='lineno'> 221</span>   containing_type=None,
+<span class='lineno'> 222</span>   serialized_options=None,
+<span class='lineno'> 223</span>   serialized_start=54,
+<span class='lineno'> 224</span>   serialized_end=864,
+<span class='lineno'> 225</span> )
+<span class='lineno'> 226</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', title='?'>_DATATYPE</a>)
+<span class='lineno'> 227</span> 
+<span class='lineno'> 228</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DataType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DataType', title='?'>DataType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', title='?'>_DATATYPE</a>)
+<span class='lineno'> 229</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INVALID', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INVALID', title='int'>DT_INVALID</a> = 0
+<span class='lineno'> 230</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT', title='int'>DT_FLOAT</a> = 1
+<span class='lineno'> 231</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE', title='int'>DT_DOUBLE</a> = 2
+<span class='lineno'> 232</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32', title='int'>DT_INT32</a> = 3
+<span class='lineno'> 233</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8', title='int'>DT_UINT8</a> = 4
+<span class='lineno'> 234</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16', title='int'>DT_INT16</a> = 5
+<span class='lineno'> 235</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8', title='int'>DT_INT8</a> = 6
+<span class='lineno'> 236</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING', title='int'>DT_STRING</a> = 7
+<span class='lineno'> 237</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64', title='int'>DT_COMPLEX64</a> = 8
+<span class='lineno'> 238</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64', title='int'>DT_INT64</a> = 9
+<span class='lineno'> 239</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL', title='int'>DT_BOOL</a> = 10
+<span class='lineno'> 240</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8', title='int'>DT_QINT8</a> = 11
+<span class='lineno'> 241</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8', title='int'>DT_QUINT8</a> = 12
+<span class='lineno'> 242</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32', title='int'>DT_QINT32</a> = 13
+<span class='lineno'> 243</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16', title='int'>DT_BFLOAT16</a> = 14
+<span class='lineno'> 244</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16', title='int'>DT_QINT16</a> = 15
+<span class='lineno'> 245</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16', title='int'>DT_QUINT16</a> = 16
+<span class='lineno'> 246</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16', title='int'>DT_UINT16</a> = 17
+<span class='lineno'> 247</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128', title='int'>DT_COMPLEX128</a> = 18
+<span class='lineno'> 248</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF', title='int'>DT_HALF</a> = 19
+<span class='lineno'> 249</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE', title='int'>DT_RESOURCE</a> = 20
+<span class='lineno'> 250</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT', title='int'>DT_VARIANT</a> = 21
+<span class='lineno'> 251</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32', title='int'>DT_UINT32</a> = 22
+<span class='lineno'> 252</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64', title='int'>DT_UINT64</a> = 23
+<span class='lineno'> 253</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_FLOAT_REF', title='int'>DT_FLOAT_REF</a> = 101
+<span class='lineno'> 254</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_DOUBLE_REF', title='int'>DT_DOUBLE_REF</a> = 102
+<span class='lineno'> 255</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT32_REF', title='int'>DT_INT32_REF</a> = 103
+<span class='lineno'> 256</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT8_REF', title='int'>DT_UINT8_REF</a> = 104
+<span class='lineno'> 257</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT16_REF', title='int'>DT_INT16_REF</a> = 105
+<span class='lineno'> 258</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT8_REF', title='int'>DT_INT8_REF</a> = 106
+<span class='lineno'> 259</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_STRING_REF', title='int'>DT_STRING_REF</a> = 107
+<span class='lineno'> 260</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX64_REF', title='int'>DT_COMPLEX64_REF</a> = 108
+<span class='lineno'> 261</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_INT64_REF', title='int'>DT_INT64_REF</a> = 109
+<span class='lineno'> 262</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BOOL_REF', title='int'>DT_BOOL_REF</a> = 110
+<span class='lineno'> 263</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT8_REF', title='int'>DT_QINT8_REF</a> = 111
+<span class='lineno'> 264</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT8_REF', title='int'>DT_QUINT8_REF</a> = 112
+<span class='lineno'> 265</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT32_REF', title='int'>DT_QINT32_REF</a> = 113
+<span class='lineno'> 266</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_BFLOAT16_REF', title='int'>DT_BFLOAT16_REF</a> = 114
+<span class='lineno'> 267</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QINT16_REF', title='int'>DT_QINT16_REF</a> = 115
+<span class='lineno'> 268</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_QUINT16_REF', title='int'>DT_QUINT16_REF</a> = 116
+<span class='lineno'> 269</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT16_REF', title='int'>DT_UINT16_REF</a> = 117
+<span class='lineno'> 270</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_COMPLEX128_REF', title='int'>DT_COMPLEX128_REF</a> = 118
+<span class='lineno'> 271</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_HALF_REF', title='int'>DT_HALF_REF</a> = 119
+<span class='lineno'> 272</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_RESOURCE_REF', title='int'>DT_RESOURCE_REF</a> = 120
+<span class='lineno'> 273</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_VARIANT_REF', title='int'>DT_VARIANT_REF</a> = 121
+<span class='lineno'> 274</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT32_REF', title='int'>DT_UINT32_REF</a> = 122
+<span class='lineno'> 275</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64_REF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DT_UINT64_REF', title='int'>DT_UINT64_REF</a> = 123
+<span class='lineno'> 276</span> 
+<span class='lineno'> 277</span> 
+<span class='lineno'> 278</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;DataType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._DATATYPE', title='?'>_DATATYPE</a>
+<span class='lineno'> 279</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 280</span> 
+<span class='lineno'> 281</span> 
+<span class='lineno'> 282</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.core.framework.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>._options = None
+<span class='lineno'> 283</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

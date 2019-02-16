@@ -1,0 +1,373 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/estimator/canned/parsing_utils.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec'>classifier_parse_example_spec</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec'>regressor_parse_example_spec</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Parsing related helper function to be used in `input_fn`.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import six
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../feature_column/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column', title='feature_column'>feature_column</a> import feature_column as <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>
+<span class='lineno'>  24</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>
+<span class='lineno'>  25</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../../ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', title='parsing_ops'>parsing_ops</a>
+<span class='lineno'>  26</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import <a href='../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.estimator_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.estimator_export', title='?'>estimator_export</a>
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> @estimator_export(&#39;estimator.classifier_parse_example_spec&#39;)
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec', title='(?, ?, DType, None, None) -> dict'>classifier_parse_example_spec</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.feature_columns', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.feature_columns', title='?'>feature_columns</a>,
+<span class='lineno'>  31</span>                                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', title='?'>label_key</a>,
+<span class='lineno'>  32</span>                                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_dtype', title='DType'>label_dtype</a>=<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.int64', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.int64', title='DType'>int64</a>,
+<span class='lineno'>  33</span>                                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_default', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_default', title='None'>label_default</a>=None,
+<span class='lineno'>  34</span>                                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='None'>weight_column</a>=None):
+<span class='lineno'>  35</span>   &quot;&quot;&quot;Generates parsing spec for tf.parse_example to be used with classifiers.
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   If users keep data in tf.Example format, they need to call tf.parse_example
+<span class='lineno'>  38</span>   with a proper feature spec. There are two main things that this utility helps:
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   * Users need to combine parsing spec of features with labels and weights
+<span class='lineno'>  41</span>     (if any) since they are all parsed from same tf.Example instance. This
+<span class='lineno'>  42</span>     utility combines these specs.
+<span class='lineno'>  43</span>   * It is difficult to map expected label by a classifier such as
+<span class='lineno'>  44</span>     `DNNClassifier` to corresponding tf.parse_example spec. This utility encodes
+<span class='lineno'>  45</span>     it by getting related information from users (key, dtype).
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   Example output of parsing spec:
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   ```python
+<span class='lineno'>  50</span>   # Define features and transformations
+<span class='lineno'>  51</span>   feature_b = tf.feature_column.numeric_column(...)
+<span class='lineno'>  52</span>   feature_c_bucketized = tf.feature_column.bucketized_column(
+<span class='lineno'>  53</span>     tf.feature_column.numeric_column(&quot;feature_c&quot;), ...)
+<span class='lineno'>  54</span>   feature_a_x_feature_c = tf.feature_column.crossed_column(
+<span class='lineno'>  55</span>       columns=[&quot;feature_a&quot;, feature_c_bucketized], ...)
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>   feature_columns = [feature_b, feature_c_bucketized, feature_a_x_feature_c]
+<span class='lineno'>  58</span>   parsing_spec = tf.estimator.classifier_parse_example_spec(
+<span class='lineno'>  59</span>       feature_columns, label_key=&#39;my-label&#39;, label_dtype=tf.string)
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   # For the above example, classifier_parse_example_spec would return the dict:
+<span class='lineno'>  62</span>   assert parsing_spec == {
+<span class='lineno'>  63</span>     &quot;feature_a&quot;: parsing_ops.VarLenFeature(tf.string),
+<span class='lineno'>  64</span>     &quot;feature_b&quot;: parsing_ops.FixedLenFeature([1], dtype=tf.float32),
+<span class='lineno'>  65</span>     &quot;feature_c&quot;: parsing_ops.FixedLenFeature([1], dtype=tf.float32)
+<span class='lineno'>  66</span>     &quot;my-label&quot; : parsing_ops.FixedLenFeature([1], dtype=tf.string)
+<span class='lineno'>  67</span>   }
+<span class='lineno'>  68</span>   ```
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   Example usage with a classifier:
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>   ```python
+<span class='lineno'>  73</span>   feature_columns = # define features via tf.feature_column
+<span class='lineno'>  74</span>   estimator = DNNClassifier(
+<span class='lineno'>  75</span>       n_classes=1000,
+<span class='lineno'>  76</span>       feature_columns=feature_columns,
+<span class='lineno'>  77</span>       weight_column=&#39;example-weight&#39;,
+<span class='lineno'>  78</span>       label_vocabulary=[&#39;photos&#39;, &#39;keep&#39;, ...],
+<span class='lineno'>  79</span>       hidden_units=[256, 64, 16])
+<span class='lineno'>  80</span>   # This label configuration tells the classifier the following:
+<span class='lineno'>  81</span>   # * weights are retrieved with key &#39;example-weight&#39;
+<span class='lineno'>  82</span>   # * label is string and can be one of the following [&#39;photos&#39;, &#39;keep&#39;, ...]
+<span class='lineno'>  83</span>   # * integer id for label &#39;photos&#39; is 0, &#39;keep&#39; is 1, ...
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span>   # Input builders
+<span class='lineno'>  87</span>   def input_fn_train():  # Returns a tuple of features and labels.
+<span class='lineno'>  88</span>     features = tf.contrib.learn.read_keyed_batch_features(
+<span class='lineno'>  89</span>         file_pattern=train_files,
+<span class='lineno'>  90</span>         batch_size=batch_size,
+<span class='lineno'>  91</span>         # creates parsing configuration for tf.parse_example
+<span class='lineno'>  92</span>         features=tf.estimator.classifier_parse_example_spec(
+<span class='lineno'>  93</span>             feature_columns,
+<span class='lineno'>  94</span>             label_key=&#39;my-label&#39;,
+<span class='lineno'>  95</span>             label_dtype=tf.string,
+<span class='lineno'>  96</span>             weight_column=&#39;example-weight&#39;),
+<span class='lineno'>  97</span>         reader=tf.RecordIOReader)
+<span class='lineno'>  98</span>      labels = features.pop(&#39;my-label&#39;)
+<span class='lineno'>  99</span>      return features, labels
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   estimator.train(input_fn=input_fn_train)
+<span class='lineno'> 102</span>   ```
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>   Args:
+<span class='lineno'> 105</span>     feature_columns: An iterable containing all feature columns. All items
+<span class='lineno'> 106</span>       should be instances of classes derived from `_FeatureColumn`.
+<span class='lineno'> 107</span>     label_key: A string identifying the label. It means tf.Example stores labels
+<span class='lineno'> 108</span>       with this key.
+<span class='lineno'> 109</span>     label_dtype: A `tf.dtype` identifies the type of labels. By default it is
+<span class='lineno'> 110</span>       `tf.int64`. If user defines a `label_vocabulary`, this should be set as
+<span class='lineno'> 111</span>       `tf.string`. `tf.float32` labels are only supported for binary
+<span class='lineno'> 112</span>       classification.
+<span class='lineno'> 113</span>     label_default: used as label if label_key does not exist in given
+<span class='lineno'> 114</span>       tf.Example. An example usage: let&#39;s say `label_key` is &#39;clicked&#39; and
+<span class='lineno'> 115</span>       tf.Example contains clicked data only for positive examples in following
+<span class='lineno'> 116</span>       format `key:clicked, value:1`. This means that if there is no data with
+<span class='lineno'> 117</span>       key &#39;clicked&#39; it should count as negative example by setting
+<span class='lineno'> 118</span>       `label_deafault=0`. Type of this value should be compatible with
+<span class='lineno'> 119</span>       `label_dtype`.
+<span class='lineno'> 120</span>     weight_column: A string or a `_NumericColumn` created by
+<span class='lineno'> 121</span>       `tf.feature_column.numeric_column` defining feature column representing
+<span class='lineno'> 122</span>       weights. It is used to down weight or boost examples during training. It
+<span class='lineno'> 123</span>       will be multiplied by the loss of the example. If it is a string, it is
+<span class='lineno'> 124</span>       used as a key to fetch weight tensor from the `features`. If it is a
+<span class='lineno'> 125</span>       `_NumericColumn`, raw tensor is fetched by key `weight_column.key`,
+<span class='lineno'> 126</span>       then weight_column.normalizer_fn is applied on it to get weight tensor.
+<span class='lineno'> 127</span> 
+<span class='lineno'> 128</span>   Returns:
+<span class='lineno'> 129</span>     A dict mapping each feature key to a `FixedLenFeature` or `VarLenFeature`
+<span class='lineno'> 130</span>     value.
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span>   Raises:
+<span class='lineno'> 133</span>     ValueError: If label is used in `feature_columns`.
+<span class='lineno'> 134</span>     ValueError: If weight_column is used in `feature_columns`.
+<span class='lineno'> 135</span>     ValueError: If any of the given `feature_columns` is not a `_FeatureColumn`
+<span class='lineno'> 136</span>       instance.
+<span class='lineno'> 137</span>     ValueError: If `weight_column` is not a `_NumericColumn` instance.
+<span class='lineno'> 138</span>     ValueError: if label_key is None.
+<span class='lineno'> 139</span>   &quot;&quot;&quot;
+<span class='lineno'> 140</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a> = <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.make_parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.make_parse_example_spec', title='TimeSeriesModel -> [?] -> dict / ? -> dict / [?] -> dict'>make_parse_example_spec</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.feature_columns', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.feature_columns', title='?'>feature_columns</a>)
+<span class='lineno'> 141</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', title='?'>label_key</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>:
+<span class='lineno'> 142</span>     raise ValueError(&#39;label should not be used as feature. &#39;
+<span class='lineno'> 143</span>                      &#39;label_key: {}, features: {}&#39;.format(
+<span class='lineno'> 144</span>                          label_key, parsing_spec.keys()))
+<span class='lineno'> 145</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_key', title='?'>label_key</a>] = <a href='../../ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', title='parsing_ops'>parsing_ops</a>.<a href='../../ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.FixedLenFeature', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.FixedLenFeature', title='<FixedLenFeature>'>FixedLenFeature</a>((1,), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_dtype', title='DType'>label_dtype</a>,
+<span class='lineno'> 146</span>                                                         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_default', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.label_default', title='None'>label_default</a>)
+<span class='lineno'> 147</span> 
+<span class='lineno'> 148</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='None'>weight_column</a> is None:
+<span class='lineno'> 149</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>
+<span class='lineno'> 150</span> 
+<span class='lineno'> 151</span>   if isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='None'>weight_column</a></a>, six.string_types):
+<span class='lineno'> 152</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a> = <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.numeric_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.numeric_column', title='(str, int, None, DType, None) -> _NumericColumn / (?, int, None, DType, None) -> _NumericColumn'>numeric_column</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='?'>weight_column</a>)
+<span class='lineno'> 153</span> 
+<span class='lineno'> 154</span>   if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>, <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn', title='<_NumericColumn>'>_NumericColumn</a>):  # pylint: disable=protected-access
+<span class='lineno'> 155</span>     raise ValueError(&#39;weight_column should be an instance of &#39;
+<span class='lineno'> 156</span>                      &#39;tf.feature_column.numeric_column. &#39;
+<span class='lineno'> 157</span>                      &#39;Given type: {} value: {}&#39;.format(
+<span class='lineno'> 158</span>                          type(weight_column), weight_column))
+<span class='lineno'> 159</span> 
+<span class='lineno'> 160</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>.key in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>:
+<span class='lineno'> 161</span>     raise ValueError(&#39;weight_column should not be used as feature. &#39;
+<span class='lineno'> 162</span>                      &#39;weight_column: {}, features: {}&#39;.format(
+<span class='lineno'> 163</span>                          weight_column.key, parsing_spec.keys()))
+<span class='lineno'> 164</span> 
+<span class='lineno'> 165</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>.update(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn._parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn._parse_example_spec', title='_NumericColumn -> dict'>_parse_example_spec</a>)  # pylint: disable=protected-access
+<span class='lineno'> 166</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.classifier_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>
+<span class='lineno'> 167</span> 
+<span class='lineno'> 168</span> 
+<span class='lineno'> 169</span> @estimator_export(&#39;estimator.regressor_parse_example_spec&#39;)
+<span class='lineno'> 170</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec', title='(?, ?, DType, None, int, None) -> dict'>regressor_parse_example_spec</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.feature_columns', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.feature_columns', title='?'>feature_columns</a>,
+<span class='lineno'> 171</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', title='?'>label_key</a>,
+<span class='lineno'> 172</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dtype', title='DType'>label_dtype</a>=<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes', title='dtypes'>dtypes</a>.<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>,
+<span class='lineno'> 173</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_default', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_default', title='None'>label_default</a>=None,
+<span class='lineno'> 174</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dimension', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dimension', title='int'>label_dimension</a>=1,
+<span class='lineno'> 175</span>                                  <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='None'>weight_column</a>=None):
+<span class='lineno'> 176</span>   &quot;&quot;&quot;Generates parsing spec for tf.parse_example to be used with regressors.
+<span class='lineno'> 177</span> 
+<span class='lineno'> 178</span>   If users keep data in tf.Example format, they need to call tf.parse_example
+<span class='lineno'> 179</span>   with a proper feature spec. There are two main things that this utility helps:
+<span class='lineno'> 180</span> 
+<span class='lineno'> 181</span>   * Users need to combine parsing spec of features with labels and weights
+<span class='lineno'> 182</span>     (if any) since they are all parsed from same tf.Example instance. This
+<span class='lineno'> 183</span>     utility combines these specs.
+<span class='lineno'> 184</span>   * It is difficult to map expected label by a regressor such as `DNNRegressor`
+<span class='lineno'> 185</span>     to corresponding tf.parse_example spec. This utility encodes it by getting
+<span class='lineno'> 186</span>     related information from users (key, dtype).
+<span class='lineno'> 187</span> 
+<span class='lineno'> 188</span>   Example output of parsing spec:
+<span class='lineno'> 189</span> 
+<span class='lineno'> 190</span>   ```python
+<span class='lineno'> 191</span>   # Define features and transformations
+<span class='lineno'> 192</span>   feature_b = tf.feature_column.numeric_column(...)
+<span class='lineno'> 193</span>   feature_c_bucketized = tf.feature_column.bucketized_column(
+<span class='lineno'> 194</span>     tf.feature_column.numeric_column(&quot;feature_c&quot;), ...)
+<span class='lineno'> 195</span>   feature_a_x_feature_c = tf.feature_column.crossed_column(
+<span class='lineno'> 196</span>       columns=[&quot;feature_a&quot;, feature_c_bucketized], ...)
+<span class='lineno'> 197</span> 
+<span class='lineno'> 198</span>   feature_columns = [feature_b, feature_c_bucketized, feature_a_x_feature_c]
+<span class='lineno'> 199</span>   parsing_spec = tf.estimator.regressor_parse_example_spec(
+<span class='lineno'> 200</span>       feature_columns, label_key=&#39;my-label&#39;)
+<span class='lineno'> 201</span> 
+<span class='lineno'> 202</span>   # For the above example, regressor_parse_example_spec would return the dict:
+<span class='lineno'> 203</span>   assert parsing_spec == {
+<span class='lineno'> 204</span>     &quot;feature_a&quot;: parsing_ops.VarLenFeature(tf.string),
+<span class='lineno'> 205</span>     &quot;feature_b&quot;: parsing_ops.FixedLenFeature([1], dtype=tf.float32),
+<span class='lineno'> 206</span>     &quot;feature_c&quot;: parsing_ops.FixedLenFeature([1], dtype=tf.float32)
+<span class='lineno'> 207</span>     &quot;my-label&quot; : parsing_ops.FixedLenFeature([1], dtype=tf.float32)
+<span class='lineno'> 208</span>   }
+<span class='lineno'> 209</span>   ```
+<span class='lineno'> 210</span> 
+<span class='lineno'> 211</span>   Example usage with a regressor:
+<span class='lineno'> 212</span> 
+<span class='lineno'> 213</span>   ```python
+<span class='lineno'> 214</span>   feature_columns = # define features via tf.feature_column
+<span class='lineno'> 215</span>   estimator = DNNRegressor(
+<span class='lineno'> 216</span>       hidden_units=[256, 64, 16],
+<span class='lineno'> 217</span>       feature_columns=feature_columns,
+<span class='lineno'> 218</span>       weight_column=&#39;example-weight&#39;,
+<span class='lineno'> 219</span>       label_dimension=3)
+<span class='lineno'> 220</span>   # This label configuration tells the regressor the following:
+<span class='lineno'> 221</span>   # * weights are retrieved with key &#39;example-weight&#39;
+<span class='lineno'> 222</span>   # * label is a 3 dimension tensor with float32 dtype.
+<span class='lineno'> 223</span> 
+<span class='lineno'> 224</span> 
+<span class='lineno'> 225</span>   # Input builders
+<span class='lineno'> 226</span>   def input_fn_train():  # Returns a tuple of features and labels.
+<span class='lineno'> 227</span>     features = tf.contrib.learn.read_keyed_batch_features(
+<span class='lineno'> 228</span>         file_pattern=train_files,
+<span class='lineno'> 229</span>         batch_size=batch_size,
+<span class='lineno'> 230</span>         # creates parsing configuration for tf.parse_example
+<span class='lineno'> 231</span>         features=tf.estimator.classifier_parse_example_spec(
+<span class='lineno'> 232</span>             feature_columns,
+<span class='lineno'> 233</span>             label_key=&#39;my-label&#39;,
+<span class='lineno'> 234</span>             label_dimension=3,
+<span class='lineno'> 235</span>             weight_column=&#39;example-weight&#39;),
+<span class='lineno'> 236</span>         reader=tf.RecordIOReader)
+<span class='lineno'> 237</span>      labels = features.pop(&#39;my-label&#39;)
+<span class='lineno'> 238</span>      return features, labels
+<span class='lineno'> 239</span> 
+<span class='lineno'> 240</span>   estimator.train(input_fn=input_fn_train)
+<span class='lineno'> 241</span>   ```
+<span class='lineno'> 242</span> 
+<span class='lineno'> 243</span>   Args:
+<span class='lineno'> 244</span>     feature_columns: An iterable containing all feature columns. All items
+<span class='lineno'> 245</span>       should be instances of classes derived from `_FeatureColumn`.
+<span class='lineno'> 246</span>     label_key: A string identifying the label. It means tf.Example stores labels
+<span class='lineno'> 247</span>       with this key.
+<span class='lineno'> 248</span>     label_dtype: A `tf.dtype` identifies the type of labels. By default it is
+<span class='lineno'> 249</span>       `tf.float32`.
+<span class='lineno'> 250</span>     label_default: used as label if label_key does not exist in given
+<span class='lineno'> 251</span>       tf.Example. By default default_value is none, which means
+<span class='lineno'> 252</span>       `tf.parse_example` will error out if there is any missing label.
+<span class='lineno'> 253</span>     label_dimension: Number of regression targets per example. This is the
+<span class='lineno'> 254</span>       size of the last dimension of the labels and logits `Tensor` objects
+<span class='lineno'> 255</span>       (typically, these have shape `[batch_size, label_dimension]`).
+<span class='lineno'> 256</span>     weight_column: A string or a `_NumericColumn` created by
+<span class='lineno'> 257</span>       `tf.feature_column.numeric_column` defining feature column representing
+<span class='lineno'> 258</span>       weights. It is used to down weight or boost examples during training. It
+<span class='lineno'> 259</span>       will be multiplied by the loss of the example. If it is a string, it is
+<span class='lineno'> 260</span>       used as a key to fetch weight tensor from the `features`. If it is a
+<span class='lineno'> 261</span>       `_NumericColumn`, raw tensor is fetched by key `weight_column.key`,
+<span class='lineno'> 262</span>       then weight_column.normalizer_fn is applied on it to get weight tensor.
+<span class='lineno'> 263</span> 
+<span class='lineno'> 264</span>   Returns:
+<span class='lineno'> 265</span>     A dict mapping each feature key to a `FixedLenFeature` or `VarLenFeature`
+<span class='lineno'> 266</span>     value.
+<span class='lineno'> 267</span> 
+<span class='lineno'> 268</span>   Raises:
+<span class='lineno'> 269</span>     ValueError: If label is used in `feature_columns`.
+<span class='lineno'> 270</span>     ValueError: If weight_column is used in `feature_columns`.
+<span class='lineno'> 271</span>     ValueError: If any of the given `feature_columns` is not a `_FeatureColumn`
+<span class='lineno'> 272</span>       instance.
+<span class='lineno'> 273</span>     ValueError: If `weight_column` is not a `_NumericColumn` instance.
+<span class='lineno'> 274</span>     ValueError: if label_key is None.
+<span class='lineno'> 275</span>   &quot;&quot;&quot;
+<span class='lineno'> 276</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a> = <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.make_parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.make_parse_example_spec', title='TimeSeriesModel -> [?] -> dict / ? -> dict / [?] -> dict'>make_parse_example_spec</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.feature_columns', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.feature_columns', title='?'>feature_columns</a>)
+<span class='lineno'> 277</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', title='?'>label_key</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>:
+<span class='lineno'> 278</span>     raise ValueError(&#39;label should not be used as feature. &#39;
+<span class='lineno'> 279</span>                      &#39;label_key: {}, features: {}&#39;.format(
+<span class='lineno'> 280</span>                          label_key, parsing_spec.keys()))
+<span class='lineno'> 281</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_key', title='?'>label_key</a>] = <a href='../../ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops', title='parsing_ops'>parsing_ops</a>.<a href='../../ops/parsing_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.FixedLenFeature', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.parsing_ops.FixedLenFeature', title='<FixedLenFeature>'>FixedLenFeature</a>(
+<span class='lineno'> 282</span>       (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dimension', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dimension', title='int'>label_dimension</a>,), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_dtype', title='DType'>label_dtype</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_default', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.label_default', title='None'>label_default</a>)
+<span class='lineno'> 283</span> 
+<span class='lineno'> 284</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='None'>weight_column</a> is None:
+<span class='lineno'> 285</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>
+<span class='lineno'> 286</span> 
+<span class='lineno'> 287</span>   if isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='None'>weight_column</a></a>, six.string_types):
+<span class='lineno'> 288</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a> = <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.numeric_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column.numeric_column', title='(str, int, None, DType, None) -> _NumericColumn / (?, int, None, DType, None) -> _NumericColumn'>numeric_column</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='?'>weight_column</a>)
+<span class='lineno'> 289</span> 
+<span class='lineno'> 290</span>   if not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>, <a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column', title='feature_column'>fc</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn', title='<_NumericColumn>'>_NumericColumn</a>):  # pylint: disable=protected-access
+<span class='lineno'> 291</span>     raise ValueError(&#39;weight_column should be an instance of &#39;
+<span class='lineno'> 292</span>                      &#39;tf.feature_column.numeric_column. &#39;
+<span class='lineno'> 293</span>                      &#39;Given type: {} value: {}&#39;.format(
+<span class='lineno'> 294</span>                          type(weight_column), weight_column))
+<span class='lineno'> 295</span> 
+<span class='lineno'> 296</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>.key in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>:
+<span class='lineno'> 297</span>     raise ValueError(&#39;weight_column should not be used as feature. &#39;
+<span class='lineno'> 298</span>                      &#39;weight_column: {}, features: {}&#39;.format(
+<span class='lineno'> 299</span>                          weight_column.key, parsing_spec.keys()))
+<span class='lineno'> 300</span> 
+<span class='lineno'> 301</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>.update(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.weight_column', title='_NumericColumn'>weight_column</a>.<a href='../../feature_column/feature_column.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn._parse_example_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.feature_column.feature_column._NumericColumn._parse_example_spec', title='_NumericColumn -> dict'>_parse_example_spec</a>)  # pylint: disable=protected-access
+<span class='lineno'> 302</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.estimator.canned.parsing_utils.regressor_parse_example_spec.parsing_spec', title='dict'>parsing_spec</a>
+</pre></td></tr></table></body></html>

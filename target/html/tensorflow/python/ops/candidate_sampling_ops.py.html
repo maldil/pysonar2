@@ -1,0 +1,450 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/ops/candidate_sampling_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler'>uniform_candidate_sampler</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler'>log_uniform_candidate_sampler</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler'>learned_unigram_candidate_sampler</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler'>fixed_unigram_candidate_sampler</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler'>all_candidate_sampler</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits'>compute_accidental_hits</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Wrappers for candidate sampling operations.&quot;&quot;&quot;
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> from __future__ import absolute_import
+<span class='lineno'>  19</span> from __future__ import division
+<span class='lineno'>  20</span> from __future__ import print_function
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops', title='array_ops'>array_ops</a>  # pylint: disable=unused-import
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>
+<span class='lineno'>  25</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>  # pylint: disable=unused-import
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a>
+<span class='lineno'>  27</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> @tf_export(&#39;random.uniform_candidate_sampler&#39;, &#39;nn.uniform_candidate_sampler&#39;)
+<span class='lineno'>  31</span> @deprecation.deprecated_endpoints(&#39;nn.uniform_candidate_sampler&#39;)
+<span class='lineno'>  32</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler', title='(?, ?, ?, ?, ?, None, None) -> None'>uniform_candidate_sampler</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.true_classes', title='?'>true_classes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_true', title='?'>num_true</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.unique', title='?'>unique</a>,
+<span class='lineno'>  33</span>                               <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.range_max', title='?'>range_max</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed', title='None'>seed</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.name', title='None'>name</a>=None):
+<span class='lineno'>  34</span>   &quot;&quot;&quot;Samples a set of classes using a uniform base distribution.
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   This operation randomly samples a tensor of sampled classes
+<span class='lineno'>  37</span>   (`sampled_candidates`) from the range of integers `[0, range_max)`.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   The elements of `sampled_candidates` are drawn without replacement
+<span class='lineno'>  40</span>   (if `unique=True`) or with replacement (if `unique=False`) from
+<span class='lineno'>  41</span>   the base distribution.
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   The base distribution for this operation is the uniform distribution
+<span class='lineno'>  44</span>   over the range of integers `[0, range_max)`.
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   In addition, this operation returns tensors `true_expected_count`
+<span class='lineno'>  47</span>   and `sampled_expected_count` representing the number of times each
+<span class='lineno'>  48</span>   of the target classes (`true_classes`) and the sampled
+<span class='lineno'>  49</span>   classes (`sampled_candidates`) is expected to occur in an average
+<span class='lineno'>  50</span>   tensor of sampled classes.  These values correspond to `Q(y|x)`
+<span class='lineno'>  51</span>   defined in [this
+<span class='lineno'>  52</span>   document](http://www.tensorflow.org/extras/candidate_sampling.pdf).
+<span class='lineno'>  53</span>   If `unique=True`, then these are post-rejection probabilities and we
+<span class='lineno'>  54</span>   compute them approximately.
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span>   Args:
+<span class='lineno'>  57</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'>  58</span>       num_true]`. The target classes.
+<span class='lineno'>  59</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'>  60</span>     num_sampled: An `int`.  The number of classes to randomly sample. The
+<span class='lineno'>  61</span>       `sampled_candidates` return value will have shape `[num_sampled]`. If
+<span class='lineno'>  62</span>       `unique=True`, `num_sampled` must be less than or equal to `range_max`.
+<span class='lineno'>  63</span>     unique: A `bool`. Determines whether all sampled classes in a batch are
+<span class='lineno'>  64</span>       unique.
+<span class='lineno'>  65</span>     range_max: An `int`. The number of possible classes.
+<span class='lineno'>  66</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'>  67</span>     name: A name for the operation (optional).
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   Returns:
+<span class='lineno'>  70</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.  The
+<span class='lineno'>  71</span>       sampled classes, either with possible duplicates (`unique=False`) or all
+<span class='lineno'>  72</span>       unique (`unique=True`). In either case, `sampled_candidates` is
+<span class='lineno'>  73</span>       independent of the true classes.
+<span class='lineno'>  74</span>     true_expected_count: A tensor of type `float`.  Same shape as
+<span class='lineno'>  75</span>       `true_classes`. The expected counts under the sampling distribution
+<span class='lineno'>  76</span>       of each of `true_classes`.
+<span class='lineno'>  77</span>     sampled_expected_count: A tensor of type `float`. Same shape as
+<span class='lineno'>  78</span>       `sampled_candidates`. The expected counts under the sampling distribution
+<span class='lineno'>  79</span>       of each of `sampled_candidates`.
+<span class='lineno'>  80</span>   &quot;&quot;&quot;
+<span class='lineno'>  81</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed', title='None'>seed</a>)
+<span class='lineno'>  82</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.uniform_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.uniform_candidate_sampler', title='(?, ?, ?, ?, ?, int, int, None) -> ?'>uniform_candidate_sampler</a>(
+<span class='lineno'>  83</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_true', title='?'>num_true</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.unique', title='?'>unique</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.range_max', title='?'>range_max</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed1', title='int'>seed1</a>,
+<span class='lineno'>  84</span>       seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.seed2', title='int'>seed2</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.uniform_candidate_sampler.name', title='None'>name</a>)
+<span class='lineno'>  85</span> 
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span> @tf_export(&#39;random.log_uniform_candidate_sampler&#39;,
+<span class='lineno'>  88</span>            &#39;nn.log_uniform_candidate_sampler&#39;)
+<span class='lineno'>  89</span> @deprecation.deprecated_endpoints(&#39;nn.log_uniform_candidate_sampler&#39;)
+<span class='lineno'>  90</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler', title='(?, int, ?, bool, ?, None, None) -> None / (?, ?, ?, ?, ?, None, None) -> None'>log_uniform_candidate_sampler</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.true_classes', title='?'>true_classes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_true', title='int'>num_true</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.unique', title='bool'>unique</a>,
+<span class='lineno'>  91</span>                                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.range_max', title='?'>range_max</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed', title='None'>seed</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.name', title='None'>name</a>=None):
+<span class='lineno'>  92</span>   &quot;&quot;&quot;Samples a set of classes using a log-uniform (Zipfian) base distribution.
+<span class='lineno'>  93</span> 
+<span class='lineno'>  94</span>   This operation randomly samples a tensor of sampled classes
+<span class='lineno'>  95</span>   (`sampled_candidates`) from the range of integers `[0, range_max)`.
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>   The elements of `sampled_candidates` are drawn without replacement
+<span class='lineno'>  98</span>   (if `unique=True`) or with replacement (if `unique=False`) from
+<span class='lineno'>  99</span>   the base distribution.
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   The base distribution for this operation is an approximately log-uniform
+<span class='lineno'> 102</span>   or Zipfian distribution:
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>   `P(class) = (log(class + 2) - log(class + 1)) / log(range_max + 1)`
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   This sampler is useful when the target classes approximately follow such
+<span class='lineno'> 107</span>   a distribution - for example, if the classes represent words in a lexicon
+<span class='lineno'> 108</span>   sorted in decreasing order of frequency. If your classes are not ordered by
+<span class='lineno'> 109</span>   decreasing frequency, do not use this op.
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   In addition, this operation returns tensors `true_expected_count`
+<span class='lineno'> 112</span>   and `sampled_expected_count` representing the number of times each
+<span class='lineno'> 113</span>   of the target classes (`true_classes`) and the sampled
+<span class='lineno'> 114</span>   classes (`sampled_candidates`) is expected to occur in an average
+<span class='lineno'> 115</span>   tensor of sampled classes.  These values correspond to `Q(y|x)`
+<span class='lineno'> 116</span>   defined in [this
+<span class='lineno'> 117</span>   document](http://www.tensorflow.org/extras/candidate_sampling.pdf).
+<span class='lineno'> 118</span>   If `unique=True`, then these are post-rejection probabilities and we
+<span class='lineno'> 119</span>   compute them approximately.
+<span class='lineno'> 120</span> 
+<span class='lineno'> 121</span>   Args:
+<span class='lineno'> 122</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'> 123</span>       num_true]`. The target classes.
+<span class='lineno'> 124</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'> 125</span>     num_sampled: An `int`.  The number of classes to randomly sample.
+<span class='lineno'> 126</span>     unique: A `bool`. Determines whether all sampled classes in a batch are
+<span class='lineno'> 127</span>       unique.
+<span class='lineno'> 128</span>     range_max: An `int`. The number of possible classes.
+<span class='lineno'> 129</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'> 130</span>     name: A name for the operation (optional).
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span>   Returns:
+<span class='lineno'> 133</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
+<span class='lineno'> 134</span>       The sampled classes.
+<span class='lineno'> 135</span>     true_expected_count: A tensor of type `float`.  Same shape as
+<span class='lineno'> 136</span>       `true_classes`. The expected counts under the sampling distribution
+<span class='lineno'> 137</span>       of each of `true_classes`.
+<span class='lineno'> 138</span>     sampled_expected_count: A tensor of type `float`. Same shape as
+<span class='lineno'> 139</span>       `sampled_candidates`. The expected counts under the sampling distribution
+<span class='lineno'> 140</span>       of each of `sampled_candidates`.
+<span class='lineno'> 141</span>   &quot;&quot;&quot;
+<span class='lineno'> 142</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed', title='None'>seed</a>)
+<span class='lineno'> 143</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.log_uniform_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.log_uniform_candidate_sampler', title='(?, int, ?, bool, ?, int, int, None) -> ? / (?, ?, ?, ?, ?, int, int, None) -> ?'>log_uniform_candidate_sampler</a>(
+<span class='lineno'> 144</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_true', title='int'>num_true</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.unique', title='bool'>unique</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.range_max', title='?'>range_max</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed1', title='int'>seed1</a>,
+<span class='lineno'> 145</span>       seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.seed2', title='int'>seed2</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.log_uniform_candidate_sampler.name', title='None'>name</a>)
+<span class='lineno'> 146</span> 
+<span class='lineno'> 147</span> 
+<span class='lineno'> 148</span> @tf_export(&#39;nn.learned_unigram_candidate_sampler&#39;)
+<span class='lineno'> 149</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler', title='(?, ?, ?, ?, ?, None, None) -> None / (?, ?, ?, bool, ?, None, None) -> None'>learned_unigram_candidate_sampler</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.true_classes', title='?'>true_classes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_true', title='?'>num_true</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_sampled', title='?'>num_sampled</a>,
+<span class='lineno'> 150</span>                                       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.unique', title='bool'>unique</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.range_max', title='?'>range_max</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed', title='None'>seed</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.name', title='None'>name</a>=None):
+<span class='lineno'> 151</span>   &quot;&quot;&quot;Samples a set of classes from a distribution learned during training.
+<span class='lineno'> 152</span> 
+<span class='lineno'> 153</span>   This operation randomly samples a tensor of sampled classes
+<span class='lineno'> 154</span>   (`sampled_candidates`) from the range of integers `[0, range_max)`.
+<span class='lineno'> 155</span> 
+<span class='lineno'> 156</span>   The elements of `sampled_candidates` are drawn without replacement
+<span class='lineno'> 157</span>   (if `unique=True`) or with replacement (if `unique=False`) from
+<span class='lineno'> 158</span>   the base distribution.
+<span class='lineno'> 159</span> 
+<span class='lineno'> 160</span>   The base distribution for this operation is constructed on the fly
+<span class='lineno'> 161</span>   during training.  It is a unigram distribution over the target
+<span class='lineno'> 162</span>   classes seen so far during training.  Every integer in `[0, range_max)`
+<span class='lineno'> 163</span>   begins with a weight of 1, and is incremented by 1 each time it is
+<span class='lineno'> 164</span>   seen as a target class.  The base distribution is not saved to checkpoints,
+<span class='lineno'> 165</span>   so it is reset when the model is reloaded.
+<span class='lineno'> 166</span> 
+<span class='lineno'> 167</span>   In addition, this operation returns tensors `true_expected_count`
+<span class='lineno'> 168</span>   and `sampled_expected_count` representing the number of times each
+<span class='lineno'> 169</span>   of the target classes (`true_classes`) and the sampled
+<span class='lineno'> 170</span>   classes (`sampled_candidates`) is expected to occur in an average
+<span class='lineno'> 171</span>   tensor of sampled classes.  These values correspond to `Q(y|x)`
+<span class='lineno'> 172</span>   defined in [this
+<span class='lineno'> 173</span>   document](http://www.tensorflow.org/extras/candidate_sampling.pdf).
+<span class='lineno'> 174</span>   If `unique=True`, then these are post-rejection probabilities and we
+<span class='lineno'> 175</span>   compute them approximately.
+<span class='lineno'> 176</span> 
+<span class='lineno'> 177</span>   Args:
+<span class='lineno'> 178</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'> 179</span>       num_true]`. The target classes.
+<span class='lineno'> 180</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'> 181</span>     num_sampled: An `int`.  The number of classes to randomly sample.
+<span class='lineno'> 182</span>     unique: A `bool`. Determines whether all sampled classes in a batch are
+<span class='lineno'> 183</span>       unique.
+<span class='lineno'> 184</span>     range_max: An `int`. The number of possible classes.
+<span class='lineno'> 185</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'> 186</span>     name: A name for the operation (optional).
+<span class='lineno'> 187</span> 
+<span class='lineno'> 188</span>   Returns:
+<span class='lineno'> 189</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
+<span class='lineno'> 190</span>       The sampled classes.
+<span class='lineno'> 191</span>     true_expected_count: A tensor of type `float`.  Same shape as
+<span class='lineno'> 192</span>       `true_classes`. The expected counts under the sampling distribution
+<span class='lineno'> 193</span>       of each of `true_classes`.
+<span class='lineno'> 194</span>     sampled_expected_count: A tensor of type `float`. Same shape as
+<span class='lineno'> 195</span>       `sampled_candidates`. The expected counts under the sampling distribution
+<span class='lineno'> 196</span>       of each of `sampled_candidates`.
+<span class='lineno'> 197</span> 
+<span class='lineno'> 198</span>   &quot;&quot;&quot;
+<span class='lineno'> 199</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed', title='None'>seed</a>)
+<span class='lineno'> 200</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.learned_unigram_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.learned_unigram_candidate_sampler', title='(?, ?, ?, ?, ?, int, int, None) -> ? / (?, ?, ?, bool, ?, int, int, None) -> ?'>learned_unigram_candidate_sampler</a>(
+<span class='lineno'> 201</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_true', title='?'>num_true</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.unique', title='bool'>unique</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.range_max', title='?'>range_max</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed1', title='int'>seed1</a>,
+<span class='lineno'> 202</span>       seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.seed2', title='int'>seed2</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.learned_unigram_candidate_sampler.name', title='None'>name</a>)
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span> 
+<span class='lineno'> 205</span> @tf_export(&#39;nn.fixed_unigram_candidate_sampler&#39;)
+<span class='lineno'> 206</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler', title='(?, ?, ?, ?, ?, str, float, int, int, int, (), None, None) -> None'>fixed_unigram_candidate_sampler</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.true_classes', title='?'>true_classes</a>,
+<span class='lineno'> 207</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_true', title='?'>num_true</a>,
+<span class='lineno'> 208</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_sampled', title='?'>num_sampled</a>,
+<span class='lineno'> 209</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unique', title='?'>unique</a>,
+<span class='lineno'> 210</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.range_max', title='?'>range_max</a>,
+<span class='lineno'> 211</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.vocab_file', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.vocab_file', title='str'>vocab_file</a>=&#39;&#39;,
+<span class='lineno'> 212</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.distortion', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.distortion', title='float'>distortion</a>=1.0,
+<span class='lineno'> 213</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_reserved_ids', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_reserved_ids', title='int'>num_reserved_ids</a>=0,
+<span class='lineno'> 214</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_shards', title='int'>num_shards</a>=1,
+<span class='lineno'> 215</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.shard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.shard', title='int'>shard</a>=0,
+<span class='lineno'> 216</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unigrams', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unigrams', title='()'>unigrams</a>=(),
+<span class='lineno'> 217</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed', title='None'>seed</a>=None,
+<span class='lineno'> 218</span>                                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.name', title='None'>name</a>=None):
+<span class='lineno'> 219</span>   &quot;&quot;&quot;Samples a set of classes using the provided (fixed) base distribution.
+<span class='lineno'> 220</span> 
+<span class='lineno'> 221</span>   This operation randomly samples a tensor of sampled classes
+<span class='lineno'> 222</span>   (`sampled_candidates`) from the range of integers `[0, range_max)`.
+<span class='lineno'> 223</span> 
+<span class='lineno'> 224</span>   The elements of `sampled_candidates` are drawn without replacement
+<span class='lineno'> 225</span>   (if `unique=True`) or with replacement (if `unique=False`) from
+<span class='lineno'> 226</span>   the base distribution.
+<span class='lineno'> 227</span> 
+<span class='lineno'> 228</span>   The base distribution is read from a file or passed in as an
+<span class='lineno'> 229</span>   in-memory array. There is also an option to skew the distribution by
+<span class='lineno'> 230</span>   applying a distortion power to the weights.
+<span class='lineno'> 231</span> 
+<span class='lineno'> 232</span>   In addition, this operation returns tensors `true_expected_count`
+<span class='lineno'> 233</span>   and `sampled_expected_count` representing the number of times each
+<span class='lineno'> 234</span>   of the target classes (`true_classes`) and the sampled
+<span class='lineno'> 235</span>   classes (`sampled_candidates`) is expected to occur in an average
+<span class='lineno'> 236</span>   tensor of sampled classes.  These values correspond to `Q(y|x)`
+<span class='lineno'> 237</span>   defined in [this
+<span class='lineno'> 238</span>   document](http://www.tensorflow.org/extras/candidate_sampling.pdf).
+<span class='lineno'> 239</span>   If `unique=True`, then these are post-rejection probabilities and we
+<span class='lineno'> 240</span>   compute them approximately.
+<span class='lineno'> 241</span> 
+<span class='lineno'> 242</span>   Args:
+<span class='lineno'> 243</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'> 244</span>       num_true]`. The target classes.
+<span class='lineno'> 245</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'> 246</span>     num_sampled: An `int`.  The number of classes to randomly sample.
+<span class='lineno'> 247</span>     unique: A `bool`. Determines whether all sampled classes in a batch are
+<span class='lineno'> 248</span>       unique.
+<span class='lineno'> 249</span>     range_max: An `int`. The number of possible classes.
+<span class='lineno'> 250</span>     vocab_file: Each valid line in this file (which should have a CSV-like
+<span class='lineno'> 251</span>       format) corresponds to a valid word ID. IDs are in sequential order,
+<span class='lineno'> 252</span>       starting from num_reserved_ids. The last entry in each line is expected
+<span class='lineno'> 253</span>       to be a value corresponding to the count or relative probability. Exactly
+<span class='lineno'> 254</span>       one of `vocab_file` and `unigrams` needs to be passed to this operation.
+<span class='lineno'> 255</span>     distortion: The distortion is used to skew the unigram probability
+<span class='lineno'> 256</span>       distribution.  Each weight is first raised to the distortion&#39;s power
+<span class='lineno'> 257</span>       before adding to the internal unigram distribution. As a result,
+<span class='lineno'> 258</span>       `distortion = 1.0` gives regular unigram sampling (as defined by the vocab
+<span class='lineno'> 259</span>       file), and `distortion = 0.0` gives a uniform distribution.
+<span class='lineno'> 260</span>     num_reserved_ids: Optionally some reserved IDs can be added in the range
+<span class='lineno'> 261</span>       `[0, num_reserved_ids)` by the users. One use case is that a special
+<span class='lineno'> 262</span>       unknown word token is used as ID 0. These IDs will have a sampling
+<span class='lineno'> 263</span>       probability of 0.
+<span class='lineno'> 264</span>     num_shards: A sampler can be used to sample from a subset of the original
+<span class='lineno'> 265</span>       range in order to speed up the whole computation through parallelism. This
+<span class='lineno'> 266</span>       parameter (together with `shard`) indicates the number of partitions that
+<span class='lineno'> 267</span>       are being used in the overall computation.
+<span class='lineno'> 268</span>     shard: A sampler can be used to sample from a subset of the original range
+<span class='lineno'> 269</span>       in order to speed up the whole computation through parallelism. This
+<span class='lineno'> 270</span>       parameter (together with `num_shards`) indicates the particular partition
+<span class='lineno'> 271</span>       number of the operation, when partitioning is being used.
+<span class='lineno'> 272</span>     unigrams: A list of unigram counts or probabilities, one per ID in
+<span class='lineno'> 273</span>       sequential order. Exactly one of `vocab_file` and `unigrams` should be
+<span class='lineno'> 274</span>       passed to this operation.
+<span class='lineno'> 275</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'> 276</span>     name: A name for the operation (optional).
+<span class='lineno'> 277</span> 
+<span class='lineno'> 278</span>   Returns:
+<span class='lineno'> 279</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
+<span class='lineno'> 280</span>       The sampled classes.
+<span class='lineno'> 281</span>     true_expected_count: A tensor of type `float`.  Same shape as
+<span class='lineno'> 282</span>       `true_classes`. The expected counts under the sampling distribution
+<span class='lineno'> 283</span>       of each of `true_classes`.
+<span class='lineno'> 284</span>     sampled_expected_count: A tensor of type `float`. Same shape as
+<span class='lineno'> 285</span>       `sampled_candidates`. The expected counts under the sampling distribution
+<span class='lineno'> 286</span>       of each of `sampled_candidates`.
+<span class='lineno'> 287</span> 
+<span class='lineno'> 288</span>   &quot;&quot;&quot;
+<span class='lineno'> 289</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed', title='None'>seed</a>)
+<span class='lineno'> 290</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.fixed_unigram_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.fixed_unigram_candidate_sampler', title='(?, ?, ?, ?, ?, str, int, int, int, int, [?], int, int, None) -> ?'>fixed_unigram_candidate_sampler</a>(
+<span class='lineno'> 291</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_true', title='?'>num_true</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unique', title='?'>unique</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.range_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.range_max', title='?'>range_max</a>,
+<span class='lineno'> 292</span>       vocab_file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.vocab_file', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.vocab_file', title='str'>vocab_file</a>, distortion=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.distortion', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.distortion', title='float'>distortion</a>,
+<span class='lineno'> 293</span>       num_reserved_ids=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_reserved_ids', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_reserved_ids', title='int'>num_reserved_ids</a>, num_shards=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_shards', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.num_shards', title='int'>num_shards</a>, shard=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.shard', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.shard', title='int'>shard</a>,
+<span class='lineno'> 294</span>       unigrams=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unigrams', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.unigrams', title='()'>unigrams</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed1', title='int'>seed1</a>, seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.seed2', title='int'>seed2</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.fixed_unigram_candidate_sampler.name', title='None'>name</a>)
+<span class='lineno'> 295</span> 
+<span class='lineno'> 296</span> 
+<span class='lineno'> 297</span> @tf_export(&#39;nn.all_candidate_sampler&#39;)
+<span class='lineno'> 298</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler', title='(?, ?, ?, ?, None, None) -> None'>all_candidate_sampler</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.true_classes', title='?'>true_classes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_true', title='?'>num_true</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.unique', title='?'>unique</a>,
+<span class='lineno'> 299</span>                           <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed', title='None'>seed</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.name', title='None'>name</a>=None):
+<span class='lineno'> 300</span>   &quot;&quot;&quot;Generate the set of all classes.
+<span class='lineno'> 301</span> 
+<span class='lineno'> 302</span>   Deterministically generates and returns the set of all possible classes.
+<span class='lineno'> 303</span>   For testing purposes.  There is no need to use this, since you might as
+<span class='lineno'> 304</span>   well use full softmax or full logistic regression.
+<span class='lineno'> 305</span> 
+<span class='lineno'> 306</span>   Args:
+<span class='lineno'> 307</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'> 308</span>       num_true]`. The target classes.
+<span class='lineno'> 309</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'> 310</span>     num_sampled: An `int`.  The number of possible classes.
+<span class='lineno'> 311</span>     unique: A `bool`. Ignored.
+<span class='lineno'> 312</span>       unique.
+<span class='lineno'> 313</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'> 314</span>     name: A name for the operation (optional).
+<span class='lineno'> 315</span> 
+<span class='lineno'> 316</span>   Returns:
+<span class='lineno'> 317</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
+<span class='lineno'> 318</span>       This operation deterministically returns the entire range
+<span class='lineno'> 319</span>       `[0, num_sampled]`.
+<span class='lineno'> 320</span>     true_expected_count: A tensor of type `float`.  Same shape as
+<span class='lineno'> 321</span>       `true_classes`. The expected counts under the sampling distribution
+<span class='lineno'> 322</span>       of each of `true_classes`. All returned values are 1.0.
+<span class='lineno'> 323</span>     sampled_expected_count: A tensor of type `float`. Same shape as
+<span class='lineno'> 324</span>       `sampled_candidates`. The expected counts under the sampling distribution
+<span class='lineno'> 325</span>       of each of `sampled_candidates`. All returned values are 1.0.
+<span class='lineno'> 326</span>   &quot;&quot;&quot;
+<span class='lineno'> 327</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed', title='None'>seed</a>)
+<span class='lineno'> 328</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.all_candidate_sampler', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.all_candidate_sampler', title='(?, ?, ?, ?, int, int, None) -> ?'>all_candidate_sampler</a>(
+<span class='lineno'> 329</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_true', title='?'>num_true</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_sampled', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.num_sampled', title='?'>num_sampled</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.unique', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.unique', title='?'>unique</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed1', title='int'>seed1</a>, seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.seed2', title='int'>seed2</a>,
+<span class='lineno'> 330</span>       name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.all_candidate_sampler.name', title='None'>name</a>)
+<span class='lineno'> 331</span> 
+<span class='lineno'> 332</span> 
+<span class='lineno'> 333</span> @tf_export(&#39;nn.compute_accidental_hits&#39;)
+<span class='lineno'> 334</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits', title='(?, ?, int, None, None) -> None / (?, ?, ?, None, None) -> None'>compute_accidental_hits</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.true_classes', title='?'>true_classes</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.sampled_candidates', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.sampled_candidates', title='?'>sampled_candidates</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.num_true', title='int'>num_true</a>,
+<span class='lineno'> 335</span>                             <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed', title='None'>seed</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.name', title='None'>name</a>=None):
+<span class='lineno'> 336</span>   &quot;&quot;&quot;Compute the position ids in `sampled_candidates` matching `true_classes`.
+<span class='lineno'> 337</span> 
+<span class='lineno'> 338</span>   In Candidate Sampling, this operation facilitates virtually removing
+<span class='lineno'> 339</span>   sampled classes which happen to match target classes.  This is done
+<span class='lineno'> 340</span>   in Sampled Softmax and Sampled Logistic.
+<span class='lineno'> 341</span> 
+<span class='lineno'> 342</span>   See our [Candidate Sampling Algorithms
+<span class='lineno'> 343</span>   Reference](http://www.tensorflow.org/extras/candidate_sampling.pdf).
+<span class='lineno'> 344</span> 
+<span class='lineno'> 345</span>   We presuppose that the `sampled_candidates` are unique.
+<span class='lineno'> 346</span> 
+<span class='lineno'> 347</span>   We call it an &#39;accidental hit&#39; when one of the target classes
+<span class='lineno'> 348</span>   matches one of the sampled classes.  This operation reports
+<span class='lineno'> 349</span>   accidental hits as triples `(index, id, weight)`, where `index`
+<span class='lineno'> 350</span>   represents the row number in `true_classes`, `id` represents the
+<span class='lineno'> 351</span>   position in `sampled_candidates`, and weight is `-FLOAT_MAX`.
+<span class='lineno'> 352</span> 
+<span class='lineno'> 353</span>   The result of this op should be passed through a `sparse_to_dense`
+<span class='lineno'> 354</span>   operation, then added to the logits of the sampled classes. This
+<span class='lineno'> 355</span>   removes the contradictory effect of accidentally sampling the true
+<span class='lineno'> 356</span>   target classes as noise classes for the same example.
+<span class='lineno'> 357</span> 
+<span class='lineno'> 358</span>   Args:
+<span class='lineno'> 359</span>     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
+<span class='lineno'> 360</span>       num_true]`. The target classes.
+<span class='lineno'> 361</span>     sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
+<span class='lineno'> 362</span>       The sampled_candidates output of CandidateSampler.
+<span class='lineno'> 363</span>     num_true: An `int`.  The number of target classes per training example.
+<span class='lineno'> 364</span>     seed: An `int`. An operation-specific seed. Default is 0.
+<span class='lineno'> 365</span>     name: A name for the operation (optional).
+<span class='lineno'> 366</span> 
+<span class='lineno'> 367</span>   Returns:
+<span class='lineno'> 368</span>     indices: A `Tensor` of type `int32` and shape `[num_accidental_hits]`.
+<span class='lineno'> 369</span>       Values indicate rows in `true_classes`.
+<span class='lineno'> 370</span>     ids: A `Tensor` of type `int64` and shape `[num_accidental_hits]`.
+<span class='lineno'> 371</span>       Values indicate positions in `sampled_candidates`.
+<span class='lineno'> 372</span>     weights: A `Tensor` of type `float` and shape `[num_accidental_hits]`.
+<span class='lineno'> 373</span>       Each value is `-FLOAT_MAX`.
+<span class='lineno'> 374</span> 
+<span class='lineno'> 375</span>   &quot;&quot;&quot;
+<span class='lineno'> 376</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed1', title='int'>seed1</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed2', title='int'>seed2</a> = <a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed', title='random_seed'>random_seed</a>.<a href='../framework/random_seed.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed', title='None'>seed</a>)
+<span class='lineno'> 377</span>   return <a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops', title='gen_candidate_sampling_ops'>gen_candidate_sampling_ops</a>.<a href='gen_candidate_sampling_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.compute_accidental_hits', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_candidate_sampling_ops.compute_accidental_hits', title='(?, ?, int, int, int, None) -> ? / (?, ?, ?, int, int, None) -> ?'>compute_accidental_hits</a>(
+<span class='lineno'> 378</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.true_classes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.true_classes', title='?'>true_classes</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.sampled_candidates', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.sampled_candidates', title='?'>sampled_candidates</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.num_true', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.num_true', title='int'>num_true</a>, seed=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed1', title='int'>seed1</a>, seed2=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.seed2', title='int'>seed2</a>,
+<span class='lineno'> 379</span>       name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.candidate_sampling_ops.compute_accidental_hits.name', title='None'>name</a>)
+</pre></td></tr></table></body></html>

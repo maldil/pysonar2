@@ -1,0 +1,204 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/ops/collective_ops.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce'>all_reduce</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send'>broadcast_send</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv'>broadcast_recv</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2018 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;TensorFlow collective Ops.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/device.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', title='device'>device</a>
+<span class='lineno'>  21</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', title='gen_collective_ops'>gen_collective_ops</a>
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce', title='(?, int, ?, ?, str, str, [int]) -> None / (?, int, None, None, str, str, [int]) -> None / (?, ?, ?, ?, ?, ?, int) -> None'>all_reduce</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', title='?'>t</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', title='int'>group_size</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_key', title='None'>group_key</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.instance_key', title='None'>instance_key</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.merge_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.merge_op', title='str'>merge_op</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.final_op', title='str'>final_op</a>,
+<span class='lineno'>  25</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.subdiv_offsets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.subdiv_offsets', title='{[int] | int}'>subdiv_offsets</a>=(0,)):
+<span class='lineno'>  26</span>   &quot;&quot;&quot;Reduces tensors collectively, across devices.
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span>   Args:
+<span class='lineno'>  29</span>     t: the tensor to be reduced.
+<span class='lineno'>  30</span>     group_size: the total number of tensors to be collectively reduced.
+<span class='lineno'>  31</span>       Each must reside on a different device.
+<span class='lineno'>  32</span>     group_key: an integer identifying the group of devices.
+<span class='lineno'>  33</span>     instance_key: an integer identifying the participating group of Ops.
+<span class='lineno'>  34</span>     merge_op: string naming the binary Op to be applied to compute each
+<span class='lineno'>  35</span>       partial reduction.
+<span class='lineno'>  36</span>     final_op: string naming the unary Op to be applied to each fully
+<span class='lineno'>  37</span>       reduced value.  Can be &#39;Id&#39; for no operation.
+<span class='lineno'>  38</span>     subdiv_offsets: a list of integer offsets into the tensor at which each
+<span class='lineno'>  39</span>       independent subdivision should begin.  Use [0] if no subdivision should
+<span class='lineno'>  40</span>       be done.
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   Returns:
+<span class='lineno'>  43</span>     An Op implementing the distributed reduction.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   Raises:
+<span class='lineno'>  46</span>     ValueError: if any of the input parameter constraints are not met.
+<span class='lineno'>  47</span>   &quot;&quot;&quot;
+<span class='lineno'>  48</span>   if not <a href='../framework/device.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', title='device'>device</a>.<a href='../framework/device.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device.canonical_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device.canonical_name', title='Operation -> None -> str / ? -> str'>canonical_name</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', title='?'>t</a>.device):
+<span class='lineno'>  49</span>     raise ValueError(&#39;Device assignment required for collective ops&#39;)
+<span class='lineno'>  50</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', title='int'>group_size</a> &lt;= 1:
+<span class='lineno'>  51</span>     raise ValueError(&#39;Parameter group_size to add_reduce must be at least 2.&#39;)
+<span class='lineno'>  52</span>   return <a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', title='gen_collective_ops'>gen_collective_ops</a>.<a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_reduce', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_reduce', title='(?, int, ?, ?, str, str, [int], None) -> ? / (?, ?, ?, ?, ?, ?, ?, None) -> ? / (?, int, None, None, str, str, [int], None) -> ? / (?, ?, ?, ?, ?, ?, int, None) -> ?'>collective_reduce</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.t', title='?'>t</a>,
+<span class='lineno'>  53</span>                                               group_size=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_size', title='int'>group_size</a>,
+<span class='lineno'>  54</span>                                               group_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.group_key', title='None'>group_key</a>,
+<span class='lineno'>  55</span>                                               instance_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.instance_key', title='None'>instance_key</a>,
+<span class='lineno'>  56</span>                                               merge_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.merge_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.merge_op', title='str'>merge_op</a>,
+<span class='lineno'>  57</span>                                               final_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.final_op', title='str'>final_op</a>,
+<span class='lineno'>  58</span>                                               subdiv_offsets=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.subdiv_offsets', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.all_reduce.subdiv_offsets', title='{[int] | int}'>subdiv_offsets</a>)
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send', title='(None, ?, ?, int, None, None) -> None / (?, ?, ?, ?, ?, ?) -> None'>broadcast_send</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', title='None'>t</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', title='?'>shape</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.dtype', title='?'>dtype</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', title='int'>group_size</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_key', title='None'>group_key</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.instance_key', title='None'>instance_key</a>):
+<span class='lineno'>  62</span>   &quot;&quot;&quot;Broadcasts one tensor to a group of others, across devices.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   Args:
+<span class='lineno'>  65</span>     t: the tensor to be sent.
+<span class='lineno'>  66</span>     shape: the shape of the tensor being sent, which must agree with t.
+<span class='lineno'>  67</span>     dtype: the type of the tensor being sent, which must agree with t.
+<span class='lineno'>  68</span>     group_size: one plus the number of receiving tensors, i.e. the total
+<span class='lineno'>  69</span>       number of devices participating.  Each tensor must reside on a
+<span class='lineno'>  70</span>       different device.
+<span class='lineno'>  71</span>     group_key: an integer identifying the group of devices.
+<span class='lineno'>  72</span>     instance_key: an integer identifying the participating group of Ops.
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   Returns:
+<span class='lineno'>  75</span>     An Op implementing the distributed broadcast send.
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   Raises:
+<span class='lineno'>  78</span>     ValueError: if any of the input parameter constraints are not met.
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>   Note that the shape and dtype arguments appear redundant since they
+<span class='lineno'>  81</span>   should be obtainable from t.  The are two reasons for including
+<span class='lineno'>  82</span>   them.  First, the shape and type of tensors passed via broadcast must
+<span class='lineno'>  83</span>   be known ahead of time in their most specific form so that the receive
+<span class='lineno'>  84</span>   side can allocate memory for the operation and shape/type inference can
+<span class='lineno'>  85</span>   carry forward from there.  Including the same declarations on the
+<span class='lineno'>  86</span>   send side clarifies a commitment already made.  Secondly, having nearly
+<span class='lineno'>  87</span>   identical use syntax for send and receive sides may simplify tool-driven
+<span class='lineno'>  88</span>   generation of broadcast.
+<span class='lineno'>  89</span>   &quot;&quot;&quot;
+<span class='lineno'>  90</span>   if not <a href='../framework/device.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device', title='device'>device</a>.<a href='../framework/device.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device.canonical_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.device.canonical_name', title='Operation -> None -> str / ? -> str'>canonical_name</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', title='None'>t</a>.device):
+<span class='lineno'>  91</span>     raise ValueError(&#39;Device assignment required for collective ops&#39;)
+<span class='lineno'>  92</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', title='int'>group_size</a> &lt;= 1:
+<span class='lineno'>  93</span>     raise ValueError(
+<span class='lineno'>  94</span>         &#39;Parameter group_size to broadcast_send must be at least 2.&#39;)
+<span class='lineno'>  95</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', title='None'>t</a>.shape != <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', title='?'>shape</a>:
+<span class='lineno'>  96</span>     raise ValueError(
+<span class='lineno'>  97</span>         &#39;Shape of broadcast_send tensor not equal to delcared shape&#39;)
+<span class='lineno'>  98</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', title='None'>t</a>.dtype != <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.dtype', title='?'>dtype</a>:
+<span class='lineno'>  99</span>     raise ValueError(
+<span class='lineno'> 100</span>         &#39;Type of broadcast_send tensor not equal to declared type&#39;)
+<span class='lineno'> 101</span>   return <a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', title='gen_collective_ops'>gen_collective_ops</a>.<a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_bcast_send', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_bcast_send', title='(None, int, None, None, ?, None) -> ? / (?, ?, ?, ?, ?, None) -> ?'>collective_bcast_send</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.t', title='None'>t</a>,
+<span class='lineno'> 102</span>                                                   shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.shape', title='?'>shape</a>,
+<span class='lineno'> 103</span>                                                   group_size=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_size', title='int'>group_size</a>,
+<span class='lineno'> 104</span>                                                   group_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.group_key', title='None'>group_key</a>,
+<span class='lineno'> 105</span>                                                   instance_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_send.instance_key', title='None'>instance_key</a>)
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span> 
+<span class='lineno'> 108</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv', title='(?, ?, int, None, None) -> None / (?, ?, ?, ?, ?) -> None'>broadcast_recv</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.shape', title='?'>shape</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.dtype', title='?'>dtype</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', title='int'>group_size</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_key', title='None'>group_key</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.instance_key', title='None'>instance_key</a>):
+<span class='lineno'> 109</span>   &quot;&quot;&quot;Receives a broadcasts tensor, across devices.
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   Args:
+<span class='lineno'> 112</span>     shape: Shape of the tensor to be received.
+<span class='lineno'> 113</span>     dtype: Type of the tensor to be received.
+<span class='lineno'> 114</span>     group_size: one plus the number of receiving tensors, i.e. the total
+<span class='lineno'> 115</span>       number of devices participating.  Each tensor must reside on a
+<span class='lineno'> 116</span>       different device.
+<span class='lineno'> 117</span>     group_key: an integer identifying the group of devices.
+<span class='lineno'> 118</span>     instance_key: an integer identifying the participating group of Ops.
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span>   Returns:
+<span class='lineno'> 121</span>     An Op implementing the broadcast receive.
+<span class='lineno'> 122</span> 
+<span class='lineno'> 123</span>   Raises:
+<span class='lineno'> 124</span>     ValueError: if any of the input parameter constraints are not met.
+<span class='lineno'> 125</span>   &quot;&quot;&quot;
+<span class='lineno'> 126</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', title='int'>group_size</a> &lt;= 1:
+<span class='lineno'> 127</span>     raise ValueError(
+<span class='lineno'> 128</span>         &#39;Parameter group_size to broadcast_send must be at least 2.&#39;)
+<span class='lineno'> 129</span>   return <a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops', title='gen_collective_ops'>gen_collective_ops</a>.<a href='gen_collective_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_bcast_recv', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.gen_collective_ops.collective_bcast_recv', title='(?, int, None, None, ?, None) -> ? / (?, ?, ?, ?, ?, None) -> ?'>collective_bcast_recv</a>(shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.shape', title='?'>shape</a>,
+<span class='lineno'> 130</span>                                                   T=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.dtype', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.dtype', title='?'>dtype</a>,
+<span class='lineno'> 131</span>                                                   group_size=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_size', title='int'>group_size</a>,
+<span class='lineno'> 132</span>                                                   group_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.group_key', title='None'>group_key</a>,
+<span class='lineno'> 133</span>                                                   instance_key=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.instance_key', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.collective_ops.broadcast_recv.instance_key', title='None'>instance_key</a>)
+</pre></td></tr></table></body></html>

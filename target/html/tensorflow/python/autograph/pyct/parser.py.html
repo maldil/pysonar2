@@ -1,0 +1,143 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/autograph/pyct/parser.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity'>parse_entity</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str'>parse_str</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression'>parse_expression</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Converting code to AST.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> Adapted from Tangent.
+<span class='lineno'>  18</span> &quot;&quot;&quot;
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from __future__ import absolute_import
+<span class='lineno'>  21</span> from __future__ import division
+<span class='lineno'>  22</span> from __future__ import print_function
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> import textwrap
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import gast
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>tf_inspect</a>
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity', title='object -> (None, ?) / None -> (None, ?) / ? -> (None, ?) / <list> -> (None, ?)'>parse_entity</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.entity', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.entity', title='{<list> | object}'>entity</a>):
+<span class='lineno'>  32</span>   &quot;&quot;&quot;Returns the AST of given entity.&quot;&quot;&quot;
+<span class='lineno'>  33</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', title='None'>source</a> = <a href='../../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>tf_inspect</a>.<a href='../../util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getsource', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getsource', title='object -> None / None -> None / ? -> None / <list> -> None'>getsource</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.entity', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.entity', title='{<list> | object}'>entity</a>)
+<span class='lineno'>  34</span>   # Comments and multiline strings can appear at arbitrary indentation levels,
+<span class='lineno'>  35</span>   # causing textwrap.dedent to not correctly dedent source code.
+<span class='lineno'>  36</span>   # TODO(b/115884650): Automatic handling of comments/multiline strings.
+<span class='lineno'>  37</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', title='?'>source</a> = textwrap.dedent(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', title='None'>source</a>)
+<span class='lineno'>  38</span>   try:
+<span class='lineno'>  39</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', title='str -> None / ? -> None'>parse_str</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', title='?'>source</a>), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_entity.source', title='?'>source</a>
+<span class='lineno'>  40</span>   except IndentationError:
+<span class='lineno'>  41</span>     # Because we are parsing the source code of entities that have already
+<span class='lineno'>  42</span>     # successfully parsed once, any IndentationErrors are guaranteed to be
+<span class='lineno'>  43</span>     # caused by insufficient dedenting.
+<span class='lineno'>  44</span>     raise ValueError(
+<span class='lineno'>  45</span>         &#39;Failed to dedent prior to parsing source code. If you have comments &#39;
+<span class='lineno'>  46</span>         &#39;or multiline strings in your code, try indenting them. &#39;
+<span class='lineno'>  47</span>         &#39;Multiline strings can be rewritten using textwrap.dedent.\n&#39;
+<span class='lineno'>  48</span>         &#39;Offending source code: \n %s&#39; % source)
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', title='str -> None / ? -> None'>parse_str</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str.src', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str.src', title='str'>src</a>):
+<span class='lineno'>  52</span>   &quot;&quot;&quot;Returns the AST of given piece of code.&quot;&quot;&quot;
+<span class='lineno'>  53</span>   # TODO(mdan): This should exclude the module things are autowrapped in.
+<span class='lineno'>  54</span>   return gast.parse(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str.src', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str.src', title='str'>src</a>)
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression', title='? -> None / str -> None'>parse_expression</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.src', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.src', title='str'>src</a>):
+<span class='lineno'>  58</span>   &quot;&quot;&quot;Returns the AST of given identifier.
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span>   Args:
+<span class='lineno'>  61</span>     src: A piece of code that represents a single Python expression
+<span class='lineno'>  62</span>   Returns:
+<span class='lineno'>  63</span>     A gast.AST object.
+<span class='lineno'>  64</span>   Raises:
+<span class='lineno'>  65</span>     ValueError: if src does not consist of a single Expression.
+<span class='lineno'>  66</span>   &quot;&quot;&quot;
+<span class='lineno'>  67</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', title='None'>node</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_str', title='str -> None / ? -> None'>parse_str</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.src', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.src', title='str'>src</a>)
+<span class='lineno'>  68</span>   assert isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', title='None'>node</a>, gast.Module)
+<span class='lineno'>  69</span>   if len(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', title='None'>node</a>.body) != 1 and not isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', title='None'>node</a>.body[0], gast.Expr):
+<span class='lineno'>  70</span>     raise ValueError(
+<span class='lineno'>  71</span>         &#39;Expected a single expression, found instead %s&#39; % node.body)
+<span class='lineno'>  72</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.autograph.pyct.parser.parse_expression.node', title='None'>node</a>.body[0].value
+</pre></td></tr></table></body></html>

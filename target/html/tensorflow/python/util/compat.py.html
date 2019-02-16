@@ -1,0 +1,210 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/util/compat.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes'>as_bytes</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text'>as_text</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str'>as_str</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str'>as_str</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any'>as_str_any</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str'>path_to_str</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.integral_types', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.integral_types'>integral_types</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.real_types', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.real_types'>real_types</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.complex_types', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.complex_types'>complex_types</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.bytes_or_text_types', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.bytes_or_text_types'>bytes_or_text_types</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Functions for Python 2 vs. 3 compatibility.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> ## Conversion routines
+<span class='lineno'>  18</span> In addition to the functions below, `as_str` converts an object to a `str`.
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> ## Types
+<span class='lineno'>  22</span> The compatibility module also provides the following types:
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> * `bytes_or_text_types`
+<span class='lineno'>  25</span> * `complex_types`
+<span class='lineno'>  26</span> * `integral_types`
+<span class='lineno'>  27</span> * `real_types`
+<span class='lineno'>  28</span> &quot;&quot;&quot;
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> from __future__ import absolute_import
+<span class='lineno'>  31</span> from __future__ import division
+<span class='lineno'>  32</span> from __future__ import print_function
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span> import numbers as _numbers
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> import numpy as _np
+<span class='lineno'>  37</span> import six as _six
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', title='(RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None'>as_bytes</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='{(<str>, ?) | (?, ?) | <list> | BaseEstimator -> RunConfig -> None | ControlFlowContext -> ? | DType | Estimator -> RunConfig -> ? | None | Operation -> None | RunConfig -> None | Server -> None | [?] | dict | int | name_scope | str}'>bytes_or_text</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.encoding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.encoding', title='str'>encoding</a>=&#39;utf-8&#39;):
+<span class='lineno'>  43</span>   &quot;&quot;&quot;Converts either bytes or unicode to `bytes`, using utf-8 encoding for text.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   Args:
+<span class='lineno'>  46</span>     bytes_or_text: A `bytes`, `str`, or `unicode` object.
+<span class='lineno'>  47</span>     encoding: A string indicating the charset for encoding unicode.
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   Returns:
+<span class='lineno'>  50</span>     A `bytes` object.
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   Raises:
+<span class='lineno'>  53</span>     TypeError: If `bytes_or_text` is not a binary or unicode string.
+<span class='lineno'>  54</span>   &quot;&quot;&quot;
+<span class='lineno'>  55</span>   if isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='{(<str>, ?) | ControlFlowContext -> ? | DType | None | RunConfig -> None | Server -> None | [?] | int | name_scope | str}'>bytes_or_text</a></a>, _six.text_type):
+<span class='lineno'>  56</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='?'>bytes_or_text</a>.encode(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.encoding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.encoding', title='str'>encoding</a>)
+<span class='lineno'>  57</span>   elif isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='{(<str>, ?) | ControlFlowContext -> ? | DType | None | RunConfig -> None | Server -> None | [?] | int | name_scope | str}'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='?'>bytes_or_text</a></a>, bytes):
+<span class='lineno'>  58</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes.bytes_or_text', title='?'>bytes_or_text</a>
+<span class='lineno'>  59</span>   else:
+<span class='lineno'>  60</span>     raise TypeError(&#39;Expected binary or unicode string, got %r&#39; %
+<span class='lineno'>  61</span>                     (bytes_or_text,))
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', title='(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None'>as_text</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='{(?, ?) | ControlFlowContext -> ? | None | Operation -> None | str}'>bytes_or_text</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.encoding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.encoding', title='str'>encoding</a>=&#39;utf-8&#39;):
+<span class='lineno'>  65</span>   &quot;&quot;&quot;Returns the given argument as a unicode string.
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   Args:
+<span class='lineno'>  68</span>     bytes_or_text: A `bytes`, `str`, or `unicode` object.
+<span class='lineno'>  69</span>     encoding: A string indicating the charset for decoding unicode.
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span>   Returns:
+<span class='lineno'>  72</span>     A `unicode` (Python 2) or `str` (Python 3) object.
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   Raises:
+<span class='lineno'>  75</span>     TypeError: If `bytes_or_text` is not a binary or unicode string.
+<span class='lineno'>  76</span>   &quot;&quot;&quot;
+<span class='lineno'>  77</span>   if isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='{(?, ?) | ControlFlowContext -> ? | None | Operation -> None | str}'>bytes_or_text</a></a>, _six.text_type):
+<span class='lineno'>  78</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='?'>bytes_or_text</a>
+<span class='lineno'>  79</span>   elif isinstance(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='{(?, ?) | ControlFlowContext -> ? | None | Operation -> None | str}'>bytes_or_text</a></a>, bytes):
+<span class='lineno'>  80</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.bytes_or_text', title='?'>bytes_or_text</a>.decode(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.encoding', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text.encoding', title='str'>encoding</a>)
+<span class='lineno'>  81</span>   else:
+<span class='lineno'>  82</span>     raise TypeError(&#39;Expected binary or unicode string, got %r&#39; % bytes_or_text)
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> # Convert an object to a `str` in both Python 2 and 3.
+<span class='lineno'>  86</span> if _six.PY2:
+<span class='lineno'>  87</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', title='(RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None'>as_str</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', title='(RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None'>as_bytes</a>
+<span class='lineno'>  88</span>   <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.as_bytes&#39;, &#39;compat.as_str&#39;)(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', title='(RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None'>as_bytes</a>)
+<span class='lineno'>  89</span>   <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.as_text&#39;)(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', title='(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None'>as_text</a>)
+<span class='lineno'>  90</span> else:
+<span class='lineno'>  91</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', title='(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None'>as_str</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', title='(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None'>as_text</a>
+<span class='lineno'>  92</span>   <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.as_bytes&#39;)(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_bytes', title='(RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None'>as_bytes</a>)
+<span class='lineno'>  93</span>   <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.as_text&#39;, &#39;compat.as_str&#39;)(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_text', title='(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None'>as_text</a>)
+<span class='lineno'>  94</span> 
+<span class='lineno'>  95</span> 
+<span class='lineno'>  96</span> @tf_export(&#39;compat.as_str_any&#39;)
+<span class='lineno'>  97</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', title='? -> tuple -> str / ? -> str / str -> str'>as_str_any</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', title='{? -> tuple | str}'>value</a>):
+<span class='lineno'>  98</span>   &quot;&quot;&quot;Converts to `str` as `str(value)`, but use `as_str` for `bytes`.
+<span class='lineno'>  99</span> 
+<span class='lineno'> 100</span>   Args:
+<span class='lineno'> 101</span>     value: A object that can be converted to `str`.
+<span class='lineno'> 102</span> 
+<span class='lineno'> 103</span>   Returns:
+<span class='lineno'> 104</span>     A `str` object.
+<span class='lineno'> 105</span>   &quot;&quot;&quot;
+<span class='lineno'> 106</span>   if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', title='{? -> tuple | str}'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', title='?'>value</a></a>, bytes):
+<span class='lineno'> 107</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', title='{(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None | (RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None}'>as_str</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', title='?'>value</a>)
+<span class='lineno'> 108</span>   else:
+<span class='lineno'> 109</span>     return str(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any.value', title='{? -> tuple | str}'>value</a>)
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span> @tf_export(&#39;compat.path_to_str&#39;)
+<span class='lineno'> 113</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str', title='? -> str'>path_to_str</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', title='?'>path</a>):
+<span class='lineno'> 114</span>   &quot;&quot;&quot;Returns the file system path representation of a `PathLike` object, else as it is.
+<span class='lineno'> 115</span> 
+<span class='lineno'> 116</span>   Args:
+<span class='lineno'> 117</span>     path: An object that can be converted to path representation.
+<span class='lineno'> 118</span> 
+<span class='lineno'> 119</span>   Returns:
+<span class='lineno'> 120</span>     A `str` object.
+<span class='lineno'> 121</span>   &quot;&quot;&quot;
+<span class='lineno'> 122</span>   if hasattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', title='?'>path</a>, &#39;__fspath__&#39;):
+<span class='lineno'> 123</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', title='str'>path</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str_any', title='? -> tuple -> str / ? -> str / str -> str'>as_str_any</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', title='?'>path</a>.__fspath__())
+<span class='lineno'> 124</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.path_to_str.path', title='str'>path</a>
+<span class='lineno'> 125</span> 
+<span class='lineno'> 126</span> 
+<span class='lineno'> 127</span> # Numpy 1.8 scalars don&#39;t inherit from numbers.Integral in Python 3, so we
+<span class='lineno'> 128</span> # need to check them specifically.  The same goes from Real and Complex.
+<span class='lineno'> 129</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.integral_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.integral_types', title='(?, ?)'>integral_types</a> = (_numbers.Integral, _np.integer)
+<span class='lineno'> 130</span> <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.integral_types&#39;).export_constant(__name__, &#39;integral_types&#39;)
+<span class='lineno'> 131</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.real_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.real_types', title='(?, ?, ?)'>real_types</a> = (_numbers.Real, _np.integer, _np.floating)
+<span class='lineno'> 132</span> <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.real_types&#39;).export_constant(__name__, &#39;real_types&#39;)
+<span class='lineno'> 133</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.complex_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.complex_types', title='(?, ?)'>complex_types</a> = (_numbers.Complex, _np.number)
+<span class='lineno'> 134</span> <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.complex_types&#39;).export_constant(__name__, &#39;complex_types&#39;)
+<span class='lineno'> 135</span> 
+<span class='lineno'> 136</span> # Either bytes or text.
+<span class='lineno'> 137</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.bytes_or_text_types', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.bytes_or_text_types', title='(?, ?)'>bytes_or_text_types</a> = (bytes, _six.text_type)
+<span class='lineno'> 138</span> <a href='tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export.tf_export', title='?'>tf_export</a>(&#39;compat.bytes_or_text_types&#39;).export_constant(__name__,
+<span class='lineno'> 139</span>                                                         &#39;bytes_or_text_types&#39;)
+</pre></td></tr></table></body></html>

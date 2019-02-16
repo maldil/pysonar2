@@ -1,0 +1,301 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/distributions/python/ops/seed_stream.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream'>SeedStream</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__'>__call__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed'>original_seed</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt'>salt</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2018 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Local PRNG for amplifying seed entropy into seeds for base operations.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import hashlib
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream', title='<SeedStream>'>SeedStream</a>(object):
+<span class='lineno'>  25</span>   &quot;&quot;&quot;Local PRNG for amplifying seed entropy into seeds for base operations.
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span>   Writing sampling code which correctly sets the pseudo-random number
+<span class='lineno'>  28</span>   generator (PRNG) seed is surprisingly difficult.  This class serves as
+<span class='lineno'>  29</span>   a helper for the TensorFlow Probability coding pattern designed to
+<span class='lineno'>  30</span>   avoid common mistakes.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   # Motivating Example
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span>   A common first-cut implementation of a sampler for the beta
+<span class='lineno'>  35</span>   distribution is to compute the ratio of a gamma with itself plus
+<span class='lineno'>  36</span>   another gamma.  This code snippet tries to do that, but contains a
+<span class='lineno'>  37</span>   surprisingly common error:
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   ```python
+<span class='lineno'>  40</span>   def broken_beta(shape, alpha, beta, seed):
+<span class='lineno'>  41</span>     x = tf.random_gamma(shape, alpha, seed=seed)
+<span class='lineno'>  42</span>     y = tf.random_gamma(shape, beta, seed=seed)
+<span class='lineno'>  43</span>     return x / (x + y)
+<span class='lineno'>  44</span>   ```
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   The mistake is that the two gamma draws are seeded with the same
+<span class='lineno'>  47</span>   seed.  This causes them to always produce the same results, which,
+<span class='lineno'>  48</span>   in turn, leads this code snippet to always return `0.5`.  Because it
+<span class='lineno'>  49</span>   can happen across abstraction boundaries, this kind of error is
+<span class='lineno'>  50</span>   surprisingly easy to make when handling immutable seeds.
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>   # Goals
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   TensorFlow Probability adopts a code style designed to eliminate the
+<span class='lineno'>  55</span>   above class of error, without exacerbating others.  The goals of
+<span class='lineno'>  56</span>   this code style are:
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span>   - Support reproducibility of results (by encouraging seeding of all
+<span class='lineno'>  59</span>     pseudo-random operations).
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   - Avoid shared-write global state (by not relying on a global PRNG).
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span>   - Prevent accidental seed reuse by TF Probability implementers.  This
+<span class='lineno'>  64</span>     goal is served with the local pseudo-random seed generator provided
+<span class='lineno'>  65</span>     in this module.
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   - Mitigate potential accidental seed reuse by TF Probability clients
+<span class='lineno'>  68</span>     (with a salting scheme).
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   - Prevent accidental resonances with downstream PRNGs (by hashing the
+<span class='lineno'>  71</span>     output).
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>   ## Non-goals
+<span class='lineno'>  74</span> 
+<span class='lineno'>  75</span>   - Implementing a high-performance PRNG for generating large amounts of
+<span class='lineno'>  76</span>     entropy.  That&#39;s the job of the underlying TensorFlow PRNG we are
+<span class='lineno'>  77</span>     seeding.
+<span class='lineno'>  78</span> 
+<span class='lineno'>  79</span>   - Avoiding random seed collisions, aka &quot;birthday attacks&quot;.
+<span class='lineno'>  80</span> 
+<span class='lineno'>  81</span>   # Code pattern
+<span class='lineno'>  82</span> 
+<span class='lineno'>  83</span>   ```python
+<span class='lineno'>  84</span>   def random_beta(shape, alpha, beta, seed):        # (a)
+<span class='lineno'>  85</span>     seed = SeedStream(seed, salt=&quot;random_beta&quot;)     # (b)
+<span class='lineno'>  86</span>     x = tf.random_gamma(shape, alpha, seed=seed())  # (c)
+<span class='lineno'>  87</span>     y = tf.random_gamma(shape, beta, seed=seed())   # (c)
+<span class='lineno'>  88</span>     return x / (x + y)
+<span class='lineno'>  89</span>   ```
+<span class='lineno'>  90</span> 
+<span class='lineno'>  91</span>   The elements of this pattern are:
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span>   - Accept an explicit seed (line a) as an argument in all public
+<span class='lineno'>  94</span>     functions, and write the function to be deterministic (up to any
+<span class='lineno'>  95</span>     numerical issues) for fixed seed.
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span>     - Rationale: This provides the client with the ability to reproduce
+<span class='lineno'>  98</span>       results.  Accepting an immutable seed rather than a mutable PRNG
+<span class='lineno'>  99</span>       object reduces code coupling, permitting different sections to be
+<span class='lineno'> 100</span>       reproducible independently.
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span>   - Use that seed only to initialize a local `SeedStream` instance (line b).
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>     - Rationale: Avoids accidental seed reuse.
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   - Supply the name of the function being implemented as a salt to the
+<span class='lineno'> 107</span>     `SeedStream` instance (line b).  This serves to keep the salts
+<span class='lineno'> 108</span>     unique; unique salts ensure that clients of TF Probability will see
+<span class='lineno'> 109</span>     different functions always produce independent results even if
+<span class='lineno'> 110</span>     called with the same seeds.
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span>   - Seed each callee operation with the output of a unique call to the
+<span class='lineno'> 113</span>     `SeedStream` instance (lines c).  This ensures reproducibility of
+<span class='lineno'> 114</span>     results while preventing seed reuse across callee invocations.
+<span class='lineno'> 115</span> 
+<span class='lineno'> 116</span>   # Why salt?
+<span class='lineno'> 117</span> 
+<span class='lineno'> 118</span>   Salting the `SeedStream` instances (with unique salts) is defensive
+<span class='lineno'> 119</span>   programming against a client accidentally committing a mistake
+<span class='lineno'> 120</span>   similar to our motivating example.  Consider the following situation
+<span class='lineno'> 121</span>   that might arise without salting:
+<span class='lineno'> 122</span> 
+<span class='lineno'> 123</span>   ```python
+<span class='lineno'> 124</span>   def tfp_foo(seed):
+<span class='lineno'> 125</span>     seed = SeedStream(seed, salt=&quot;&quot;)
+<span class='lineno'> 126</span>     foo_stuff = tf.random_normal(seed=seed())
+<span class='lineno'> 127</span>     ...
+<span class='lineno'> 128</span> 
+<span class='lineno'> 129</span>   def tfp_bar(seed):
+<span class='lineno'> 130</span>     seed = SeedStream(seed, salt=&quot;&quot;)
+<span class='lineno'> 131</span>     bar_stuff = tf.random_normal(seed=seed())
+<span class='lineno'> 132</span>     ...
+<span class='lineno'> 133</span> 
+<span class='lineno'> 134</span>   def client_baz(seed):
+<span class='lineno'> 135</span>     foo = tfp_foo(seed=seed)
+<span class='lineno'> 136</span>     bar = tfp_bar(seed=seed)
+<span class='lineno'> 137</span>     ...
+<span class='lineno'> 138</span>   ```
+<span class='lineno'> 139</span> 
+<span class='lineno'> 140</span>   The client should have used different seeds as inputs to `foo` and
+<span class='lineno'> 141</span>   `bar`.  However, because they didn&#39;t, *and because `foo` and `bar`
+<span class='lineno'> 142</span>   both sample a Gaussian internally as their first action*, the
+<span class='lineno'> 143</span>   internal `foo_stuff` and `bar_stuff` will be the same, and the
+<span class='lineno'> 144</span>   returned `foo` and `bar` will not be independent, leading to subtly
+<span class='lineno'> 145</span>   incorrect answers from the client&#39;s simulation.  This kind of bug is
+<span class='lineno'> 146</span>   particularly insidious for the client, because it depends on a
+<span class='lineno'> 147</span>   Distributions implementation detail, namely the order in which `foo`
+<span class='lineno'> 148</span>   and `bar` invoke the samplers they depend on.  In particular, a
+<span class='lineno'> 149</span>   Bayesflow team member can introduce such a bug in previously
+<span class='lineno'> 150</span>   (accidentally) correct client code by performing an internal
+<span class='lineno'> 151</span>   refactoring that causes this operation order alignment.
+<span class='lineno'> 152</span> 
+<span class='lineno'> 153</span>   A salting discipline eliminates this problem by making sure that the
+<span class='lineno'> 154</span>   seeds seen by `foo`&#39;s callees will differ from those seen by `bar`&#39;s
+<span class='lineno'> 155</span>   callees, even if `foo` and `bar` are invoked with the same input
+<span class='lineno'> 156</span>   seed.
+<span class='lineno'> 157</span>   &quot;&quot;&quot;
+<span class='lineno'> 158</span> 
+<span class='lineno'> 159</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', title='SeedStream'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', title='?'>seed</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.salt', title='?'>salt</a>):
+<span class='lineno'> 160</span>     &quot;&quot;&quot;Initializes a `SeedStream`.
+<span class='lineno'> 161</span> 
+<span class='lineno'> 162</span>     Args:
+<span class='lineno'> 163</span>       seed: Any Python object convertible to string, supplying the
+<span class='lineno'> 164</span>         initial entropy.  If `None`, operations seeded with seeds
+<span class='lineno'> 165</span>         drawn from this `SeedStream` will follow TensorFlow semantics
+<span class='lineno'> 166</span>         for not being seeded.
+<span class='lineno'> 167</span>       salt: Any Python object convertible to string, supplying
+<span class='lineno'> 168</span>         auxiliary entropy.  Must be unique across the Distributions
+<span class='lineno'> 169</span>         and TensorFlow Probability code base.  See class docstring for
+<span class='lineno'> 170</span>         rationale.
+<span class='lineno'> 171</span>     &quot;&quot;&quot;
+<span class='lineno'> 172</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', title='SeedStream'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', title='?'>_seed</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', title='?'>seed</a>.original_seed if isinstance(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', title='?'>seed</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream', title='<SeedStream>'>SeedStream</a>) else <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.seed', title='?'>seed</a>
+<span class='lineno'> 173</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', title='SeedStream'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', title='?'>_salt</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.salt', title='?'>salt</a>
+<span class='lineno'> 174</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__init__.self', title='SeedStream'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', title='int'>_counter</a> = 0
+<span class='lineno'> 175</span> 
+<span class='lineno'> 176</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__', title='SeedStream -> int'>__call__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>):
+<span class='lineno'> 177</span>     &quot;&quot;&quot;Returns a fresh integer usable as a seed in downstream operations.
+<span class='lineno'> 178</span> 
+<span class='lineno'> 179</span>     If this `SeedStream` was initialized with `seed=None`, returns
+<span class='lineno'> 180</span>     `None`.  This has the effect that downstream operations (both
+<span class='lineno'> 181</span>     `SeedStream`s and primitive TensorFlow ops) will behave as though
+<span class='lineno'> 182</span>     they were unseeded.
+<span class='lineno'> 183</span> 
+<span class='lineno'> 184</span>     The returned integer is non-negative, and uniformly distributed in
+<span class='lineno'> 185</span>     the half-open interval `[0, 2**512)`.  This is consistent with
+<span class='lineno'> 186</span>     TensorFlow, as TensorFlow operations internally use the residue of
+<span class='lineno'> 187</span>     the given seed modulo `2**31 - 1` (see
+<span class='lineno'> 188</span>     `tensorflow/python/framework/random_seed.py`).
+<span class='lineno'> 189</span> 
+<span class='lineno'> 190</span>     Returns:
+<span class='lineno'> 191</span>       seed: A fresh integer usable as a seed in downstream operations,
+<span class='lineno'> 192</span>         or `None`.
+<span class='lineno'> 193</span>     &quot;&quot;&quot;
+<span class='lineno'> 194</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', title='int'>_counter</a> += 1
+<span class='lineno'> 195</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', title='?'>_seed</a> is None:
+<span class='lineno'> 196</span>       return None
+<span class='lineno'> 197</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.composite', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.composite', title='?'>composite</a> = str((<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', title='?'>_seed</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._counter', title='int'>_counter</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', title='?'>_salt</a>)).encode(&quot;utf-8&quot;)
+<span class='lineno'> 198</span>     return int(hashlib.sha512(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.composite', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.__call__.composite', title='?'>composite</a>).hexdigest(), 16)
+<span class='lineno'> 199</span> 
+<span class='lineno'> 200</span>   @property
+<span class='lineno'> 201</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed', title='SeedStream -> ?'>original_seed</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed.self', title='SeedStream'>self</a>):
+<span class='lineno'> 202</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.original_seed.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._seed', title='?'>_seed</a>
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span>   @property
+<span class='lineno'> 205</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt', title='SeedStream -> ?'>salt</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt.self', title='SeedStream'>self</a>):
+<span class='lineno'> 206</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream.salt.self', title='SeedStream'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.distributions.python.ops.seed_stream.SeedStream._salt', title='?'>_salt</a>
+<span class='lineno'> 207</span> 
+<span class='lineno'> 208</span> # Design rationales for the SeedStream class
+<span class='lineno'> 209</span> #
+<span class='lineno'> 210</span> # - Salts are accepted for the reason given above to supply them.
+<span class='lineno'> 211</span> #
+<span class='lineno'> 212</span> # - A `None` seed propagates to downstream seeds, so they exhibit
+<span class='lineno'> 213</span> #   their &quot;unseeded&quot; behavior.
+<span class='lineno'> 214</span> #
+<span class='lineno'> 215</span> # - The return value is a Python int so it can be passed directly to
+<span class='lineno'> 216</span> #   TensorFlow operations as a seed.  It is large to avoid losing seed
+<span class='lineno'> 217</span> #   space needlessly (TF will internally read only the last 31 bits).
+<span class='lineno'> 218</span> #
+<span class='lineno'> 219</span> # - The output is hashed with a crypto-grade hash function as a form
+<span class='lineno'> 220</span> #   of defensive programming: this reliably prevents all possible
+<span class='lineno'> 221</span> #   accidental resonances with all possible downstream PRNGs.  The
+<span class='lineno'> 222</span> #   specific function used is not important; SHA512 was ready to hand.
+<span class='lineno'> 223</span> #
+<span class='lineno'> 224</span> # - The internal state update is a simple counter because (a) given
+<span class='lineno'> 225</span> #   that the output is hashed anyway, this is enough, and (b) letting
+<span class='lineno'> 226</span> #   it be this predictable permits a future &quot;generate many seeds in
+<span class='lineno'> 227</span> #   parallel&quot; operation whose results would agree with running
+<span class='lineno'> 228</span> #   sequentially.
+</pre></td></tr></table></body></html>

@@ -1,0 +1,160 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/training/python/training/tuner.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner'>Tuner</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.__metaclass__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.__metaclass__'>__metaclass__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial'>next_trial</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment'>run_experiment</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;The Tuner interface for hyper-parameters tuning.&quot;&quot;&quot;
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> from __future__ import absolute_import
+<span class='lineno'>  19</span> from __future__ import division
+<span class='lineno'>  20</span> from __future__ import print_function
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> import abc
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework', title='framework'>framework</a>.<a href='../../../framework/python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python', title='python'>python</a>.<a href='../../../framework/python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework', title='framework'>framework</a> import <a href='../../../framework/python/framework/experimental.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.experimental.experimental', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.experimental.experimental', title='? -> () -> None'>experimental</a>
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner', title='<Tuner>'>Tuner</a>(object):
+<span class='lineno'>  28</span>   &quot;&quot;&quot;Tuner class is the interface for Experiment hyper-parameters tuning.
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   Example:
+<span class='lineno'>  31</span>   ```
+<span class='lineno'>  32</span>     def _create_my_experiment(run_config, hparams):
+<span class='lineno'>  33</span>       hidden_units = [hparams.unit_per_layer] * hparams.num_hidden_layers
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>       return tf.contrib.learn.Experiment(
+<span class='lineno'>  36</span>           estimator=DNNClassifier(config=run_config, hidden_units=hidden_units),
+<span class='lineno'>  37</span>           train_input_fn=my_train_input,
+<span class='lineno'>  38</span>           eval_input_fn=my_eval_input)
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>     tuner = create_tuner(study_configuration, objective_key)
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>     learn_runner.tune(experiment_fn=_create_my_experiment, tuner)
+<span class='lineno'>  43</span>   &quot;&quot;&quot;
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.__metaclass__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.__metaclass__', title='?'>__metaclass__</a> = abc.ABCMeta
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   @experimental
+<span class='lineno'>  48</span>   @abc.abstractmethod
+<span class='lineno'>  49</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial', title='Tuner -> None'>next_trial</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.next_trial.self', title='Tuner'>self</a>):
+<span class='lineno'>  50</span>     &quot;&quot;&quot;Switch to the next trial.
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span>     Ask the tuning service for a new trial for hyper-parameters tuning.
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>     Returns:
+<span class='lineno'>  55</span>       A boolean indicating if a trial was assigned to the tuner.
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>     Raises:
+<span class='lineno'>  58</span>       RuntimeError: If the tuner is initialized correctly.
+<span class='lineno'>  59</span>     &quot;&quot;&quot;
+<span class='lineno'>  60</span>     raise NotImplementedError(&quot;Calling an abstract method.&quot;)
+<span class='lineno'>  61</span> 
+<span class='lineno'>  62</span>   @experimental
+<span class='lineno'>  63</span>   @abc.abstractmethod
+<span class='lineno'>  64</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment', title='(Tuner, ?) -> None'>run_experiment</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment.self', title='Tuner'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment.experiment_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.tuner.Tuner.run_experiment.experiment_fn', title='?'>experiment_fn</a>):
+<span class='lineno'>  65</span>     &quot;&quot;&quot;Creates an Experiment by calling `experiment_fn` and executes it.
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>     It creates a `RunConfig`, which captures the current execution environment
+<span class='lineno'>  68</span>     configuration and retrieves the hyper-parameters for current trial from the
+<span class='lineno'>  69</span>     tuning service. Both are passed to the `experiment_fn` and used to create
+<span class='lineno'>  70</span>     the Experiment for current trial execution. When finished, the measure will
+<span class='lineno'>  71</span>     be reported to the tuning service.
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>     If the `RunConfig` does not include a task type, then an exception is
+<span class='lineno'>  75</span>     raised. The task type should be one of the types supported by the tuner. If
+<span class='lineno'>  76</span>     tuner does not support the task type directly, it could delegate the task to
+<span class='lineno'>  77</span>     Experiment, which is usually a function of Experiment. An exception would be
+<span class='lineno'>  78</span>     raised, if neither tuner nor Experiment could support the task type.
+<span class='lineno'>  79</span> 
+<span class='lineno'>  80</span>     Args:
+<span class='lineno'>  81</span>       experiment_fn: A function that creates an `Experiment`. It should accept
+<span class='lineno'>  82</span>         an argument `run_config` which should be used to create the `Estimator`
+<span class='lineno'>  83</span>         (passed as `config` to its constructor), and an argument `hparams`,
+<span class='lineno'>  84</span>         which should be used for hyper-parameters tuning. It must return an
+<span class='lineno'>  85</span>         `Experiment`.
+<span class='lineno'>  86</span>     &quot;&quot;&quot;
+<span class='lineno'>  87</span>     raise NotImplementedError(&quot;Calling an abstract method.&quot;)
+</pre></td></tr></table></body></html>

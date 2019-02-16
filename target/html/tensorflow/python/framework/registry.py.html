@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/framework/registry.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG'>_LOCATION_TAG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG'>_TYPE_TAG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry'>Registry</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register'>register</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list'>list</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup'>lookup</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Registry mechanism for &quot;registering&quot; classes/functions for general use.
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> This is typically used with a decorator that calls Register for adding
+<span class='lineno'>  19</span> a class or function to a registry.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import traceback
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import tf_logging as <a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', title='tf_logging'>logging</a>
+<span class='lineno'>  29</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', title='compat'>compat</a>
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> # Registry mechanism below is based on mapreduce.python.mrpython.Register.
+<span class='lineno'>  33</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', title='str'>_LOCATION_TAG</a> = &quot;location&quot;
+<span class='lineno'>  34</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', title='str'>_TYPE_TAG</a> = &quot;type&quot;
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry', title='<Registry>'>Registry</a>(object):
+<span class='lineno'>  38</span>   &quot;&quot;&quot;Provides a registry for saving objects.&quot;&quot;&quot;
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', title='Registry'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.name', title='str'>name</a>):
+<span class='lineno'>  41</span>     &quot;&quot;&quot;Creates a new registry.&quot;&quot;&quot;
+<span class='lineno'>  42</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', title='Registry'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._name', title='str'>_name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.name', title='str'>name</a>
+<span class='lineno'>  43</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.__init__.self', title='Registry'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a> = dict()
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register', title='(Registry, ? -> {[TensorShape] | dict | dict}, str) -> None / (Registry, None, str) -> None / (Registry, (None, None, None), str) -> None / (Registry, ?, str) -> None'>register</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', title='Registry'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', title='{(None, None, None) | ? -> {[TensorShape] | dict | dict}}'>candidate</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a>=None):
+<span class='lineno'>  46</span>     &quot;&quot;&quot;Registers a Python object &quot;candidate&quot; for the given &quot;name&quot;.
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span>     Args:
+<span class='lineno'>  49</span>       candidate: The candidate object to add to the registry.
+<span class='lineno'>  50</span>       name: An optional string specifying the registry key for the candidate.
+<span class='lineno'>  51</span>             If None, candidate.__name__ will be used.
+<span class='lineno'>  52</span>     Raises:
+<span class='lineno'>  53</span>       KeyError: If same name is used twice.
+<span class='lineno'>  54</span>     &quot;&quot;&quot;
+<span class='lineno'>  55</span>     if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a>:
+<span class='lineno'>  56</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='?'>name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', title='{(None, None, None) | ? -> {[TensorShape] | dict | dict}}'>candidate</a>.__name__
+<span class='lineno'>  57</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>:
+<span class='lineno'>  58</span>       (<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.filename', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.filename', title='?'>filename</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.line_number', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.line_number', title='?'>line_number</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.function_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.function_name', title='?'>function_name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register._', title='?'>_</a>) = (
+<span class='lineno'>  59</span>           <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a>][<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', title='str'>_LOCATION_TAG</a>])
+<span class='lineno'>  60</span>       raise KeyError(&quot;Registering two %s with name &#39;%s&#39; !&quot;
+<span class='lineno'>  61</span>                      &quot;(Previous registration was in %s %s:%d)&quot; %
+<span class='lineno'>  62</span>                      (self._name, name, function_name, filename, line_number))
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>     <a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging', title='tf_logging'>logging</a>.<a href='../platform/tf_logging.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging.vlog', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.tf_logging.vlog', title='(int, ?) -> None / (?, str) -> None / (int, str) -> None / (?, ?) -> None'>vlog</a>(1, &quot;Registering %s (%s) in %s.&quot;, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', title='{(None, None, None) | ? -> {[TensorShape] | dict | dict}}'>candidate</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._name', title='str'>_name</a>)
+<span class='lineno'>  65</span>     # stack trace is [this_function, Register(), user_function,...]
+<span class='lineno'>  66</span>     # so the user function is #2.
+<span class='lineno'>  67</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.stack', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.stack', title='?'>stack</a> = traceback.extract_stack()
+<span class='lineno'>  68</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.name', title='str'>name</a>] = {<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', title='str'>_TYPE_TAG</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.candidate', title='{(None, None, None) | ? -> {[TensorShape] | dict | dict}}'>candidate</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._LOCATION_TAG', title='str'>_LOCATION_TAG</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.stack', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.register.stack', title='?'>stack</a>[2]}
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list', title='Registry -> <list>'>list</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list.self', title='Registry'>self</a>):
+<span class='lineno'>  71</span>     &quot;&quot;&quot;Lists registered items.
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>     Returns:
+<span class='lineno'>  74</span>       A list of names of registered objects.
+<span class='lineno'>  75</span>     &quot;&quot;&quot;
+<span class='lineno'>  76</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.list.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>.keys()
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup', title='(Registry, Operation -> None) -> None / (Registry, ?) -> None / (Registry, str) -> None'>lookup</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', title='Registry'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', title='{Operation -> None | str}'>name</a>):
+<span class='lineno'>  79</span>     &quot;&quot;&quot;Looks up &quot;name&quot;.
+<span class='lineno'>  80</span> 
+<span class='lineno'>  81</span>     Args:
+<span class='lineno'>  82</span>       name: a string specifying the registry key for the candidate.
+<span class='lineno'>  83</span>     Returns:
+<span class='lineno'>  84</span>       Registered object if found
+<span class='lineno'>  85</span>     Raises:
+<span class='lineno'>  86</span>       LookupError: if &quot;name&quot; has not been registered.
+<span class='lineno'>  87</span>     &quot;&quot;&quot;
+<span class='lineno'>  88</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', title='None'>name</a> = <a href='../util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat', title='compat'>compat</a>.<a href='../util/compat.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.compat.as_str', title='{(Operation -> None, str) -> None / ((?, ?), str) -> None / (?, str) -> None / (None, str) -> None / (str, str) -> None / (ControlFlowContext -> ?, str) -> None | (RunConfig -> None, str) -> ? / ((<str>, ?), str) -> None / ({name_scope | str}, str) -> None / (Server -> None, str) -> None / (str, str) -> None / (?, str) -> None / ({DType | [?] | int}, str) -> None / (ControlFlowContext -> ?, str) -> None / (None, str) -> None}'>as_str</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', title='{Operation -> None | str}'>name</a>)
+<span class='lineno'>  89</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', title='None'>name</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>:
+<span class='lineno'>  90</span>       return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.self', title='Registry'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry._registry', title='dict'>_registry</a>[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry.Registry.lookup.name', title='None'>name</a>][<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.registry._TYPE_TAG', title='str'>_TYPE_TAG</a>]
+<span class='lineno'>  91</span>     else:
+<span class='lineno'>  92</span>       raise LookupError(
+<span class='lineno'>  93</span>           &quot;%s registry has no entry for: %s&quot; % (self._name, name))
+</pre></td></tr></table></body></html>

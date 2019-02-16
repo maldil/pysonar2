@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/estimators/constants.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType'>ProblemType</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.UNSPECIFIED', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.UNSPECIFIED'>UNSPECIFIED</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.CLASSIFICATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.CLASSIFICATION'>CLASSIFICATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LINEAR_REGRESSION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LINEAR_REGRESSION'>LINEAR_REGRESSION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LOGISTIC_REGRESSION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LOGISTIC_REGRESSION'>LOGISTIC_REGRESSION</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS'>COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Constants regarding Estimators (deprecated).
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  19</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  20</span> for migration instructions.
+<span class='lineno'>  21</span> &quot;&quot;&quot;
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType', title='<ProblemType>'>ProblemType</a>(object):
+<span class='lineno'>  28</span>   &quot;&quot;&quot;Enum-like values for the type of problem that the model solves.
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span>   THIS CLASS IS DEPRECATED.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   These values are used when exporting the model to produce the appropriate
+<span class='lineno'>  33</span>   signature function for serving.
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span>   The following values are supported:
+<span class='lineno'>  36</span>     UNSPECIFIED: Produces a predict signature_fn.
+<span class='lineno'>  37</span>     CLASSIFICATION: Produces a classify signature_fn.
+<span class='lineno'>  38</span>     LINEAR_REGRESSION: Produces a regression signature_fn.
+<span class='lineno'>  39</span>     LOGISTIC_REGRESSION: Produces a classify signature_fn.
+<span class='lineno'>  40</span>   &quot;&quot;&quot;
+<span class='lineno'>  41</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.UNSPECIFIED', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.UNSPECIFIED', title='int'>UNSPECIFIED</a> = 0
+<span class='lineno'>  42</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.CLASSIFICATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.CLASSIFICATION', title='int'>CLASSIFICATION</a> = 1
+<span class='lineno'>  43</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LINEAR_REGRESSION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LINEAR_REGRESSION', title='int'>LINEAR_REGRESSION</a> = 2
+<span class='lineno'>  44</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LOGISTIC_REGRESSION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.ProblemType.LOGISTIC_REGRESSION', title='int'>LOGISTIC_REGRESSION</a> = 3
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span> # CollectionDef key for the input feature keys.
+<span class='lineno'>  48</span> # TODO(b/34388557): This is a stopgap; please follow the bug to learn of changes
+<span class='lineno'>  49</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.estimators.constants.COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS', title='str'>COLLECTION_DEF_KEY_FOR_INPUT_FEATURE_KEYS</a> = &quot;input_feature_keys&quot;
+</pre></td></tr></table></body></html>

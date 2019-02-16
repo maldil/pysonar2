@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/Octopus.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow'>tensorflow</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run'>run</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en'>en</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> import <a href='tensorflow/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a> as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>
+<span class='lineno'>   2</span> 
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run', title='Session -> None'>run</a> (<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.se', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.se', title='Session'>se</a>):
+<span class='lineno'>   5</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x1', title='None'>x1</a> = <a href='tensorflow/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='tensorflow/python/framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', title='(str, None, None, str, bool) -> ? / (int, None, None, str, bool) -> None / (?, ?, None, str, bool) -> None / (int, DType, None, str, bool) -> None / ([?], None, None, str, bool) -> None / ([int], None, None, str, bool) -> None / ({bool | int | str}, None, None, str, bool) -> None / (?, DType, None, str, bool) -> None / (?, None, None, str, bool) -> None / ({bool | int}, None, None, str, bool) -> None'>constant</a>([1,2,3,4])
+<span class='lineno'>   6</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x2', title='None'>x2</a> = <a href='tensorflow/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='tensorflow/python/framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', title='(str, None, None, str, bool) -> ? / (int, None, None, str, bool) -> None / (?, ?, None, str, bool) -> None / (int, DType, None, str, bool) -> None / ([?], None, None, str, bool) -> None / ([int], None, None, str, bool) -> None / ({bool | int | str}, None, None, str, bool) -> None / (?, DType, None, str, bool) -> None / (?, None, None, str, bool) -> None / ({bool | int}, None, None, str, bool) -> None'>constant</a>([5,6,7,8])
+<span class='lineno'>   7</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.result', title='?'>result</a> = <a href='tensorflow/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='tensorflow/python/ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.multiply', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.multiply', title='(SparseTensor, ?, None) -> ? / (?, int, None) -> ? / ({PartitionedVariable | VariableV1}, ?, str) -> ? / ({None | TensorArray | tuple}, None, None) -> ? / (?, None, None) -> ? / (None, None, None) -> ? / (?, ?, None) -> ? / ({IndexedSlices | SparseTensor}, None, None) -> ? / (None, ?, None) -> ? / (None, {IndexedSlices | SparseTensor}, None) -> ?'>multiply</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x1', title='None'>x1</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.x2', title='None'>x2</a>)
+<span class='lineno'>   8</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.res', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.res', title='?'>res</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.se', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.se', title='Session'>se</a>.<a href='tensorflow/python/client/session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.BaseSession.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.BaseSession.run', title='(Session, ?, ?, None, None) -> ? / (Session, ?, dict, None, None) -> ? / (Session, None, None, None, None) -> ? / (Session, [str], None, None, None) -> ? / (Session, ?, None, None, None) -> ? / (Session, [None], None, None, None) -> ? / (Session, Iterator -> None, None, None, None) -> ? / (Session, [?], None, None, None) -> ? / (Session, Layer -> None, None, None, None) -> ?'>run</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.result', title='?'>result</a>)
+<span class='lineno'>   9</span>     print (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.res', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run.res', title='?'>res</a>)
+<span class='lineno'>  10</span> 
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> if __name__ == &#39;__main__&#39;:
+<span class='lineno'>  13</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en', title='Session'>en</a> = <a href='tensorflow/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='tensorflow/python/client/session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.Session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.Session', title='<Session>'>Session</a>()
+<span class='lineno'>  14</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.run', title='Session -> None'>run</a> (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.Octopus.en', title='Session'>en</a>)
+</pre></td></tr></table></body></html>

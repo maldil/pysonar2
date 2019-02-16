@@ -1,0 +1,151 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/debug/examples/debug_errors.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow'>tensorflow</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main'>main</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser'>parser</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS'>FLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed'>unparsed</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Example of debugging TensorFlow runtime errors using tfdbg.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> import argparse
+<span class='lineno'>  21</span> import sys
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> import numpy as np
+<span class='lineno'>  24</span> import <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a> as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a> import debug as <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', title='debug'>tf_debug</a>
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main', title='? -> None'>main</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main._', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main._', title='?'>_</a>):
+<span class='lineno'>  30</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='Session'>sess</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../client/session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.Session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.client.session.Session', title='<Session>'>Session</a>()
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   # Construct the TensorFlow network.
+<span class='lineno'>  33</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', title='None'>ph_float</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.placeholder', title='{(?, [?], None) -> None / (DType, None, None) -> None / (?, None, None) -> None | (TPURewriteContext, ?, None) -> ? / (TPURewriteContext, DType, None) -> None / (TensorSpec -> DType, None, None) -> None / (DType, [int], None) -> None / ({None | str}, None, None) -> None / (DType, None, None) -> None / (str, None, None) -> None / (?, None, None) -> None / (DType, [None], None) -> None / (?, [None], None) -> None}'>placeholder</a>(<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>, name=&quot;ph_float&quot;)
+<span class='lineno'>  34</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.x', title='None'>x</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../ops/array_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.transpose', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.array_ops.transpose', title='(SparseTensor, [int], str, bool) -> ? / (None, (int, int, int), str, bool) -> None / (?, [int], str, bool) -> None / (None, [int], str, bool) -> None / (None, None, str, bool) -> None / (?, ?, str, bool) -> None / (None, ?, str, bool) -> None / (?, None, str, bool) -> None'>transpose</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', title='None'>ph_float</a>, name=&quot;x&quot;)
+<span class='lineno'>  35</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.v', title='VariableV1'>v</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../ops/variables.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variables.VariableV1', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.variables.VariableV1', title='<VariableV1>'>Variable</a>(np.array([[-2.0], [-3.0], [6.0]], dtype=np.float32), name=&quot;v&quot;)
+<span class='lineno'>  36</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', title='None'>m</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', title='(str, None, None, str, bool) -> ? / (int, None, None, str, bool) -> None / (?, ?, None, str, bool) -> None / (int, DType, None, str, bool) -> None / ([?], None, None, str, bool) -> None / ([int], None, None, str, bool) -> None / ({bool | int | str}, None, None, str, bool) -> None / (?, DType, None, str, bool) -> None / (?, None, None, str, bool) -> None / ({bool | int}, None, None, str, bool) -> None'>constant</a>(
+<span class='lineno'>  37</span>       np.array([[0.0, 1.0, 2.0], [-4.0, -1.0, 0.0]]),
+<span class='lineno'>  38</span>       dtype=<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../framework/dtypes.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.dtypes.float32', title='DType'>float32</a>,
+<span class='lineno'>  39</span>       name=&quot;m&quot;)
+<span class='lineno'>  40</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', title='None'>y</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.matmul', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.matmul', title='(?, {None | PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> ? / ([?], {None | PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (None, ?, bool, bool, bool, bool, bool, bool, None) -> None / (?, None, bool, bool, bool, bool, bool, bool, None) -> None / (None, None, bool, bool, bool, bool, bool, bool, None) -> None / (?, ?, bool, bool, bool, bool, bool, bool, None) -> None / (SparseTensor, {PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (None, SparseTensor, bool, bool, bool, bool, bool, bool, None) -> None / (None, {PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (VariableV1, VariableV1, bool, bool, bool, bool, bool, bool, None) -> None'>matmul</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', title='None'>m</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.x', title='None'>x</a>, name=&quot;y&quot;)
+<span class='lineno'>  41</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.z', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.z', title='?'>z</a> = <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../ops/math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.matmul', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.matmul', title='(?, {None | PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> ? / ([?], {None | PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (None, ?, bool, bool, bool, bool, bool, bool, None) -> None / (?, None, bool, bool, bool, bool, bool, bool, None) -> None / (None, None, bool, bool, bool, bool, bool, bool, None) -> None / (?, ?, bool, bool, bool, bool, bool, bool, None) -> None / (SparseTensor, {PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (None, SparseTensor, bool, bool, bool, bool, bool, bool, None) -> None / (None, {PartitionedVariable | VariableV1}, bool, bool, bool, bool, bool, bool, None) -> None / (VariableV1, VariableV1, bool, bool, bool, bool, bool, bool, None) -> None'>matmul</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.m', title='None'>m</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.v', title='VariableV1'>v</a>, name=&quot;z&quot;)
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>.debug:
+<span class='lineno'>  44</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='LocalCLIDebugWrapperSession'>sess</a> = <a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug', title='debug'>tf_debug</a>.<a href='../wrappers/local_cli_wrapper.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.wrappers.local_cli_wrapper.LocalCLIDebugWrapperSession', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.wrappers.local_cli_wrapper.LocalCLIDebugWrapperSession', title='<LocalCLIDebugWrapperSession>'>LocalCLIDebugWrapperSession</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='Session'>sess</a>, ui_type=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>.ui_type)
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>.error == &quot;shape_mismatch&quot;:
+<span class='lineno'>  47</span>     print(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='{LocalCLIDebugWrapperSession | Session}'>sess</a>.run(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', title='None'>y</a>, feed_dict={<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', title='None'>ph_float</a>: np.array([[0.0], [1.0], [2.0]])}))
+<span class='lineno'>  48</span>   elif <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>.error == &quot;uninitialized_variable&quot;:
+<span class='lineno'>  49</span>     print(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='{LocalCLIDebugWrapperSession | Session}'>sess</a>.run(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.z', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.z', title='?'>z</a>))
+<span class='lineno'>  50</span>   elif <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>.error == &quot;no_error&quot;:
+<span class='lineno'>  51</span>     print(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.sess', title='{LocalCLIDebugWrapperSession | Session}'>sess</a>.run(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.y', title='None'>y</a>, feed_dict={<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main.ph_float', title='None'>ph_float</a>: np.array([[0.0, 1.0, 2.0]])}))
+<span class='lineno'>  52</span>   else:
+<span class='lineno'>  53</span>     raise ValueError(&quot;Unrecognized error type: &quot; + FLAGS.error)
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span> if __name__ == &quot;__main__&quot;:
+<span class='lineno'>  57</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a> = argparse.ArgumentParser()
+<span class='lineno'>  58</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a>.register(&quot;type&quot;, &quot;bool&quot;, lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.lambda%799.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.lambda%799.v', title='?'>v</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.lambda%799.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.lambda%799.v', title='?'>v</a>.lower() == &quot;true&quot;)
+<span class='lineno'>  59</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  60</span>       &quot;--error&quot;,
+<span class='lineno'>  61</span>       type=str,
+<span class='lineno'>  62</span>       default=&quot;shape_mismatch&quot;,
+<span class='lineno'>  63</span>       help=&quot;&quot;&quot;\
+<span class='lineno'>  64</span>       Type of the error to generate (shape_mismatch | uninitialized_variable |
+<span class='lineno'>  65</span>       no_error).\
+<span class='lineno'>  66</span>       &quot;&quot;&quot;)
+<span class='lineno'>  67</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  68</span>       &quot;--ui_type&quot;,
+<span class='lineno'>  69</span>       type=str,
+<span class='lineno'>  70</span>       default=&quot;curses&quot;,
+<span class='lineno'>  71</span>       help=&quot;Command-line user interface type (curses | readline)&quot;)
+<span class='lineno'>  72</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  73</span>       &quot;--debug&quot;,
+<span class='lineno'>  74</span>       type=&quot;bool&quot;,
+<span class='lineno'>  75</span>       nargs=&quot;?&quot;,
+<span class='lineno'>  76</span>       const=True,
+<span class='lineno'>  77</span>       default=False,
+<span class='lineno'>  78</span>       help=&quot;Use debugger to track down bad values during training&quot;)
+<span class='lineno'>  79</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.FLAGS', title='?'>FLAGS</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed', title='?'>unparsed</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.parser', title='?'>parser</a>.parse_known_args()
+<span class='lineno'>  80</span>   <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tf</a>.<a href='../../../_api/v1/app/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow._api.v1.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow._api.v1.app', title='app'>app</a>.<a href='../../platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', title='(? -> None, None) -> None / (None, None) -> None'>run</a>(main=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.main', title='? -> None'>main</a>, argv=[sys.argv[0]] + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.debug.examples.debug_errors.unparsed', title='?'>unparsed</a>)
+</pre></td></tr></table></body></html>

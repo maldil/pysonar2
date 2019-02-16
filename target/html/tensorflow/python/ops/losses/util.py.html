@@ -1,0 +1,183 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/ops/losses/util.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss'>add_loss</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses'>get_losses</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses'>get_regularization_losses</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss'>get_regularization_loss</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss'>get_total_loss</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Utilities for manipulating the loss collections.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../eager/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', title='eager'>eager</a> import <a href='../../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>
+<span class='lineno'>  22</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', title='constant_op'>constant_op</a>
+<span class='lineno'>  23</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  24</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops', title='ops'>ops</a> import <a href='../math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>
+<span class='lineno'>  25</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> @tf_export(&quot;losses.add_loss&quot;)
+<span class='lineno'>  29</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss', title='(None, str) -> None / (?, str) -> None'>add_loss</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss', title='None'>loss</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', title='str'>loss_collection</a>=<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', title='<GraphKeys>'>GraphKeys</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.LOSSES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.LOSSES', title='str'>LOSSES</a>):
+<span class='lineno'>  30</span>   &quot;&quot;&quot;Adds a externally defined loss to the collection of losses.
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   Args:
+<span class='lineno'>  33</span>     loss: A loss `Tensor`.
+<span class='lineno'>  34</span>     loss_collection: Optional collection to add the loss to.
+<span class='lineno'>  35</span>   &quot;&quot;&quot;
+<span class='lineno'>  36</span>   # Since we have no way of figuring out when a training iteration starts or
+<span class='lineno'>  37</span>   # ends, holding on to a loss when executing eagerly is indistingishable from
+<span class='lineno'>  38</span>   # leaking memory. We instead leave the collection empty.
+<span class='lineno'>  39</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', title='str'>loss_collection</a> and not <a href='../../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', title='() -> bool'>executing_eagerly</a>():
+<span class='lineno'>  40</span>     <a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.add_to_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.add_to_collection', title='(str, None) -> ? / (str, SparseTensor -> None) -> None / (str, WhileContext) -> None / (str, CondContext) -> None / (str, ?) -> None / (str, _VariableScopeStore) -> None / (?, ?) -> None / (str, _Saveable) -> None'>add_to_collection</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss_collection', title='str'>loss_collection</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.add_loss.loss', title='None'>loss</a>)
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span> @tf_export(&quot;losses.get_losses&quot;)
+<span class='lineno'>  44</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses', title='(None, str) -> None'>get_losses</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.scope', title='None'>scope</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.loss_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.loss_collection', title='str'>loss_collection</a>=<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', title='<GraphKeys>'>GraphKeys</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.LOSSES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.LOSSES', title='str'>LOSSES</a>):
+<span class='lineno'>  45</span>   &quot;&quot;&quot;Gets the list of losses from the loss_collection.
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   Args:
+<span class='lineno'>  48</span>     scope: An optional scope name for filtering the losses to return.
+<span class='lineno'>  49</span>     loss_collection: Optional losses collection.
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span>   Returns:
+<span class='lineno'>  52</span>     a list of loss tensors.
+<span class='lineno'>  53</span>   &quot;&quot;&quot;
+<span class='lineno'>  54</span>   return <a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', title='(str, Template -> str) -> None / (?, str) -> None / (str, {VariableScope -> str | variable_scope}) -> None / (str, ?) -> None / (str, None) -> None / (?, None) -> None / (str, str) -> None / (str, VariableScope -> str) -> None'>get_collection</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.loss_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.loss_collection', title='str'>loss_collection</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses.scope', title='None'>scope</a>)
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> @tf_export(&quot;losses.get_regularization_losses&quot;)
+<span class='lineno'>  58</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', title='None -> None / ? -> None'>get_regularization_losses</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses.scope', title='None'>scope</a>=None):
+<span class='lineno'>  59</span>   &quot;&quot;&quot;Gets the list of regularization losses.
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   Args:
+<span class='lineno'>  62</span>     scope: An optional scope name for filtering the losses to return.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   Returns:
+<span class='lineno'>  65</span>     A list of regularization losses as Tensors.
+<span class='lineno'>  66</span>   &quot;&quot;&quot;
+<span class='lineno'>  67</span>   return <a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.get_collection', title='(str, Template -> str) -> None / (?, str) -> None / (str, {VariableScope -> str | variable_scope}) -> None / (str, ?) -> None / (str, None) -> None / (?, None) -> None / (str, str) -> None / (str, VariableScope -> str) -> None'>get_collection</a>(<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys', title='<GraphKeys>'>GraphKeys</a>.<a href='../../framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.REGULARIZATION_LOSSES', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.GraphKeys.REGULARIZATION_LOSSES', title='str'>REGULARIZATION_LOSSES</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses.scope', title='None'>scope</a>)
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span> 
+<span class='lineno'>  70</span> @tf_export(&quot;losses.get_regularization_loss&quot;)
+<span class='lineno'>  71</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss', title='(None, str) -> _TensorLike / (?, str) -> _TensorLike'>get_regularization_loss</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.scope', title='None'>scope</a>=None, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.name', title='str'>name</a>=&quot;total_regularization_loss&quot;):
+<span class='lineno'>  72</span>   &quot;&quot;&quot;Gets the total regularization loss.
+<span class='lineno'>  73</span> 
+<span class='lineno'>  74</span>   Args:
+<span class='lineno'>  75</span>     scope: An optional scope name for filtering the losses to return.
+<span class='lineno'>  76</span>     name: The name of the returned tensor.
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span>   Returns:
+<span class='lineno'>  79</span>     A scalar regularization loss.
+<span class='lineno'>  80</span>   &quot;&quot;&quot;
+<span class='lineno'>  81</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', title='None'>losses</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', title='None -> None / ? -> None'>get_regularization_losses</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.scope', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.scope', title='None'>scope</a>)
+<span class='lineno'>  82</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', title='None'>losses</a>:
+<span class='lineno'>  83</span>     return <a href='../math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>.<a href='../math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.add_n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.add_n', title='([{IndexedSlices | SparseTensor}], None) -> ? / ([{IndexedSlices | _TensorLike}], None) -> None / ([None], None) -> None / (tuple, None) -> None / ([{<IndexedSlices> | <Tensor> | _TensorLike}], None) -> _TensorLike / ([_TensorLike], None) -> _TensorLike / ([{<IndexedSlices> | <Tensor>}], None) -> _TensorLike / (?, None) -> _TensorLike / (None, None) -> _TensorLike / ([?], None) -> _TensorLike'>add_n</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.losses', title='None'>losses</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_loss.name', title='str'>name</a>)
+<span class='lineno'>  84</span>   else:
+<span class='lineno'>  85</span>     return <a href='../../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op', title='constant_op'>constant_op</a>.<a href='../../framework/constant_op.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.constant_op.constant', title='(str, None, None, str, bool) -> ? / (int, None, None, str, bool) -> None / (?, ?, None, str, bool) -> None / (int, DType, None, str, bool) -> None / ([?], None, None, str, bool) -> None / ([int], None, None, str, bool) -> None / ({bool | int | str}, None, None, str, bool) -> None / (?, DType, None, str, bool) -> None / (?, None, None, str, bool) -> None / ({bool | int}, None, None, str, bool) -> None'>constant</a>(0.0)
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span> @tf_export(&quot;losses.get_total_loss&quot;)
+<span class='lineno'>  89</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss', title='(bool, str) -> _TensorLike'>get_total_loss</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.add_regularization_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.add_regularization_losses', title='bool'>add_regularization_losses</a>=True, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.name', title='str'>name</a>=&quot;total_loss&quot;):
+<span class='lineno'>  90</span>   &quot;&quot;&quot;Returns a tensor whose value represents the total loss.
+<span class='lineno'>  91</span> 
+<span class='lineno'>  92</span>   In particular, this adds any losses you have added with `tf.add_loss()` to
+<span class='lineno'>  93</span>   any regularization losses that have been added by regularization parameters
+<span class='lineno'>  94</span>   on layers constructors e.g. `tf.layers`. Be very sure to use this if you
+<span class='lineno'>  95</span>   are constructing a loss_op manually. Otherwise regularization arguments
+<span class='lineno'>  96</span>   on `tf.layers` methods will not function.
+<span class='lineno'>  97</span> 
+<span class='lineno'>  98</span>   Args:
+<span class='lineno'>  99</span>     add_regularization_losses: A boolean indicating whether or not to use the
+<span class='lineno'> 100</span>       regularization losses in the sum.
+<span class='lineno'> 101</span>     name: The name of the returned tensor.
+<span class='lineno'> 102</span> 
+<span class='lineno'> 103</span>   Returns:
+<span class='lineno'> 104</span>     A `Tensor` whose value represents the total loss.
+<span class='lineno'> 105</span> 
+<span class='lineno'> 106</span>   Raises:
+<span class='lineno'> 107</span>     ValueError: if `losses` is not iterable.
+<span class='lineno'> 108</span>   &quot;&quot;&quot;
+<span class='lineno'> 109</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', title='None'>losses</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_losses', title='(None, str) -> None'>get_losses</a>()
+<span class='lineno'> 110</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.add_regularization_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.add_regularization_losses', title='bool'>add_regularization_losses</a>:
+<span class='lineno'> 111</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', title='None'><a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', title='None'>losses</a></a> += <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_regularization_losses', title='None -> None / ? -> None'>get_regularization_losses</a>()
+<span class='lineno'> 112</span>   return <a href='../math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops', title='math_ops'>math_ops</a>.<a href='../math_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.add_n', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.math_ops.add_n', title='([{IndexedSlices | SparseTensor}], None) -> ? / ([{IndexedSlices | _TensorLike}], None) -> None / ([None], None) -> None / (tuple, None) -> None / ([{<IndexedSlices> | <Tensor> | _TensorLike}], None) -> _TensorLike / ([_TensorLike], None) -> _TensorLike / ([{<IndexedSlices> | <Tensor>}], None) -> _TensorLike / (?, None) -> _TensorLike / (None, None) -> _TensorLike / ([?], None) -> _TensorLike'>add_n</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.losses', title='None'>losses</a>, name=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.ops.losses.util.get_total_loss.name', title='str'>name</a>)
+</pre></td></tr></table></body></html>

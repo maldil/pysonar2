@@ -113,7 +113,10 @@ public class Demo {
 
         String styledSource = new StyleApplier(path, source, styles).apply();
         String outline = new HtmlOutline(analyzer).generate(path);
-
+        if (path.contains("Octopus"))
+            System.out.println(source);
+            System.out.println("+++++++++++++++++++++++++++++");
+            System.out.println(outline);
         StringBuilder sb = new StringBuilder();
         sb.append("<html>\n")
             .append("<head>\n")

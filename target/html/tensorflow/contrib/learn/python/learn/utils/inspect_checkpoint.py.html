@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/utils/inspect_checkpoint.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS'>FLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file'>print_tensors_in_checkpoint_file</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main'>main</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser'>parser</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS'>FLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed'>unparsed</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;A simple script for inspect checkpoint files (deprecated).&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import argparse
+<span class='lineno'>  22</span> import sys
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework', title='framework'>framework</a>.<a href='../../../../framework/python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python', title='python'>python</a>.<a href='../../../../framework/python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework', title='framework'>framework</a> import <a href='../../../../framework/python/framework/checkpoint_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', title='checkpoint_utils'>checkpoint_utils</a>
+<span class='lineno'>  25</span> from <a href='../../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../../python/platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='../../../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', title='None'>FLAGS</a> = None
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file', title='(?, ?) -> ?'>print_tensors_in_checkpoint_file</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', title='?'>file_name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', title='?'>tensor_name</a>):
+<span class='lineno'>  31</span>   &quot;&quot;&quot;Prints tensors in a checkpoint file.
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span>   If no `tensor_name` is provided, prints the tensor names and shapes
+<span class='lineno'>  34</span>   in the checkpoint file.
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   If `tensor_name` is provided, prints the content of the tensor.
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   Args:
+<span class='lineno'>  39</span>     file_name: Name of the checkpoint file.
+<span class='lineno'>  40</span>     tensor_name: Name of the tensor in the checkpoint file to print.
+<span class='lineno'>  41</span>   &quot;&quot;&quot;
+<span class='lineno'>  42</span>   try:
+<span class='lineno'>  43</span>     if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', title='?'>tensor_name</a>:
+<span class='lineno'>  44</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.variables', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.variables', title='[(?, ?)]'>variables</a> = <a href='../../../../framework/python/framework/checkpoint_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', title='checkpoint_utils'>checkpoint_utils</a>.<a href='../../../../framework/python/framework/checkpoint_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils.list_variables', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils.list_variables', title='BaseEstimator -> RunConfig -> None -> [(?, ?)] / ? -> [(?, ?)]'>list_variables</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', title='?'>file_name</a>)
+<span class='lineno'>  45</span>       for <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.name', title='?'>name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.shape', title='?'>shape</a> in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.variables', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.variables', title='[(?, ?)]'>variables</a>:
+<span class='lineno'>  46</span>         print(&quot;%s\t%s&quot; % (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.name', title='?'>name</a>, str(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.shape', title='?'>shape</a>)))
+<span class='lineno'>  47</span>     else:
+<span class='lineno'>  48</span>       print(&quot;tensor_name: &quot;, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', title='?'>tensor_name</a>)
+<span class='lineno'>  49</span>       print(<a href='../../../../framework/python/framework/checkpoint_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils', title='checkpoint_utils'>checkpoint_utils</a>.<a href='../../../../framework/python/framework/checkpoint_utils.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils.load_variable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.framework.python.framework.checkpoint_utils.load_variable', title='(BaseEstimator -> RunConfig -> None, ?) -> None / (BaseEstimator -> RunConfig -> None, str) -> None / (RunConfig -> None, str) -> None / (?, ?) -> None / (?, str) -> None'>load_variable</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.file_name', title='?'>file_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.tensor_name', title='?'>tensor_name</a>))
+<span class='lineno'>  50</span>   except Exception as <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', title='?'>e</a>:  # pylint: disable=broad-except
+<span class='lineno'>  51</span>     print(str(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', title='?'>e</a>))
+<span class='lineno'>  52</span>     if &quot;corrupted compressed block contents&quot; in str(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file.e', title='?'>e</a>):
+<span class='lineno'>  53</span>       print(&quot;It&#39;s likely that your checkpoint file has been compressed &quot;
+<span class='lineno'>  54</span>             &quot;with SNAPPY.&quot;)
+<span class='lineno'>  55</span> 
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main', title='? -> None'>main</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main.unused_argv', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main.unused_argv', title='?'>unused_argv</a>):
+<span class='lineno'>  58</span>   if not <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', title='None'>FLAGS</a>.file_name:
+<span class='lineno'>  59</span>     print(&quot;Usage: inspect_checkpoint --file_name=&lt;checkpoint_file_name &quot;
+<span class='lineno'>  60</span>           &quot;or directory&gt; [--tensor_name=tensor_to_print]&quot;)
+<span class='lineno'>  61</span>     sys.exit(1)
+<span class='lineno'>  62</span>   else:
+<span class='lineno'>  63</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.print_tensors_in_checkpoint_file', title='(?, ?) -> ?'>print_tensors_in_checkpoint_file</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', title='None'>FLAGS</a>.file_name, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', title='None'>FLAGS</a>.tensor_name)
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span> 
+<span class='lineno'>  66</span> if __name__ == &quot;__main__&quot;:
+<span class='lineno'>  67</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', title='?'>parser</a> = argparse.ArgumentParser()
+<span class='lineno'>  68</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', title='?'>parser</a>.register(&quot;type&quot;, &quot;bool&quot;, lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.lambda%809.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.lambda%809.v', title='?'>v</a>: <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.lambda%809.v', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.lambda%809.v', title='?'>v</a>.lower() == &quot;true&quot;)
+<span class='lineno'>  69</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  70</span>       &quot;--file_name&quot;,
+<span class='lineno'>  71</span>       type=str,
+<span class='lineno'>  72</span>       default=&quot;&quot;,
+<span class='lineno'>  73</span>       help=&quot;Checkpoint filename&quot;
+<span class='lineno'>  74</span>   )
+<span class='lineno'>  75</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', title='?'>parser</a>.add_argument(
+<span class='lineno'>  76</span>       &quot;--tensor_name&quot;,
+<span class='lineno'>  77</span>       type=str,
+<span class='lineno'>  78</span>       default=&quot;&quot;,
+<span class='lineno'>  79</span>       help=&quot;Name of the tensor to inspect&quot;
+<span class='lineno'>  80</span>   )
+<span class='lineno'>  81</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.FLAGS', title='?'>FLAGS</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed', title='?'>unparsed</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.parser', title='?'>parser</a>.parse_known_args()
+<span class='lineno'>  82</span>   <a href='../../../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app', title='app'>app</a>.<a href='../../../../../python/platform/app.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.app.run', title='(? -> None, None) -> None / (None, None) -> None'>run</a>(main=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.main', title='? -> None'>main</a>, argv=[sys.argv[0]] + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.utils.inspect_checkpoint.unparsed', title='?'>unparsed</a>)
+</pre></td></tr></table></body></html>

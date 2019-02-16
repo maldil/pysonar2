@@ -1,0 +1,157 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/tools/component_api_helper.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook'>package_hook</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2018 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Helper functions to help integrate TensorFlow components into TF API.
+<span class='lineno'>  16</span> &quot;&quot;&quot;
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import importlib
+<span class='lineno'>  22</span> import os
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook', title='(str, str, None) -> ?'>package_hook</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_package_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_package_str', title='str'>parent_package_str</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_package_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_package_str', title='str'>child_package_str</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', title='None'>error_msg</a>=None):
+<span class='lineno'>  26</span>   &quot;&quot;&quot;Used to hook in an external package into the TensorFlow namespace.
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span>   Example usage:
+<span class='lineno'>  29</span>   ### tensorflow/__init__.py
+<span class='lineno'>  30</span>   from tensorflow.python.tools import component_api_helper
+<span class='lineno'>  31</span>   component_api_helper.package_hook(
+<span class='lineno'>  32</span>       &#39;tensorflow&#39;, &#39;tensorflow_estimator.python&#39;)
+<span class='lineno'>  33</span>   component_api_helper(
+<span class='lineno'>  34</span>       &#39;tensorflow.contrib&#39;, &#39;tensorflow_estimator.contrib.python&#39;)
+<span class='lineno'>  35</span>   del component_api_helper
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span>   TODO(mikecase): This function has a minor issue, where if the child package
+<span class='lineno'>  38</span>   does not exist alone in its directory, sibling packages to it will also be
+<span class='lineno'>  39</span>   accessible from the parent. This is because we just add
+<span class='lineno'>  40</span>   `child_pkg.__file__/..` to the subpackage search path. This should not be
+<span class='lineno'>  41</span>   a big issue because of how our API generation scripts work (the child package
+<span class='lineno'>  42</span>   we are hooking up should always be alone). But there might be a better way
+<span class='lineno'>  43</span>   of doing this.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   Args:
+<span class='lineno'>  46</span>     parent_package_str: Parent package name as a string such as &#39;tensorflow&#39; or
+<span class='lineno'>  47</span>       &#39;tensorflow.contrib&#39;. This will become the parent package for the
+<span class='lineno'>  48</span>       component package being hooked in.
+<span class='lineno'>  49</span>     child_package_str: Child package name as a string such as
+<span class='lineno'>  50</span>       &#39;tensorflow_estimator.python&#39;. This package will be added as a subpackage
+<span class='lineno'>  51</span>       of the parent.
+<span class='lineno'>  52</span>     error_msg: Message to print if child package cannot be found.
+<span class='lineno'>  53</span>   &quot;&quot;&quot;
+<span class='lineno'>  54</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', title='?'>parent_pkg</a> = importlib.import_module(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_package_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_package_str', title='str'>parent_package_str</a>)
+<span class='lineno'>  55</span>   try:
+<span class='lineno'>  56</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', title='?'>child_pkg</a> = importlib.import_module(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_package_str', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_package_str', title='str'>child_package_str</a>)
+<span class='lineno'>  57</span>   except ImportError:
+<span class='lineno'>  58</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', title='None'>error_msg</a>:
+<span class='lineno'>  59</span>       print(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.error_msg', title='None'>error_msg</a>)
+<span class='lineno'>  60</span>     return
+<span class='lineno'>  61</span> 
+<span class='lineno'>  62</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage', title='() -> ?'>set_child_as_subpackage</a>():
+<span class='lineno'>  63</span>     &quot;&quot;&quot;Sets child package as a subpackage of parent package.
+<span class='lineno'>  64</span> 
+<span class='lineno'>  65</span>     Will allow the following import statement to work.
+<span class='lineno'>  66</span>     &gt;&gt;&gt; import parent.child
+<span class='lineno'>  67</span>     &quot;&quot;&quot;
+<span class='lineno'>  68</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', title='[str]'>child_pkg_path</a> = [os.path.abspath(
+<span class='lineno'>  69</span>         os.path.join(os.path.dirname(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', title='?'>child_pkg</a>.__file__), &quot;..&quot;))]
+<span class='lineno'>  70</span>     try:
+<span class='lineno'>  71</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', title='?'>parent_pkg</a>.__path__ = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', title='[str]'>child_pkg_path</a> + <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', title='?'>parent_pkg</a>.__path__
+<span class='lineno'>  72</span>     except AttributeError:
+<span class='lineno'>  73</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', title='?'>parent_pkg</a>.__path__ = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage.child_pkg_path', title='[str]'>child_pkg_path</a>
+<span class='lineno'>  74</span> 
+<span class='lineno'>  75</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr', title='() -> None'>set_child_as_attr</a>():
+<span class='lineno'>  76</span>     &quot;&quot;&quot;Sets child package as a attr of the parent package.
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span>     Will allow for the following.
+<span class='lineno'>  79</span>     &gt;&gt;&gt; import parent
+<span class='lineno'>  80</span>     &gt;&gt;&gt; parent.child
+<span class='lineno'>  81</span>     &quot;&quot;&quot;
+<span class='lineno'>  82</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr.child_pkg_attr_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr.child_pkg_attr_name', title='?'>child_pkg_attr_name</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', title='?'>child_pkg</a>.__name__.split(&quot;.&quot;)[-1]
+<span class='lineno'>  83</span>     setattr(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.parent_pkg', title='?'>parent_pkg</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr.child_pkg_attr_name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr.child_pkg_attr_name', title='?'>child_pkg_attr_name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.child_pkg', title='?'>child_pkg</a>)
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_subpackage', title='() -> ?'>set_child_as_subpackage</a>()
+<span class='lineno'>  86</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.tools.component_api_helper.package_hook.set_child_as_attr', title='() -> None'>set_child_as_attr</a>()
+</pre></td></tr></table></body></html>

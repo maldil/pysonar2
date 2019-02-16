@@ -1,0 +1,138 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/eager/core.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._active_trace', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._active_trace'>_active_trace</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception'>_status_to_exception</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException'>_NotOkStatusException</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__'>__init__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__'>__str__</a></li></ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException'>_FallbackException</a><ul>
+</ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Experimental API for TensorFlow&#39;s &quot;Eager&quot; mode of execution.&quot;&quot;&quot;
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a> import <a href='../pywrap_tensorflow.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', title='pywrap_tensorflow'>pywrap_tensorflow</a>
+<span class='lineno'>  22</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../framework/errors.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', title='errors'>errors</a>
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> # Trace of execution and memory usage.
+<span class='lineno'>  25</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._active_trace', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._active_trace', title='None'>_active_trace</a> = None
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception', title='(?, str) -> {AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError} / (?, ?) -> {AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError}'>_status_to_exception</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', title='?'>code</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', title='str'>message</a>):
+<span class='lineno'>  29</span>   try:
+<span class='lineno'>  30</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.error_class', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.error_class', title='{<AbortedError> | <AlreadyExistsError> | <CancelledError> | <DataLossError> | <DeadlineExceededError> | <FailedPreconditionError> | <InternalError> | <InvalidArgumentError> | <NotFoundError> | <OutOfRangeError> | <PermissionDeniedError> | <ResourceExhaustedError> | <UnauthenticatedError> | <UnavailableError> | <UnimplementedError> | <UnknownError>}'>error_class</a> = <a href='../framework/errors.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', title='errors'>errors</a>.<a href='../framework/errors_impl.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors_impl.exception_type_from_error_code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors_impl.exception_type_from_error_code', title='? -> {<AbortedError> | <AlreadyExistsError> | <CancelledError> | <DataLossError> | <DeadlineExceededError> | <FailedPreconditionError> | <InternalError> | <InvalidArgumentError> | <NotFoundError> | <OutOfRangeError> | <PermissionDeniedError> | <ResourceExhaustedError> | <UnauthenticatedError> | <UnavailableError> | <UnimplementedError> | <UnknownError>}'>exception_type_from_error_code</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', title='?'>code</a>)
+<span class='lineno'>  31</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.error_class', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.error_class', title='{<AbortedError> | <AlreadyExistsError> | <CancelledError> | <DataLossError> | <DeadlineExceededError> | <FailedPreconditionError> | <InternalError> | <InvalidArgumentError> | <NotFoundError> | <OutOfRangeError> | <PermissionDeniedError> | <ResourceExhaustedError> | <UnauthenticatedError> | <UnavailableError> | <UnimplementedError> | <UnknownError>}'>error_class</a>(None, None, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', title='str'>message</a>)
+<span class='lineno'>  32</span>   except KeyError:
+<span class='lineno'>  33</span>     return <a href='../framework/errors.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors', title='errors'>errors</a>.<a href='../framework/errors_impl.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors_impl.UnknownError', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.errors_impl.UnknownError', title='<UnknownError>'>UnknownError</a>(None, None, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.message', title='str'>message</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception.code', title='?'>code</a>)
+<span class='lineno'>  34</span> 
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', title='<_NotOkStatusException>'>_NotOkStatusException</a>(Exception):
+<span class='lineno'>  37</span>   &quot;&quot;&quot;Exception class to handle not ok Status.&quot;&quot;&quot;
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', title='_NotOkStatusException'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.message', title='?'>message</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.code', title='?'>code</a>):
+<span class='lineno'>  40</span>     super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', title='<_NotOkStatusException>'>_NotOkStatusException</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', title='_NotOkStatusException'>self</a>).__init__()
+<span class='lineno'>  41</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', title='_NotOkStatusException'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', title='?'>message</a></a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.message', title='?'>message</a>
+<span class='lineno'>  42</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.self', title='_NotOkStatusException'>self</a>.<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', title='?'><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', title='?'>code</a></a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__init__.code', title='?'>code</a>
+<span class='lineno'>  43</span> 
+<span class='lineno'>  44</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__', title='_NotOkStatusException -> None'>__str__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', title='_NotOkStatusException'>self</a>):
+<span class='lineno'>  45</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', title='{AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError}'>e</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._status_to_exception', title='(?, str) -> {AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError} / (?, ?) -> {AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError}'>_status_to_exception</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', title='_NotOkStatusException'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.code', title='?'>code</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.self', title='_NotOkStatusException'>self</a>.<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.message', title='?'>message</a>)
+<span class='lineno'>  46</span>     return &quot;%s: %s&quot; % (<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', title='{AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError}'>e</a>.__class__.__name__, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException.__str__.e', title='{AbortedError | AlreadyExistsError | CancelledError | DataLossError | DeadlineExceededError | FailedPreconditionError | InternalError | InvalidArgumentError | NotFoundError | OutOfRangeError | PermissionDeniedError | ResourceExhaustedError | UnauthenticatedError | UnavailableError | UnimplementedError | UnknownError}'>e</a>)
+<span class='lineno'>  47</span> 
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span> <a href='../pywrap_tensorflow.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', title='pywrap_tensorflow'>pywrap_tensorflow</a>.<a href='../pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_RegisterExceptionClass', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_RegisterExceptionClass', title='?'>TFE_Py_RegisterExceptionClass</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._NotOkStatusException', title='<_NotOkStatusException>'>_NotOkStatusException</a>)
+<span class='lineno'>  50</span> 
+<span class='lineno'>  51</span> 
+<span class='lineno'>  52</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException', title='<_FallbackException>'>_FallbackException</a>(Exception):
+<span class='lineno'>  53</span>   &quot;&quot;&quot;Exception class to handle fallback from the fastpath.
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span>   The fastpath that we refer to here is the one implemented to reduce per-op
+<span class='lineno'>  56</span>   overheads (TFE_Py_FastPathExecute_C). If the conditions for executing the op
+<span class='lineno'>  57</span>   on the fastpath are not met, we fallback to a safer (and more complete)
+<span class='lineno'>  58</span>   slowpath, and this Exception is raised to signal that transition.
+<span class='lineno'>  59</span>   &quot;&quot;&quot;
+<span class='lineno'>  60</span>   pass
+<span class='lineno'>  61</span> 
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span> <a href='../pywrap_tensorflow.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow', title='pywrap_tensorflow'>pywrap_tensorflow</a>.<a href='../pywrap_tensorflow_internal.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_RegisterFallbackExceptionClass', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.pywrap_tensorflow_internal.TFE_Py_RegisterFallbackExceptionClass', title='?'>TFE_Py_RegisterFallbackExceptionClass</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.core._FallbackException', title='<_FallbackException>'>_FallbackException</a>)
+</pre></td></tr></table></body></html>

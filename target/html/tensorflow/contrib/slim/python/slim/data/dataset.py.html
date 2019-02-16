@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/slim/python/slim/data/dataset.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset'>Dataset</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__'>__init__</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Contains the definition of a Dataset.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> A Dataset is a collection of several components: (1) a list of data sources
+<span class='lineno'>  18</span> (2) a Reader class that can read those sources and returns possibly encoded
+<span class='lineno'>  19</span> samples of data (3) a decoder that decodes each sample of data provided by the
+<span class='lineno'>  20</span> reader (4) the total number of samples and (5) an optional dictionary mapping
+<span class='lineno'>  21</span> the list of items returns to a description of those items.
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> Data can be loaded from a dataset specification using a dataset_data_provider:
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span>   dataset = CreateMyDataset(...)
+<span class='lineno'>  26</span>   provider = dataset_data_provider.DatasetDataProvider(
+<span class='lineno'>  27</span>       dataset, shuffle=False)
+<span class='lineno'>  28</span>   image, label = provider.get([&#39;image&#39;, &#39;label&#39;])
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> See slim.data.dataset_data_provider for additional examples.
+<span class='lineno'>  31</span> &quot;&quot;&quot;
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> from __future__ import absolute_import
+<span class='lineno'>  34</span> from __future__ import division
+<span class='lineno'>  35</span> from __future__ import print_function
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset', title='<Dataset>'>Dataset</a>(object):
+<span class='lineno'>  39</span>   &quot;&quot;&quot;Represents a Dataset specification.&quot;&quot;&quot;
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__', title='? -> ?'>__init__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.self', title='Dataset'>self</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.data_sources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.data_sources', title='?'>data_sources</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.reader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.reader', title='?'>reader</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.decoder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.decoder', title='?'>decoder</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.num_samples', title='?'>num_samples</a>,
+<span class='lineno'>  42</span>                <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.items_to_descriptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.items_to_descriptions', title='?'>items_to_descriptions</a>, **kwargs):
+<span class='lineno'>  43</span>     &quot;&quot;&quot;Initializes the dataset.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>     Args:
+<span class='lineno'>  46</span>       data_sources: A list of files that make up the dataset.
+<span class='lineno'>  47</span>       reader: The reader class, a subclass of BaseReader such as TextLineReader
+<span class='lineno'>  48</span>         or TFRecordReader.
+<span class='lineno'>  49</span>       decoder: An instance of a data_decoder.
+<span class='lineno'>  50</span>       num_samples: The number of samples in the dataset.
+<span class='lineno'>  51</span>       items_to_descriptions: A map from the items that the dataset provides to
+<span class='lineno'>  52</span>         the descriptions of those items.
+<span class='lineno'>  53</span>       **kwargs: Any remaining dataset-specific fields.
+<span class='lineno'>  54</span>     &quot;&quot;&quot;
+<span class='lineno'>  55</span>     kwargs[&#39;data_sources&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.data_sources', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.data_sources', title='?'>data_sources</a>
+<span class='lineno'>  56</span>     kwargs[&#39;reader&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.reader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.reader', title='?'>reader</a>
+<span class='lineno'>  57</span>     kwargs[&#39;decoder&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.decoder', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.decoder', title='?'>decoder</a>
+<span class='lineno'>  58</span>     kwargs[&#39;num_samples&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.num_samples', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.num_samples', title='?'>num_samples</a>
+<span class='lineno'>  59</span>     kwargs[&#39;items_to_descriptions&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.items_to_descriptions', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.items_to_descriptions', title='?'>items_to_descriptions</a>
+<span class='lineno'>  60</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.data.dataset.Dataset.__init__.self', title='Dataset'>self</a>.__dict__.update(kwargs)
+</pre></td></tr></table></body></html>

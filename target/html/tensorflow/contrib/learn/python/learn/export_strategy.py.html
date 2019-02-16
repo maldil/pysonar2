@@ -1,0 +1,183 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/learn/python/learn/export_strategy.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.__all__'>__all__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy'>ExportStrategy</a><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__'>__new__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export'>export</a></li></ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;ExportStrategy class represents different flavors of model export (deprecated).
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> This module and all its submodules are deprecated. See
+<span class='lineno'>  18</span> [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  19</span> for migration instructions.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import collections
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../../../../python/util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>tf_inspect</a>
+<span class='lineno'>  29</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a> import <a href='../../../../python/util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation.deprecated', title='(str, str, bool) -> ? -> ? / (None, str, bool) -> (SparseTensor, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, ?, DType, None) -> ? -> ? -> ? / (None, {None | int}, DType, None) -> ? / (?, int, DType, None) -> ? / (?, {None | int}, DType, None) -> ? / (None, int, DType, None) -> ? / (Categorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (OneHotCategorical -> {IndexedSlices | SparseTensor}, {None | int}, DType, None) -> ? / (?, ?, DType, None) -> ? -> () -> None'>deprecated</a>
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.__all__', title='[str]'>__all__</a> = [&#39;ExportStrategy&#39;]
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> 
+<span class='lineno'>  34</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy', title='<ExportStrategy>'>ExportStrategy</a>(
+<span class='lineno'>  35</span>     collections.namedtuple(&#39;ExportStrategy&#39;,
+<span class='lineno'>  36</span>                            [&#39;name&#39;, &#39;export_fn&#39;, &#39;strip_default_attrs&#39;])):
+<span class='lineno'>  37</span>   &quot;&quot;&quot;A class representing a type of model export.
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   THIS CLASS IS DEPRECATED. See
+<span class='lineno'>  40</span>   [contrib/learn/README.md](https://www.tensorflow.org/code/tensorflow/contrib/learn/README.md)
+<span class='lineno'>  41</span>   for general migration instructions.
+<span class='lineno'>  42</span> 
+<span class='lineno'>  43</span>   Typically constructed by a utility function specific to the exporter, such as
+<span class='lineno'>  44</span>   `saved_model_export_utils.make_export_strategy()`.
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   Attributes:
+<span class='lineno'>  47</span>     name: The directory name under the export base directory where exports of
+<span class='lineno'>  48</span>       this type will be written.
+<span class='lineno'>  49</span>     export_fn: A function that writes an export, given an estimator, a
+<span class='lineno'>  50</span>       destination path, and optionally a checkpoint path and an evaluation
+<span class='lineno'>  51</span>       result for that checkpoint.  This export_fn() may be run repeatedly during
+<span class='lineno'>  52</span>       continuous training, or just once at the end of fixed-length training.
+<span class='lineno'>  53</span>       Note the export_fn() may choose whether or not to export based on the eval
+<span class='lineno'>  54</span>       result or based on an internal timer or any other criterion, if exports
+<span class='lineno'>  55</span>       are not desired for every checkpoint.
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>     The signature of this function must be one of:
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>       * `(estimator, export_path) -&gt; export_path`
+<span class='lineno'>  60</span>       * `(estimator, export_path, checkpoint_path) -&gt; export_path`
+<span class='lineno'>  61</span>       * `(estimator, export_path, checkpoint_path, eval_result) -&gt; export_path`
+<span class='lineno'>  62</span>       * `(estimator, export_path, checkpoint_path, eval_result,
+<span class='lineno'>  63</span>           strip_default_attrs) -&gt; export_path`
+<span class='lineno'>  64</span>     strip_default_attrs: (Optional) Boolean. If set as True, default attrs in
+<span class='lineno'>  65</span>         the `GraphDef` will be stripped on write. This is recommended for better
+<span class='lineno'>  66</span>         forward compatibility of the resulting `SavedModel`.
+<span class='lineno'>  67</span>   &quot;&quot;&quot;
+<span class='lineno'>  68</span> 
+<span class='lineno'>  69</span>   @deprecated(None, &#39;Please switch to tf.estimator.train_and_evaluate, and use &#39;
+<span class='lineno'>  70</span>               &#39;tf.estimator.Exporter.&#39;)
+<span class='lineno'>  71</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__', title='(ExportStrategy, ?, ?, None) -> ?'>__new__</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', title='ExportStrategy'>cls</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.name', title='?'>name</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.export_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.export_fn', title='?'>export_fn</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.strip_default_attrs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.strip_default_attrs', title='None'>strip_default_attrs</a>=None):
+<span class='lineno'>  72</span>     return super(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy', title='<ExportStrategy>'>ExportStrategy</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', title='ExportStrategy'>cls</a>).__new__(
+<span class='lineno'>  73</span>         <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.cls', title='ExportStrategy'>cls</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.name', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.name', title='?'>name</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.export_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.export_fn', title='?'>export_fn</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.strip_default_attrs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.__new__.strip_default_attrs', title='None'>strip_default_attrs</a>)
+<span class='lineno'>  74</span> 
+<span class='lineno'>  75</span>   def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export', title='(ExportStrategy, ?, str, {None | str}, None) -> None / (ExportStrategy, ?, ?, None, None) -> None'>export</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', title='ExportStrategy'>self</a>,
+<span class='lineno'>  76</span>              <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.estimator', title='?'>estimator</a>,
+<span class='lineno'>  77</span>              <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_path', title='str'>export_path</a>,
+<span class='lineno'>  78</span>              <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.checkpoint_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.checkpoint_path', title='{None | str}'>checkpoint_path</a>=None,
+<span class='lineno'>  79</span>              <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.eval_result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.eval_result', title='None'>eval_result</a>=None):
+<span class='lineno'>  80</span>     &quot;&quot;&quot;Exports the given Estimator to a specific format.
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>     Args:
+<span class='lineno'>  83</span>       estimator: the Estimator to export.
+<span class='lineno'>  84</span>       export_path: A string containing a directory where to write the export.
+<span class='lineno'>  85</span>       checkpoint_path: The checkpoint path to export.  If None (the default),
+<span class='lineno'>  86</span>         the strategy may locate a checkpoint (e.g. the most recent) by itself.
+<span class='lineno'>  87</span>       eval_result: The output of Estimator.evaluate on this checkpoint.  This
+<span class='lineno'>  88</span>         should be set only if checkpoint_path is provided (otherwise it is
+<span class='lineno'>  89</span>         unclear which checkpoint this eval refers to).
+<span class='lineno'>  90</span> 
+<span class='lineno'>  91</span>     Returns:
+<span class='lineno'>  92</span>       The string path to the exported directory.
+<span class='lineno'>  93</span> 
+<span class='lineno'>  94</span>     Raises:
+<span class='lineno'>  95</span>       ValueError: if the export_fn does not have the required signature
+<span class='lineno'>  96</span>     &quot;&quot;&quot;
+<span class='lineno'>  97</span>     # don&#39;t break existing export_fns that don&#39;t accept checkpoint_path and
+<span class='lineno'>  98</span>     # eval_result
+<span class='lineno'>  99</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', title='?'>export_fn_args</a> = <a href='../../../../python/util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect', title='tf_inspect'>tf_inspect</a>.<a href='../../../../python/util/tf_inspect.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getargspec', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_inspect.getargspec', title='(?, ?, float, float, float, None, str, str, bool) -> None -> ? / (?, float, float, None, str, str, bool) -> None -> ? / (?, ?, float, float, float, str, str, str, bool) -> None / (None, ?, float, float, float, name_scope, str, str, bool) -> None / (?, ?, float, float, float, None, str, str, bool) -> None -> ? / (?, ?, float, None, str, str, bool) -> None -> ? / (?, float, None, str, str, bool) -> None -> ? / TFDecorator -> <SummarySaverHook> -> ? / ? -> ? / (?, ?, float, float, None, str, str, bool) -> None -> ? / (?, ?, ?, ?, ?, float, float, bool, float, None, str, str, bool) -> None -> ? / (?, ?, ?, float, float, float, None, str, str, bool) -> None -> ?'>getargspec</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', title='ExportStrategy'>self</a>.export_fn).args
+<span class='lineno'> 100</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', title='{dict | dict}'>kwargs</a> = {}
+<span class='lineno'> 101</span>     if &#39;checkpoint_path&#39; in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', title='?'>export_fn_args</a>:
+<span class='lineno'> 102</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', title='{dict | dict}'>kwargs</a>[&#39;checkpoint_path&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.checkpoint_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.checkpoint_path', title='{None | str}'>checkpoint_path</a>
+<span class='lineno'> 103</span>     if &#39;eval_result&#39; in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', title='?'>export_fn_args</a>:
+<span class='lineno'> 104</span>       if &#39;checkpoint_path&#39; not in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', title='?'>export_fn_args</a>:
+<span class='lineno'> 105</span>         raise ValueError(&#39;An export_fn accepting eval_result must also accept &#39;
+<span class='lineno'> 106</span>                          &#39;checkpoint_path.&#39;)
+<span class='lineno'> 107</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', title='{dict | dict}'>kwargs</a>[&#39;eval_result&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.eval_result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.eval_result', title='None'>eval_result</a>
+<span class='lineno'> 108</span>     if &#39;strip_default_attrs&#39; in <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_fn_args', title='?'>export_fn_args</a>:
+<span class='lineno'> 109</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.kwargs', title='{dict | dict}'>kwargs</a>[&#39;strip_default_attrs&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', title='ExportStrategy'>self</a>.strip_default_attrs
+<span class='lineno'> 110</span>     return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.self', title='ExportStrategy'>self</a>.export_fn(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.estimator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.estimator', title='?'>estimator</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.learn.python.learn.export_strategy.ExportStrategy.export.export_path', title='str'>export_path</a>, **kwargs)
+</pre></td></tr></table></body></html>

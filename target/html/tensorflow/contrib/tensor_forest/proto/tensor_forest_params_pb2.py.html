@@ -1,0 +1,836 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/tensor_forest/proto/tensor_forest_params_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE'>_LEAFMODELTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LeafModelType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LeafModelType'>LeafModelType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE'>_STATSMODELTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.StatsModelType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.StatsModelType'>StatsModelType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE'>_SPLITCOLLECTIONTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitCollectionType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitCollectionType'>SplitCollectionType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE'>_SPLITPRUNINGSTRATEGYTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningStrategyType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningStrategyType'>SplitPruningStrategyType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE'>_SPLITFINISHSTRATEGYTYPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishStrategyType', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishStrategyType'>SplitFinishStrategyType</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_DENSE_CLASSIFICATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_DENSE_CLASSIFICATION'>MODEL_DENSE_CLASSIFICATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_CLASSIFICATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_CLASSIFICATION'>MODEL_SPARSE_CLASSIFICATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_REGRESSION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_REGRESSION'>MODEL_REGRESSION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_OR_DENSE_CLASSIFICATION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_OR_DENSE_CLASSIFICATION'>MODEL_SPARSE_OR_DENSE_CLASSIFICATION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_DENSE_GINI', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_DENSE_GINI'>STATS_DENSE_GINI</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_GINI', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_GINI'>STATS_SPARSE_GINI</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_LEAST_SQUARES_REGRESSION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_LEAST_SQUARES_REGRESSION'>STATS_LEAST_SQUARES_REGRESSION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_THEN_DENSE_GINI', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_THEN_DENSE_GINI'>STATS_SPARSE_THEN_DENSE_GINI</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_FIXED_SIZE_SPARSE_GINI', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_FIXED_SIZE_SPARSE_GINI'>STATS_FIXED_SIZE_SPARSE_GINI</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.COLLECTION_BASIC', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.COLLECTION_BASIC'>COLLECTION_BASIC</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.GRAPH_RUNNER_COLLECTION', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.GRAPH_RUNNER_COLLECTION'>GRAPH_RUNNER_COLLECTION</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_NONE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_NONE'>SPLIT_PRUNE_NONE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HALF', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HALF'>SPLIT_PRUNE_HALF</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_QUARTER', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_QUARTER'>SPLIT_PRUNE_QUARTER</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_10_PERCENT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_10_PERCENT'>SPLIT_PRUNE_10_PERCENT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HOEFFDING', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HOEFFDING'>SPLIT_PRUNE_HOEFFDING</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_BASIC', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_BASIC'>SPLIT_FINISH_BASIC</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_HOEFFDING', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_HOEFFDING'>SPLIT_FINISH_DOMINATE_HOEFFDING</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_BOOTSTRAP', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_BOOTSTRAP'>SPLIT_FINISH_DOMINATE_BOOTSTRAP</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG'>_SPLITPRUNINGCONFIG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG'>_SPLITFINISHCONFIG</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM'>_LINEARPARAM</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM'>_EXPONENTIALPARAM</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM'>_THRESHOLDPARAM</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM'>_DEPTHDEPENDENTPARAM</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS'>_TENSORFORESTPARAMS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig'>SplitPruningConfig</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig'>SplitFinishConfig</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam'>LinearParam</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam'>ExponentialParam</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam'>ThresholdParam</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam'>DepthDependentParam</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams'>TensorForestParams</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/contrib/tensor_forest/proto/tensor_forest_params.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%709.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%709.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%709.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%709.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%710.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%710.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%710.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.lambda%710.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf.internal import enum_type_wrapper
+<span class='lineno'>   7</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   8</span> from google.protobuf import message as _message
+<span class='lineno'>   9</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>  10</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  11</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  12</span> 
+<span class='lineno'>  13</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../decision_trees/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees', title='decision_trees'>decision_trees</a>.<a href='../../decision_trees/proto/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto', title='proto'>proto</a> import generic_tree_model_pb2 as <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> 
+<span class='lineno'>  19</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  20</span>   name=&#39;tensorflow/contrib/tensor_forest/proto/tensor_forest_params.proto&#39;,
+<span class='lineno'>  21</span>   package=&#39;tensorflow.tensorforest&#39;,
+<span class='lineno'>  22</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'>  23</span>   serialized_options=None,
+<span class='lineno'>  24</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', title='str -> str'>_b</a>(&#39;\nAtensorflow/contrib/tensor_forest/proto/tensor_forest_params.proto\x12\x17tensorflow.tensorforest\x1a@tensorflow/contrib/decision_trees/proto/generic_tree_model.proto\&quot;\xa0\x01\n\x12SplitPruningConfig\x12I\n\x13prune_every_samples\x18\x01 \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12?\n\x04type\x18\x02 \x01(\x0e\x32\x31.tensorflow.tensorforest.SplitPruningStrategyType\&quot;\x9c\x01\n\x11SplitFinishConfig\x12G\n\x11\x63heck_every_steps\x18\x01 \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12&gt;\n\x04type\x18\x02 \x01(\x0e\x32\x30.tensorflow.tensorforest.SplitFinishStrategyType\&quot;S\n\x0bLinearParam\x12\r\n\x05slope\x18\x01 \x01(\x02\x12\x13\n\x0by_intercept\x18\x02 \x01(\x02\x12\x0f\n\x07min_val\x18\x03 \x01(\x02\x12\x0f\n\x07max_val\x18\x04 \x01(\x02\&quot;\\\n\x10\x45xponentialParam\x12\x0c\n\x04\x62ias\x18\x01 \x01(\x02\x12\x0c\n\x04\x62\x61se\x18\x02 \x01(\x02\x12\x12\n\nmultiplier\x18\x03 \x01(\x02\x12\x18\n\x10\x64\x65pth_multiplier\x18\x04 \x01(\x02\&quot;H\n\x0eThresholdParam\x12\x10\n\x08on_value\x18\x01 \x01(\x02\x12\x11\n\toff_value\x18\x02 \x01(\x02\x12\x11\n\tthreshold\x18\x03 \x01(\x02\&quot;\xf4\x01\n\x13\x44\x65pthDependentParam\x12\x18\n\x0e\x63onstant_value\x18\x01 \x01(\x02H\x00\x12\x36\n\x06linear\x18\x02 \x01(\x0b\x32$.tensorflow.tensorforest.LinearParamH\x00\x12@\n\x0b\x65xponential\x18\x03 \x01(\x0b\x32).tensorflow.tensorforest.ExponentialParamH\x00\x12&lt;\n\tthreshold\x18\x04 \x01(\x0b\x32\&#39;.tensorflow.tensorforest.ThresholdParamH\x00\x42\x0b\n\tParamType\&quot;\xb7\x08\n\x12TensorForestParams\x12\x39\n\tleaf_type\x18\x01 \x01(\x0e\x32&amp;.tensorflow.tensorforest.LeafModelType\x12;\n\nstats_type\x18\x02 \x01(\x0e\x32\&#39;.tensorflow.tensorforest.StatsModelType\x12\x45\n\x0f\x63ollection_type\x18\x03 \x01(\x0e\x32,.tensorflow.tensorforest.SplitCollectionType\x12\x41\n\x0cpruning_type\x18\x04 \x01(\x0b\x32+.tensorflow.tensorforest.SplitPruningConfig\x12?\n\x0b\x66inish_type\x18\x05 \x01(\x0b\x32*.tensorflow.tensorforest.SplitFinishConfig\x12\x11\n\tnum_trees\x18\x06 \x01(\x05\x12\x11\n\tmax_nodes\x18\x07 \x01(\x05\x12\x14\n\x0cnum_features\x18\x15 \x01(\x05\x12L\n\x14inequality_test_type\x18\x13 \x01(\x0e\x32..tensorflow.decision_trees.InequalityTest.Type\x12\x15\n\ris_regression\x18\x08 \x01(\x08\x12\x18\n\x10\x64rop_final_class\x18\t \x01(\x08\x12\x18\n\x10\x63ollate_examples\x18\n \x01(\x08\x12\x18\n\x10\x63heckpoint_stats\x18\x0b \x01(\x08\x12 \n\x18use_running_stats_method\x18\x14 \x01(\x08\x12!\n\x19initialize_average_splits\x18\x16 \x01(\x08\x12\x1c\n\x14inference_tree_paths\x18\x17 \x01(\x08\x12\x13\n\x0bnum_outputs\x18\x0c \x01(\x05\x12L\n\x16num_splits_to_consider\x18\r \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12I\n\x13split_after_samples\x18\x0e \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12G\n\x11\x64ominate_fraction\x18\x0f \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12G\n\x11min_split_samples\x18\x12 \x01(\x0b\x32,.tensorflow.tensorforest.DepthDependentParam\x12\x11\n\tgraph_dir\x18\x10 \x01(\t\x12\x1b\n\x13num_select_features\x18\x11 \x01(\x05\x12\x1c\n\x14num_classes_to_track\x18\x18 \x01(\x05*\x90\x01\n\rLeafModelType\x12\x1e\n\x1aMODEL_DENSE_CLASSIFICATION\x10\x00\x12\x1f\n\x1bMODEL_SPARSE_CLASSIFICATION\x10\x01\x12\x14\n\x10MODEL_REGRESSION\x10\x02\x12(\n$MODEL_SPARSE_OR_DENSE_CLASSIFICATION\x10\x03*\xa5\x01\n\x0eStatsModelType\x12\x14\n\x10STATS_DENSE_GINI\x10\x00\x12\x15\n\x11STATS_SPARSE_GINI\x10\x01\x12\&quot;\n\x1eSTATS_LEAST_SQUARES_REGRESSION\x10\x02\x12 \n\x1cSTATS_SPARSE_THEN_DENSE_GINI\x10\x03\x12 \n\x1cSTATS_FIXED_SIZE_SPARSE_GINI\x10\x04*H\n\x13SplitCollectionType\x12\x14\n\x10\x43OLLECTION_BASIC\x10\x00\x12\x1b\n\x17GRAPH_RUNNER_COLLECTION\x10\x01*\x96\x01\n\x18SplitPruningStrategyType\x12\x14\n\x10SPLIT_PRUNE_NONE\x10\x00\x12\x14\n\x10SPLIT_PRUNE_HALF\x10\x01\x12\x17\n\x13SPLIT_PRUNE_QUARTER\x10\x02\x12\x1a\n\x16SPLIT_PRUNE_10_PERCENT\x10\x03\x12\x19\n\x15SPLIT_PRUNE_HOEFFDING\x10\x04*{\n\x17SplitFinishStrategyType\x12\x16\n\x12SPLIT_FINISH_BASIC\x10\x00\x12#\n\x1fSPLIT_FINISH_DOMINATE_HOEFFDING\x10\x02\x12#\n\x1fSPLIT_FINISH_DOMINATE_BOOTSTRAP\x10\x03\x62\x06proto3&#39;)
+<span class='lineno'>  25</span>   ,
+<span class='lineno'>  26</span>   dependencies=[<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', title='?'>_LEAFMODELTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  29</span>   name=&#39;LeafModelType&#39;,
+<span class='lineno'>  30</span>   full_name=&#39;tensorflow.tensorforest.LeafModelType&#39;,
+<span class='lineno'>  31</span>   filename=None,
+<span class='lineno'>  32</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  33</span>   values=[
+<span class='lineno'>  34</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  35</span>       name=&#39;MODEL_DENSE_CLASSIFICATION&#39;, index=0, number=0,
+<span class='lineno'>  36</span>       serialized_options=None,
+<span class='lineno'>  37</span>       type=None),
+<span class='lineno'>  38</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  39</span>       name=&#39;MODEL_SPARSE_CLASSIFICATION&#39;, index=1, number=1,
+<span class='lineno'>  40</span>       serialized_options=None,
+<span class='lineno'>  41</span>       type=None),
+<span class='lineno'>  42</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  43</span>       name=&#39;MODEL_REGRESSION&#39;, index=2, number=2,
+<span class='lineno'>  44</span>       serialized_options=None,
+<span class='lineno'>  45</span>       type=None),
+<span class='lineno'>  46</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  47</span>       name=&#39;MODEL_SPARSE_OR_DENSE_CLASSIFICATION&#39;, index=3, number=3,
+<span class='lineno'>  48</span>       serialized_options=None,
+<span class='lineno'>  49</span>       type=None),
+<span class='lineno'>  50</span>   ],
+<span class='lineno'>  51</span>   containing_type=None,
+<span class='lineno'>  52</span>   serialized_options=None,
+<span class='lineno'>  53</span>   serialized_start=2065,
+<span class='lineno'>  54</span>   serialized_end=2209,
+<span class='lineno'>  55</span> )
+<span class='lineno'>  56</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', title='?'>_LEAFMODELTYPE</a>)
+<span class='lineno'>  57</span> 
+<span class='lineno'>  58</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LeafModelType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LeafModelType', title='?'>LeafModelType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', title='?'>_LEAFMODELTYPE</a>)
+<span class='lineno'>  59</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', title='?'>_STATSMODELTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  60</span>   name=&#39;StatsModelType&#39;,
+<span class='lineno'>  61</span>   full_name=&#39;tensorflow.tensorforest.StatsModelType&#39;,
+<span class='lineno'>  62</span>   filename=None,
+<span class='lineno'>  63</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  64</span>   values=[
+<span class='lineno'>  65</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  66</span>       name=&#39;STATS_DENSE_GINI&#39;, index=0, number=0,
+<span class='lineno'>  67</span>       serialized_options=None,
+<span class='lineno'>  68</span>       type=None),
+<span class='lineno'>  69</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  70</span>       name=&#39;STATS_SPARSE_GINI&#39;, index=1, number=1,
+<span class='lineno'>  71</span>       serialized_options=None,
+<span class='lineno'>  72</span>       type=None),
+<span class='lineno'>  73</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  74</span>       name=&#39;STATS_LEAST_SQUARES_REGRESSION&#39;, index=2, number=2,
+<span class='lineno'>  75</span>       serialized_options=None,
+<span class='lineno'>  76</span>       type=None),
+<span class='lineno'>  77</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  78</span>       name=&#39;STATS_SPARSE_THEN_DENSE_GINI&#39;, index=3, number=3,
+<span class='lineno'>  79</span>       serialized_options=None,
+<span class='lineno'>  80</span>       type=None),
+<span class='lineno'>  81</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'>  82</span>       name=&#39;STATS_FIXED_SIZE_SPARSE_GINI&#39;, index=4, number=4,
+<span class='lineno'>  83</span>       serialized_options=None,
+<span class='lineno'>  84</span>       type=None),
+<span class='lineno'>  85</span>   ],
+<span class='lineno'>  86</span>   containing_type=None,
+<span class='lineno'>  87</span>   serialized_options=None,
+<span class='lineno'>  88</span>   serialized_start=2212,
+<span class='lineno'>  89</span>   serialized_end=2377,
+<span class='lineno'>  90</span> )
+<span class='lineno'>  91</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', title='?'>_STATSMODELTYPE</a>)
+<span class='lineno'>  92</span> 
+<span class='lineno'>  93</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.StatsModelType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.StatsModelType', title='?'>StatsModelType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', title='?'>_STATSMODELTYPE</a>)
+<span class='lineno'>  94</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', title='?'>_SPLITCOLLECTIONTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'>  95</span>   name=&#39;SplitCollectionType&#39;,
+<span class='lineno'>  96</span>   full_name=&#39;tensorflow.tensorforest.SplitCollectionType&#39;,
+<span class='lineno'>  97</span>   filename=None,
+<span class='lineno'>  98</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  99</span>   values=[
+<span class='lineno'> 100</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 101</span>       name=&#39;COLLECTION_BASIC&#39;, index=0, number=0,
+<span class='lineno'> 102</span>       serialized_options=None,
+<span class='lineno'> 103</span>       type=None),
+<span class='lineno'> 104</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 105</span>       name=&#39;GRAPH_RUNNER_COLLECTION&#39;, index=1, number=1,
+<span class='lineno'> 106</span>       serialized_options=None,
+<span class='lineno'> 107</span>       type=None),
+<span class='lineno'> 108</span>   ],
+<span class='lineno'> 109</span>   containing_type=None,
+<span class='lineno'> 110</span>   serialized_options=None,
+<span class='lineno'> 111</span>   serialized_start=2379,
+<span class='lineno'> 112</span>   serialized_end=2451,
+<span class='lineno'> 113</span> )
+<span class='lineno'> 114</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', title='?'>_SPLITCOLLECTIONTYPE</a>)
+<span class='lineno'> 115</span> 
+<span class='lineno'> 116</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitCollectionType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitCollectionType', title='?'>SplitCollectionType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', title='?'>_SPLITCOLLECTIONTYPE</a>)
+<span class='lineno'> 117</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', title='?'>_SPLITPRUNINGSTRATEGYTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'> 118</span>   name=&#39;SplitPruningStrategyType&#39;,
+<span class='lineno'> 119</span>   full_name=&#39;tensorflow.tensorforest.SplitPruningStrategyType&#39;,
+<span class='lineno'> 120</span>   filename=None,
+<span class='lineno'> 121</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 122</span>   values=[
+<span class='lineno'> 123</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 124</span>       name=&#39;SPLIT_PRUNE_NONE&#39;, index=0, number=0,
+<span class='lineno'> 125</span>       serialized_options=None,
+<span class='lineno'> 126</span>       type=None),
+<span class='lineno'> 127</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 128</span>       name=&#39;SPLIT_PRUNE_HALF&#39;, index=1, number=1,
+<span class='lineno'> 129</span>       serialized_options=None,
+<span class='lineno'> 130</span>       type=None),
+<span class='lineno'> 131</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 132</span>       name=&#39;SPLIT_PRUNE_QUARTER&#39;, index=2, number=2,
+<span class='lineno'> 133</span>       serialized_options=None,
+<span class='lineno'> 134</span>       type=None),
+<span class='lineno'> 135</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 136</span>       name=&#39;SPLIT_PRUNE_10_PERCENT&#39;, index=3, number=3,
+<span class='lineno'> 137</span>       serialized_options=None,
+<span class='lineno'> 138</span>       type=None),
+<span class='lineno'> 139</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 140</span>       name=&#39;SPLIT_PRUNE_HOEFFDING&#39;, index=4, number=4,
+<span class='lineno'> 141</span>       serialized_options=None,
+<span class='lineno'> 142</span>       type=None),
+<span class='lineno'> 143</span>   ],
+<span class='lineno'> 144</span>   containing_type=None,
+<span class='lineno'> 145</span>   serialized_options=None,
+<span class='lineno'> 146</span>   serialized_start=2454,
+<span class='lineno'> 147</span>   serialized_end=2604,
+<span class='lineno'> 148</span> )
+<span class='lineno'> 149</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', title='?'>_SPLITPRUNINGSTRATEGYTYPE</a>)
+<span class='lineno'> 150</span> 
+<span class='lineno'> 151</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningStrategyType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningStrategyType', title='?'>SplitPruningStrategyType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', title='?'>_SPLITPRUNINGSTRATEGYTYPE</a>)
+<span class='lineno'> 152</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', title='?'>_SPLITFINISHSTRATEGYTYPE</a> = _descriptor.EnumDescriptor(
+<span class='lineno'> 153</span>   name=&#39;SplitFinishStrategyType&#39;,
+<span class='lineno'> 154</span>   full_name=&#39;tensorflow.tensorforest.SplitFinishStrategyType&#39;,
+<span class='lineno'> 155</span>   filename=None,
+<span class='lineno'> 156</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 157</span>   values=[
+<span class='lineno'> 158</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 159</span>       name=&#39;SPLIT_FINISH_BASIC&#39;, index=0, number=0,
+<span class='lineno'> 160</span>       serialized_options=None,
+<span class='lineno'> 161</span>       type=None),
+<span class='lineno'> 162</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 163</span>       name=&#39;SPLIT_FINISH_DOMINATE_HOEFFDING&#39;, index=1, number=2,
+<span class='lineno'> 164</span>       serialized_options=None,
+<span class='lineno'> 165</span>       type=None),
+<span class='lineno'> 166</span>     _descriptor.EnumValueDescriptor(
+<span class='lineno'> 167</span>       name=&#39;SPLIT_FINISH_DOMINATE_BOOTSTRAP&#39;, index=2, number=3,
+<span class='lineno'> 168</span>       serialized_options=None,
+<span class='lineno'> 169</span>       type=None),
+<span class='lineno'> 170</span>   ],
+<span class='lineno'> 171</span>   containing_type=None,
+<span class='lineno'> 172</span>   serialized_options=None,
+<span class='lineno'> 173</span>   serialized_start=2606,
+<span class='lineno'> 174</span>   serialized_end=2729,
+<span class='lineno'> 175</span> )
+<span class='lineno'> 176</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterEnumDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', title='?'>_SPLITFINISHSTRATEGYTYPE</a>)
+<span class='lineno'> 177</span> 
+<span class='lineno'> 178</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishStrategyType', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishStrategyType', title='?'>SplitFinishStrategyType</a> = enum_type_wrapper.EnumTypeWrapper(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', title='?'>_SPLITFINISHSTRATEGYTYPE</a>)
+<span class='lineno'> 179</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_DENSE_CLASSIFICATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_DENSE_CLASSIFICATION', title='int'>MODEL_DENSE_CLASSIFICATION</a> = 0
+<span class='lineno'> 180</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_CLASSIFICATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_CLASSIFICATION', title='int'>MODEL_SPARSE_CLASSIFICATION</a> = 1
+<span class='lineno'> 181</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_REGRESSION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_REGRESSION', title='int'>MODEL_REGRESSION</a> = 2
+<span class='lineno'> 182</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_OR_DENSE_CLASSIFICATION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.MODEL_SPARSE_OR_DENSE_CLASSIFICATION', title='int'>MODEL_SPARSE_OR_DENSE_CLASSIFICATION</a> = 3
+<span class='lineno'> 183</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_DENSE_GINI', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_DENSE_GINI', title='int'>STATS_DENSE_GINI</a> = 0
+<span class='lineno'> 184</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_GINI', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_GINI', title='int'>STATS_SPARSE_GINI</a> = 1
+<span class='lineno'> 185</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_LEAST_SQUARES_REGRESSION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_LEAST_SQUARES_REGRESSION', title='int'>STATS_LEAST_SQUARES_REGRESSION</a> = 2
+<span class='lineno'> 186</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_THEN_DENSE_GINI', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_SPARSE_THEN_DENSE_GINI', title='int'>STATS_SPARSE_THEN_DENSE_GINI</a> = 3
+<span class='lineno'> 187</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_FIXED_SIZE_SPARSE_GINI', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.STATS_FIXED_SIZE_SPARSE_GINI', title='int'>STATS_FIXED_SIZE_SPARSE_GINI</a> = 4
+<span class='lineno'> 188</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.COLLECTION_BASIC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.COLLECTION_BASIC', title='int'>COLLECTION_BASIC</a> = 0
+<span class='lineno'> 189</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.GRAPH_RUNNER_COLLECTION', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.GRAPH_RUNNER_COLLECTION', title='int'>GRAPH_RUNNER_COLLECTION</a> = 1
+<span class='lineno'> 190</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_NONE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_NONE', title='int'>SPLIT_PRUNE_NONE</a> = 0
+<span class='lineno'> 191</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HALF', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HALF', title='int'>SPLIT_PRUNE_HALF</a> = 1
+<span class='lineno'> 192</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_QUARTER', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_QUARTER', title='int'>SPLIT_PRUNE_QUARTER</a> = 2
+<span class='lineno'> 193</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_10_PERCENT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_10_PERCENT', title='int'>SPLIT_PRUNE_10_PERCENT</a> = 3
+<span class='lineno'> 194</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HOEFFDING', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_PRUNE_HOEFFDING', title='int'>SPLIT_PRUNE_HOEFFDING</a> = 4
+<span class='lineno'> 195</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_BASIC', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_BASIC', title='int'>SPLIT_FINISH_BASIC</a> = 0
+<span class='lineno'> 196</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_HOEFFDING', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_HOEFFDING', title='int'>SPLIT_FINISH_DOMINATE_HOEFFDING</a> = 2
+<span class='lineno'> 197</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_BOOTSTRAP', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SPLIT_FINISH_DOMINATE_BOOTSTRAP', title='int'>SPLIT_FINISH_DOMINATE_BOOTSTRAP</a> = 3
+<span class='lineno'> 198</span> 
+<span class='lineno'> 199</span> 
+<span class='lineno'> 200</span> 
+<span class='lineno'> 201</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a> = _descriptor.Descriptor(
+<span class='lineno'> 202</span>   name=&#39;SplitPruningConfig&#39;,
+<span class='lineno'> 203</span>   full_name=&#39;tensorflow.tensorforest.SplitPruningConfig&#39;,
+<span class='lineno'> 204</span>   filename=None,
+<span class='lineno'> 205</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 206</span>   containing_type=None,
+<span class='lineno'> 207</span>   fields=[
+<span class='lineno'> 208</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 209</span>       name=&#39;prune_every_samples&#39;, full_name=&#39;tensorflow.tensorforest.SplitPruningConfig.prune_every_samples&#39;, index=0,
+<span class='lineno'> 210</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 211</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 212</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 213</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 214</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 215</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 216</span>       name=&#39;type&#39;, full_name=&#39;tensorflow.tensorforest.SplitPruningConfig.type&#39;, index=1,
+<span class='lineno'> 217</span>       number=2, type=14, cpp_type=8, label=1,
+<span class='lineno'> 218</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 219</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 220</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 221</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 222</span>   ],
+<span class='lineno'> 223</span>   extensions=[
+<span class='lineno'> 224</span>   ],
+<span class='lineno'> 225</span>   nested_types=[],
+<span class='lineno'> 226</span>   enum_types=[
+<span class='lineno'> 227</span>   ],
+<span class='lineno'> 228</span>   serialized_options=None,
+<span class='lineno'> 229</span>   is_extendable=False,
+<span class='lineno'> 230</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 231</span>   extension_ranges=[],
+<span class='lineno'> 232</span>   oneofs=[
+<span class='lineno'> 233</span>   ],
+<span class='lineno'> 234</span>   serialized_start=161,
+<span class='lineno'> 235</span>   serialized_end=321,
+<span class='lineno'> 236</span> )
+<span class='lineno'> 237</span> 
+<span class='lineno'> 238</span> 
+<span class='lineno'> 239</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a> = _descriptor.Descriptor(
+<span class='lineno'> 240</span>   name=&#39;SplitFinishConfig&#39;,
+<span class='lineno'> 241</span>   full_name=&#39;tensorflow.tensorforest.SplitFinishConfig&#39;,
+<span class='lineno'> 242</span>   filename=None,
+<span class='lineno'> 243</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 244</span>   containing_type=None,
+<span class='lineno'> 245</span>   fields=[
+<span class='lineno'> 246</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 247</span>       name=&#39;check_every_steps&#39;, full_name=&#39;tensorflow.tensorforest.SplitFinishConfig.check_every_steps&#39;, index=0,
+<span class='lineno'> 248</span>       number=1, type=11, cpp_type=10, label=1,
+<span class='lineno'> 249</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 250</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 251</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 252</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 253</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 254</span>       name=&#39;type&#39;, full_name=&#39;tensorflow.tensorforest.SplitFinishConfig.type&#39;, index=1,
+<span class='lineno'> 255</span>       number=2, type=14, cpp_type=8, label=1,
+<span class='lineno'> 256</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 257</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 258</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 259</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 260</span>   ],
+<span class='lineno'> 261</span>   extensions=[
+<span class='lineno'> 262</span>   ],
+<span class='lineno'> 263</span>   nested_types=[],
+<span class='lineno'> 264</span>   enum_types=[
+<span class='lineno'> 265</span>   ],
+<span class='lineno'> 266</span>   serialized_options=None,
+<span class='lineno'> 267</span>   is_extendable=False,
+<span class='lineno'> 268</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 269</span>   extension_ranges=[],
+<span class='lineno'> 270</span>   oneofs=[
+<span class='lineno'> 271</span>   ],
+<span class='lineno'> 272</span>   serialized_start=324,
+<span class='lineno'> 273</span>   serialized_end=480,
+<span class='lineno'> 274</span> )
+<span class='lineno'> 275</span> 
+<span class='lineno'> 276</span> 
+<span class='lineno'> 277</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', title='?'>_LINEARPARAM</a> = _descriptor.Descriptor(
+<span class='lineno'> 278</span>   name=&#39;LinearParam&#39;,
+<span class='lineno'> 279</span>   full_name=&#39;tensorflow.tensorforest.LinearParam&#39;,
+<span class='lineno'> 280</span>   filename=None,
+<span class='lineno'> 281</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 282</span>   containing_type=None,
+<span class='lineno'> 283</span>   fields=[
+<span class='lineno'> 284</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 285</span>       name=&#39;slope&#39;, full_name=&#39;tensorflow.tensorforest.LinearParam.slope&#39;, index=0,
+<span class='lineno'> 286</span>       number=1, type=2, cpp_type=6, label=1,
+<span class='lineno'> 287</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 288</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 289</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 290</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 291</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 292</span>       name=&#39;y_intercept&#39;, full_name=&#39;tensorflow.tensorforest.LinearParam.y_intercept&#39;, index=1,
+<span class='lineno'> 293</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'> 294</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 295</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 296</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 297</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 298</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 299</span>       name=&#39;min_val&#39;, full_name=&#39;tensorflow.tensorforest.LinearParam.min_val&#39;, index=2,
+<span class='lineno'> 300</span>       number=3, type=2, cpp_type=6, label=1,
+<span class='lineno'> 301</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 302</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 303</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 304</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 305</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 306</span>       name=&#39;max_val&#39;, full_name=&#39;tensorflow.tensorforest.LinearParam.max_val&#39;, index=3,
+<span class='lineno'> 307</span>       number=4, type=2, cpp_type=6, label=1,
+<span class='lineno'> 308</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 309</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 310</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 311</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 312</span>   ],
+<span class='lineno'> 313</span>   extensions=[
+<span class='lineno'> 314</span>   ],
+<span class='lineno'> 315</span>   nested_types=[],
+<span class='lineno'> 316</span>   enum_types=[
+<span class='lineno'> 317</span>   ],
+<span class='lineno'> 318</span>   serialized_options=None,
+<span class='lineno'> 319</span>   is_extendable=False,
+<span class='lineno'> 320</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 321</span>   extension_ranges=[],
+<span class='lineno'> 322</span>   oneofs=[
+<span class='lineno'> 323</span>   ],
+<span class='lineno'> 324</span>   serialized_start=482,
+<span class='lineno'> 325</span>   serialized_end=565,
+<span class='lineno'> 326</span> )
+<span class='lineno'> 327</span> 
+<span class='lineno'> 328</span> 
+<span class='lineno'> 329</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', title='?'>_EXPONENTIALPARAM</a> = _descriptor.Descriptor(
+<span class='lineno'> 330</span>   name=&#39;ExponentialParam&#39;,
+<span class='lineno'> 331</span>   full_name=&#39;tensorflow.tensorforest.ExponentialParam&#39;,
+<span class='lineno'> 332</span>   filename=None,
+<span class='lineno'> 333</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 334</span>   containing_type=None,
+<span class='lineno'> 335</span>   fields=[
+<span class='lineno'> 336</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 337</span>       name=&#39;bias&#39;, full_name=&#39;tensorflow.tensorforest.ExponentialParam.bias&#39;, index=0,
+<span class='lineno'> 338</span>       number=1, type=2, cpp_type=6, label=1,
+<span class='lineno'> 339</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 340</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 341</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 342</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 343</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 344</span>       name=&#39;base&#39;, full_name=&#39;tensorflow.tensorforest.ExponentialParam.base&#39;, index=1,
+<span class='lineno'> 345</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'> 346</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 347</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 348</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 349</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 350</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 351</span>       name=&#39;multiplier&#39;, full_name=&#39;tensorflow.tensorforest.ExponentialParam.multiplier&#39;, index=2,
+<span class='lineno'> 352</span>       number=3, type=2, cpp_type=6, label=1,
+<span class='lineno'> 353</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 354</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 355</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 356</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 357</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 358</span>       name=&#39;depth_multiplier&#39;, full_name=&#39;tensorflow.tensorforest.ExponentialParam.depth_multiplier&#39;, index=3,
+<span class='lineno'> 359</span>       number=4, type=2, cpp_type=6, label=1,
+<span class='lineno'> 360</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 361</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 362</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 363</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 364</span>   ],
+<span class='lineno'> 365</span>   extensions=[
+<span class='lineno'> 366</span>   ],
+<span class='lineno'> 367</span>   nested_types=[],
+<span class='lineno'> 368</span>   enum_types=[
+<span class='lineno'> 369</span>   ],
+<span class='lineno'> 370</span>   serialized_options=None,
+<span class='lineno'> 371</span>   is_extendable=False,
+<span class='lineno'> 372</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 373</span>   extension_ranges=[],
+<span class='lineno'> 374</span>   oneofs=[
+<span class='lineno'> 375</span>   ],
+<span class='lineno'> 376</span>   serialized_start=567,
+<span class='lineno'> 377</span>   serialized_end=659,
+<span class='lineno'> 378</span> )
+<span class='lineno'> 379</span> 
+<span class='lineno'> 380</span> 
+<span class='lineno'> 381</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', title='?'>_THRESHOLDPARAM</a> = _descriptor.Descriptor(
+<span class='lineno'> 382</span>   name=&#39;ThresholdParam&#39;,
+<span class='lineno'> 383</span>   full_name=&#39;tensorflow.tensorforest.ThresholdParam&#39;,
+<span class='lineno'> 384</span>   filename=None,
+<span class='lineno'> 385</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 386</span>   containing_type=None,
+<span class='lineno'> 387</span>   fields=[
+<span class='lineno'> 388</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 389</span>       name=&#39;on_value&#39;, full_name=&#39;tensorflow.tensorforest.ThresholdParam.on_value&#39;, index=0,
+<span class='lineno'> 390</span>       number=1, type=2, cpp_type=6, label=1,
+<span class='lineno'> 391</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 392</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 393</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 394</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 395</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 396</span>       name=&#39;off_value&#39;, full_name=&#39;tensorflow.tensorforest.ThresholdParam.off_value&#39;, index=1,
+<span class='lineno'> 397</span>       number=2, type=2, cpp_type=6, label=1,
+<span class='lineno'> 398</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 399</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 400</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 401</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 402</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 403</span>       name=&#39;threshold&#39;, full_name=&#39;tensorflow.tensorforest.ThresholdParam.threshold&#39;, index=2,
+<span class='lineno'> 404</span>       number=3, type=2, cpp_type=6, label=1,
+<span class='lineno'> 405</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 406</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 407</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 408</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 409</span>   ],
+<span class='lineno'> 410</span>   extensions=[
+<span class='lineno'> 411</span>   ],
+<span class='lineno'> 412</span>   nested_types=[],
+<span class='lineno'> 413</span>   enum_types=[
+<span class='lineno'> 414</span>   ],
+<span class='lineno'> 415</span>   serialized_options=None,
+<span class='lineno'> 416</span>   is_extendable=False,
+<span class='lineno'> 417</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 418</span>   extension_ranges=[],
+<span class='lineno'> 419</span>   oneofs=[
+<span class='lineno'> 420</span>   ],
+<span class='lineno'> 421</span>   serialized_start=661,
+<span class='lineno'> 422</span>   serialized_end=733,
+<span class='lineno'> 423</span> )
+<span class='lineno'> 424</span> 
+<span class='lineno'> 425</span> 
+<span class='lineno'> 426</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a> = _descriptor.Descriptor(
+<span class='lineno'> 427</span>   name=&#39;DepthDependentParam&#39;,
+<span class='lineno'> 428</span>   full_name=&#39;tensorflow.tensorforest.DepthDependentParam&#39;,
+<span class='lineno'> 429</span>   filename=None,
+<span class='lineno'> 430</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 431</span>   containing_type=None,
+<span class='lineno'> 432</span>   fields=[
+<span class='lineno'> 433</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 434</span>       name=&#39;constant_value&#39;, full_name=&#39;tensorflow.tensorforest.DepthDependentParam.constant_value&#39;, index=0,
+<span class='lineno'> 435</span>       number=1, type=2, cpp_type=6, label=1,
+<span class='lineno'> 436</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 437</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 438</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 439</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 440</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 441</span>       name=&#39;linear&#39;, full_name=&#39;tensorflow.tensorforest.DepthDependentParam.linear&#39;, index=1,
+<span class='lineno'> 442</span>       number=2, type=11, cpp_type=10, label=1,
+<span class='lineno'> 443</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 444</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 445</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 446</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 447</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 448</span>       name=&#39;exponential&#39;, full_name=&#39;tensorflow.tensorforest.DepthDependentParam.exponential&#39;, index=2,
+<span class='lineno'> 449</span>       number=3, type=11, cpp_type=10, label=1,
+<span class='lineno'> 450</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 451</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 452</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 453</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 454</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 455</span>       name=&#39;threshold&#39;, full_name=&#39;tensorflow.tensorforest.DepthDependentParam.threshold&#39;, index=3,
+<span class='lineno'> 456</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 457</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 458</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 459</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 460</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 461</span>   ],
+<span class='lineno'> 462</span>   extensions=[
+<span class='lineno'> 463</span>   ],
+<span class='lineno'> 464</span>   nested_types=[],
+<span class='lineno'> 465</span>   enum_types=[
+<span class='lineno'> 466</span>   ],
+<span class='lineno'> 467</span>   serialized_options=None,
+<span class='lineno'> 468</span>   is_extendable=False,
+<span class='lineno'> 469</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 470</span>   extension_ranges=[],
+<span class='lineno'> 471</span>   oneofs=[
+<span class='lineno'> 472</span>     _descriptor.OneofDescriptor(
+<span class='lineno'> 473</span>       name=&#39;ParamType&#39;, full_name=&#39;tensorflow.tensorforest.DepthDependentParam.ParamType&#39;,
+<span class='lineno'> 474</span>       index=0, containing_type=None, fields=[]),
+<span class='lineno'> 475</span>   ],
+<span class='lineno'> 476</span>   serialized_start=736,
+<span class='lineno'> 477</span>   serialized_end=980,
+<span class='lineno'> 478</span> )
+<span class='lineno'> 479</span> 
+<span class='lineno'> 480</span> 
+<span class='lineno'> 481</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a> = _descriptor.Descriptor(
+<span class='lineno'> 482</span>   name=&#39;TensorForestParams&#39;,
+<span class='lineno'> 483</span>   full_name=&#39;tensorflow.tensorforest.TensorForestParams&#39;,
+<span class='lineno'> 484</span>   filename=None,
+<span class='lineno'> 485</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 486</span>   containing_type=None,
+<span class='lineno'> 487</span>   fields=[
+<span class='lineno'> 488</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 489</span>       name=&#39;leaf_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.leaf_type&#39;, index=0,
+<span class='lineno'> 490</span>       number=1, type=14, cpp_type=8, label=1,
+<span class='lineno'> 491</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 492</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 493</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 494</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 495</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 496</span>       name=&#39;stats_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.stats_type&#39;, index=1,
+<span class='lineno'> 497</span>       number=2, type=14, cpp_type=8, label=1,
+<span class='lineno'> 498</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 499</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 500</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 501</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 502</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 503</span>       name=&#39;collection_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.collection_type&#39;, index=2,
+<span class='lineno'> 504</span>       number=3, type=14, cpp_type=8, label=1,
+<span class='lineno'> 505</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 506</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 507</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 508</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 509</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 510</span>       name=&#39;pruning_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.pruning_type&#39;, index=3,
+<span class='lineno'> 511</span>       number=4, type=11, cpp_type=10, label=1,
+<span class='lineno'> 512</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 513</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 514</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 515</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 516</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 517</span>       name=&#39;finish_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.finish_type&#39;, index=4,
+<span class='lineno'> 518</span>       number=5, type=11, cpp_type=10, label=1,
+<span class='lineno'> 519</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 520</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 521</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 522</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 523</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 524</span>       name=&#39;num_trees&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_trees&#39;, index=5,
+<span class='lineno'> 525</span>       number=6, type=5, cpp_type=1, label=1,
+<span class='lineno'> 526</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 527</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 528</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 529</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 530</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 531</span>       name=&#39;max_nodes&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.max_nodes&#39;, index=6,
+<span class='lineno'> 532</span>       number=7, type=5, cpp_type=1, label=1,
+<span class='lineno'> 533</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 534</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 535</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 536</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 537</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 538</span>       name=&#39;num_features&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_features&#39;, index=7,
+<span class='lineno'> 539</span>       number=21, type=5, cpp_type=1, label=1,
+<span class='lineno'> 540</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 541</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 542</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 543</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 544</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 545</span>       name=&#39;inequality_test_type&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.inequality_test_type&#39;, index=8,
+<span class='lineno'> 546</span>       number=19, type=14, cpp_type=8, label=1,
+<span class='lineno'> 547</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 548</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 549</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 550</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 551</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 552</span>       name=&#39;is_regression&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.is_regression&#39;, index=9,
+<span class='lineno'> 553</span>       number=8, type=8, cpp_type=7, label=1,
+<span class='lineno'> 554</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 555</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 556</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 557</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 558</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 559</span>       name=&#39;drop_final_class&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.drop_final_class&#39;, index=10,
+<span class='lineno'> 560</span>       number=9, type=8, cpp_type=7, label=1,
+<span class='lineno'> 561</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 562</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 563</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 564</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 565</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 566</span>       name=&#39;collate_examples&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.collate_examples&#39;, index=11,
+<span class='lineno'> 567</span>       number=10, type=8, cpp_type=7, label=1,
+<span class='lineno'> 568</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 569</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 570</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 571</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 572</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 573</span>       name=&#39;checkpoint_stats&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.checkpoint_stats&#39;, index=12,
+<span class='lineno'> 574</span>       number=11, type=8, cpp_type=7, label=1,
+<span class='lineno'> 575</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 576</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 577</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 578</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 579</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 580</span>       name=&#39;use_running_stats_method&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.use_running_stats_method&#39;, index=13,
+<span class='lineno'> 581</span>       number=20, type=8, cpp_type=7, label=1,
+<span class='lineno'> 582</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 583</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 584</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 585</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 586</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 587</span>       name=&#39;initialize_average_splits&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.initialize_average_splits&#39;, index=14,
+<span class='lineno'> 588</span>       number=22, type=8, cpp_type=7, label=1,
+<span class='lineno'> 589</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 590</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 591</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 592</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 593</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 594</span>       name=&#39;inference_tree_paths&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.inference_tree_paths&#39;, index=15,
+<span class='lineno'> 595</span>       number=23, type=8, cpp_type=7, label=1,
+<span class='lineno'> 596</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 597</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 598</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 599</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 600</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 601</span>       name=&#39;num_outputs&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_outputs&#39;, index=16,
+<span class='lineno'> 602</span>       number=12, type=5, cpp_type=1, label=1,
+<span class='lineno'> 603</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 604</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 605</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 606</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 607</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 608</span>       name=&#39;num_splits_to_consider&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_splits_to_consider&#39;, index=17,
+<span class='lineno'> 609</span>       number=13, type=11, cpp_type=10, label=1,
+<span class='lineno'> 610</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 611</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 612</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 613</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 614</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 615</span>       name=&#39;split_after_samples&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.split_after_samples&#39;, index=18,
+<span class='lineno'> 616</span>       number=14, type=11, cpp_type=10, label=1,
+<span class='lineno'> 617</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 618</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 619</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 620</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 621</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 622</span>       name=&#39;dominate_fraction&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.dominate_fraction&#39;, index=19,
+<span class='lineno'> 623</span>       number=15, type=11, cpp_type=10, label=1,
+<span class='lineno'> 624</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 625</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 626</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 627</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 628</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 629</span>       name=&#39;min_split_samples&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.min_split_samples&#39;, index=20,
+<span class='lineno'> 630</span>       number=18, type=11, cpp_type=10, label=1,
+<span class='lineno'> 631</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 632</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 633</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 634</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 635</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 636</span>       name=&#39;graph_dir&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.graph_dir&#39;, index=21,
+<span class='lineno'> 637</span>       number=16, type=9, cpp_type=9, label=1,
+<span class='lineno'> 638</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 639</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 640</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 641</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 642</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 643</span>       name=&#39;num_select_features&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_select_features&#39;, index=22,
+<span class='lineno'> 644</span>       number=17, type=5, cpp_type=1, label=1,
+<span class='lineno'> 645</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 646</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 647</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 648</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 649</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 650</span>       name=&#39;num_classes_to_track&#39;, full_name=&#39;tensorflow.tensorforest.TensorForestParams.num_classes_to_track&#39;, index=23,
+<span class='lineno'> 651</span>       number=24, type=5, cpp_type=1, label=1,
+<span class='lineno'> 652</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 653</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 654</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 655</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 656</span>   ],
+<span class='lineno'> 657</span>   extensions=[
+<span class='lineno'> 658</span>   ],
+<span class='lineno'> 659</span>   nested_types=[],
+<span class='lineno'> 660</span>   enum_types=[
+<span class='lineno'> 661</span>   ],
+<span class='lineno'> 662</span>   serialized_options=None,
+<span class='lineno'> 663</span>   is_extendable=False,
+<span class='lineno'> 664</span>   syntax=&#39;proto3&#39;,
+<span class='lineno'> 665</span>   extension_ranges=[],
+<span class='lineno'> 666</span>   oneofs=[
+<span class='lineno'> 667</span>   ],
+<span class='lineno'> 668</span>   serialized_start=983,
+<span class='lineno'> 669</span>   serialized_end=2062,
+<span class='lineno'> 670</span> )
+<span class='lineno'> 671</span> 
+<span class='lineno'> 672</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a>.fields_by_name[&#39;prune_every_samples&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 673</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a>.fields_by_name[&#39;type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', title='?'>_SPLITPRUNINGSTRATEGYTYPE</a>
+<span class='lineno'> 674</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a>.fields_by_name[&#39;check_every_steps&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 675</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a>.fields_by_name[&#39;type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', title='?'>_SPLITFINISHSTRATEGYTYPE</a>
+<span class='lineno'> 676</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;linear&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', title='?'>_LINEARPARAM</a>
+<span class='lineno'> 677</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;exponential&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', title='?'>_EXPONENTIALPARAM</a>
+<span class='lineno'> 678</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;threshold&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', title='?'>_THRESHOLDPARAM</a>
+<span class='lineno'> 679</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;].fields.append(
+<span class='lineno'> 680</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;constant_value&#39;])
+<span class='lineno'> 681</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;constant_value&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;]
+<span class='lineno'> 682</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;].fields.append(
+<span class='lineno'> 683</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;linear&#39;])
+<span class='lineno'> 684</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;linear&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;]
+<span class='lineno'> 685</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;].fields.append(
+<span class='lineno'> 686</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;exponential&#39;])
+<span class='lineno'> 687</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;exponential&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;]
+<span class='lineno'> 688</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;].fields.append(
+<span class='lineno'> 689</span>   <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;threshold&#39;])
+<span class='lineno'> 690</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.fields_by_name[&#39;threshold&#39;].containing_oneof = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>.oneofs_by_name[&#39;ParamType&#39;]
+<span class='lineno'> 691</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;leaf_type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', title='?'>_LEAFMODELTYPE</a>
+<span class='lineno'> 692</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;stats_type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', title='?'>_STATSMODELTYPE</a>
+<span class='lineno'> 693</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;collection_type&#39;].enum_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', title='?'>_SPLITCOLLECTIONTYPE</a>
+<span class='lineno'> 694</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;pruning_type&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a>
+<span class='lineno'> 695</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;finish_type&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a>
+<span class='lineno'> 696</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;inequality_test_type&#39;].enum_type = <a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2', title='generic_tree_model_pb2'>tensorflow_dot_contrib_dot_decision__trees_dot_proto_dot_generic__tree__model__pb2</a>.<a href='../../decision_trees/proto/generic_tree_model_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._INEQUALITYTEST_TYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.decision_trees.proto.generic_tree_model_pb2._INEQUALITYTEST_TYPE', title='?'>_INEQUALITYTEST_TYPE</a>
+<span class='lineno'> 697</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;num_splits_to_consider&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 698</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;split_after_samples&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 699</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;dominate_fraction&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 700</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>.fields_by_name[&#39;min_split_samples&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 701</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SplitPruningConfig&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a>
+<span class='lineno'> 702</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;SplitFinishConfig&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a>
+<span class='lineno'> 703</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;LinearParam&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', title='?'>_LINEARPARAM</a>
+<span class='lineno'> 704</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ExponentialParam&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', title='?'>_EXPONENTIALPARAM</a>
+<span class='lineno'> 705</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ThresholdParam&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', title='?'>_THRESHOLDPARAM</a>
+<span class='lineno'> 706</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;DepthDependentParam&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>
+<span class='lineno'> 707</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;TensorForestParams&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>
+<span class='lineno'> 708</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;LeafModelType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LEAFMODELTYPE', title='?'>_LEAFMODELTYPE</a>
+<span class='lineno'> 709</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;StatsModelType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._STATSMODELTYPE', title='?'>_STATSMODELTYPE</a>
+<span class='lineno'> 710</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;SplitCollectionType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITCOLLECTIONTYPE', title='?'>_SPLITCOLLECTIONTYPE</a>
+<span class='lineno'> 711</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;SplitPruningStrategyType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGSTRATEGYTYPE', title='?'>_SPLITPRUNINGSTRATEGYTYPE</a>
+<span class='lineno'> 712</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.enum_types_by_name[&#39;SplitFinishStrategyType&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHSTRATEGYTYPE', title='?'>_SPLITFINISHSTRATEGYTYPE</a>
+<span class='lineno'> 713</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 714</span> 
+<span class='lineno'> 715</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig', title='?'>SplitPruningConfig</a> = _reflection.GeneratedProtocolMessageType(&#39;SplitPruningConfig&#39;, (_message.Message,), dict(
+<span class='lineno'> 716</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITPRUNINGCONFIG', title='?'>_SPLITPRUNINGCONFIG</a>,
+<span class='lineno'> 717</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 718</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.SplitPruningConfig)
+<span class='lineno'> 719</span>   ))
+<span class='lineno'> 720</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitPruningConfig', title='?'>SplitPruningConfig</a>)
+<span class='lineno'> 721</span> 
+<span class='lineno'> 722</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig', title='?'>SplitFinishConfig</a> = _reflection.GeneratedProtocolMessageType(&#39;SplitFinishConfig&#39;, (_message.Message,), dict(
+<span class='lineno'> 723</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._SPLITFINISHCONFIG', title='?'>_SPLITFINISHCONFIG</a>,
+<span class='lineno'> 724</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 725</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.SplitFinishConfig)
+<span class='lineno'> 726</span>   ))
+<span class='lineno'> 727</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.SplitFinishConfig', title='?'>SplitFinishConfig</a>)
+<span class='lineno'> 728</span> 
+<span class='lineno'> 729</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam', title='?'>LinearParam</a> = _reflection.GeneratedProtocolMessageType(&#39;LinearParam&#39;, (_message.Message,), dict(
+<span class='lineno'> 730</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._LINEARPARAM', title='?'>_LINEARPARAM</a>,
+<span class='lineno'> 731</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 732</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.LinearParam)
+<span class='lineno'> 733</span>   ))
+<span class='lineno'> 734</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.LinearParam', title='?'>LinearParam</a>)
+<span class='lineno'> 735</span> 
+<span class='lineno'> 736</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam', title='?'>ExponentialParam</a> = _reflection.GeneratedProtocolMessageType(&#39;ExponentialParam&#39;, (_message.Message,), dict(
+<span class='lineno'> 737</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._EXPONENTIALPARAM', title='?'>_EXPONENTIALPARAM</a>,
+<span class='lineno'> 738</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 739</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.ExponentialParam)
+<span class='lineno'> 740</span>   ))
+<span class='lineno'> 741</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ExponentialParam', title='?'>ExponentialParam</a>)
+<span class='lineno'> 742</span> 
+<span class='lineno'> 743</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam', title='?'>ThresholdParam</a> = _reflection.GeneratedProtocolMessageType(&#39;ThresholdParam&#39;, (_message.Message,), dict(
+<span class='lineno'> 744</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._THRESHOLDPARAM', title='?'>_THRESHOLDPARAM</a>,
+<span class='lineno'> 745</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 746</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.ThresholdParam)
+<span class='lineno'> 747</span>   ))
+<span class='lineno'> 748</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.ThresholdParam', title='?'>ThresholdParam</a>)
+<span class='lineno'> 749</span> 
+<span class='lineno'> 750</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam', title='?'>DepthDependentParam</a> = _reflection.GeneratedProtocolMessageType(&#39;DepthDependentParam&#39;, (_message.Message,), dict(
+<span class='lineno'> 751</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._DEPTHDEPENDENTPARAM', title='?'>_DEPTHDEPENDENTPARAM</a>,
+<span class='lineno'> 752</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 753</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.DepthDependentParam)
+<span class='lineno'> 754</span>   ))
+<span class='lineno'> 755</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.DepthDependentParam', title='?'>DepthDependentParam</a>)
+<span class='lineno'> 756</span> 
+<span class='lineno'> 757</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams', title='?'>TensorForestParams</a> = _reflection.GeneratedProtocolMessageType(&#39;TensorForestParams&#39;, (_message.Message,), dict(
+<span class='lineno'> 758</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._TENSORFORESTPARAMS', title='?'>_TENSORFORESTPARAMS</a>,
+<span class='lineno'> 759</span>   __module__ = &#39;tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2&#39;
+<span class='lineno'> 760</span>   # @@protoc_insertion_point(class_scope:tensorflow.tensorforest.TensorForestParams)
+<span class='lineno'> 761</span>   ))
+<span class='lineno'> 762</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.tensor_forest.proto.tensor_forest_params_pb2.TensorForestParams', title='?'>TensorForestParams</a>)
+<span class='lineno'> 763</span> 
+<span class='lineno'> 764</span> 
+<span class='lineno'> 765</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

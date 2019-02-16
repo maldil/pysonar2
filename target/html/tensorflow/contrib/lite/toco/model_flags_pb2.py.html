@@ -1,0 +1,546 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/lite/toco/model_flags_pb2.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b'>_b</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db'>_sym_db</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR'>DESCRIPTOR</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE'>_INPUTARRAYSHAPE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY'>_INPUTARRAY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE'>_RNNSTATE</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY'>_ARRAYSEXTRAINFO_ENTRY</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO'>_ARRAYSEXTRAINFO</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK'>_MODELFLAGS_MODELCHECK</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS'>_MODELFLAGS</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape'>InputArrayShape</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray'>InputArray</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState'>RnnState</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo'>ArraysExtraInfo</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags'>ModelFlags</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Generated by the protocol buffer compiler.  DO NOT EDIT!
+<span class='lineno'>   2</span> # source: tensorflow/contrib/lite/toco/model_flags.proto
+<span class='lineno'>   3</span> 
+<span class='lineno'>   4</span> import sys
+<span class='lineno'>   5</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>=sys.version_info[0]&lt;3 and (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%734.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%734.x', title='?'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%734.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%734.x', title='?'>x</a>) or (lambda <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%735.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%735.x', title='str'>x</a>:<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%735.x', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.lambda%735.x', title='str'>x</a>.encode(&#39;latin1&#39;))
+<span class='lineno'>   6</span> from google.protobuf import descriptor as _descriptor
+<span class='lineno'>   7</span> from google.protobuf import message as _message
+<span class='lineno'>   8</span> from google.protobuf import reflection as _reflection
+<span class='lineno'>   9</span> from google.protobuf import symbol_database as _symbol_database
+<span class='lineno'>  10</span> # @@protoc_insertion_point(imports)
+<span class='lineno'>  11</span> 
+<span class='lineno'>  12</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a> = _symbol_database.Default()
+<span class='lineno'>  13</span> 
+<span class='lineno'>  14</span> 
+<span class='lineno'>  15</span> from <a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite', title='lite'>lite</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco', title='toco'>toco</a> import types_pb2 as <a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', title='types_pb2'>tensorflow_dot_contrib_dot_lite_dot_toco_dot_types__pb2</a>
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> 
+<span class='lineno'>  18</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a> = _descriptor.FileDescriptor(
+<span class='lineno'>  19</span>   name=&#39;tensorflow/contrib/lite/toco/model_flags.proto&#39;,
+<span class='lineno'>  20</span>   package=&#39;toco&#39;,
+<span class='lineno'>  21</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'>  22</span>   serialized_options=None,
+<span class='lineno'>  23</span>   serialized_pb=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&#39;\n.tensorflow/contrib/lite/toco/model_flags.proto\x12\x04toco\x1a(tensorflow/contrib/lite/toco/types.proto\&quot;\x1f\n\x0fInputArrayShape\x12\x0c\n\x04\x64ims\x18\x02 \x03(\x05\&quot;\x8f\x01\n\nInputArray\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x05shape\x18\x06 \x01(\x0b\x32\x15.toco.InputArrayShape\x12\x12\n\nmean_value\x18\x03 \x01(\x02\x12\x14\n\tstd_value\x18\x04 \x01(\x02:\x01\x31\x12#\n\tdata_type\x18\x05 \x01(\x0e\x32\x10.toco.IODataType\&quot;b\n\x08RnnState\x12\x13\n\x0bstate_array\x18\x01 \x01(\t\x12\x1e\n\x16\x62\x61\x63k_edge_source_array\x18\x02 \x01(\t\x12\x13\n\x0b\x64iscardable\x18\x05 \x01(\x08\x12\x0c\n\x04size\x18\x03 \x01(\x05\&quot;\xef\x01\n\x0f\x41rraysExtraInfo\x12,\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x1b.toco.ArraysExtraInfo.Entry\x1a\xad\x01\n\x05\x45ntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0bname_regexp\x18\x07 \x01(\t\x12\x0b\n\x03min\x18\x02 \x01(\x01\x12\x0b\n\x03max\x18\x03 \x01(\x01\x12#\n\tdata_type\x18\x04 \x01(\x0e\x32\x10.toco.IODataType\x12$\n\x05shape\x18\x05 \x01(\x0b\x32\x15.toco.InputArrayShape\x12\x1c\n\x14\x63onstant_float_value\x18\x06 \x01(\x02\&quot;\xad\x03\n\nModelFlags\x12&amp;\n\x0cinput_arrays\x18\x01 \x03(\x0b\x32\x10.toco.InputArray\x12\x15\n\routput_arrays\x18\x02 \x03(\t\x12\x16\n\x0evariable_batch\x18\n \x01(\x08\x12\&quot;\n\nrnn_states\x18\x0c \x03(\x0b\x32\x0e.toco.RnnState\x12\x31\n\x0cmodel_checks\x18\x0e \x03(\x0b\x32\x1b.toco.ModelFlags.ModelCheck\x12 \n\x18\x61llow_nonexistent_arrays\x18\x10 \x01(\x08\x12\x1d\n\x15\x61llow_nonascii_arrays\x18\x11 \x01(\x08\x12\x30\n\x11\x61rrays_extra_info\x18\x12 \x01(\x0b\x32\x15.toco.ArraysExtraInfo\x12(\n\x1a\x63hange_concat_input_ranges\x18\x13 \x01(\x08:\x04true\x1aT\n\nModelCheck\x12\x18\n\ncount_type\x18\x01 \x01(\t:\x04None\x12\x15\n\tcount_min\x18\x02 \x01(\x05:\x02-1\x12\x15\n\tcount_max\x18\x03 \x01(\x05:\x02-1&#39;)
+<span class='lineno'>  24</span>   ,
+<span class='lineno'>  25</span>   dependencies=[<a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', title='types_pb2'>tensorflow_dot_contrib_dot_lite_dot_toco_dot_types__pb2</a>.<a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,])
+<span class='lineno'>  26</span> 
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', title='?'>_INPUTARRAYSHAPE</a> = _descriptor.Descriptor(
+<span class='lineno'>  31</span>   name=&#39;InputArrayShape&#39;,
+<span class='lineno'>  32</span>   full_name=&#39;toco.InputArrayShape&#39;,
+<span class='lineno'>  33</span>   filename=None,
+<span class='lineno'>  34</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  35</span>   containing_type=None,
+<span class='lineno'>  36</span>   fields=[
+<span class='lineno'>  37</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  38</span>       name=&#39;dims&#39;, full_name=&#39;toco.InputArrayShape.dims&#39;, index=0,
+<span class='lineno'>  39</span>       number=2, type=5, cpp_type=1, label=3,
+<span class='lineno'>  40</span>       has_default_value=False, default_value=[],
+<span class='lineno'>  41</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  42</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  43</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  44</span>   ],
+<span class='lineno'>  45</span>   extensions=[
+<span class='lineno'>  46</span>   ],
+<span class='lineno'>  47</span>   nested_types=[],
+<span class='lineno'>  48</span>   enum_types=[
+<span class='lineno'>  49</span>   ],
+<span class='lineno'>  50</span>   serialized_options=None,
+<span class='lineno'>  51</span>   is_extendable=False,
+<span class='lineno'>  52</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'>  53</span>   extension_ranges=[],
+<span class='lineno'>  54</span>   oneofs=[
+<span class='lineno'>  55</span>   ],
+<span class='lineno'>  56</span>   serialized_start=98,
+<span class='lineno'>  57</span>   serialized_end=129,
+<span class='lineno'>  58</span> )
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a> = _descriptor.Descriptor(
+<span class='lineno'>  62</span>   name=&#39;InputArray&#39;,
+<span class='lineno'>  63</span>   full_name=&#39;toco.InputArray&#39;,
+<span class='lineno'>  64</span>   filename=None,
+<span class='lineno'>  65</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'>  66</span>   containing_type=None,
+<span class='lineno'>  67</span>   fields=[
+<span class='lineno'>  68</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  69</span>       name=&#39;name&#39;, full_name=&#39;toco.InputArray.name&#39;, index=0,
+<span class='lineno'>  70</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'>  71</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'>  72</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  73</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  74</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  75</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  76</span>       name=&#39;shape&#39;, full_name=&#39;toco.InputArray.shape&#39;, index=1,
+<span class='lineno'>  77</span>       number=6, type=11, cpp_type=10, label=1,
+<span class='lineno'>  78</span>       has_default_value=False, default_value=None,
+<span class='lineno'>  79</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  80</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  81</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  82</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  83</span>       name=&#39;mean_value&#39;, full_name=&#39;toco.InputArray.mean_value&#39;, index=2,
+<span class='lineno'>  84</span>       number=3, type=2, cpp_type=6, label=1,
+<span class='lineno'>  85</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'>  86</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  87</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  88</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  89</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  90</span>       name=&#39;std_value&#39;, full_name=&#39;toco.InputArray.std_value&#39;, index=3,
+<span class='lineno'>  91</span>       number=4, type=2, cpp_type=6, label=1,
+<span class='lineno'>  92</span>       has_default_value=True, default_value=float(1),
+<span class='lineno'>  93</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'>  94</span>       is_extension=False, extension_scope=None,
+<span class='lineno'>  95</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'>  96</span>     _descriptor.FieldDescriptor(
+<span class='lineno'>  97</span>       name=&#39;data_type&#39;, full_name=&#39;toco.InputArray.data_type&#39;, index=4,
+<span class='lineno'>  98</span>       number=5, type=14, cpp_type=8, label=1,
+<span class='lineno'>  99</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 100</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 101</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 102</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 103</span>   ],
+<span class='lineno'> 104</span>   extensions=[
+<span class='lineno'> 105</span>   ],
+<span class='lineno'> 106</span>   nested_types=[],
+<span class='lineno'> 107</span>   enum_types=[
+<span class='lineno'> 108</span>   ],
+<span class='lineno'> 109</span>   serialized_options=None,
+<span class='lineno'> 110</span>   is_extendable=False,
+<span class='lineno'> 111</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 112</span>   extension_ranges=[],
+<span class='lineno'> 113</span>   oneofs=[
+<span class='lineno'> 114</span>   ],
+<span class='lineno'> 115</span>   serialized_start=132,
+<span class='lineno'> 116</span>   serialized_end=275,
+<span class='lineno'> 117</span> )
+<span class='lineno'> 118</span> 
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', title='?'>_RNNSTATE</a> = _descriptor.Descriptor(
+<span class='lineno'> 121</span>   name=&#39;RnnState&#39;,
+<span class='lineno'> 122</span>   full_name=&#39;toco.RnnState&#39;,
+<span class='lineno'> 123</span>   filename=None,
+<span class='lineno'> 124</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 125</span>   containing_type=None,
+<span class='lineno'> 126</span>   fields=[
+<span class='lineno'> 127</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 128</span>       name=&#39;state_array&#39;, full_name=&#39;toco.RnnState.state_array&#39;, index=0,
+<span class='lineno'> 129</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 130</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 131</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 132</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 133</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 134</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 135</span>       name=&#39;back_edge_source_array&#39;, full_name=&#39;toco.RnnState.back_edge_source_array&#39;, index=1,
+<span class='lineno'> 136</span>       number=2, type=9, cpp_type=9, label=1,
+<span class='lineno'> 137</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 138</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 139</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 140</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 141</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 142</span>       name=&#39;discardable&#39;, full_name=&#39;toco.RnnState.discardable&#39;, index=2,
+<span class='lineno'> 143</span>       number=5, type=8, cpp_type=7, label=1,
+<span class='lineno'> 144</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 145</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 146</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 147</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 148</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 149</span>       name=&#39;size&#39;, full_name=&#39;toco.RnnState.size&#39;, index=3,
+<span class='lineno'> 150</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'> 151</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 152</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 153</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 154</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 155</span>   ],
+<span class='lineno'> 156</span>   extensions=[
+<span class='lineno'> 157</span>   ],
+<span class='lineno'> 158</span>   nested_types=[],
+<span class='lineno'> 159</span>   enum_types=[
+<span class='lineno'> 160</span>   ],
+<span class='lineno'> 161</span>   serialized_options=None,
+<span class='lineno'> 162</span>   is_extendable=False,
+<span class='lineno'> 163</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 164</span>   extension_ranges=[],
+<span class='lineno'> 165</span>   oneofs=[
+<span class='lineno'> 166</span>   ],
+<span class='lineno'> 167</span>   serialized_start=277,
+<span class='lineno'> 168</span>   serialized_end=375,
+<span class='lineno'> 169</span> )
+<span class='lineno'> 170</span> 
+<span class='lineno'> 171</span> 
+<span class='lineno'> 172</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a> = _descriptor.Descriptor(
+<span class='lineno'> 173</span>   name=&#39;Entry&#39;,
+<span class='lineno'> 174</span>   full_name=&#39;toco.ArraysExtraInfo.Entry&#39;,
+<span class='lineno'> 175</span>   filename=None,
+<span class='lineno'> 176</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 177</span>   containing_type=None,
+<span class='lineno'> 178</span>   fields=[
+<span class='lineno'> 179</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 180</span>       name=&#39;name&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.name&#39;, index=0,
+<span class='lineno'> 181</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 182</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 183</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 184</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 185</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 186</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 187</span>       name=&#39;name_regexp&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.name_regexp&#39;, index=1,
+<span class='lineno'> 188</span>       number=7, type=9, cpp_type=9, label=1,
+<span class='lineno'> 189</span>       has_default_value=False, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 190</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 191</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 192</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 193</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 194</span>       name=&#39;min&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.min&#39;, index=2,
+<span class='lineno'> 195</span>       number=2, type=1, cpp_type=5, label=1,
+<span class='lineno'> 196</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 197</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 198</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 199</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 200</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 201</span>       name=&#39;max&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.max&#39;, index=3,
+<span class='lineno'> 202</span>       number=3, type=1, cpp_type=5, label=1,
+<span class='lineno'> 203</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 204</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 205</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 206</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 207</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 208</span>       name=&#39;data_type&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.data_type&#39;, index=4,
+<span class='lineno'> 209</span>       number=4, type=14, cpp_type=8, label=1,
+<span class='lineno'> 210</span>       has_default_value=False, default_value=0,
+<span class='lineno'> 211</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 212</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 213</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 214</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 215</span>       name=&#39;shape&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.shape&#39;, index=5,
+<span class='lineno'> 216</span>       number=5, type=11, cpp_type=10, label=1,
+<span class='lineno'> 217</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 218</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 219</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 220</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 221</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 222</span>       name=&#39;constant_float_value&#39;, full_name=&#39;toco.ArraysExtraInfo.Entry.constant_float_value&#39;, index=6,
+<span class='lineno'> 223</span>       number=6, type=2, cpp_type=6, label=1,
+<span class='lineno'> 224</span>       has_default_value=False, default_value=float(0),
+<span class='lineno'> 225</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 226</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 227</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 228</span>   ],
+<span class='lineno'> 229</span>   extensions=[
+<span class='lineno'> 230</span>   ],
+<span class='lineno'> 231</span>   nested_types=[],
+<span class='lineno'> 232</span>   enum_types=[
+<span class='lineno'> 233</span>   ],
+<span class='lineno'> 234</span>   serialized_options=None,
+<span class='lineno'> 235</span>   is_extendable=False,
+<span class='lineno'> 236</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 237</span>   extension_ranges=[],
+<span class='lineno'> 238</span>   oneofs=[
+<span class='lineno'> 239</span>   ],
+<span class='lineno'> 240</span>   serialized_start=444,
+<span class='lineno'> 241</span>   serialized_end=617,
+<span class='lineno'> 242</span> )
+<span class='lineno'> 243</span> 
+<span class='lineno'> 244</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a> = _descriptor.Descriptor(
+<span class='lineno'> 245</span>   name=&#39;ArraysExtraInfo&#39;,
+<span class='lineno'> 246</span>   full_name=&#39;toco.ArraysExtraInfo&#39;,
+<span class='lineno'> 247</span>   filename=None,
+<span class='lineno'> 248</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 249</span>   containing_type=None,
+<span class='lineno'> 250</span>   fields=[
+<span class='lineno'> 251</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 252</span>       name=&#39;entries&#39;, full_name=&#39;toco.ArraysExtraInfo.entries&#39;, index=0,
+<span class='lineno'> 253</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 254</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 255</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 256</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 257</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 258</span>   ],
+<span class='lineno'> 259</span>   extensions=[
+<span class='lineno'> 260</span>   ],
+<span class='lineno'> 261</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>, ],
+<span class='lineno'> 262</span>   enum_types=[
+<span class='lineno'> 263</span>   ],
+<span class='lineno'> 264</span>   serialized_options=None,
+<span class='lineno'> 265</span>   is_extendable=False,
+<span class='lineno'> 266</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 267</span>   extension_ranges=[],
+<span class='lineno'> 268</span>   oneofs=[
+<span class='lineno'> 269</span>   ],
+<span class='lineno'> 270</span>   serialized_start=378,
+<span class='lineno'> 271</span>   serialized_end=617,
+<span class='lineno'> 272</span> )
+<span class='lineno'> 273</span> 
+<span class='lineno'> 274</span> 
+<span class='lineno'> 275</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', title='?'>_MODELFLAGS_MODELCHECK</a> = _descriptor.Descriptor(
+<span class='lineno'> 276</span>   name=&#39;ModelCheck&#39;,
+<span class='lineno'> 277</span>   full_name=&#39;toco.ModelFlags.ModelCheck&#39;,
+<span class='lineno'> 278</span>   filename=None,
+<span class='lineno'> 279</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 280</span>   containing_type=None,
+<span class='lineno'> 281</span>   fields=[
+<span class='lineno'> 282</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 283</span>       name=&#39;count_type&#39;, full_name=&#39;toco.ModelFlags.ModelCheck.count_type&#39;, index=0,
+<span class='lineno'> 284</span>       number=1, type=9, cpp_type=9, label=1,
+<span class='lineno'> 285</span>       has_default_value=True, default_value=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._b', title='str -> str'>_b</a>(&quot;None&quot;).decode(&#39;utf-8&#39;),
+<span class='lineno'> 286</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 287</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 288</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 289</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 290</span>       name=&#39;count_min&#39;, full_name=&#39;toco.ModelFlags.ModelCheck.count_min&#39;, index=1,
+<span class='lineno'> 291</span>       number=2, type=5, cpp_type=1, label=1,
+<span class='lineno'> 292</span>       has_default_value=True, default_value=-1,
+<span class='lineno'> 293</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 294</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 295</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 296</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 297</span>       name=&#39;count_max&#39;, full_name=&#39;toco.ModelFlags.ModelCheck.count_max&#39;, index=2,
+<span class='lineno'> 298</span>       number=3, type=5, cpp_type=1, label=1,
+<span class='lineno'> 299</span>       has_default_value=True, default_value=-1,
+<span class='lineno'> 300</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 301</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 302</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 303</span>   ],
+<span class='lineno'> 304</span>   extensions=[
+<span class='lineno'> 305</span>   ],
+<span class='lineno'> 306</span>   nested_types=[],
+<span class='lineno'> 307</span>   enum_types=[
+<span class='lineno'> 308</span>   ],
+<span class='lineno'> 309</span>   serialized_options=None,
+<span class='lineno'> 310</span>   is_extendable=False,
+<span class='lineno'> 311</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 312</span>   extension_ranges=[],
+<span class='lineno'> 313</span>   oneofs=[
+<span class='lineno'> 314</span>   ],
+<span class='lineno'> 315</span>   serialized_start=965,
+<span class='lineno'> 316</span>   serialized_end=1049,
+<span class='lineno'> 317</span> )
+<span class='lineno'> 318</span> 
+<span class='lineno'> 319</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a> = _descriptor.Descriptor(
+<span class='lineno'> 320</span>   name=&#39;ModelFlags&#39;,
+<span class='lineno'> 321</span>   full_name=&#39;toco.ModelFlags&#39;,
+<span class='lineno'> 322</span>   filename=None,
+<span class='lineno'> 323</span>   file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>,
+<span class='lineno'> 324</span>   containing_type=None,
+<span class='lineno'> 325</span>   fields=[
+<span class='lineno'> 326</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 327</span>       name=&#39;input_arrays&#39;, full_name=&#39;toco.ModelFlags.input_arrays&#39;, index=0,
+<span class='lineno'> 328</span>       number=1, type=11, cpp_type=10, label=3,
+<span class='lineno'> 329</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 330</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 331</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 332</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 333</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 334</span>       name=&#39;output_arrays&#39;, full_name=&#39;toco.ModelFlags.output_arrays&#39;, index=1,
+<span class='lineno'> 335</span>       number=2, type=9, cpp_type=9, label=3,
+<span class='lineno'> 336</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 337</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 338</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 339</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 340</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 341</span>       name=&#39;variable_batch&#39;, full_name=&#39;toco.ModelFlags.variable_batch&#39;, index=2,
+<span class='lineno'> 342</span>       number=10, type=8, cpp_type=7, label=1,
+<span class='lineno'> 343</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 344</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 345</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 346</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 347</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 348</span>       name=&#39;rnn_states&#39;, full_name=&#39;toco.ModelFlags.rnn_states&#39;, index=3,
+<span class='lineno'> 349</span>       number=12, type=11, cpp_type=10, label=3,
+<span class='lineno'> 350</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 351</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 352</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 353</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 354</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 355</span>       name=&#39;model_checks&#39;, full_name=&#39;toco.ModelFlags.model_checks&#39;, index=4,
+<span class='lineno'> 356</span>       number=14, type=11, cpp_type=10, label=3,
+<span class='lineno'> 357</span>       has_default_value=False, default_value=[],
+<span class='lineno'> 358</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 359</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 360</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 361</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 362</span>       name=&#39;allow_nonexistent_arrays&#39;, full_name=&#39;toco.ModelFlags.allow_nonexistent_arrays&#39;, index=5,
+<span class='lineno'> 363</span>       number=16, type=8, cpp_type=7, label=1,
+<span class='lineno'> 364</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 365</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 366</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 367</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 368</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 369</span>       name=&#39;allow_nonascii_arrays&#39;, full_name=&#39;toco.ModelFlags.allow_nonascii_arrays&#39;, index=6,
+<span class='lineno'> 370</span>       number=17, type=8, cpp_type=7, label=1,
+<span class='lineno'> 371</span>       has_default_value=False, default_value=False,
+<span class='lineno'> 372</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 373</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 374</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 375</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 376</span>       name=&#39;arrays_extra_info&#39;, full_name=&#39;toco.ModelFlags.arrays_extra_info&#39;, index=7,
+<span class='lineno'> 377</span>       number=18, type=11, cpp_type=10, label=1,
+<span class='lineno'> 378</span>       has_default_value=False, default_value=None,
+<span class='lineno'> 379</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 380</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 381</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 382</span>     _descriptor.FieldDescriptor(
+<span class='lineno'> 383</span>       name=&#39;change_concat_input_ranges&#39;, full_name=&#39;toco.ModelFlags.change_concat_input_ranges&#39;, index=8,
+<span class='lineno'> 384</span>       number=19, type=8, cpp_type=7, label=1,
+<span class='lineno'> 385</span>       has_default_value=True, default_value=True,
+<span class='lineno'> 386</span>       message_type=None, enum_type=None, containing_type=None,
+<span class='lineno'> 387</span>       is_extension=False, extension_scope=None,
+<span class='lineno'> 388</span>       serialized_options=None, file=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>),
+<span class='lineno'> 389</span>   ],
+<span class='lineno'> 390</span>   extensions=[
+<span class='lineno'> 391</span>   ],
+<span class='lineno'> 392</span>   nested_types=[<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', title='?'>_MODELFLAGS_MODELCHECK</a>, ],
+<span class='lineno'> 393</span>   enum_types=[
+<span class='lineno'> 394</span>   ],
+<span class='lineno'> 395</span>   serialized_options=None,
+<span class='lineno'> 396</span>   is_extendable=False,
+<span class='lineno'> 397</span>   syntax=&#39;proto2&#39;,
+<span class='lineno'> 398</span>   extension_ranges=[],
+<span class='lineno'> 399</span>   oneofs=[
+<span class='lineno'> 400</span>   ],
+<span class='lineno'> 401</span>   serialized_start=620,
+<span class='lineno'> 402</span>   serialized_end=1049,
+<span class='lineno'> 403</span> )
+<span class='lineno'> 404</span> 
+<span class='lineno'> 405</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a>.fields_by_name[&#39;shape&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', title='?'>_INPUTARRAYSHAPE</a>
+<span class='lineno'> 406</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a>.fields_by_name[&#39;data_type&#39;].enum_type = <a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', title='types_pb2'>tensorflow_dot_contrib_dot_lite_dot_toco_dot_types__pb2</a>.<a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2._IODATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2._IODATATYPE', title='?'>_IODATATYPE</a>
+<span class='lineno'> 407</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>.fields_by_name[&#39;data_type&#39;].enum_type = <a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2', title='types_pb2'>tensorflow_dot_contrib_dot_lite_dot_toco_dot_types__pb2</a>.<a href='types_pb2.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2._IODATATYPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.types_pb2._IODATATYPE', title='?'>_IODATATYPE</a>
+<span class='lineno'> 408</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>.fields_by_name[&#39;shape&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', title='?'>_INPUTARRAYSHAPE</a>
+<span class='lineno'> 409</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a>
+<span class='lineno'> 410</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a>.fields_by_name[&#39;entries&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>
+<span class='lineno'> 411</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', title='?'>_MODELFLAGS_MODELCHECK</a>.containing_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>
+<span class='lineno'> 412</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>.fields_by_name[&#39;input_arrays&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a>
+<span class='lineno'> 413</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>.fields_by_name[&#39;rnn_states&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', title='?'>_RNNSTATE</a>
+<span class='lineno'> 414</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>.fields_by_name[&#39;model_checks&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', title='?'>_MODELFLAGS_MODELCHECK</a>
+<span class='lineno'> 415</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>.fields_by_name[&#39;arrays_extra_info&#39;].message_type = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a>
+<span class='lineno'> 416</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;InputArrayShape&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', title='?'>_INPUTARRAYSHAPE</a>
+<span class='lineno'> 417</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;InputArray&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a>
+<span class='lineno'> 418</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;RnnState&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', title='?'>_RNNSTATE</a>
+<span class='lineno'> 419</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ArraysExtraInfo&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a>
+<span class='lineno'> 420</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>.message_types_by_name[&#39;ModelFlags&#39;] = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>
+<span class='lineno'> 421</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterFileDescriptor(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.DESCRIPTOR', title='?'>DESCRIPTOR</a>)
+<span class='lineno'> 422</span> 
+<span class='lineno'> 423</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape', title='?'>InputArrayShape</a> = _reflection.GeneratedProtocolMessageType(&#39;InputArrayShape&#39;, (_message.Message,), dict(
+<span class='lineno'> 424</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAYSHAPE', title='?'>_INPUTARRAYSHAPE</a>,
+<span class='lineno'> 425</span>   __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 426</span>   # @@protoc_insertion_point(class_scope:toco.InputArrayShape)
+<span class='lineno'> 427</span>   ))
+<span class='lineno'> 428</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArrayShape', title='?'>InputArrayShape</a>)
+<span class='lineno'> 429</span> 
+<span class='lineno'> 430</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray', title='?'>InputArray</a> = _reflection.GeneratedProtocolMessageType(&#39;InputArray&#39;, (_message.Message,), dict(
+<span class='lineno'> 431</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._INPUTARRAY', title='?'>_INPUTARRAY</a>,
+<span class='lineno'> 432</span>   __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 433</span>   # @@protoc_insertion_point(class_scope:toco.InputArray)
+<span class='lineno'> 434</span>   ))
+<span class='lineno'> 435</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.InputArray', title='?'>InputArray</a>)
+<span class='lineno'> 436</span> 
+<span class='lineno'> 437</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState', title='?'>RnnState</a> = _reflection.GeneratedProtocolMessageType(&#39;RnnState&#39;, (_message.Message,), dict(
+<span class='lineno'> 438</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._RNNSTATE', title='?'>_RNNSTATE</a>,
+<span class='lineno'> 439</span>   __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 440</span>   # @@protoc_insertion_point(class_scope:toco.RnnState)
+<span class='lineno'> 441</span>   ))
+<span class='lineno'> 442</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.RnnState', title='?'>RnnState</a>)
+<span class='lineno'> 443</span> 
+<span class='lineno'> 444</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', title='?'>ArraysExtraInfo</a> = _reflection.GeneratedProtocolMessageType(&#39;ArraysExtraInfo&#39;, (_message.Message,), dict(
+<span class='lineno'> 445</span> 
+<span class='lineno'> 446</span>   Entry = _reflection.GeneratedProtocolMessageType(&#39;Entry&#39;, (_message.Message,), dict(
+<span class='lineno'> 447</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO_ENTRY', title='?'>_ARRAYSEXTRAINFO_ENTRY</a>,
+<span class='lineno'> 448</span>     __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 449</span>     # @@protoc_insertion_point(class_scope:toco.ArraysExtraInfo.Entry)
+<span class='lineno'> 450</span>     ))
+<span class='lineno'> 451</span>   ,
+<span class='lineno'> 452</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._ARRAYSEXTRAINFO', title='?'>_ARRAYSEXTRAINFO</a>,
+<span class='lineno'> 453</span>   __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 454</span>   # @@protoc_insertion_point(class_scope:toco.ArraysExtraInfo)
+<span class='lineno'> 455</span>   ))
+<span class='lineno'> 456</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', title='?'>ArraysExtraInfo</a>)
+<span class='lineno'> 457</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ArraysExtraInfo', title='?'>ArraysExtraInfo</a>.Entry)
+<span class='lineno'> 458</span> 
+<span class='lineno'> 459</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', title='?'>ModelFlags</a> = _reflection.GeneratedProtocolMessageType(&#39;ModelFlags&#39;, (_message.Message,), dict(
+<span class='lineno'> 460</span> 
+<span class='lineno'> 461</span>   ModelCheck = _reflection.GeneratedProtocolMessageType(&#39;ModelCheck&#39;, (_message.Message,), dict(
+<span class='lineno'> 462</span>     DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS_MODELCHECK', title='?'>_MODELFLAGS_MODELCHECK</a>,
+<span class='lineno'> 463</span>     __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 464</span>     # @@protoc_insertion_point(class_scope:toco.ModelFlags.ModelCheck)
+<span class='lineno'> 465</span>     ))
+<span class='lineno'> 466</span>   ,
+<span class='lineno'> 467</span>   DESCRIPTOR = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._MODELFLAGS', title='?'>_MODELFLAGS</a>,
+<span class='lineno'> 468</span>   __module__ = &#39;tensorflow.contrib.lite.toco.model_flags_pb2&#39;
+<span class='lineno'> 469</span>   # @@protoc_insertion_point(class_scope:toco.ModelFlags)
+<span class='lineno'> 470</span>   ))
+<span class='lineno'> 471</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', title='?'>ModelFlags</a>)
+<span class='lineno'> 472</span> <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2._sym_db', title='?'>_sym_db</a>.RegisterMessage(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.lite.toco.model_flags_pb2.ModelFlags', title='?'>ModelFlags</a>.ModelCheck)
+<span class='lineno'> 473</span> 
+<span class='lineno'> 474</span> 
+<span class='lineno'> 475</span> # @@protoc_insertion_point(module_scope)
+</pre></td></tr></table></body></html>

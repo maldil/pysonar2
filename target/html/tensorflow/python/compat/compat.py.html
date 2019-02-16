@@ -1,0 +1,205 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/compat/compat.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON'>_FORWARD_COMPATIBILITY_HORIZON</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible'>forward_compatible</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon'>forward_compatibility_horizon</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2018 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Utilities for API compatibility between TensorFlow release versions.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> See [Version
+<span class='lineno'>  18</span> Compatibility](https://tensorflow.org/guide/version_compat#backward_forward)
+<span class='lineno'>  19</span> &quot;&quot;&quot;
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> from __future__ import absolute_import
+<span class='lineno'>  22</span> from __future__ import division
+<span class='lineno'>  23</span> from __future__ import print_function
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> import datetime
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../util/tf_contextlib.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_contextlib', title='tf_contextlib'>tf_contextlib</a>
+<span class='lineno'>  27</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', title='date'>_FORWARD_COMPATIBILITY_HORIZON</a> = datetime.date(2018, 10, 1)
+<span class='lineno'>  30</span> 
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> @tf_export(&quot;compat.forward_compatible&quot;)
+<span class='lineno'>  33</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible', title='(?, ?, ?) -> bool / (int, int, int) -> bool'>forward_compatible</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.year', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.year', title='int'>year</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.month', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.month', title='int'>month</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.day', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.day', title='int'>day</a>):
+<span class='lineno'>  34</span>   &quot;&quot;&quot;Return true if the forward compatibility window has expired.
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   See [Version
+<span class='lineno'>  37</span>   compatibility](https://tensorflow.org/guide/version_compat#backward_forward).
+<span class='lineno'>  38</span> 
+<span class='lineno'>  39</span>   Forward-compatibility refers to scenarios where the producer of a TensorFlow
+<span class='lineno'>  40</span>   model (a GraphDef or SavedModel) is compiled against a version of the
+<span class='lineno'>  41</span>   TensorFlow library newer than what the consumer was compiled against. The
+<span class='lineno'>  42</span>   &quot;producer&quot; is typically a Python program that constructs and trains a model
+<span class='lineno'>  43</span>   while the &quot;consumer&quot; is typically another program that loads and serves the
+<span class='lineno'>  44</span>   model.
+<span class='lineno'>  45</span> 
+<span class='lineno'>  46</span>   TensorFlow has been supporting a 3 week forward-compatibility window for
+<span class='lineno'>  47</span>   programs compiled from source at HEAD.
+<span class='lineno'>  48</span> 
+<span class='lineno'>  49</span>   For example, consider the case where a new operation `MyNewAwesomeAdd` is
+<span class='lineno'>  50</span>   created with the intent of replacing the implementation of an existing Python
+<span class='lineno'>  51</span>   wrapper - `tf.add`.  The Python wrapper implementation should change from
+<span class='lineno'>  52</span>   something like:
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   ```python
+<span class='lineno'>  55</span>   def add(inputs, name=None):
+<span class='lineno'>  56</span>     return gen_math_ops.add(inputs, name)
+<span class='lineno'>  57</span>   ```
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   to:
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span>   ```python
+<span class='lineno'>  62</span>   from tensorflow.python.compat import compat
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   def add(inputs, name=None):
+<span class='lineno'>  65</span>     if compat.forward_compatible(year, month, day):
+<span class='lineno'>  66</span>       # Can use the awesome new implementation.
+<span class='lineno'>  67</span>       return gen_math_ops.my_new_awesome_add(inputs, name)
+<span class='lineno'>  68</span>     # To maintain forward compatibiltiy, use the old implementation.
+<span class='lineno'>  69</span>     return gen_math_ops.add(inputs, name)
+<span class='lineno'>  70</span>   ```
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>   Where `year`, `month`, and `day` specify the date beyond which binaries
+<span class='lineno'>  73</span>   that consume a model are expected to have been updated to include the
+<span class='lineno'>  74</span>   new operations. This date is typically at least 3 weeks beyond the date
+<span class='lineno'>  75</span>   the code that adds the new operation is committed.
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   Args:
+<span class='lineno'>  78</span>     year:  A year (e.g., 2018).
+<span class='lineno'>  79</span>     month: A month (1 &lt;= month &lt;= 12) in year.
+<span class='lineno'>  80</span>     day:   A day (1 &lt;= day &lt;= 31, or 30, or 29, or 28) in month.
+<span class='lineno'>  81</span> 
+<span class='lineno'>  82</span>   Returns:
+<span class='lineno'>  83</span>     True if the caller can expect that serialized TensorFlow graphs produced
+<span class='lineno'>  84</span>     can be consumed by programs that are compiled with the TensorFlow library
+<span class='lineno'>  85</span>     source code after (year, month, day).
+<span class='lineno'>  86</span>   &quot;&quot;&quot;
+<span class='lineno'>  87</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', title='date'>_FORWARD_COMPATIBILITY_HORIZON</a> &gt; datetime.date(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.year', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.year', title='int'>year</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.month', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.month', title='int'>month</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.day', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatible.day', title='int'>day</a>)
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span> 
+<span class='lineno'>  90</span> @tf_export(&quot;compat.forward_compatibility_horizon&quot;)
+<span class='lineno'>  91</span> @tf_contextlib.contextmanager
+<span class='lineno'>  92</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon', title='(?, ?, ?) -> ?'>forward_compatibility_horizon</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.year', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.year', title='?'>year</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.month', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.month', title='?'>month</a>, <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.day', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.day', title='?'>day</a>):
+<span class='lineno'>  93</span>   &quot;&quot;&quot;Context manager for testing forward compatibility of generated graphs.
+<span class='lineno'>  94</span> 
+<span class='lineno'>  95</span>   See [Version
+<span class='lineno'>  96</span>   compatibility](https://tensorflow.org/guide/version_compat#backward_forward).
+<span class='lineno'>  97</span> 
+<span class='lineno'>  98</span>   To ensure forward compatibility of generated graphs (see `forward_compatible`)
+<span class='lineno'>  99</span>   with older binaries, new features can be gated with:
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span>   ```python
+<span class='lineno'> 102</span>   if compat.forward_compatible(year=2018, month=08, date=01):
+<span class='lineno'> 103</span>     generate_graph_with_new_features()
+<span class='lineno'> 104</span>   else:
+<span class='lineno'> 105</span>     generate_graph_so_older_binaries_can_consume_it()
+<span class='lineno'> 106</span>   ```
+<span class='lineno'> 107</span> 
+<span class='lineno'> 108</span>   However, when adding new features, one may want to unittest it before
+<span class='lineno'> 109</span>   the forward compatibility window expires. This context manager enables
+<span class='lineno'> 110</span>   such tests. For example:
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span>   ```python
+<span class='lineno'> 113</span>   from tensorflow.python.compat import compat
+<span class='lineno'> 114</span> 
+<span class='lineno'> 115</span>   def testMyNewFeature(self):
+<span class='lineno'> 116</span>     with compat.forward_compatibility_horizon(2018, 08, 02):
+<span class='lineno'> 117</span>        # Test that generate_graph_with_new_features() has an effect
+<span class='lineno'> 118</span>   ```
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span>   Args :
+<span class='lineno'> 121</span>     year:  A year (e.g. 2018).
+<span class='lineno'> 122</span>     month: A month (1 &lt;= month &lt;= 12) in year.
+<span class='lineno'> 123</span>     day:   A day (1 &lt;= day &lt;= 31, or 30, or 29, or 28) in month.
+<span class='lineno'> 124</span> 
+<span class='lineno'> 125</span>   Yields:
+<span class='lineno'> 126</span>     Nothing.
+<span class='lineno'> 127</span>   &quot;&quot;&quot;
+<span class='lineno'> 128</span>   global _FORWARD_COMPATIBILITY_HORIZON
+<span class='lineno'> 129</span>   try:
+<span class='lineno'> 130</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.old_compat_date', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.old_compat_date', title='date'>old_compat_date</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', title='date'>_FORWARD_COMPATIBILITY_HORIZON</a>
+<span class='lineno'> 131</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', title='date'>_FORWARD_COMPATIBILITY_HORIZON</a> = datetime.date(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.year', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.year', title='?'>year</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.month', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.month', title='?'>month</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.day', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.day', title='?'>day</a>)
+<span class='lineno'> 132</span>     yield
+<span class='lineno'> 133</span>   finally:
+<span class='lineno'> 134</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat._FORWARD_COMPATIBILITY_HORIZON', title='date'>_FORWARD_COMPATIBILITY_HORIZON</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.old_compat_date', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.compat.compat.forward_compatibility_horizon.old_compat_date', title='date'>old_compat_date</a>
+</pre></td></tr></table></body></html>

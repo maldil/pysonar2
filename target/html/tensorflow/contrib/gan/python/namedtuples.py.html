@@ -1,0 +1,327 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/gan/python/namedtuples.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.__all__'>__all__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel'>GANModel</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.InfoGANModel', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.InfoGANModel'>InfoGANModel</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.ACGANModel', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.ACGANModel'>ACGANModel</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANModel', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANModel'>CycleGANModel</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.StarGANModel', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.StarGANModel'>StarGANModel</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANLoss', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANLoss'>GANLoss</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANLoss', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANLoss'>CycleGANLoss</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainOps', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainOps'>GANTrainOps</a><ul>
+</ul>
+</li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainSteps', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainSteps'>GANTrainSteps</a><ul>
+</ul>
+</li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Named tuples for TFGAN.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> TFGAN training occurs in four steps, and each step communicates with the next
+<span class='lineno'>  18</span> step via one of these named tuples. At each step, you can either use a TFGAN
+<span class='lineno'>  19</span> helper function in `train.py`, or you can manually construct a tuple.
+<span class='lineno'>  20</span> &quot;&quot;&quot;
+<span class='lineno'>  21</span> 
+<span class='lineno'>  22</span> from __future__ import absolute_import
+<span class='lineno'>  23</span> from __future__ import division
+<span class='lineno'>  24</span> from __future__ import print_function
+<span class='lineno'>  25</span> 
+<span class='lineno'>  26</span> import collections
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.__all__', title='[str]'>__all__</a> = [
+<span class='lineno'>  29</span>     &#39;GANModel&#39;,
+<span class='lineno'>  30</span>     &#39;InfoGANModel&#39;,
+<span class='lineno'>  31</span>     &#39;ACGANModel&#39;,
+<span class='lineno'>  32</span>     &#39;CycleGANModel&#39;,
+<span class='lineno'>  33</span>     &#39;StarGANModel&#39;,
+<span class='lineno'>  34</span>     &#39;GANLoss&#39;,
+<span class='lineno'>  35</span>     &#39;CycleGANLoss&#39;,
+<span class='lineno'>  36</span>     &#39;GANTrainOps&#39;,
+<span class='lineno'>  37</span>     &#39;GANTrainSteps&#39;,
+<span class='lineno'>  38</span> ]
+<span class='lineno'>  39</span> 
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', title='<GANModel>'>GANModel</a>(
+<span class='lineno'>  42</span>     collections.namedtuple(&#39;GANModel&#39;, (
+<span class='lineno'>  43</span>         &#39;generator_inputs&#39;,
+<span class='lineno'>  44</span>         &#39;generated_data&#39;,
+<span class='lineno'>  45</span>         &#39;generator_variables&#39;,
+<span class='lineno'>  46</span>         &#39;generator_scope&#39;,
+<span class='lineno'>  47</span>         &#39;generator_fn&#39;,
+<span class='lineno'>  48</span>         &#39;real_data&#39;,
+<span class='lineno'>  49</span>         &#39;discriminator_real_outputs&#39;,
+<span class='lineno'>  50</span>         &#39;discriminator_gen_outputs&#39;,
+<span class='lineno'>  51</span>         &#39;discriminator_variables&#39;,
+<span class='lineno'>  52</span>         &#39;discriminator_scope&#39;,
+<span class='lineno'>  53</span>         &#39;discriminator_fn&#39;,
+<span class='lineno'>  54</span>     ))):
+<span class='lineno'>  55</span>   &quot;&quot;&quot;A GANModel contains all the pieces needed for GAN training.
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>   Generative Adversarial Networks (https://arxiv.org/abs/1406.2661) attempt
+<span class='lineno'>  58</span>   to create an implicit generative model of data by solving a two agent game.
+<span class='lineno'>  59</span>   The generator generates candidate examples that are supposed to match the
+<span class='lineno'>  60</span>   data distribution, and the discriminator aims to tell the real examples
+<span class='lineno'>  61</span>   apart from the generated samples.
+<span class='lineno'>  62</span> 
+<span class='lineno'>  63</span>   Args:
+<span class='lineno'>  64</span>     generator_inputs: The random noise source that acts as input to the
+<span class='lineno'>  65</span>       generator.
+<span class='lineno'>  66</span>     generated_data: The generated output data of the GAN.
+<span class='lineno'>  67</span>     generator_variables: A list of all generator variables.
+<span class='lineno'>  68</span>     generator_scope: Variable scope all generator variables live in.
+<span class='lineno'>  69</span>     generator_fn: The generator function.
+<span class='lineno'>  70</span>     real_data: A tensor or real data.
+<span class='lineno'>  71</span>     discriminator_real_outputs: The discriminator&#39;s output on real data.
+<span class='lineno'>  72</span>     discriminator_gen_outputs: The discriminator&#39;s output on generated data.
+<span class='lineno'>  73</span>     discriminator_variables: A list of all discriminator variables.
+<span class='lineno'>  74</span>     discriminator_scope: Variable scope all discriminator variables live in.
+<span class='lineno'>  75</span>     discriminator_fn: The discriminator function.
+<span class='lineno'>  76</span>   &quot;&quot;&quot;
+<span class='lineno'>  77</span> 
+<span class='lineno'>  78</span> 
+<span class='lineno'>  79</span> # TODO(joelshor): Have this class inherit from `GANModel`.
+<span class='lineno'>  80</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.InfoGANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.InfoGANModel', title='<InfoGANModel>'>InfoGANModel</a>(
+<span class='lineno'>  81</span>     collections.namedtuple(&#39;InfoGANModel&#39;, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', title='<GANModel>'>GANModel</a>._fields + (
+<span class='lineno'>  82</span>         &#39;structured_generator_inputs&#39;,
+<span class='lineno'>  83</span>         &#39;predicted_distributions&#39;,
+<span class='lineno'>  84</span>         &#39;discriminator_and_aux_fn&#39;,
+<span class='lineno'>  85</span>     ))):
+<span class='lineno'>  86</span>   &quot;&quot;&quot;An InfoGANModel contains all the pieces needed for InfoGAN training.
+<span class='lineno'>  87</span> 
+<span class='lineno'>  88</span>   See https://arxiv.org/abs/1606.03657 for more details.
+<span class='lineno'>  89</span> 
+<span class='lineno'>  90</span>   Args:
+<span class='lineno'>  91</span>     structured_generator_inputs: A list of Tensors representing the random noise
+<span class='lineno'>  92</span>       that must  have high mutual information with the generator output. List
+<span class='lineno'>  93</span>       length should match `predicted_distributions`.
+<span class='lineno'>  94</span>     predicted_distributions: A list of `tfp.distributions.Distribution`s.
+<span class='lineno'>  95</span>       Predicted by the recognizer, and used to evaluate the likelihood of the
+<span class='lineno'>  96</span>       structured noise. List length should match `structured_generator_inputs`.
+<span class='lineno'>  97</span>     discriminator_and_aux_fn: The original discriminator function that returns
+<span class='lineno'>  98</span>       a tuple of (logits, `predicted_distributions`).
+<span class='lineno'>  99</span>   &quot;&quot;&quot;
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span> 
+<span class='lineno'> 102</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.ACGANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.ACGANModel', title='<ACGANModel>'>ACGANModel</a>(
+<span class='lineno'> 103</span>     collections.namedtuple(&#39;ACGANModel&#39;, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANModel', title='<GANModel>'>GANModel</a>._fields +
+<span class='lineno'> 104</span>                            (&#39;one_hot_labels&#39;,
+<span class='lineno'> 105</span>                             &#39;discriminator_real_classification_logits&#39;,
+<span class='lineno'> 106</span>                             &#39;discriminator_gen_classification_logits&#39;,))):
+<span class='lineno'> 107</span>   &quot;&quot;&quot;An ACGANModel contains all the pieces needed for ACGAN training.
+<span class='lineno'> 108</span> 
+<span class='lineno'> 109</span>   See https://arxiv.org/abs/1610.09585 for more details.
+<span class='lineno'> 110</span> 
+<span class='lineno'> 111</span>   Args:
+<span class='lineno'> 112</span>     one_hot_labels: A Tensor holding one-hot-labels for the batch.
+<span class='lineno'> 113</span>     discriminator_real_classification_logits: Classification logits for real
+<span class='lineno'> 114</span>       data.
+<span class='lineno'> 115</span>     discriminator_gen_classification_logits: Classification logits for generated
+<span class='lineno'> 116</span>       data.
+<span class='lineno'> 117</span>   &quot;&quot;&quot;
+<span class='lineno'> 118</span> 
+<span class='lineno'> 119</span> 
+<span class='lineno'> 120</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANModel', title='<CycleGANModel>'>CycleGANModel</a>(
+<span class='lineno'> 121</span>     collections.namedtuple(
+<span class='lineno'> 122</span>         &#39;CycleGANModel&#39;,
+<span class='lineno'> 123</span>         (&#39;model_x2y&#39;, &#39;model_y2x&#39;, &#39;reconstructed_x&#39;, &#39;reconstructed_y&#39;))):
+<span class='lineno'> 124</span>   &quot;&quot;&quot;An CycleGANModel contains all the pieces needed for CycleGAN training.
+<span class='lineno'> 125</span> 
+<span class='lineno'> 126</span>   The model `model_x2y` generator F maps data set X to Y, while the model
+<span class='lineno'> 127</span>   `model_y2x` generator G maps data set Y to X.
+<span class='lineno'> 128</span> 
+<span class='lineno'> 129</span>   See https://arxiv.org/abs/1703.10593 for more details.
+<span class='lineno'> 130</span> 
+<span class='lineno'> 131</span>   Args:
+<span class='lineno'> 132</span>     model_x2y: A `GANModel` namedtuple whose generator maps data set X to Y.
+<span class='lineno'> 133</span>     model_y2x: A `GANModel` namedtuple whose generator maps data set Y to X.
+<span class='lineno'> 134</span>     reconstructed_x: A `Tensor` of reconstructed data X which is G(F(X)).
+<span class='lineno'> 135</span>     reconstructed_y: A `Tensor` of reconstructed data Y which is F(G(Y)).
+<span class='lineno'> 136</span>   &quot;&quot;&quot;
+<span class='lineno'> 137</span> 
+<span class='lineno'> 138</span> 
+<span class='lineno'> 139</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.StarGANModel', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.StarGANModel', title='<StarGANModel>'>StarGANModel</a>(
+<span class='lineno'> 140</span>     collections.namedtuple(&#39;StarGANModel&#39;, (
+<span class='lineno'> 141</span>         &#39;input_data&#39;,
+<span class='lineno'> 142</span>         &#39;input_data_domain_label&#39;,
+<span class='lineno'> 143</span>         &#39;generated_data&#39;,
+<span class='lineno'> 144</span>         &#39;generated_data_domain_target&#39;,
+<span class='lineno'> 145</span>         &#39;reconstructed_data&#39;,
+<span class='lineno'> 146</span>         &#39;discriminator_input_data_source_predication&#39;,
+<span class='lineno'> 147</span>         &#39;discriminator_generated_data_source_predication&#39;,
+<span class='lineno'> 148</span>         &#39;discriminator_input_data_domain_predication&#39;,
+<span class='lineno'> 149</span>         &#39;discriminator_generated_data_domain_predication&#39;,
+<span class='lineno'> 150</span>         &#39;generator_variables&#39;,
+<span class='lineno'> 151</span>         &#39;generator_scope&#39;,
+<span class='lineno'> 152</span>         &#39;generator_fn&#39;,
+<span class='lineno'> 153</span>         &#39;discriminator_variables&#39;,
+<span class='lineno'> 154</span>         &#39;discriminator_scope&#39;,
+<span class='lineno'> 155</span>         &#39;discriminator_fn&#39;,
+<span class='lineno'> 156</span>     ))):
+<span class='lineno'> 157</span>   &quot;&quot;&quot;A StarGANModel contains all the pieces needed for StarGAN training.
+<span class='lineno'> 158</span> 
+<span class='lineno'> 159</span>   Args:
+<span class='lineno'> 160</span>     input_data: The real images that need to be transferred by the generator.
+<span class='lineno'> 161</span>     input_data_domain_label: The real domain labels associated with the real
+<span class='lineno'> 162</span>       images.
+<span class='lineno'> 163</span>     generated_data: The generated images produced by the generator. It has the
+<span class='lineno'> 164</span>       same shape as the input_data.
+<span class='lineno'> 165</span>     generated_data_domain_target: The target domain that the generated images
+<span class='lineno'> 166</span>       belong to. It has the same shape as the input_data_domain_label.
+<span class='lineno'> 167</span>     reconstructed_data: The reconstructed images produced by the G(enerator).
+<span class='lineno'> 168</span>       reconstructed_data = G(G(input_data, generated_data_domain_target),
+<span class='lineno'> 169</span>       input_data_domain_label).
+<span class='lineno'> 170</span>     discriminator_input_data_source: The discriminator&#39;s output for predicting
+<span class='lineno'> 171</span>       the source (real/generated) of input_data.
+<span class='lineno'> 172</span>     discriminator_generated_data_source: The discriminator&#39;s output for
+<span class='lineno'> 173</span>       predicting the source (real/generated) of  generated_data.
+<span class='lineno'> 174</span>     discriminator_input_data_domain_predication: The discriminator&#39;s output for
+<span class='lineno'> 175</span>       predicting the domain_label for the input_data.
+<span class='lineno'> 176</span>     discriminator_generated_data_domain_predication: The discriminatorr&#39;s output
+<span class='lineno'> 177</span>       for predicting the domain_target for the generated_data.
+<span class='lineno'> 178</span>     generator_variables: A list of all generator variables.
+<span class='lineno'> 179</span>     generator_scope: Variable scope all generator variables live in.
+<span class='lineno'> 180</span>     generator_fn: The generator function.
+<span class='lineno'> 181</span>     discriminator_variables: A list of all discriminator variables.
+<span class='lineno'> 182</span>     discriminator_scope: Variable scope all discriminator variables live in.
+<span class='lineno'> 183</span>     discriminator_fn: The discriminator function.
+<span class='lineno'> 184</span>   &quot;&quot;&quot;
+<span class='lineno'> 185</span> 
+<span class='lineno'> 186</span> 
+<span class='lineno'> 187</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANLoss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANLoss', title='<GANLoss>'>GANLoss</a>(
+<span class='lineno'> 188</span>     collections.namedtuple(&#39;GANLoss&#39;, (
+<span class='lineno'> 189</span>         &#39;generator_loss&#39;,
+<span class='lineno'> 190</span>         &#39;discriminator_loss&#39;
+<span class='lineno'> 191</span>     ))):
+<span class='lineno'> 192</span>   &quot;&quot;&quot;GANLoss contains the generator and discriminator losses.
+<span class='lineno'> 193</span> 
+<span class='lineno'> 194</span>   Args:
+<span class='lineno'> 195</span>     generator_loss: A tensor for the generator loss.
+<span class='lineno'> 196</span>     discriminator_loss: A tensor for the discriminator loss.
+<span class='lineno'> 197</span>   &quot;&quot;&quot;
+<span class='lineno'> 198</span> 
+<span class='lineno'> 199</span> 
+<span class='lineno'> 200</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANLoss', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.CycleGANLoss', title='<CycleGANLoss>'>CycleGANLoss</a>(
+<span class='lineno'> 201</span>     collections.namedtuple(&#39;CycleGANLoss&#39;, (&#39;loss_x2y&#39;, &#39;loss_y2x&#39;))):
+<span class='lineno'> 202</span>   &quot;&quot;&quot;CycleGANLoss contains the losses for `CycleGANModel`.
+<span class='lineno'> 203</span> 
+<span class='lineno'> 204</span>   See https://arxiv.org/abs/1703.10593 for more details.
+<span class='lineno'> 205</span> 
+<span class='lineno'> 206</span>   Args:
+<span class='lineno'> 207</span>     loss_x2y: A `GANLoss` namedtuple representing the loss of `model_x2y`.
+<span class='lineno'> 208</span>     loss_y2x: A `GANLoss` namedtuple representing the loss of `model_y2x`.
+<span class='lineno'> 209</span>   &quot;&quot;&quot;
+<span class='lineno'> 210</span> 
+<span class='lineno'> 211</span> 
+<span class='lineno'> 212</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainOps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainOps', title='<GANTrainOps>'>GANTrainOps</a>(
+<span class='lineno'> 213</span>     collections.namedtuple(&#39;GANTrainOps&#39;, (
+<span class='lineno'> 214</span>         &#39;generator_train_op&#39;,
+<span class='lineno'> 215</span>         &#39;discriminator_train_op&#39;,
+<span class='lineno'> 216</span>         &#39;global_step_inc_op&#39;
+<span class='lineno'> 217</span>     ))):
+<span class='lineno'> 218</span>   &quot;&quot;&quot;GANTrainOps contains the training ops.
+<span class='lineno'> 219</span> 
+<span class='lineno'> 220</span>   Args:
+<span class='lineno'> 221</span>     generator_train_op: Op that performs a generator update step.
+<span class='lineno'> 222</span>     discriminator_train_op: Op that performs a discriminator update step.
+<span class='lineno'> 223</span>     global_step_inc_op: Op that increments the shared global step.
+<span class='lineno'> 224</span>   &quot;&quot;&quot;
+<span class='lineno'> 225</span> 
+<span class='lineno'> 226</span> 
+<span class='lineno'> 227</span> class <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainSteps', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.gan.python.namedtuples.GANTrainSteps', title='<GANTrainSteps>'>GANTrainSteps</a>(
+<span class='lineno'> 228</span>     collections.namedtuple(&#39;GANTrainSteps&#39;, (
+<span class='lineno'> 229</span>         &#39;generator_train_steps&#39;,
+<span class='lineno'> 230</span>         &#39;discriminator_train_steps&#39;
+<span class='lineno'> 231</span>     ))):
+<span class='lineno'> 232</span>   &quot;&quot;&quot;Contains configuration for the GAN Training.
+<span class='lineno'> 233</span> 
+<span class='lineno'> 234</span>   Args:
+<span class='lineno'> 235</span>     generator_train_steps: Number of generator steps to take in each GAN step.
+<span class='lineno'> 236</span>     discriminator_train_steps: Number of discriminator steps to take in each GAN
+<span class='lineno'> 237</span>       step.
+<span class='lineno'> 238</span>   &quot;&quot;&quot;
+</pre></td></tr></table></body></html>

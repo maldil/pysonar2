@@ -1,0 +1,172 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/platform/self_check.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check'>preload_check</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;Platform-specific code for checking the integrity of the TensorFlow build.&quot;&quot;&quot;
+<span class='lineno'>  17</span> from __future__ import absolute_import
+<span class='lineno'>  18</span> from __future__ import division
+<span class='lineno'>  19</span> from __future__ import print_function
+<span class='lineno'>  20</span> 
+<span class='lineno'>  21</span> import os
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> try:
+<span class='lineno'>  25</span>   from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>
+<span class='lineno'>  26</span> except ImportError:
+<span class='lineno'>  27</span>   raise ImportError(&quot;Could not import tensorflow. Do not import tensorflow &quot;
+<span class='lineno'>  28</span>                     &quot;from its source directory; change directory to outside &quot;
+<span class='lineno'>  29</span>                     &quot;the TensorFlow source tree, and relaunch your Python &quot;
+<span class='lineno'>  30</span>                     &quot;interpreter from there.&quot;)
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.self_check.preload_check', title='() -> ?'>preload_check</a>():
+<span class='lineno'>  34</span>   &quot;&quot;&quot;Raises an exception if the environment is not correctly configured.
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span>   Raises:
+<span class='lineno'>  37</span>     ImportError: If the check detects that the environment is not correctly
+<span class='lineno'>  38</span>       configured, and attempting to load the TensorFlow runtime will fail.
+<span class='lineno'>  39</span>   &quot;&quot;&quot;
+<span class='lineno'>  40</span>   if os.name == &quot;nt&quot;:
+<span class='lineno'>  41</span>     # Attempt to load any DLLs that the Python extension depends on before
+<span class='lineno'>  42</span>     # we load the Python extension, so that we can raise an actionable error
+<span class='lineno'>  43</span>     # message if they are not found.
+<span class='lineno'>  44</span>     import ctypes  # pylint: disable=g-import-not-at-top
+<span class='lineno'>  45</span>     if hasattr(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;msvcp_dll_name&quot;):
+<span class='lineno'>  46</span>       try:
+<span class='lineno'>  47</span>         ctypes.WinDLL(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>.msvcp_dll_name)
+<span class='lineno'>  48</span>       except OSError:
+<span class='lineno'>  49</span>         raise ImportError(
+<span class='lineno'>  50</span>             &quot;Could not find %r. TensorFlow requires that this DLL be &quot;
+<span class='lineno'>  51</span>             &quot;installed in a directory that is named in your %%PATH%% &quot;
+<span class='lineno'>  52</span>             &quot;environment variable. You may install this DLL by downloading &quot;
+<span class='lineno'>  53</span>             &quot;Visual C++ 2015 Redistributable Update 3 from this URL: &quot;
+<span class='lineno'>  54</span>             &quot;https://www.microsoft.com/en-us/download/details.aspx?id=53587&quot;
+<span class='lineno'>  55</span>             % build_info.msvcp_dll_name)
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span>     if <a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>.<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info.is_cuda_build', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info.is_cuda_build', title='bool'>is_cuda_build</a>:
+<span class='lineno'>  58</span>       # Attempt to check that the necessary CUDA DLLs are loadable.
+<span class='lineno'>  59</span> 
+<span class='lineno'>  60</span>       if hasattr(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;nvcuda_dll_name&quot;):
+<span class='lineno'>  61</span>         try:
+<span class='lineno'>  62</span>           ctypes.WinDLL(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>.nvcuda_dll_name)
+<span class='lineno'>  63</span>         except OSError:
+<span class='lineno'>  64</span>           raise ImportError(
+<span class='lineno'>  65</span>               &quot;Could not find %r. TensorFlow requires that this DLL &quot;
+<span class='lineno'>  66</span>               &quot;be installed in a directory that is named in your %%PATH%% &quot;
+<span class='lineno'>  67</span>               &quot;environment variable. Typically it is installed in &quot;
+<span class='lineno'>  68</span>               &quot;&#39;C:\\Windows\\System32&#39;. If it is not present, ensure that you &quot;
+<span class='lineno'>  69</span>               &quot;have a CUDA-capable GPU with the correct driver installed.&quot;
+<span class='lineno'>  70</span>               % build_info.nvcuda_dll_name)
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>       if hasattr(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;cudart_dll_name&quot;) and hasattr(
+<span class='lineno'>  73</span>           <a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;cuda_version_number&quot;):
+<span class='lineno'>  74</span>         try:
+<span class='lineno'>  75</span>           ctypes.WinDLL(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>.cudart_dll_name)
+<span class='lineno'>  76</span>         except OSError:
+<span class='lineno'>  77</span>           raise ImportError(
+<span class='lineno'>  78</span>               &quot;Could not find %r. TensorFlow requires that this DLL be &quot;
+<span class='lineno'>  79</span>               &quot;installed in a directory that is named in your %%PATH%% &quot;
+<span class='lineno'>  80</span>               &quot;environment variable. Download and install CUDA %s from &quot;
+<span class='lineno'>  81</span>               &quot;this URL: https://developer.nvidia.com/cuda-90-download-archive&quot;
+<span class='lineno'>  82</span>               % (build_info.cudart_dll_name, build_info.cuda_version_number))
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span>       if hasattr(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;cudnn_dll_name&quot;) and hasattr(
+<span class='lineno'>  85</span>           <a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>, &quot;cudnn_version_number&quot;):
+<span class='lineno'>  86</span>         try:
+<span class='lineno'>  87</span>           ctypes.WinDLL(<a href='build_info.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.build_info', title='build_info'>build_info</a>.cudnn_dll_name)
+<span class='lineno'>  88</span>         except OSError:
+<span class='lineno'>  89</span>           raise ImportError(
+<span class='lineno'>  90</span>               &quot;Could not find %r. TensorFlow requires that this DLL be &quot;
+<span class='lineno'>  91</span>               &quot;installed in a directory that is named in your %%PATH%% &quot;
+<span class='lineno'>  92</span>               &quot;environment variable. Note that installing cuDNN is a separate &quot;
+<span class='lineno'>  93</span>               &quot;step from installing CUDA, and this DLL is often found in a &quot;
+<span class='lineno'>  94</span>               &quot;different directory from the CUDA DLLs. You may install the &quot;
+<span class='lineno'>  95</span>               &quot;necessary DLL by downloading cuDNN %s from this URL: &quot;
+<span class='lineno'>  96</span>               &quot;https://developer.nvidia.com/cudnn&quot;
+<span class='lineno'>  97</span>               % (build_info.cudnn_dll_name, build_info.cudnn_version_number))
+<span class='lineno'>  98</span> 
+<span class='lineno'>  99</span>   else:
+<span class='lineno'> 100</span>     # TODO(mrry): Consider adding checks for the Linux and Mac OS X builds.
+<span class='lineno'> 101</span>     pass
+</pre></td></tr></table></body></html>

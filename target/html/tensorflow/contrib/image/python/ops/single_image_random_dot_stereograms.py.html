@@ -1,0 +1,202 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/image/python/ops/single_image_random_dot_stereograms.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#<?>', xid='<?>'><?></a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms'>single_image_random_dot_stereograms</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Python layer for image_ops.&quot;&quot;&quot;
+<span class='lineno'>  16</span> from __future__ import absolute_import
+<span class='lineno'>  17</span> from __future__ import division
+<span class='lineno'>  18</span> from __future__ import print_function
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image', title='image'>image</a>.<a href='../../ops/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops', title='ops'>ops</a> import <a href='../../ops/gen_single_image_random_dot_stereograms_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops', title='gen_single_image_random_dot_stereograms_ops'>gen_single_image_random_dot_stereograms_ops</a>
+<span class='lineno'>  21</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util', title='util'>util</a> import <a href='../../../util/loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader', title='loader'>loader</a>
+<span class='lineno'>  22</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/framework/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  23</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/platform/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform', title='platform'>platform</a> import <a href='../../../../python/platform/resource_loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader', title='resource_loader'>resource_loader</a>
+<span class='lineno'>  24</span> 
+<span class='lineno'>  25</span> <a name='<?>', xid ='<?>', title='<?>'>_sirds_ops</a> = <a href='../../../util/loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader', title='loader'>loader</a>.<a href='../../../util/loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader.load_op_library', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.util.loader.load_op_library', title='str -> <?>'>load_op_library</a>(
+<span class='lineno'>  26</span>     <a href='../../../../python/platform/resource_loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader', title='resource_loader'>resource_loader</a>.<a href='../../../../python/platform/resource_loader.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.platform.resource_loader.get_path_to_datafile', title='str -> str'>get_path_to_datafile</a>(
+<span class='lineno'>  27</span>         &quot;_single_image_random_dot_stereograms.so&quot;))
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> 
+<span class='lineno'>  30</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms', title='(?, None, None, None, None, None, None, None, None, None, None, None, None) -> None'>single_image_random_dot_stereograms</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.depth_values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.depth_values', title='?'>depth_values</a>,
+<span class='lineno'>  31</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.hidden_surface_removal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.hidden_surface_removal', title='None'>hidden_surface_removal</a>=None,
+<span class='lineno'>  32</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.convergence_dots_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.convergence_dots_size', title='None'>convergence_dots_size</a>=None,
+<span class='lineno'>  33</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.dots_per_inch', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.dots_per_inch', title='None'>dots_per_inch</a>=None,
+<span class='lineno'>  34</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.eye_separation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.eye_separation', title='None'>eye_separation</a>=None,
+<span class='lineno'>  35</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.mu', title='None'>mu</a>=None,
+<span class='lineno'>  36</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize', title='None'>normalize</a>=None,
+<span class='lineno'>  37</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_max', title='None'>normalize_max</a>=None,
+<span class='lineno'>  38</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_min', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_min', title='None'>normalize_min</a>=None,
+<span class='lineno'>  39</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.border_level', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.border_level', title='None'>border_level</a>=None,
+<span class='lineno'>  40</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.number_colors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.number_colors', title='None'>number_colors</a>=None,
+<span class='lineno'>  41</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_image_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_image_shape', title='None'>output_image_shape</a>=None,
+<span class='lineno'>  42</span>                                         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_data_window', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_data_window', title='None'>output_data_window</a>=None):
+<span class='lineno'>  43</span>   &quot;&quot;&quot;Output a RandomDotStereogram Tensor for export via encode_PNG/JPG OP.
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   Given the 2-D tensor &#39;depth_values&#39; with encoded Z values, this operation
+<span class='lineno'>  46</span>   will encode 3-D data into a 2-D image.  The output of this Op is suitable
+<span class='lineno'>  47</span>   for the encode_PNG/JPG ops.  Be careful with image compression as this may
+<span class='lineno'>  48</span>   corrupt the encode 3-D data within the image.
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span>   Based upon [this
+<span class='lineno'>  51</span>   paper](http://www.learningace.com/doc/4331582/b6ab058d1e206d68ab60e4e1ead2fe6e/sirds-paper).
+<span class='lineno'>  52</span> 
+<span class='lineno'>  53</span>   This outputs a SIRDS image as picture_out.png:
+<span class='lineno'>  54</span> 
+<span class='lineno'>  55</span>   ```python
+<span class='lineno'>  56</span>   img=[[1,2,3,3,2,1],
+<span class='lineno'>  57</span>        [1,2,3,4,5,2],
+<span class='lineno'>  58</span>        [1,2,3,4,5,3],
+<span class='lineno'>  59</span>        [1,2,3,4,5,4],
+<span class='lineno'>  60</span>        [6,5,4,4,5,5]]
+<span class='lineno'>  61</span>   session = tf.InteractiveSession()
+<span class='lineno'>  62</span>   sirds = single_image_random_dot_stereograms(
+<span class='lineno'>  63</span>       img,
+<span class='lineno'>  64</span>       convergence_dots_size=8,
+<span class='lineno'>  65</span>       number_colors=256,normalize=True)
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   out = sirds.eval()
+<span class='lineno'>  68</span>   png = tf.image.encode_png(out).eval()
+<span class='lineno'>  69</span>   with open(&#39;picture_out.png&#39;, &#39;wb&#39;) as f:
+<span class='lineno'>  70</span>     f.write(png)
+<span class='lineno'>  71</span>   ```
+<span class='lineno'>  72</span> 
+<span class='lineno'>  73</span>   Args:
+<span class='lineno'>  74</span>     depth_values: A `Tensor`. Must be one of the following types:
+<span class='lineno'>  75</span>       `float64`, `float32`, `int64`, `int32`.  Z values of data to encode
+<span class='lineno'>  76</span>       into &#39;output_data_window&#39; window, lower further away {0.0 floor(far),
+<span class='lineno'>  77</span>       1.0 ceiling(near) after norm}, must be 2-D tensor
+<span class='lineno'>  78</span>     hidden_surface_removal: An optional `bool`. Defaults to `True`.
+<span class='lineno'>  79</span>       Activate hidden surface removal
+<span class='lineno'>  80</span>     convergence_dots_size: An optional `int`. Defaults to `8`.
+<span class='lineno'>  81</span>       Black dot size in pixels to help view converge image, drawn on bottom
+<span class='lineno'>  82</span>       of the image
+<span class='lineno'>  83</span>     dots_per_inch: An optional `int`. Defaults to `72`.
+<span class='lineno'>  84</span>       Output device in dots/inch
+<span class='lineno'>  85</span>     eye_separation: An optional `float`. Defaults to `2.5`.
+<span class='lineno'>  86</span>       Separation between eyes in inches
+<span class='lineno'>  87</span>     mu: An optional `float`. Defaults to `0.3333`.
+<span class='lineno'>  88</span>       Depth of field, Fraction of viewing distance (eg. 1/3 = 0.3333)
+<span class='lineno'>  89</span>     normalize: An optional `bool`. Defaults to `True`.
+<span class='lineno'>  90</span>       Normalize input data to [0.0, 1.0]
+<span class='lineno'>  91</span>     normalize_max: An optional `float`. Defaults to `-100`.
+<span class='lineno'>  92</span>       Fix MAX value for Normalization (0.0) - if &lt; MIN, autoscale
+<span class='lineno'>  93</span>     normalize_min: An optional `float`. Defaults to `100`.
+<span class='lineno'>  94</span>       Fix MIN value for Normalization (0.0) - if &gt; MAX, autoscale
+<span class='lineno'>  95</span>     border_level: An optional `float`. Defaults to `0`.
+<span class='lineno'>  96</span>       Value of bord in depth 0.0 {far} to 1.0 {near}
+<span class='lineno'>  97</span>     number_colors: An optional `int`. Defaults to `256`. 2 (Black &amp;
+<span class='lineno'>  98</span>       White), 256 (grayscale), and Numbers &gt; 256 (Full Color) are
+<span class='lineno'>  99</span>       supported
+<span class='lineno'> 100</span>     output_image_shape: An optional `tf.TensorShape` or list of `ints`.
+<span class='lineno'> 101</span>       Defaults to shape `[1024, 768, 1]`. Defines output shape of returned
+<span class='lineno'> 102</span>       image in &#39;[X,Y, Channels]&#39; 1-grayscale, 3 color; channels will be
+<span class='lineno'> 103</span>       updated to 3 if number_colors &gt; 256
+<span class='lineno'> 104</span>     output_data_window: An optional `tf.TensorShape` or list of `ints`.
+<span class='lineno'> 105</span>       Defaults to `[1022, 757]`. Size of &quot;DATA&quot; window, must be equal to or
+<span class='lineno'> 106</span>       smaller than `output_image_shape`, will be centered and use
+<span class='lineno'> 107</span>       `convergence_dots_size` for best fit to avoid overlap if possible
+<span class='lineno'> 108</span> 
+<span class='lineno'> 109</span>   Returns:
+<span class='lineno'> 110</span>     A `Tensor` of type `uint8` of shape &#39;output_image_shape&#39; with encoded
+<span class='lineno'> 111</span>     &#39;depth_values&#39;
+<span class='lineno'> 112</span>   &quot;&quot;&quot;
+<span class='lineno'> 113</span> 
+<span class='lineno'> 114</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.result', title='?'>result</a> = <a href='../../ops/gen_single_image_random_dot_stereograms_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops', title='gen_single_image_random_dot_stereograms_ops'>gen_single_image_random_dot_stereograms_ops</a>.<a href='../../ops/gen_single_image_random_dot_stereograms_ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops.single_image_random_dot_stereograms', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.ops.gen_single_image_random_dot_stereograms_ops.single_image_random_dot_stereograms', title='(?, bool, int, int, float, float, bool, int, int, int, int, [int], [int], None) -> ?'>single_image_random_dot_stereograms</a>(  # pylint: disable=line-too-long
+<span class='lineno'> 115</span>       depth_values=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.depth_values', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.depth_values', title='?'>depth_values</a>,
+<span class='lineno'> 116</span>       hidden_surface_removal=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.hidden_surface_removal', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.hidden_surface_removal', title='None'>hidden_surface_removal</a>,
+<span class='lineno'> 117</span>       convergence_dots_size=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.convergence_dots_size', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.convergence_dots_size', title='None'>convergence_dots_size</a>,
+<span class='lineno'> 118</span>       dots_per_inch=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.dots_per_inch', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.dots_per_inch', title='None'>dots_per_inch</a>,
+<span class='lineno'> 119</span>       eye_separation=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.eye_separation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.eye_separation', title='None'>eye_separation</a>,
+<span class='lineno'> 120</span>       mu=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.mu', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.mu', title='None'>mu</a>,
+<span class='lineno'> 121</span>       normalize=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize', title='None'>normalize</a>,
+<span class='lineno'> 122</span>       normalize_max=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_max', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_max', title='None'>normalize_max</a>,
+<span class='lineno'> 123</span>       normalize_min=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_min', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.normalize_min', title='None'>normalize_min</a>,
+<span class='lineno'> 124</span>       border_level=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.border_level', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.border_level', title='None'>border_level</a>,
+<span class='lineno'> 125</span>       number_colors=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.number_colors', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.number_colors', title='None'>number_colors</a>,
+<span class='lineno'> 126</span>       output_image_shape=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_image_shape', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_image_shape', title='None'>output_image_shape</a>,
+<span class='lineno'> 127</span>       output_data_window=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_data_window', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.output_data_window', title='None'>output_data_window</a>)
+<span class='lineno'> 128</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.result', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.image.python.ops.single_image_random_dot_stereograms.single_image_random_dot_stereograms.result', title='?'>result</a>
+<span class='lineno'> 129</span> 
+<span class='lineno'> 130</span> 
+<span class='lineno'> 131</span> <a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.<a href='../../../../python/framework/ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.NotDifferentiable', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops.NotDifferentiable', title='str -> None'>NotDifferentiable</a>(&quot;SingleImageRandomDotStereograms&quot;)
+</pre></td></tr></table></body></html>

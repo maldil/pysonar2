@@ -1,0 +1,255 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/python/framework/random_seed.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED'>DEFAULT_GRAPH_SEED</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32'>_MAXINT32</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed'>_truncate_seed</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed'>get_seed</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed'>set_random_seed</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> 
+<span class='lineno'>  16</span> &quot;&quot;&quot;For seeding individual ops based on a graph-level seed.
+<span class='lineno'>  17</span> &quot;&quot;&quot;
+<span class='lineno'>  18</span> 
+<span class='lineno'>  19</span> from __future__ import absolute_import
+<span class='lineno'>  20</span> from __future__ import division
+<span class='lineno'>  21</span> from __future__ import print_function
+<span class='lineno'>  22</span> 
+<span class='lineno'>  23</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../eager/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager', title='eager'>eager</a> import <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>
+<span class='lineno'>  24</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework', title='framework'>framework</a> import <a href='ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>
+<span class='lineno'>  25</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a> import <a href='../util/deprecation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.deprecation', title='deprecation'>deprecation</a>
+<span class='lineno'>  26</span> from <a href='../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../util/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util', title='util'>util</a>.<a href='../util/tf_export.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.util.tf_export', title='tf_export'>tf_export</a> import tf_export
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span> 
+<span class='lineno'>  29</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED', title='int'>DEFAULT_GRAPH_SEED</a> = 87654321
+<span class='lineno'>  30</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', title='int'>_MAXINT32</a> = 2**31 - 1
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span> 
+<span class='lineno'>  33</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', title='int -> int / {None | int} -> ? / None -> ? / ? -> int'>_truncate_seed</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed.seed', title='{None | int}'>seed</a>):
+<span class='lineno'>  34</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed.seed', title='{None | int}'>seed</a> % <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', title='int'>_MAXINT32</a>  # Truncate to fit into 32-bit integer
+<span class='lineno'>  35</span> 
+<span class='lineno'>  36</span> 
+<span class='lineno'>  37</span> @tf_export(&#39;random.get_seed&#39;, &#39;get_seed&#39;)
+<span class='lineno'>  38</span> @deprecation.deprecated_endpoints(&#39;get_seed&#39;)
+<span class='lineno'>  39</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed', title='int -> (int, int) / None -> (int, int) / ? -> (int, int)'>get_seed</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='int'>op_seed</a>):
+<span class='lineno'>  40</span>   &quot;&quot;&quot;Returns the local seeds an operation should use given an op-specific seed.
+<span class='lineno'>  41</span> 
+<span class='lineno'>  42</span>   Given operation-specific seed, `op_seed`, this helper function returns two
+<span class='lineno'>  43</span>   seeds derived from graph-level and op-level seeds. Many random operations
+<span class='lineno'>  44</span>   internally use the two seeds to allow user to change the seed globally for a
+<span class='lineno'>  45</span>   graph, or for only specific operations.
+<span class='lineno'>  46</span> 
+<span class='lineno'>  47</span>   For details on how the graph-level seed interacts with op seeds, see
+<span class='lineno'>  48</span>   `tf.set_random_seed`.
+<span class='lineno'>  49</span> 
+<span class='lineno'>  50</span>   Args:
+<span class='lineno'>  51</span>     op_seed: integer.
+<span class='lineno'>  52</span> 
+<span class='lineno'>  53</span>   Returns:
+<span class='lineno'>  54</span>     A tuple of two integers that should be used for the local seed of this
+<span class='lineno'>  55</span>     operation.
+<span class='lineno'>  56</span>   &quot;&quot;&quot;
+<span class='lineno'>  57</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', title='bool'>eager</a> = <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', title='() -> bool'>executing_eagerly</a>()
+<span class='lineno'>  58</span> 
+<span class='lineno'>  59</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', title='bool'>eager</a>:
+<span class='lineno'>  60</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', title='None'>global_seed</a> = <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.global_seed', title='() -> None'>global_seed</a>()
+<span class='lineno'>  61</span>   else:
+<span class='lineno'>  62</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', title='?'>global_seed</a> = <a href='ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.get_default_graph().seed
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', title='None'>global_seed</a> is not None:
+<span class='lineno'>  65</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='int'>op_seed</a> is None:
+<span class='lineno'>  66</span>       # pylint: disable=protected-access
+<span class='lineno'>  67</span>       if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.eager', title='bool'>eager</a>:
+<span class='lineno'>  68</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='None'>op_seed</a> = <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.internal_operation_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.internal_operation_seed', title='() -> None'>internal_operation_seed</a>()
+<span class='lineno'>  69</span>       else:
+<span class='lineno'>  70</span>         <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='?'>op_seed</a> = <a href='ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.get_default_graph()._last_id
+<span class='lineno'>  71</span> 
+<span class='lineno'>  72</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', title='(?, ?)'>seeds</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', title='int -> int / {None | int} -> ? / None -> ? / ? -> int'>_truncate_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.global_seed', title='None'>global_seed</a>), <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', title='int -> int / {None | int} -> ? / None -> ? / ? -> int'>_truncate_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='{None | int}'>op_seed</a>)
+<span class='lineno'>  73</span>   else:
+<span class='lineno'>  74</span>     if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='int'>op_seed</a> is not None:
+<span class='lineno'>  75</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', title='(int, int)'>seeds</a> = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.DEFAULT_GRAPH_SEED', title='int'>DEFAULT_GRAPH_SEED</a>, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._truncate_seed', title='int -> int / {None | int} -> ? / None -> ? / ? -> int'>_truncate_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.op_seed', title='int'>op_seed</a>)
+<span class='lineno'>  76</span>     else:
+<span class='lineno'>  77</span>       <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', title='(None, None)'>seeds</a> = None, None
+<span class='lineno'>  78</span>   # Avoid (0, 0) as the C++ ops interpret it as nondeterminism, which would
+<span class='lineno'>  79</span>   # be unexpected since Python docs say nondeterminism is (None, None).
+<span class='lineno'>  80</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', title='(int, int)'>seeds</a> == (0, 0):
+<span class='lineno'>  81</span>     return (0, <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed._MAXINT32', title='int'>_MAXINT32</a>)
+<span class='lineno'>  82</span>   return <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.get_seed.seeds', title='(int, int)'>seeds</a>
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span> 
+<span class='lineno'>  85</span> @tf_export(&#39;random.set_random_seed&#39;, &#39;set_random_seed&#39;)
+<span class='lineno'>  86</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed', title='int -> None / RunConfig -> ? -> None / RunConfig -> None -> None / ? -> None'>set_random_seed</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', title='{RunConfig -> ? | RunConfig -> None | int}'>seed</a>):
+<span class='lineno'>  87</span>   &quot;&quot;&quot;Sets the graph-level random seed.
+<span class='lineno'>  88</span> 
+<span class='lineno'>  89</span>   Operations that rely on a random seed actually derive it from two seeds:
+<span class='lineno'>  90</span>   the graph-level and operation-level seeds. This sets the graph-level seed.
+<span class='lineno'>  91</span> 
+<span class='lineno'>  92</span>   Its interactions with operation-level seeds is as follows:
+<span class='lineno'>  93</span> 
+<span class='lineno'>  94</span>     1. If neither the graph-level nor the operation seed is set:
+<span class='lineno'>  95</span>       A random seed is used for this op.
+<span class='lineno'>  96</span>     2. If the graph-level seed is set, but the operation seed is not:
+<span class='lineno'>  97</span>       The system deterministically picks an operation seed in conjunction
+<span class='lineno'>  98</span>       with the graph-level seed so that it gets a unique random sequence.
+<span class='lineno'>  99</span>     3. If the graph-level seed is not set, but the operation seed is set:
+<span class='lineno'> 100</span>       A default graph-level seed and the specified operation seed are used to
+<span class='lineno'> 101</span>       determine the random sequence.
+<span class='lineno'> 102</span>     4. If both the graph-level and the operation seed are set:
+<span class='lineno'> 103</span>       Both seeds are used in conjunction to determine the random sequence.
+<span class='lineno'> 104</span> 
+<span class='lineno'> 105</span>   To illustrate the user-visible effects, consider these examples:
+<span class='lineno'> 106</span> 
+<span class='lineno'> 107</span>   To generate different sequences across sessions, set neither
+<span class='lineno'> 108</span>   graph-level nor op-level seeds:
+<span class='lineno'> 109</span> 
+<span class='lineno'> 110</span>   ```python
+<span class='lineno'> 111</span>   a = tf.random_uniform([1])
+<span class='lineno'> 112</span>   b = tf.random_normal([1])
+<span class='lineno'> 113</span> 
+<span class='lineno'> 114</span>   print(&quot;Session 1&quot;)
+<span class='lineno'> 115</span>   with tf.Session() as sess1:
+<span class='lineno'> 116</span>     print(sess1.run(a))  # generates &#39;A1&#39;
+<span class='lineno'> 117</span>     print(sess1.run(a))  # generates &#39;A2&#39;
+<span class='lineno'> 118</span>     print(sess1.run(b))  # generates &#39;B1&#39;
+<span class='lineno'> 119</span>     print(sess1.run(b))  # generates &#39;B2&#39;
+<span class='lineno'> 120</span> 
+<span class='lineno'> 121</span>   print(&quot;Session 2&quot;)
+<span class='lineno'> 122</span>   with tf.Session() as sess2:
+<span class='lineno'> 123</span>     print(sess2.run(a))  # generates &#39;A3&#39;
+<span class='lineno'> 124</span>     print(sess2.run(a))  # generates &#39;A4&#39;
+<span class='lineno'> 125</span>     print(sess2.run(b))  # generates &#39;B3&#39;
+<span class='lineno'> 126</span>     print(sess2.run(b))  # generates &#39;B4&#39;
+<span class='lineno'> 127</span>   ```
+<span class='lineno'> 128</span> 
+<span class='lineno'> 129</span>   To generate the same repeatable sequence for an op across sessions, set the
+<span class='lineno'> 130</span>   seed for the op:
+<span class='lineno'> 131</span> 
+<span class='lineno'> 132</span>   ```python
+<span class='lineno'> 133</span>   a = tf.random_uniform([1], seed=1)
+<span class='lineno'> 134</span>   b = tf.random_normal([1])
+<span class='lineno'> 135</span> 
+<span class='lineno'> 136</span>   # Repeatedly running this block with the same graph will generate the same
+<span class='lineno'> 137</span>   # sequence of values for &#39;a&#39;, but different sequences of values for &#39;b&#39;.
+<span class='lineno'> 138</span>   print(&quot;Session 1&quot;)
+<span class='lineno'> 139</span>   with tf.Session() as sess1:
+<span class='lineno'> 140</span>     print(sess1.run(a))  # generates &#39;A1&#39;
+<span class='lineno'> 141</span>     print(sess1.run(a))  # generates &#39;A2&#39;
+<span class='lineno'> 142</span>     print(sess1.run(b))  # generates &#39;B1&#39;
+<span class='lineno'> 143</span>     print(sess1.run(b))  # generates &#39;B2&#39;
+<span class='lineno'> 144</span> 
+<span class='lineno'> 145</span>   print(&quot;Session 2&quot;)
+<span class='lineno'> 146</span>   with tf.Session() as sess2:
+<span class='lineno'> 147</span>     print(sess2.run(a))  # generates &#39;A1&#39;
+<span class='lineno'> 148</span>     print(sess2.run(a))  # generates &#39;A2&#39;
+<span class='lineno'> 149</span>     print(sess2.run(b))  # generates &#39;B3&#39;
+<span class='lineno'> 150</span>     print(sess2.run(b))  # generates &#39;B4&#39;
+<span class='lineno'> 151</span>   ```
+<span class='lineno'> 152</span> 
+<span class='lineno'> 153</span>   To make the random sequences generated by all ops be repeatable across
+<span class='lineno'> 154</span>   sessions, set a graph-level seed:
+<span class='lineno'> 155</span> 
+<span class='lineno'> 156</span>   ```python
+<span class='lineno'> 157</span>   tf.set_random_seed(1234)
+<span class='lineno'> 158</span>   a = tf.random_uniform([1])
+<span class='lineno'> 159</span>   b = tf.random_normal([1])
+<span class='lineno'> 160</span> 
+<span class='lineno'> 161</span>   # Repeatedly running this block with the same graph will generate the same
+<span class='lineno'> 162</span>   # sequences of &#39;a&#39; and &#39;b&#39;.
+<span class='lineno'> 163</span>   print(&quot;Session 1&quot;)
+<span class='lineno'> 164</span>   with tf.Session() as sess1:
+<span class='lineno'> 165</span>     print(sess1.run(a))  # generates &#39;A1&#39;
+<span class='lineno'> 166</span>     print(sess1.run(a))  # generates &#39;A2&#39;
+<span class='lineno'> 167</span>     print(sess1.run(b))  # generates &#39;B1&#39;
+<span class='lineno'> 168</span>     print(sess1.run(b))  # generates &#39;B2&#39;
+<span class='lineno'> 169</span> 
+<span class='lineno'> 170</span>   print(&quot;Session 2&quot;)
+<span class='lineno'> 171</span>   with tf.Session() as sess2:
+<span class='lineno'> 172</span>     print(sess2.run(a))  # generates &#39;A1&#39;
+<span class='lineno'> 173</span>     print(sess2.run(a))  # generates &#39;A2&#39;
+<span class='lineno'> 174</span>     print(sess2.run(b))  # generates &#39;B1&#39;
+<span class='lineno'> 175</span>     print(sess2.run(b))  # generates &#39;B2&#39;
+<span class='lineno'> 176</span>   ```
+<span class='lineno'> 177</span> 
+<span class='lineno'> 178</span>   Args:
+<span class='lineno'> 179</span>     seed: integer.
+<span class='lineno'> 180</span>   &quot;&quot;&quot;
+<span class='lineno'> 181</span>   if <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.executing_eagerly', title='() -> bool'>executing_eagerly</a>():
+<span class='lineno'> 182</span>     <a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context', title='context'>context</a>.<a href='../eager/context.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.set_global_seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.eager.context.set_global_seed', title='int -> None / RunConfig -> ? -> None / RunConfig -> None -> None / ? -> None'>set_global_seed</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', title='{RunConfig -> ? | RunConfig -> None | int}'>seed</a>)
+<span class='lineno'> 183</span>   else:
+<span class='lineno'> 184</span>     <a href='ops.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.ops', title='ops'>ops</a>.get_default_graph().seed = <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.framework.random_seed.set_random_seed.seed', title='{RunConfig -> ? | RunConfig -> None | int}'>seed</a>
+</pre></td></tr></table></body></html>

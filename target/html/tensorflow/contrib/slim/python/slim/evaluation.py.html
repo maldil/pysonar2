@@ -1,0 +1,382 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>/Users/malinda/Documents/RectrofitinMLtoCode/Python/TensorflowEx/tensorflow/contrib/slim/python/slim/evaluation.py</title>
+<style type='text/css'>
+body { color: #666666; }
+a {
+    text-decoration: none; color: #5AA2A7;
+    border: solid 1px rgba(255,255,255,0);
+}
+a.active {
+    background: -webkit-linear-gradient(top,rgba(255, 255, 200, 0.35) 0,rgba(255, 255, 200, 0.55) 100%);
+    border: solid 1px #E5E600;
+}
+table, th, td { border: 1px solid lightgrey; padding: 5px; corner: rounded; }
+.builtin {color: #B17E41;}
+.comment, .block-comment {color: #aaaaaa; font-style: italic;}
+.constant {color: #888888;}
+.decorator {color: #778899;}
+.doc-string {color: #aaaaaa;}
+.error {border-bottom: 1px solid red;}
+.field-name {color: #2e8b57;}
+.function {color: #4682b4;}
+.identifier {color: #8b7765;}
+.info {border-bottom: 1px dotted RoyalBlue;}
+.keyword {color: #0000cd;}
+.lineno {color: #cccccc;}
+.number {color: #483d8b;}
+.parameter {color: #777777;}
+.string {color: #999999;}
+.type-name {color: #4682b4;}
+.warning {border-bottom: 1px solid orange; padding-bottom: 1px}
+</style>
+<script language="JavaScript" type="text/javascript">
+var highlighted;
+
+function highlight(xid)
+{
+    var elms = document.querySelectorAll('[xid="' + xid + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "active";
+    }
+    highlighted = xid;
+}
+
+function clearHighlight() {
+    var elms = document.querySelectorAll('[xid="' + highlighted + '"]');
+    for (k in elms) {
+        v = elms[k]
+        v.className = "";
+    }
+}
+
+window.onload =
+    function (e) {
+        var tags = document.getElementsByTagName("A")
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].onmouseover =
+                function (e) {
+                    clearHighlight();
+                    var xid = e.toElement.getAttribute('xid');
+                    highlight(xid);
+                }
+        }
+    }</script>
+</head>
+<body>
+<table width=100% border='1px solid gray'><tr><td valign='top'><ul>
+<li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.__all__', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.__all__'>__all__</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.wait_for_new_checkpoint', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.wait_for_new_checkpoint'>wait_for_new_checkpoint</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.checkpoints_iterator', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.checkpoints_iterator'>checkpoints_iterator</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT'>_USE_DEFAULT</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once'>evaluate_once</a></li><li><a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop', xid='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop'>evaluation_loop</a></li></ul>
+</td><td><pre><span class='lineno'>   1</span> # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+<span class='lineno'>   2</span> #
+<span class='lineno'>   3</span> # Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<span class='lineno'>   4</span> # you may not use this file except in compliance with the License.
+<span class='lineno'>   5</span> # You may obtain a copy of the License at
+<span class='lineno'>   6</span> #
+<span class='lineno'>   7</span> #     http://www.apache.org/licenses/LICENSE-2.0
+<span class='lineno'>   8</span> #
+<span class='lineno'>   9</span> # Unless required by applicable law or agreed to in writing, software
+<span class='lineno'>  10</span> # distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<span class='lineno'>  11</span> # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='lineno'>  12</span> # See the License for the specific language governing permissions and
+<span class='lineno'>  13</span> # limitations under the License.
+<span class='lineno'>  14</span> # ==============================================================================
+<span class='lineno'>  15</span> &quot;&quot;&quot;Contains functions for evaluation and summarization of metrics.
+<span class='lineno'>  16</span> 
+<span class='lineno'>  17</span> The evaluation.py module contains helper functions for evaluating TensorFlow
+<span class='lineno'>  18</span> modules using a variety of metrics and summarizing the results.
+<span class='lineno'>  19</span> 
+<span class='lineno'>  20</span> **********************
+<span class='lineno'>  21</span> * Evaluating Metrics *
+<span class='lineno'>  22</span> **********************
+<span class='lineno'>  23</span> 
+<span class='lineno'>  24</span> In the simplest use case, we use a model to create the predictions, then specify
+<span class='lineno'>  25</span> the metrics and choose one model checkpoint, finally call the`evaluation_once`
+<span class='lineno'>  26</span> method:
+<span class='lineno'>  27</span> 
+<span class='lineno'>  28</span>   # Create model and obtain the predictions:
+<span class='lineno'>  29</span>   images, labels = LoadData(...)
+<span class='lineno'>  30</span>   predictions = MyModel(images)
+<span class='lineno'>  31</span> 
+<span class='lineno'>  32</span>   # Choose the metrics to compute:
+<span class='lineno'>  33</span>   names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
+<span class='lineno'>  34</span>       &quot;accuracy&quot;: slim.metrics.accuracy(predictions, labels),
+<span class='lineno'>  35</span>       &quot;mse&quot;: slim.metrics.mean_squared_error(predictions, labels),
+<span class='lineno'>  36</span>   })
+<span class='lineno'>  37</span> 
+<span class='lineno'>  38</span>   checkpoint_path = &#39;/tmp/my_model_dir/my_checkpoint&#39;
+<span class='lineno'>  39</span>   log_dir = &#39;/tmp/my_model_eval/&#39;
+<span class='lineno'>  40</span> 
+<span class='lineno'>  41</span>   initial_op = tf.group(
+<span class='lineno'>  42</span>       tf.global_variables_initializer(),
+<span class='lineno'>  43</span>       tf.local_variables_initializer())
+<span class='lineno'>  44</span> 
+<span class='lineno'>  45</span>   metric_values = slim.evaluate_once(
+<span class='lineno'>  46</span>       master=&#39;&#39;,
+<span class='lineno'>  47</span>       checkpoint_path=checkpoint_path,
+<span class='lineno'>  48</span>       log_dir=log_dir,
+<span class='lineno'>  49</span>       num_evals=1,
+<span class='lineno'>  50</span>       initial_op=initial_op,
+<span class='lineno'>  51</span>       eval_op=names_to_updates.values(),
+<span class='lineno'>  52</span>       final_op=name_to_values.values())
+<span class='lineno'>  53</span> 
+<span class='lineno'>  54</span>   for metric, value in zip(names_to_values.keys(), metric_values):
+<span class='lineno'>  55</span>     logging.info(&#39;Metric %s has value: %f&#39;, metric, value)
+<span class='lineno'>  56</span> 
+<span class='lineno'>  57</span> ************************************************
+<span class='lineno'>  58</span> * Evaluating a Checkpointed Model with Metrics *
+<span class='lineno'>  59</span> ************************************************
+<span class='lineno'>  60</span> 
+<span class='lineno'>  61</span> Often, one wants to evaluate a model checkpoint saved on disk. This can be
+<span class='lineno'>  62</span> performed once or repeatedly on a set schedule.
+<span class='lineno'>  63</span> 
+<span class='lineno'>  64</span> To evaluate a particular model, users define zero or more metrics and zero or
+<span class='lineno'>  65</span> more summaries and call the evaluation_loop method:
+<span class='lineno'>  66</span> 
+<span class='lineno'>  67</span>   # Create model and obtain the predictions:
+<span class='lineno'>  68</span>   images, labels = LoadData(...)
+<span class='lineno'>  69</span>   predictions = MyModel(images)
+<span class='lineno'>  70</span> 
+<span class='lineno'>  71</span>   # Choose the metrics to compute:
+<span class='lineno'>  72</span>   names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
+<span class='lineno'>  73</span>       &quot;accuracy&quot;: slim.metrics.accuracy(predictions, labels),
+<span class='lineno'>  74</span>       &quot;mse&quot;: slim.metrics.mean_squared_error(predictions, labels),
+<span class='lineno'>  75</span>   })
+<span class='lineno'>  76</span> 
+<span class='lineno'>  77</span>   # Define the summaries to write:
+<span class='lineno'>  78</span>   for metric_name, metric_value in metrics_to_values.iteritems():
+<span class='lineno'>  79</span>     tf.summary.scalar(metric_name, metric_value)
+<span class='lineno'>  80</span> 
+<span class='lineno'>  81</span>   checkpoint_dir = &#39;/tmp/my_model_dir/&#39;
+<span class='lineno'>  82</span>   log_dir = &#39;/tmp/my_model_eval/&#39;
+<span class='lineno'>  83</span> 
+<span class='lineno'>  84</span>   # We&#39;ll evaluate 1000 batches:
+<span class='lineno'>  85</span>   num_evals = 1000
+<span class='lineno'>  86</span> 
+<span class='lineno'>  87</span>   # Evaluate every 10 minutes:
+<span class='lineno'>  88</span>   slim.evaluation_loop(
+<span class='lineno'>  89</span>       &#39;&#39;,
+<span class='lineno'>  90</span>       checkpoint_dir,
+<span class='lineno'>  91</span>       logdir,
+<span class='lineno'>  92</span>       num_evals=num_evals,
+<span class='lineno'>  93</span>       eval_op=names_to_updates.values(),
+<span class='lineno'>  94</span>       summary_op=tf.contrib.deprecated.merge_summary(summary_ops),
+<span class='lineno'>  95</span>       eval_interval_secs=600)
+<span class='lineno'>  96</span> 
+<span class='lineno'>  97</span> **************************************************
+<span class='lineno'>  98</span> * Evaluating a Checkpointed Model with Summaries *
+<span class='lineno'>  99</span> **************************************************
+<span class='lineno'> 100</span> 
+<span class='lineno'> 101</span> At times, an evaluation can be performed without metrics at all but rather
+<span class='lineno'> 102</span> with only summaries. The user need only leave out the &#39;eval_op&#39; argument:
+<span class='lineno'> 103</span> 
+<span class='lineno'> 104</span>   # Create model and obtain the predictions:
+<span class='lineno'> 105</span>   images, labels = LoadData(...)
+<span class='lineno'> 106</span>   predictions = MyModel(images)
+<span class='lineno'> 107</span> 
+<span class='lineno'> 108</span>   # Define the summaries to write:
+<span class='lineno'> 109</span>   tf.summary.scalar(...)
+<span class='lineno'> 110</span>   tf.summary.histogram(...)
+<span class='lineno'> 111</span> 
+<span class='lineno'> 112</span>   checkpoint_dir = &#39;/tmp/my_model_dir/&#39;
+<span class='lineno'> 113</span>   log_dir = &#39;/tmp/my_model_eval/&#39;
+<span class='lineno'> 114</span> 
+<span class='lineno'> 115</span>   # Evaluate once every 10 minutes.
+<span class='lineno'> 116</span>   slim.evaluation_loop(
+<span class='lineno'> 117</span>       master=&#39;&#39;,
+<span class='lineno'> 118</span>       checkpoint_dir,
+<span class='lineno'> 119</span>       logdir,
+<span class='lineno'> 120</span>       num_evals=1,
+<span class='lineno'> 121</span>       summary_op=tf.contrib.deprecated.merge_summary(summary_ops),
+<span class='lineno'> 122</span>       eval_interval_secs=600)
+<span class='lineno'> 123</span> 
+<span class='lineno'> 124</span> &quot;&quot;&quot;
+<span class='lineno'> 125</span> 
+<span class='lineno'> 126</span> from __future__ import absolute_import
+<span class='lineno'> 127</span> from __future__ import division
+<span class='lineno'> 128</span> from __future__ import print_function
+<span class='lineno'> 129</span> 
+<span class='lineno'> 130</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib', title='contrib'>contrib</a>.<a href='../../../training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training', title='training'>training</a>.<a href='../../../training/python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python', title='python'>python</a>.<a href='../../../training/python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training', title='training'>training</a> import <a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>
+<span class='lineno'> 131</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/summary/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary', title='{summary | summary}'>summary</a> import summary
+<span class='lineno'> 132</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a> import <a href='../../../../python/training/monitored_session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', title='monitored_session'>monitored_session</a>
+<span class='lineno'> 133</span> from <a href='../../../../__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow', title='tensorflow'>tensorflow</a>.<a href='../../../../python/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python', title='python'>python</a>.<a href='../../../../python/training/__init__.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training', title='training'>training</a> import saver as <a href='../../../../python/training/saver.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', title='saver'>tf_saver</a>
+<span class='lineno'> 134</span> 
+<span class='lineno'> 135</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.__all__', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.__all__', title='[str]'>__all__</a> = [
+<span class='lineno'> 136</span>     &#39;evaluate_once&#39;,
+<span class='lineno'> 137</span>     &#39;evaluation_loop&#39;,
+<span class='lineno'> 138</span>     &#39;wait_for_new_checkpoint&#39;,
+<span class='lineno'> 139</span>     &#39;checkpoints_iterator&#39;,
+<span class='lineno'> 140</span> ]
+<span class='lineno'> 141</span> 
+<span class='lineno'> 142</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.wait_for_new_checkpoint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.wait_for_new_checkpoint', title='(?, None, int, None) -> None'>wait_for_new_checkpoint</a> = <a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.wait_for_new_checkpoint', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.wait_for_new_checkpoint', title='(?, None, int, None) -> None'>wait_for_new_checkpoint</a>
+<span class='lineno'> 143</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.checkpoints_iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.checkpoints_iterator', title='(?, int, None, None) -> None'>checkpoints_iterator</a> = <a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.checkpoints_iterator', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.checkpoints_iterator', title='(?, int, None, None) -> None'>checkpoints_iterator</a>
+<span class='lineno'> 144</span> 
+<span class='lineno'> 145</span> <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', title='int'>_USE_DEFAULT</a> = 0
+<span class='lineno'> 146</span> 
+<span class='lineno'> 147</span> 
+<span class='lineno'> 148</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once', title='(?, ?, ?, int, None, None, None, None, None, None, int, None, None, None, None) -> FinalOpsHook -> None'>evaluate_once</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.master', title='?'>master</a>,
+<span class='lineno'> 149</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.checkpoint_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.checkpoint_path', title='?'>checkpoint_path</a>,
+<span class='lineno'> 150</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.logdir', title='?'>logdir</a>,
+<span class='lineno'> 151</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.num_evals', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.num_evals', title='int'>num_evals</a>=1,
+<span class='lineno'> 152</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op', title='None'>initial_op</a>=None,
+<span class='lineno'> 153</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op_feed_dict', title='None'>initial_op_feed_dict</a>=None,
+<span class='lineno'> 154</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op', title='None'>eval_op</a>=None,
+<span class='lineno'> 155</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op_feed_dict', title='None'>eval_op_feed_dict</a>=None,
+<span class='lineno'> 156</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op', title='None'>final_op</a>=None,
+<span class='lineno'> 157</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op_feed_dict', title='None'>final_op_feed_dict</a>=None,
+<span class='lineno'> 158</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', title='int'>summary_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'> 159</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op_feed_dict', title='None'>summary_op_feed_dict</a>=None,
+<span class='lineno'> 160</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', title='None'>variables_to_restore</a>=None,
+<span class='lineno'> 161</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.session_config', title='None'>session_config</a>=None,
+<span class='lineno'> 162</span>                   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', title='None'>hooks</a>=None):
+<span class='lineno'> 163</span>   &quot;&quot;&quot;Evaluates the model at the given checkpoint path.
+<span class='lineno'> 164</span> 
+<span class='lineno'> 165</span>   Args:
+<span class='lineno'> 166</span>     master: The BNS address of the TensorFlow master.
+<span class='lineno'> 167</span>     checkpoint_path: The path to a checkpoint to use for evaluation.
+<span class='lineno'> 168</span>     logdir: The directory where the TensorFlow summaries are written to.
+<span class='lineno'> 169</span>     num_evals: The number of times to run `eval_op`.
+<span class='lineno'> 170</span>     initial_op: An operation run at the beginning of evaluation.
+<span class='lineno'> 171</span>     initial_op_feed_dict: A feed dictionary to use when executing `initial_op`.
+<span class='lineno'> 172</span>     eval_op: A operation run `num_evals` times.
+<span class='lineno'> 173</span>     eval_op_feed_dict: The feed dictionary to use when executing the `eval_op`.
+<span class='lineno'> 174</span>     final_op: An operation to execute after all of the `eval_op` executions. The
+<span class='lineno'> 175</span>       value of `final_op` is returned.
+<span class='lineno'> 176</span>     final_op_feed_dict: A feed dictionary to use when executing `final_op`.
+<span class='lineno'> 177</span>     summary_op: The summary_op to evaluate after running TF-Slims metric ops. By
+<span class='lineno'> 178</span>       default the summary_op is set to tf.summary.merge_all().
+<span class='lineno'> 179</span>     summary_op_feed_dict: An optional feed dictionary to use when running the
+<span class='lineno'> 180</span>       `summary_op`.
+<span class='lineno'> 181</span>     variables_to_restore: A list of TensorFlow variables to restore during
+<span class='lineno'> 182</span>       evaluation. If the argument is left as `None` then
+<span class='lineno'> 183</span>       slim.variables.GetVariablesToRestore() is used.
+<span class='lineno'> 184</span>     session_config: An instance of `tf.ConfigProto` that will be used to
+<span class='lineno'> 185</span>       configure the `Session`. If left as `None`, the default will be used.
+<span class='lineno'> 186</span>     hooks: A list of additional `SessionRunHook` objects to pass during the
+<span class='lineno'> 187</span>       evaluation.
+<span class='lineno'> 188</span> 
+<span class='lineno'> 189</span>   Returns:
+<span class='lineno'> 190</span>     The value of `final_op` or `None` if `final_op` is `None`.
+<span class='lineno'> 191</span>   &quot;&quot;&quot;
+<span class='lineno'> 192</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', title='int'>summary_op</a> == <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', title='int'>_USE_DEFAULT</a>:
+<span class='lineno'> 193</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', title='None'>summary_op</a> = <a href='../../../../python/summary/summary.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary', title='summary'>summary</a>.<a href='../../../../python/summary/summary.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary.merge_all', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary.merge_all', title='(str, None, None) -> None'>merge_all</a>()
+<span class='lineno'> 194</span> 
+<span class='lineno'> 195</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a> = [<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.StopAfterNEvalsHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.StopAfterNEvalsHook', title='<_StopAfterNEvalsHook>'>StopAfterNEvalsHook</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.num_evals', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.num_evals', title='int'>num_evals</a>),]
+<span class='lineno'> 196</span> 
+<span class='lineno'> 197</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', title='{None | int}'>summary_op</a> is not None:
+<span class='lineno'> 198</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>.append(<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.SummaryAtEndHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.SummaryAtEndHook', title='<SummaryAtEndHook>'>SummaryAtEndHook</a>(
+<span class='lineno'> 199</span>         log_dir=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.logdir', title='?'>logdir</a>, summary_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op', title='{None | int}'>summary_op</a>, feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.summary_op_feed_dict', title='None'>summary_op_feed_dict</a>))
+<span class='lineno'> 200</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', title='None'>hooks</a> is not None:
+<span class='lineno'> 201</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>.extend(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.hooks', title='None'>hooks</a>)
+<span class='lineno'> 202</span> 
+<span class='lineno'> 203</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', title='None'>saver</a> = None
+<span class='lineno'> 204</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', title='None'>variables_to_restore</a> is not None:
+<span class='lineno'> 205</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', title='Saver'>saver</a> = <a href='../../../../python/training/saver.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', title='saver'>tf_saver</a>.<a href='../../../../python/training/saver.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver.Saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver.Saver', title='<Saver>'>Saver</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.variables_to_restore', title='None'>variables_to_restore</a>)
+<span class='lineno'> 206</span> 
+<span class='lineno'> 207</span>   return <a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.evaluate_once', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.evaluate_once', title='(?, str, None, None, None, None, None, None, None) -> FinalOpsHook -> None / (None, str, None, None, None, None, None, None, None) -> FinalOpsHook -> None'>evaluate_once</a>(
+<span class='lineno'> 208</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.checkpoint_path', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.checkpoint_path', title='?'>checkpoint_path</a>,
+<span class='lineno'> 209</span>       master=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.master', title='?'>master</a>,
+<span class='lineno'> 210</span>       scaffold=<a href='../../../../python/training/monitored_session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', title='monitored_session'>monitored_session</a>.<a href='../../../../python/training/monitored_session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session.Scaffold', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session.Scaffold', title='<Scaffold>'>Scaffold</a>(
+<span class='lineno'> 211</span>           init_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op', title='None'>initial_op</a>, init_feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.initial_op_feed_dict', title='None'>initial_op_feed_dict</a>, saver=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.saver', title='Saver'>saver</a>),
+<span class='lineno'> 212</span>       eval_ops=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op', title='None'>eval_op</a>,
+<span class='lineno'> 213</span>       feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.eval_op_feed_dict', title='None'>eval_op_feed_dict</a>,
+<span class='lineno'> 214</span>       final_ops=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op', title='None'>final_op</a>,
+<span class='lineno'> 215</span>       final_ops_feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.final_op_feed_dict', title='None'>final_op_feed_dict</a>,
+<span class='lineno'> 216</span>       hooks=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>,
+<span class='lineno'> 217</span>       config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluate_once.session_config', title='None'>session_config</a>)
+<span class='lineno'> 218</span> 
+<span class='lineno'> 219</span> 
+<span class='lineno'> 220</span> def <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop', title='(?, ?, ?, int, None, None, None, None, None, None, None, int, None, None, int, None, None, None, None, None) -> FinalOpsHook -> None'>evaluation_loop</a>(<a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.master', title='?'>master</a>,
+<span class='lineno'> 221</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.checkpoint_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.checkpoint_dir', title='?'>checkpoint_dir</a>,
+<span class='lineno'> 222</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.logdir', title='?'>logdir</a>,
+<span class='lineno'> 223</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.num_evals', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.num_evals', title='int'>num_evals</a>=1,
+<span class='lineno'> 224</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op', title='None'>initial_op</a>=None,
+<span class='lineno'> 225</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op_feed_dict', title='None'>initial_op_feed_dict</a>=None,
+<span class='lineno'> 226</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.init_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.init_fn', title='None'>init_fn</a>=None,
+<span class='lineno'> 227</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op', title='None'>eval_op</a>=None,
+<span class='lineno'> 228</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op_feed_dict', title='None'>eval_op_feed_dict</a>=None,
+<span class='lineno'> 229</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op', title='None'>final_op</a>=None,
+<span class='lineno'> 230</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op_feed_dict', title='None'>final_op_feed_dict</a>=None,
+<span class='lineno'> 231</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', title='int'>summary_op</a>=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', title='int'>_USE_DEFAULT</a>,
+<span class='lineno'> 232</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op_feed_dict', title='None'>summary_op_feed_dict</a>=None,
+<span class='lineno'> 233</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', title='None'>variables_to_restore</a>=None,
+<span class='lineno'> 234</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_interval_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_interval_secs', title='int'>eval_interval_secs</a>=60,
+<span class='lineno'> 235</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.max_number_of_evaluations', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.max_number_of_evaluations', title='None'>max_number_of_evaluations</a>=None,
+<span class='lineno'> 236</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.session_config', title='None'>session_config</a>=None,
+<span class='lineno'> 237</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout', title='None'>timeout</a>=None,
+<span class='lineno'> 238</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout_fn', title='None'>timeout_fn</a>=None,
+<span class='lineno'> 239</span>                     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', title='None'>hooks</a>=None):
+<span class='lineno'> 240</span>   &quot;&quot;&quot;Runs TF-Slim&#39;s Evaluation Loop.
+<span class='lineno'> 241</span> 
+<span class='lineno'> 242</span>   Args:
+<span class='lineno'> 243</span>     master: The BNS address of the TensorFlow master.
+<span class='lineno'> 244</span>     checkpoint_dir: The directory where checkpoints are stored.
+<span class='lineno'> 245</span>     logdir: The directory where the TensorFlow summaries are written to.
+<span class='lineno'> 246</span>     num_evals: The number of times to run `eval_op`.
+<span class='lineno'> 247</span>     initial_op: An operation run at the beginning of evaluation.
+<span class='lineno'> 248</span>     initial_op_feed_dict: A feed dictionary to use when executing `initial_op`.
+<span class='lineno'> 249</span>     init_fn: An optional callable to be executed after `init_op` is called. The
+<span class='lineno'> 250</span>       callable must accept one argument, the session being initialized.
+<span class='lineno'> 251</span>     eval_op: A operation run `num_evals` times.
+<span class='lineno'> 252</span>     eval_op_feed_dict: The feed dictionary to use when executing the `eval_op`.
+<span class='lineno'> 253</span>     final_op: An operation to execute after all of the `eval_op` executions. The
+<span class='lineno'> 254</span>       value of `final_op` is returned.
+<span class='lineno'> 255</span>     final_op_feed_dict: A feed dictionary to use when executing `final_op`.
+<span class='lineno'> 256</span>     summary_op: The summary_op to evaluate after running TF-Slims metric ops. By
+<span class='lineno'> 257</span>       default the summary_op is set to tf.summary.merge_all().
+<span class='lineno'> 258</span>     summary_op_feed_dict: An optional feed dictionary to use when running the
+<span class='lineno'> 259</span>       `summary_op`.
+<span class='lineno'> 260</span>     variables_to_restore: A list of TensorFlow variables to restore during
+<span class='lineno'> 261</span>       evaluation. If the argument is left as `None` then
+<span class='lineno'> 262</span>       slim.variables.GetVariablesToRestore() is used.
+<span class='lineno'> 263</span>     eval_interval_secs: The minimum number of seconds between evaluations.
+<span class='lineno'> 264</span>     max_number_of_evaluations: the max number of iterations of the evaluation.
+<span class='lineno'> 265</span>       If the value is left as &#39;None&#39;, the evaluation continues indefinitely.
+<span class='lineno'> 266</span>     session_config: An instance of `tf.ConfigProto` that will be used to
+<span class='lineno'> 267</span>       configure the `Session`. If left as `None`, the default will be used.
+<span class='lineno'> 268</span>     timeout: The maximum amount of time to wait between checkpoints. If left as
+<span class='lineno'> 269</span>       `None`, then the process will wait indefinitely.
+<span class='lineno'> 270</span>     timeout_fn: Optional function to call after a timeout.  If the function
+<span class='lineno'> 271</span>       returns True, then it means that no new checkpoints will be generated and
+<span class='lineno'> 272</span>       the iterator will exit.  The function is called with no arguments.
+<span class='lineno'> 273</span>     hooks: A list of additional `SessionRunHook` objects to pass during
+<span class='lineno'> 274</span>       repeated evaluations.
+<span class='lineno'> 275</span> 
+<span class='lineno'> 276</span>   Returns:
+<span class='lineno'> 277</span>     The value of `final_op` or `None` if `final_op` is `None`.
+<span class='lineno'> 278</span>   &quot;&quot;&quot;
+<span class='lineno'> 279</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', title='int'>summary_op</a> == <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation._USE_DEFAULT', title='int'>_USE_DEFAULT</a>:
+<span class='lineno'> 280</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', title='None'>summary_op</a> = <a href='../../../../python/summary/summary.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary', title='summary'>summary</a>.<a href='../../../../python/summary/summary.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary.merge_all', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.summary.summary.merge_all', title='(str, None, None) -> None'>merge_all</a>()
+<span class='lineno'> 281</span> 
+<span class='lineno'> 282</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a> = [<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.StopAfterNEvalsHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.StopAfterNEvalsHook', title='<_StopAfterNEvalsHook>'>StopAfterNEvalsHook</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.num_evals', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.num_evals', title='int'>num_evals</a>),]
+<span class='lineno'> 283</span> 
+<span class='lineno'> 284</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', title='{None | int}'>summary_op</a> is not None:
+<span class='lineno'> 285</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>.append(<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.SummaryAtEndHook', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.SummaryAtEndHook', title='<SummaryAtEndHook>'>SummaryAtEndHook</a>(
+<span class='lineno'> 286</span>         log_dir=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.logdir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.logdir', title='?'>logdir</a>, summary_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op', title='{None | int}'>summary_op</a>, feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.summary_op_feed_dict', title='None'>summary_op_feed_dict</a>))
+<span class='lineno'> 287</span> 
+<span class='lineno'> 288</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', title='None'>hooks</a> is not None:
+<span class='lineno'> 289</span>     # Add custom hooks if provided.
+<span class='lineno'> 290</span>     <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>.extend(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.hooks', title='None'>hooks</a>)
+<span class='lineno'> 291</span> 
+<span class='lineno'> 292</span>   <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', title='None'>saver</a> = None
+<span class='lineno'> 293</span>   if <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', title='None'>variables_to_restore</a> is not None:
+<span class='lineno'> 294</span>     <a name='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', title='Saver'>saver</a> = <a href='../../../../python/training/saver.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver', title='saver'>tf_saver</a>.<a href='../../../../python/training/saver.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver.Saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.saver.Saver', title='<Saver>'>Saver</a>(<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.variables_to_restore', title='None'>variables_to_restore</a>)
+<span class='lineno'> 295</span> 
+<span class='lineno'> 296</span>   return <a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation', title='evaluation'>evaluation</a>.<a href='../../../training/python/training/evaluation.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.evaluate_repeatedly', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.training.python.training.evaluation.evaluate_repeatedly', title='(?, str, None, None, None, None, None, int, None, None, None, None, None) -> FinalOpsHook -> None'>evaluate_repeatedly</a>(
+<span class='lineno'> 297</span>       <a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.checkpoint_dir', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.checkpoint_dir', title='?'>checkpoint_dir</a>,
+<span class='lineno'> 298</span>       master=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.master', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.master', title='?'>master</a>,
+<span class='lineno'> 299</span>       scaffold=<a href='../../../../python/training/monitored_session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session', title='monitored_session'>monitored_session</a>.<a href='../../../../python/training/monitored_session.py.html#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session.Scaffold', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.python.training.monitored_session.Scaffold', title='<Scaffold>'>Scaffold</a>(
+<span class='lineno'> 300</span>           init_op=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op', title='None'>initial_op</a>, init_feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.initial_op_feed_dict', title='None'>initial_op_feed_dict</a>,
+<span class='lineno'> 301</span>           init_fn=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.init_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.init_fn', title='None'>init_fn</a>, saver=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.saver', title='Saver'>saver</a>),
+<span class='lineno'> 302</span>       eval_ops=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op', title='None'>eval_op</a>,
+<span class='lineno'> 303</span>       feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_op_feed_dict', title='None'>eval_op_feed_dict</a>,
+<span class='lineno'> 304</span>       final_ops=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op', title='None'>final_op</a>,
+<span class='lineno'> 305</span>       final_ops_feed_dict=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op_feed_dict', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.final_op_feed_dict', title='None'>final_op_feed_dict</a>,
+<span class='lineno'> 306</span>       eval_interval_secs=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_interval_secs', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.eval_interval_secs', title='int'>eval_interval_secs</a>,
+<span class='lineno'> 307</span>       hooks=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.all_hooks', title='[{SummaryAtEndHook | _StopAfterNEvalsHook}]'>all_hooks</a>,
+<span class='lineno'> 308</span>       config=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.session_config', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.session_config', title='None'>session_config</a>,
+<span class='lineno'> 309</span>       max_number_of_evaluations=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.max_number_of_evaluations', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.max_number_of_evaluations', title='None'>max_number_of_evaluations</a>,
+<span class='lineno'> 310</span>       timeout=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout', title='None'>timeout</a>,
+<span class='lineno'> 311</span>       timeout_fn=<a href='#.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout_fn', xid ='.Users.malinda.Documents.RectrofitinMLtoCode.Python.TensorflowEx.tensorflow.contrib.slim.python.slim.evaluation.evaluation_loop.timeout_fn', title='None'>timeout_fn</a>)
+</pre></td></tr></table></body></html>
